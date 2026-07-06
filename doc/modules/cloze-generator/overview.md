@@ -1,1 +1,0 @@
-- so far, a very, very basic component that takes a csv with columns `native` and `target` and generates *alright* Obsidian the-queue compatible flashcards with each possible single-word clozes
