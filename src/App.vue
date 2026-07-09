@@ -9,7 +9,7 @@
       </router-link>
     </nav>
   </header>
-  <main>
+  <main class="flex-1 ">
     <RouterView />
   </main>
   <footer class="p-4 flex flex-col items-center gap-4 text-center text-xs text-base-content/70">

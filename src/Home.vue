@@ -9,14 +9,11 @@ import { apps } from './appRegistry'
 <template>
   <section class="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 py-8">
     <header class="space-y-3">
-      <p class="text-sm uppercase tracking-[0.3em] text-base-content/60">
-        Learning Apps
-      </p>
       <h1 class="text-4xl font-semibold text-base-content">
-        Small interfaces for practicing specific skills
+        Welcome to samlearns.
       </h1>
-      <p class="max-w-2xl text-base text-base-content/70">
-        Each route is a standalone learning tool integrated into the same app shell.
+      <p class="max-w-2xl text-base text-xl">
+        Below are experimental mini-apps for digital learning, across different topics. Feel free to browse around:
       </p>
     </header>
 
