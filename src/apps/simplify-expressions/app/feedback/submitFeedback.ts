@@ -1,4 +1,4 @@
-import type { AppLocale } from '@/apps/simplify-expressions/app/storage/selectedLocale'
+import type { AppLocale } from '@/apps/simplify-expressions/app/i18n'
 
 export async function submitFeedback(input: {
   helpfulForLearning: string

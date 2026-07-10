@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useAppI18n } from '../i18n'
 import { submitFeedback } from './submitFeedback'
-import type { AppLocale } from '@/apps/simplify-expressions/app/storage/selectedLocale'
+import type { AppLocale } from '@/apps/simplify-expressions/app/i18n'
 
 defineProps<{
   isOpen: boolean

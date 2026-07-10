@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { Calculator } from 'lucide-vue-next'
-import { setAppLocale, useAppI18n } from './i18n'
-import type { AppLocale } from './storage/selectedLocale'
+import { setAppLocale, useAppI18n, type AppLocale } from './i18n'
 
 const TutorPage = defineAsyncComponent(() => import('../pages/tutor/PageTutor.vue'))
 const AppFeedbackModal = defineAsyncComponent(() => import('./feedback/AppFeedbackModal.vue'))

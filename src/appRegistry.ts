@@ -41,5 +41,15 @@ export const apps: AppDefinition[] = [
       title: 'Simplify Expressions',
       description: 'Practice simplifying algebraic expressions.'
     }
+  },
+  {
+    slug: 'triangle-congruence',
+    name: 'Triangle Congruence',
+    description: 'Practice identifying triangle congruence theorems (SSS, SAS, ASA, SSA).',
+    component: () => import('./apps/triangle-congruence/app/App.vue'),
+    meta: {
+      title: 'Triangle Congruence',
+      description: 'Practice recognizing SSS, SAS, ASA and SSA triangle congruence theorems, in German.'
+    }
   }
 ]

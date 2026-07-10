@@ -1,5 +1,4 @@
-import { ref } from 'vue'
-import { getStoredLocale, setStoredLocale, type AppLocale } from './storage/selectedLocale'
+import { createLocalI18n } from '@/shared/i18n/createLocalI18n'
 
 const messages = {
   de: {
@@ -164,48 +163,12 @@ const messages = {
   }
 } as const
 
-type MessageValue = string | Record<string, MessageValue>
+const locales = ['de', 'en'] as const
+export type AppLocale = (typeof locales)[number]
 
-const currentLocale = ref<AppLocale>(getStoredLocale())
-
-function resolveMessage(messageLocale: AppLocale, path: string): string | undefined {
-  const segments = path.split('.')
-  let current: MessageValue | undefined = messages[messageLocale]
-
-  for (const segment of segments) {
-    if (!current || typeof current === 'string') {
-      return undefined
-    }
-
-    current = current[segment]
-  }
-
-  return typeof current === 'string' ? current : undefined
-}
-
-function formatMessage(template: string, params?: Record<string, string | number>) {
-  if (!params) {
-    return template
-  }
-
-  return template.replace(/\{(\w+)\}/g, (_, key: string) => String(params[key] ?? `{${key}}`))
-}
-
-export function useAppI18n() {
-  return {
-    locale: currentLocale,
-    t(path: string, params?: Record<string, string | number>) {
-      const fallback = resolveMessage('de', path) ?? path
-      const template = resolveMessage(currentLocale.value, path) ?? fallback
-      return formatMessage(template, params)
-    }
-  }
-}
-
-export function setAppLocale(locale: AppLocale) {
-  currentLocale.value = locale
-  setStoredLocale(locale)
-  document.documentElement.lang = locale
-}
-
-document.documentElement.lang = currentLocale.value
+export const { useAppI18n, setAppLocale, getStoredLocale } = createLocalI18n({
+  messages,
+  locales,
+  defaultLocale: 'de',
+  storageKey: 'simplify-expressions:locale'
+})
