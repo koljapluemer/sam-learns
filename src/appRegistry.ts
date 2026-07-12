@@ -51,5 +51,15 @@ export const apps: AppDefinition[] = [
       title: 'Triangle Congruence',
       description: 'Practice recognizing SSS, SAS, ASA and SSA triangle congruence theorems, in German.'
     }
+  },
+  {
+    slug: 'world-map',
+    name: 'World Map',
+    description: 'Find countries in their neighborhood on the world map.',
+    component: () => import('./apps/world-map/app/App.vue'),
+    meta: {
+      title: 'World Map',
+      description: 'Practice locating countries on the world map.'
+    }
   }
 ]

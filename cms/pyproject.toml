@@ -1,0 +1,9 @@
+[project]
+name = "cms"
+version = "0.1.0"
+description = "Curation tools for the learning apps in this repo, one Streamlit app per app-slug folder"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "streamlit>=1.59.1",
+]

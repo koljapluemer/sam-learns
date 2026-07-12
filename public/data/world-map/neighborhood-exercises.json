@@ -1,0 +1,962 @@
+{
+  "Afghanistan": {
+    "enabled": true,
+    "zoom": 170
+  },
+  "Albania": {
+    "enabled": true,
+    "zoom": 149
+  },
+  "Algeria": {
+    "enabled": false,
+    "zoom": 170
+  },
+  "American Samoa": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "Andorra": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Angola": {
+    "enabled": false,
+    "zoom": 156
+  },
+  "Anguilla": {
+    "enabled": false,
+    "zoom": 105
+  },
+  "Antigua and Barb.": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Argentina": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Armenia": {
+    "enabled": false,
+    "zoom": 137
+  },
+  "Aruba": {
+    "enabled": false,
+    "zoom": 103
+  },
+  "Ashmore and Cartier Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Australia": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Austria": {
+    "enabled": false,
+    "zoom": 163
+  },
+  "Azerbaijan": {
+    "enabled": false,
+    "zoom": 149
+  },
+  "Bahamas": {
+    "enabled": false,
+    "zoom": 156
+  },
+  "Bahrain": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Bangladesh": {
+    "enabled": false,
+    "zoom": 135
+  },
+  "Barbados": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Belarus": {
+    "enabled": false,
+    "zoom": 148
+  },
+  "Belgium": {
+    "enabled": false,
+    "zoom": 141
+  },
+  "Belize": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Benin": {
+    "enabled": false,
+    "zoom": 139
+  },
+  "Bermuda": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Bhutan": {
+    "enabled": false,
+    "zoom": 127
+  },
+  "Bolivia": {
+    "enabled": false,
+    "zoom": 143
+  },
+  "Bosnia and Herz.": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Botswana": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Br. Indian Ocean Ter.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Brazil": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "British Virgin Is.": {
+    "enabled": false,
+    "zoom": 107
+  },
+  "Brunei": {
+    "enabled": false,
+    "zoom": 108
+  },
+  "Bulgaria": {
+    "enabled": false,
+    "zoom": 169
+  },
+  "Burkina Faso": {
+    "enabled": false,
+    "zoom": 151
+  },
+  "Burundi": {
+    "enabled": false,
+    "zoom": 122
+  },
+  "Cabo Verde": {
+    "enabled": false,
+    "zoom": 115
+  },
+  "Cambodia": {
+    "enabled": false,
+    "zoom": 149
+  },
+  "Cameroon": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Canada": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Cayman Is.": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Central African Rep.": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Chad": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Chile": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "China": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Colombia": {
+    "enabled": false,
+    "zoom": 153
+  },
+  "Comoros": {
+    "enabled": false,
+    "zoom": 107
+  },
+  "Congo": {
+    "enabled": false,
+    "zoom": 156
+  },
+  "Cook Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Costa Rica": {
+    "enabled": false,
+    "zoom": 132
+  },
+  "Croatia": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Cuba": {
+    "enabled": false,
+    "zoom": 154
+  },
+  "Cura\u00e7ao": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Cyprus": {
+    "enabled": false,
+    "zoom": 117
+  },
+  "Czechia": {
+    "enabled": false,
+    "zoom": 151
+  },
+  "C\u00f4te d'Ivoire": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Dem. Rep. Congo": {
+    "enabled": false,
+    "zoom": 166
+  },
+  "Denmark": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Djibouti": {
+    "enabled": false,
+    "zoom": 121
+  },
+  "Dominica": {
+    "enabled": false,
+    "zoom": 106
+  },
+  "Dominican Rep.": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Ecuador": {
+    "enabled": false,
+    "zoom": 147
+  },
+  "Egypt": {
+    "enabled": false,
+    "zoom": 157
+  },
+  "El Salvador": {
+    "enabled": false,
+    "zoom": 114
+  },
+  "Eq. Guinea": {
+    "enabled": false,
+    "zoom": 123
+  },
+  "Eritrea": {
+    "enabled": false,
+    "zoom": 156
+  },
+  "Estonia": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Ethiopia": {
+    "enabled": false,
+    "zoom": 171
+  },
+  "Faeroe Is.": {
+    "enabled": false,
+    "zoom": 106
+  },
+  "Falkland Is.": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Fiji": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Finland": {
+    "enabled": false,
+    "zoom": 167
+  },
+  "Fr. Polynesia": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "France": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Gabon": {
+    "enabled": false,
+    "zoom": 141
+  },
+  "Gambia": {
+    "enabled": false,
+    "zoom": 119
+  },
+  "Georgia": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Germany": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Ghana": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Greece": {
+    "enabled": false,
+    "zoom": 170
+  },
+  "Greenland": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Grenada": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Guam": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "Guatemala": {
+    "enabled": false,
+    "zoom": 134
+  },
+  "Guernsey": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "Guinea": {
+    "enabled": false,
+    "zoom": 156
+  },
+  "Guinea-Bissau": {
+    "enabled": false,
+    "zoom": 125
+  },
+  "Guyana": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Haiti": {
+    "enabled": false,
+    "zoom": 121
+  },
+  "Heard I. and McDonald Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Honduras": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Hong Kong": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Hungary": {
+    "enabled": false,
+    "zoom": 151
+  },
+  "Iceland": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "India": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "Indian Ocean Ter.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Indonesia": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "Iran": {
+    "enabled": false,
+    "zoom": 167
+  },
+  "Iraq": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Ireland": {
+    "enabled": false,
+    "zoom": 134
+  },
+  "Isle of Man": {
+    "enabled": false,
+    "zoom": 108
+  },
+  "Israel": {
+    "enabled": false,
+    "zoom": 151
+  },
+  "Italy": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "Jamaica": {
+    "enabled": false,
+    "zoom": 111
+  },
+  "Japan": {
+    "enabled": false,
+    "zoom": 164
+  },
+  "Jersey": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Jordan": {
+    "enabled": false,
+    "zoom": 148
+  },
+  "Kazakhstan": {
+    "enabled": false,
+    "zoom": 170
+  },
+  "Kenya": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Kiribati": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Kosovo": {
+    "enabled": false,
+    "zoom": 153
+  },
+  "Kuwait": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Kyrgyzstan": {
+    "enabled": false,
+    "zoom": 140
+  },
+  "Laos": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Latvia": {
+    "enabled": false,
+    "zoom": 173
+  },
+  "Lebanon": {
+    "enabled": false,
+    "zoom": 121
+  },
+  "Lesotho": {
+    "enabled": false,
+    "zoom": 112
+  },
+  "Liberia": {
+    "enabled": false,
+    "zoom": 132
+  },
+  "Libya": {
+    "enabled": false,
+    "zoom": 177
+  },
+  "Liechtenstein": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Lithuania": {
+    "enabled": false,
+    "zoom": 147
+  },
+  "Luxembourg": {
+    "enabled": false,
+    "zoom": 117
+  },
+  "Macao": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Madagascar": {
+    "enabled": false,
+    "zoom": 146
+  },
+  "Malawi": {
+    "enabled": false,
+    "zoom": 149
+  },
+  "Malaysia": {
+    "enabled": false,
+    "zoom": 154
+  },
+  "Maldives": {
+    "enabled": false,
+    "zoom": 103
+  },
+  "Mali": {
+    "enabled": false,
+    "zoom": 167
+  },
+  "Malta": {
+    "enabled": false,
+    "zoom": 105
+  },
+  "Marshall Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Mauritania": {
+    "enabled": false,
+    "zoom": 153
+  },
+  "Mauritius": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "Mexico": {
+    "enabled": false,
+    "zoom": 194
+  },
+  "Micronesia": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Moldova": {
+    "enabled": false,
+    "zoom": 149
+  },
+  "Monaco": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Mongolia": {
+    "enabled": false,
+    "zoom": 141
+  },
+  "Montenegro": {
+    "enabled": false,
+    "zoom": 137
+  },
+  "Montserrat": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Morocco": {
+    "enabled": false,
+    "zoom": 163
+  },
+  "Mozambique": {
+    "enabled": false,
+    "zoom": 145
+  },
+  "Myanmar": {
+    "enabled": false,
+    "zoom": 177
+  },
+  "N. Cyprus": {
+    "enabled": false,
+    "zoom": 116
+  },
+  "N. Mariana Is.": {
+    "enabled": false,
+    "zoom": 112
+  },
+  "Namibia": {
+    "enabled": false,
+    "zoom": 141
+  },
+  "Nauru": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Nepal": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Netherlands": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "New Caledonia": {
+    "enabled": false,
+    "zoom": 117
+  },
+  "New Zealand": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Nicaragua": {
+    "enabled": false,
+    "zoom": 138
+  },
+  "Niger": {
+    "enabled": false,
+    "zoom": 174
+  },
+  "Nigeria": {
+    "enabled": false,
+    "zoom": 142
+  },
+  "Niue": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Norfolk Island": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "North Korea": {
+    "enabled": false,
+    "zoom": 148
+  },
+  "North Macedonia": {
+    "enabled": false,
+    "zoom": 152
+  },
+  "Norway": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "Oman": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Pakistan": {
+    "enabled": false,
+    "zoom": 194
+  },
+  "Palau": {
+    "enabled": false,
+    "zoom": 125
+  },
+  "Palestine": {
+    "enabled": false,
+    "zoom": 123
+  },
+  "Panama": {
+    "enabled": false,
+    "zoom": 126
+  },
+  "Papua New Guinea": {
+    "enabled": false,
+    "zoom": 151
+  },
+  "Paraguay": {
+    "enabled": false,
+    "zoom": 140
+  },
+  "Peru": {
+    "enabled": false,
+    "zoom": 152
+  },
+  "Philippines": {
+    "enabled": false,
+    "zoom": 159
+  },
+  "Pitcairn Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Poland": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Portugal": {
+    "enabled": false,
+    "zoom": 200
+  },
+  "Puerto Rico": {
+    "enabled": false,
+    "zoom": 111
+  },
+  "Qatar": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Romania": {
+    "enabled": false,
+    "zoom": 162
+  },
+  "Russia": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Rwanda": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "S. Geo. and the Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "S. Sudan": {
+    "enabled": false,
+    "zoom": 163
+  },
+  "Saint Helena": {
+    "enabled": false,
+    "zoom": 136
+  },
+  "Saint Lucia": {
+    "enabled": false,
+    "zoom": 108
+  },
+  "Samoa": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "San Marino": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "Saudi Arabia": {
+    "enabled": false,
+    "zoom": 173
+  },
+  "Senegal": {
+    "enabled": false,
+    "zoom": 132
+  },
+  "Serbia": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Seychelles": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Siachen Glacier": {
+    "enabled": false,
+    "zoom": 106
+  },
+  "Sierra Leone": {
+    "enabled": false,
+    "zoom": 129
+  },
+  "Singapore": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Sint Maarten": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "Slovakia": {
+    "enabled": false,
+    "zoom": 131
+  },
+  "Slovenia": {
+    "enabled": false,
+    "zoom": 138
+  },
+  "Solomon Is.": {
+    "enabled": false,
+    "zoom": 136
+  },
+  "Somalia": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Somaliland": {
+    "enabled": false,
+    "zoom": 136
+  },
+  "South Africa": {
+    "enabled": false,
+    "zoom": 153
+  },
+  "South Korea": {
+    "enabled": false,
+    "zoom": 131
+  },
+  "Spain": {
+    "enabled": false,
+    "zoom": 188
+  },
+  "Sri Lanka": {
+    "enabled": false,
+    "zoom": 105
+  },
+  "St-Barth\u00e9lemy": {
+    "enabled": false,
+    "zoom": 104
+  },
+  "St-Martin": {
+    "enabled": false,
+    "zoom": 102
+  },
+  "St. Kitts and Nevis": {
+    "enabled": false,
+    "zoom": 103
+  },
+  "St. Pierre and Miquelon": {
+    "enabled": false,
+    "zoom": 106
+  },
+  "St. Vin. and Gren.": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Sudan": {
+    "enabled": false,
+    "zoom": 167
+  },
+  "Suriname": {
+    "enabled": false,
+    "zoom": 147
+  },
+  "Sweden": {
+    "enabled": false,
+    "zoom": 179
+  },
+  "Switzerland": {
+    "enabled": false,
+    "zoom": 141
+  },
+  "Syria": {
+    "enabled": false,
+    "zoom": 179
+  },
+  "S\u00e3o Tom\u00e9 and Principe": {
+    "enabled": false,
+    "zoom": 113
+  },
+  "Taiwan": {
+    "enabled": false,
+    "zoom": 125
+  },
+  "Tajikistan": {
+    "enabled": false,
+    "zoom": 127
+  },
+  "Tanzania": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Thailand": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Timor-Leste": {
+    "enabled": false,
+    "zoom": 119
+  },
+  "Togo": {
+    "enabled": false,
+    "zoom": 138
+  },
+  "Tonga": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Trinidad and Tobago": {
+    "enabled": false,
+    "zoom": 126
+  },
+  "Tunisia": {
+    "enabled": false,
+    "zoom": 144
+  },
+  "Turkey": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Turkmenistan": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Turks and Caicos Is.": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Tuvalu": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "U.S. Virgin Is.": {
+    "enabled": false,
+    "zoom": 110
+  },
+  "Uganda": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Ukraine": {
+    "enabled": false,
+    "zoom": 159
+  },
+  "United Arab Emirates": {
+    "enabled": false,
+    "zoom": 139
+  },
+  "United Kingdom": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "United States of America": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Uruguay": {
+    "enabled": false,
+    "zoom": 121
+  },
+  "Uzbekistan": {
+    "enabled": false,
+    "zoom": 161
+  },
+  "Vanuatu": {
+    "enabled": false,
+    "zoom": 125
+  },
+  "Vatican": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Venezuela": {
+    "enabled": false,
+    "zoom": 160
+  },
+  "Vietnam": {
+    "enabled": false,
+    "zoom": 159
+  },
+  "W. Sahara": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Wallis and Futuna Is.": {
+    "enabled": false,
+    "zoom": 150
+  },
+  "Yemen": {
+    "enabled": false,
+    "zoom": 163
+  },
+  "Zambia": {
+    "enabled": false,
+    "zoom": 155
+  },
+  "Zimbabwe": {
+    "enabled": false,
+    "zoom": 154
+  },
+  "eSwatini": {
+    "enabled": false,
+    "zoom": 111
+  },
+  "\u00c5land": {
+    "enabled": false,
+    "zoom": 107
+  }
+}

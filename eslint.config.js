@@ -10,6 +10,7 @@ export default [
       'dist/**',
       'node_modules/**',
       'public/**',
+      'cms/**',
       'src/apps/**/doc/**',
       'src/apps/**/spec.md',
       'src/apps/**/exercise-list.md',
