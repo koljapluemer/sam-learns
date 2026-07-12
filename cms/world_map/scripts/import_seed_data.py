@@ -51,7 +51,7 @@ def main() -> None:
             continue
         zoom_raw = entry.get("zoomNeighborhood", "")
         zoom = int(zoom_raw) if zoom_raw else DEFAULT_ZOOM
-        config[country] = {"enabled": False, "zoom": zoom}
+        config[country] = {"enabled": False, "zoom": zoom, "reviewed": False}
         added += 1
 
     save_config(config)

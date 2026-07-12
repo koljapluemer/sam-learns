@@ -4,10 +4,10 @@ import { useRoute } from 'vue-router'
 import { Globe } from 'lucide-vue-next'
 import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from './i18n'
-import WorldMapCanvas from '@/apps/world-map/dumb/WorldMapCanvas.vue'
 import { getGeoData } from '@/apps/world-map/entities/neighborhood-content/neighborhoodContent'
 
 const ExercisePage = defineAsyncComponent(() => import('../pages/exercise/PageExercise.vue'))
+const CmsPreviewView = defineAsyncComponent(() => import('../pages/cms-preview/CmsPreviewView.vue'))
 
 const { t } = useAppI18n()
 const route = useRoute()
@@ -16,6 +16,7 @@ const isPreview = computed(() => route.query.preview === '1')
 const previewCountry = computed(() => String(route.query.country ?? ''))
 const previewZoom = computed(() => Number(route.query.zoom ?? 100))
 const previewPanIndex = computed(() => Number(route.query.panIndex ?? 4))
+const previewHighlight = computed(() => route.query.highlight === '1')
 
 const geoData = ref<FeatureCollection | null>(null)
 
@@ -31,12 +32,13 @@ onMounted(async () => {
     v-if="isPreview"
     class="h-screen w-screen"
   >
-    <WorldMapCanvas
+    <CmsPreviewView
       v-if="geoData"
       :geo-data="geoData"
-      :target-country="previewCountry"
+      :country="previewCountry"
       :zoom="previewZoom"
       :pan-index="previewPanIndex"
+      :highlight="previewHighlight"
     />
   </div>
 

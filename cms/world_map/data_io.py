@@ -12,6 +12,7 @@ from typing import TypedDict
 class CountryConfig(TypedDict):
     enabled: bool
     zoom: int
+    reviewed: bool
 
 
 def find_repo_root() -> Path:
@@ -37,10 +38,25 @@ def geo_data_path() -> Path:
 
 
 def load_config() -> dict[str, CountryConfig]:
+    """Load the config, backfilling `reviewed` for entries saved before that field existed.
+
+    A missing `reviewed` defaults to the entry's `enabled` value: every
+    pre-existing entry was either explicitly enabled (so it must have been
+    reviewed) or left at the seed script's default `enabled: False` (so it
+    was never reviewed).
+    """
     path = config_path()
     if not path.exists():
         return {}
-    return json.loads(path.read_text())
+    raw: dict[str, dict] = json.loads(path.read_text())
+    return {
+        name: {
+            "enabled": entry["enabled"],
+            "zoom": entry["zoom"],
+            "reviewed": entry.get("reviewed", entry["enabled"]),
+        }
+        for name, entry in raw.items()
+    }
 
 
 def save_config(config: dict[str, CountryConfig]) -> None:
