@@ -6,7 +6,8 @@ const messages = {
       title: 'World Map'
     },
     exercise: {
-      instruction: 'Find {country} in its neighborhood'
+      instruction: 'Find {country} in its neighborhood',
+      instructionWorldMap: 'Find {country} on the world map'
     },
     loading: {
       label: 'Loading…'

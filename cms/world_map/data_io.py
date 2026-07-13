@@ -1,7 +1,10 @@
-"""Load/save the world-map neighborhood-exercise curation config.
+"""Load/save the world-map exercise curation configs.
 
-The config is the single file the learner app fetches at runtime and this
-CMS edits: public/data/world-map/neighborhood-exercises.json
+Two config files, one per exercise type, both under
+public/data/world-map/ and both fetched at runtime by the learner app:
+
+- neighborhood-exercises.json: "find in its neighborhood" exercise
+- world-map-exercises.json: "find on world map" exercise
 """
 
 import json
@@ -9,9 +12,14 @@ from pathlib import Path
 from typing import TypedDict
 
 
-class CountryConfig(TypedDict):
+class NeighborhoodConfig(TypedDict):
     enabled: bool
     zoom: int
+    reviewed: bool
+
+
+class WorldMapConfig(TypedDict):
+    enabled: bool
     reviewed: bool
 
 
@@ -29,15 +37,19 @@ def data_dir() -> Path:
     return path
 
 
-def config_path() -> Path:
+def neighborhood_config_path() -> Path:
     return data_dir() / "neighborhood-exercises.json"
+
+
+def world_map_config_path() -> Path:
+    return data_dir() / "world-map-exercises.json"
 
 
 def geo_data_path() -> Path:
     return data_dir() / "map.geo.json"
 
 
-def load_config() -> dict[str, CountryConfig]:
+def load_neighborhood_config() -> dict[str, NeighborhoodConfig]:
     """Load the config, backfilling `reviewed` for entries saved before that field existed.
 
     A missing `reviewed` defaults to the entry's `enabled` value: every
@@ -45,7 +57,7 @@ def load_config() -> dict[str, CountryConfig]:
     reviewed) or left at the seed script's default `enabled: False` (so it
     was never reviewed).
     """
-    path = config_path()
+    path = neighborhood_config_path()
     if not path.exists():
         return {}
     raw: dict[str, dict] = json.loads(path.read_text())
@@ -59,5 +71,24 @@ def load_config() -> dict[str, CountryConfig]:
     }
 
 
-def save_config(config: dict[str, CountryConfig]) -> None:
-    config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+def save_neighborhood_config(config: dict[str, NeighborhoodConfig]) -> None:
+    neighborhood_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+
+
+def load_world_map_config() -> dict[str, WorldMapConfig]:
+    """Load the config, backfilling `reviewed` the same way as the neighborhood config."""
+    path = world_map_config_path()
+    if not path.exists():
+        return {}
+    raw: dict[str, dict] = json.loads(path.read_text())
+    return {
+        name: {
+            "enabled": entry["enabled"],
+            "reviewed": entry.get("reviewed", entry["enabled"]),
+        }
+        for name, entry in raw.items()
+    }
+
+
+def save_world_map_config(config: dict[str, WorldMapConfig]) -> None:
+    world_map_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))

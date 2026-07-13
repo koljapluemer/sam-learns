@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { geoPath, select } from 'd3'
+import { geoPath, select, zoom as d3zoom, zoomIdentity } from 'd3'
 import type { FeatureCollection } from 'geojson'
 import { computeMapProjection } from './mapProjection'
 
@@ -11,6 +11,7 @@ const props = defineProps<{
   panIndex?: number
   highlightCountry?: string
   highlightColor?: string
+  interactive?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -18,6 +19,7 @@ const emit = defineEmits<{
 }>()
 
 const DEFAULT_FILL = '#cbd5e1'
+const ZOOM_SCALE_EXTENT: [number, number] = [1, 8]
 
 const containerRef = ref<HTMLDivElement | null>(null)
 let resizeObserver: ResizeObserver | null = null
@@ -32,6 +34,7 @@ function render() {
 
   container.querySelector('svg')?.remove()
   const svg = select(container).append('svg').attr('width', width).attr('height', height)
+  const g = svg.append('g')
 
   const projection = computeMapProjection({
     geoData: props.geoData,
@@ -43,8 +46,7 @@ function render() {
   })
   const path = geoPath(projection)
 
-  svg
-    .selectAll('path')
+  g.selectAll('path')
     .data(props.geoData.features)
     .enter()
     .append('path')
@@ -60,6 +62,17 @@ function render() {
       const name = feature.properties?.name
       if (name) emit('countryClicked', name)
     })
+
+  if (props.interactive) {
+    const behavior = d3zoom<SVGSVGElement, unknown>()
+      .scaleExtent(ZOOM_SCALE_EXTENT)
+      .translateExtent([
+        [0, 0],
+        [width, height]
+      ])
+      .on('zoom', (event) => g.attr('transform', event.transform.toString()))
+    svg.call(behavior).call(behavior.transform, zoomIdentity)
+  }
 }
 
 onMounted(() => {

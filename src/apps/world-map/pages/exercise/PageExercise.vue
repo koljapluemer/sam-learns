@@ -2,9 +2,10 @@
 import { onMounted, ref } from 'vue'
 import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from '@/apps/world-map/app/i18n'
-import { getGeoData } from '@/apps/world-map/entities/neighborhood-content/neighborhoodContent'
+import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 import { loadNextExercise, submitAnswer, type NextExercise, type SubmittedAnswer } from '@/apps/world-map/entities/progress/progressScheduler'
 import NeighborhoodExerciseView from './NeighborhoodExerciseView.vue'
+import WorldMapExerciseView from './WorldMapExerciseView.vue'
 
 type PageState = { mode: 'loading' } | { mode: 'no-exercises' } | { mode: 'exercise'; exercise: NextExercise }
 
@@ -48,12 +49,20 @@ async function handleSubmitted(result: SubmittedAnswer) {
     </div>
 
     <NeighborhoodExerciseView
-      v-else
-      :key="`${state.exercise.country}-${state.exercise.panIndex}`"
+      v-else-if="state.exercise.type === 'find-in-neighborhood'"
+      :key="`neighborhood-${state.exercise.country}-${state.exercise.panIndex}`"
       :geo-data="geoData"
       :country="state.exercise.country"
       :zoom="state.exercise.zoom"
       :pan-index="state.exercise.panIndex"
+      @submitted="handleSubmitted"
+    />
+
+    <WorldMapExerciseView
+      v-else
+      :key="`world-map-${state.exercise.country}`"
+      :geo-data="geoData"
+      :country="state.exercise.country"
       @submitted="handleSubmitted"
     />
   </section>

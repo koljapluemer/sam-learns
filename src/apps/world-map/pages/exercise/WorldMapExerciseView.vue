@@ -8,8 +8,6 @@ import type { SubmittedAnswer } from '@/apps/world-map/entities/progress/progres
 const props = defineProps<{
   geoData: FeatureCollection
   country: string
-  zoom: number
-  panIndex: number
 }>()
 
 const emit = defineEmits<{
@@ -39,7 +37,7 @@ function reset() {
   firstClickMs = null
 }
 
-watch(() => [props.country, props.panIndex], reset, { immediate: true })
+watch(() => props.country, reset, { immediate: true })
 
 function handleClick(clickedCountry: string) {
   if (isCorrect.value) return
@@ -53,9 +51,8 @@ function handleClick(clickedCountry: string) {
     highlightColor.value = SUCCESS_COLOR
     window.setTimeout(() => {
       emit('submitted', {
-        type: 'find-in-neighborhood',
+        type: 'find-on-world-map',
         country: props.country,
-        panIndex: props.panIndex,
         numberOfClicksNeeded: attempts.value,
         msToFirstClick: firstClickMs ?? 0
       })
@@ -75,15 +72,13 @@ function handleClick(clickedCountry: string) {
       :class="{ 'bg-success/10': isCorrect }"
     >
       <p class="text-sm font-medium">
-        {{ t('exercise.instruction', { country }) }}
+        {{ t('exercise.instructionWorldMap', { country }) }}
       </p>
     </div>
     <div class="h-[60vh] w-full overflow-hidden rounded-box border border-base-300">
       <WorldMapCanvas
         :geo-data="geoData"
         :target-country="country"
-        :zoom="zoom"
-        :pan-index="panIndex"
         :highlight-country="highlightCountry"
         :highlight-color="highlightColor"
         interactive

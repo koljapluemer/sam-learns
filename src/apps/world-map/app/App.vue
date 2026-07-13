@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { Globe } from 'lucide-vue-next'
 import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from './i18n'
-import { getGeoData } from '@/apps/world-map/entities/neighborhood-content/neighborhoodContent'
+import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 
 const ExercisePage = defineAsyncComponent(() => import('../pages/exercise/PageExercise.vue'))
 const CmsPreviewView = defineAsyncComponent(() => import('../pages/cms-preview/CmsPreviewView.vue'))
