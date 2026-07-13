@@ -2,8 +2,8 @@
   {
     "id": "juice-shop-inventory",
     "prompt": {
-      "en": "A shop sells 3 types of juice and needs to track their inventory.",
-      "de": "Ein Laden verkauft 3 Saftsorten und muss deren Lagerbestand verwalten."
+      "en": "A shop sells 3 types of juice and needs to track their inventory. Stock arrives in batches from a couple of regular suppliers, and the owner wants to know exactly how many liters of each flavor remain at any time. Batches that pass their expiry date should be easy to flag and pull from the shelves.",
+      "de": "Ein Laden verkauft 3 Saftsorten und muss deren Lagerbestand verwalten. Der Nachschub kommt in Chargen von ein paar festen Lieferanten, und der Besitzer will jederzeit genau wissen, wie viele Liter jeder Sorte noch vorhanden sind. Chargen, die ihr Ablaufdatum überschritten haben, sollen sich leicht markieren und aus dem Regal nehmen lassen."
     },
     "examples": [
       {
@@ -14,8 +14,8 @@
       },
       {
         "diagram": {
-          "en": "erDiagram\n    JUICE {\n        string sku PK\n        string name\n        string flavor\n        float pricePerLiter\n        int reorderThreshold\n    }\n    BATCH {\n        string id PK\n        string juiceSku FK\n        int quantityLiters\n        date receivedAt\n    }\n    INVENTORY_COUNT {\n        string id PK\n        string juiceSku FK\n        int countedQuantity\n        date countedAt\n    }\n    JUICE ||--o{ BATCH : \"is stocked as\"\n    JUICE ||--o{ INVENTORY_COUNT : \"is audited as\"",
-          "de": "erDiagram\n    SAFT {\n        string sku PK\n        string name\n        string sorte\n        float preisProLiter\n        int mindestbestand\n    }\n    CHARGE {\n        string id PK\n        string saftSku FK\n        int mengeInLiter\n        date eingegangenAm\n    }\n    BESTANDSZAEHLUNG {\n        string id PK\n        string saftSku FK\n        int gezaehlteMenge\n        date gezaehltAm\n    }\n    SAFT ||--o{ CHARGE : \"wird gelagert als\"\n    SAFT ||--o{ BESTANDSZAEHLUNG : \"wird geprueft als\""
+          "en": "erDiagram\n    JUICE {\n        string sku PK\n        string name\n        string flavor\n        float pricePerLiter\n        int reorderThreshold\n    }\n    BATCH {\n        string id PK\n        string juiceSku FK\n        int quantityLiters\n        date receivedAt\n        date expiresAt\n    }\n    INVENTORY_COUNT {\n        string id PK\n        string juiceSku FK\n        int countedQuantity\n        date countedAt\n    }\n    JUICE ||--o{ BATCH : \"is stocked as\"\n    JUICE ||--o{ INVENTORY_COUNT : \"is audited as\"",
+          "de": "erDiagram\n    SAFT {\n        string sku PK\n        string name\n        string sorte\n        float preisProLiter\n        int mindestbestand\n    }\n    CHARGE {\n        string id PK\n        string saftSku FK\n        int mengeInLiter\n        date eingegangenAm\n        date haltbarBis\n    }\n    BESTANDSZAEHLUNG {\n        string id PK\n        string saftSku FK\n        int gezaehlteMenge\n        date gezaehltAm\n    }\n    SAFT ||--o{ CHARGE : \"wird gelagert als\"\n    SAFT ||--o{ BESTANDSZAEHLUNG : \"wird geprueft als\""
         }
       }
     ]
@@ -23,8 +23,8 @@
   {
     "id": "bus-company-network",
     "prompt": {
-      "en": "Represent a bus company's stops, routes and zones.",
-      "de": "Bilde die Haltestellen, Linien und Zonen eines Busunternehmens ab."
+      "en": "Represent a bus company's stops, routes and zones. Fares depend on how many zones a passenger's trip crosses, and some stops are served by more than one route. The company also wants to know which driver was running a given route on a given day.",
+      "de": "Bilde die Haltestellen, Linien und Zonen eines Busunternehmens ab. Der Fahrpreis hängt davon ab, wie viele Zonen eine Fahrt durchquert, und manche Haltestellen werden von mehreren Linien bedient. Das Unternehmen möchte außerdem wissen, welcher Fahrer an welchem Tag welche Linie gefahren ist."
     },
     "examples": [
       {
@@ -44,8 +44,8 @@
   {
     "id": "messaging-app",
     "prompt": {
-      "en": "A messaging app where users sign up and chat with their friends.",
-      "de": "Eine Messaging-App, in der sich Nutzer anmelden und mit Freunden chatten."
+      "en": "A messaging app where users sign up and chat with their friends. Friend requests can be pending, accepted, or declined before two people can message each other, and users should be able to see when they joined and when they last sent a message.",
+      "de": "Eine Messaging-App, in der sich Nutzer anmelden und mit Freunden chatten. Freundschaftsanfragen können ausstehend, akzeptiert oder abgelehnt sein, bevor zwei Personen einander Nachrichten schreiben können, und Nutzer sollen sehen können, wann sie beigetreten sind und wann sie zuletzt eine Nachricht gesendet haben."
     },
     "examples": [
       {
@@ -65,8 +65,8 @@
   {
     "id": "library-lending",
     "prompt": {
-      "en": "A library tracks which members have borrowed which books.",
-      "de": "Eine Bibliothek verfolgt, welche Mitglieder welche Bücher ausgeliehen haben."
+      "en": "A library tracks which members have borrowed which books. Popular titles often have several physical copies, and members can join a waitlist to be notified when a copy becomes free. Overdue loans should accrue a fine that increases the longer a book stays out.",
+      "de": "Eine Bibliothek verfolgt, welche Mitglieder welche Bücher ausgeliehen haben. Beliebte Titel gibt es oft in mehreren physischen Exemplaren, und Mitglieder können sich auf eine Warteliste setzen lassen, um benachrichtigt zu werden, wenn ein Exemplar frei wird. Überfällige Ausleihen sollen eine Mahngebühr auslösen, die mit der Zeit steigt."
     },
     "examples": [
       {
@@ -86,8 +86,8 @@
   {
     "id": "restaurant-reservations",
     "prompt": {
-      "en": "A restaurant lets guests reserve tables.",
-      "de": "Ein Restaurant ermöglicht Gästen, Tische zu reservieren."
+      "en": "A restaurant lets guests reserve tables. Walk-in guests without a reservation are seated only if a table happens to be free, and the host wants to track how many people are in each party to match them to a table of the right size.",
+      "de": "Ein Restaurant ermöglicht Gästen, Tische zu reservieren. Laufkundschaft ohne Reservierung wird nur platziert, wenn zufällig ein Tisch frei ist, und der Gastgeber möchte die Personenzahl jeder Gruppe erfassen, um sie einem passend großen Tisch zuzuweisen."
     },
     "examples": [
       {
@@ -107,8 +107,8 @@
   {
     "id": "online-bookstore",
     "prompt": {
-      "en": "An online bookstore lets customers order books.",
-      "de": "Ein Online-Buchladen ermöglicht Kunden, Bücher zu bestellen."
+      "en": "An online bookstore lets customers order books. Customers can save more than one shipping address and pick which one an order should go to, and each order can include several different books at once.",
+      "de": "Ein Online-Buchladen ermöglicht Kunden, Bücher zu bestellen. Kunden können mehrere Versandadressen speichern und für jede Bestellung auswählen, wohin sie gehen soll, und eine Bestellung kann mehrere verschiedene Bücher gleichzeitig enthalten."
     },
     "examples": [
       {
@@ -128,8 +128,8 @@
   {
     "id": "gym-class-bookings",
     "prompt": {
-      "en": "A gym lets members book spots in classes taught by trainers.",
-      "de": "Ein Fitnessstudio ermöglicht Mitgliedern, Plätze in von Trainern geleiteten Kursen zu buchen."
+      "en": "A gym lets members book spots in classes taught by trainers. Each class happens in a specific room with a maximum capacity, and once a class is full, a member trying to book it should be turned away. Members can also just show up and get checked in without a prior booking, for classes with a punch-card style scheme.",
+      "de": "Ein Fitnessstudio ermöglicht Mitgliedern, Plätze in von Trainern geleiteten Kursen zu buchen. Jeder Kurs findet in einem bestimmten Raum mit einer maximalen Kapazität statt, und sobald ein Kurs voll ist, soll ein Mitglied, das ihn buchen möchte, abgewiesen werden. Mitglieder können bei Kursen mit einem Stempelkarten-System auch ohne vorherige Buchung einfach vorbeikommen und eingecheckt werden."
     },
     "examples": [
       {
@@ -149,8 +149,8 @@
   {
     "id": "hotel-room-bookings",
     "prompt": {
-      "en": "A hotel lets guests book rooms of different types.",
-      "de": "Ein Hotel ermöglicht Gästen, Zimmer verschiedener Typen zu buchen."
+      "en": "A hotel lets guests book rooms of different types. The hotel has a handful of budget Standard rooms and a few premium Suites, and nightly rates vary depending on which kind of room a guest ends up in.",
+      "de": "Ein Hotel ermöglicht Gästen, Zimmer verschiedener Typen zu buchen. Das Hotel hat eine Handvoll preiswerter Standardzimmer und einige Premium-Suiten, und der Preis pro Nacht hängt davon ab, in welcher Zimmerart ein Gast landet."
     },
     "examples": [
       {
@@ -170,8 +170,8 @@
   {
     "id": "car-rental",
     "prompt": {
-      "en": "A car rental company rents out cars from different branches.",
-      "de": "Ein Autovermieter verleiht Autos von verschiedenen Filialen aus."
+      "en": "A car rental company rents out cars from different branches. Customers often pick a car up at one branch and drop it off at another, so the company needs to know both the pickup and return locations for each rental. Every returned car gets a quick inspection for new damage before it is rented out again.",
+      "de": "Ein Autovermieter verleiht Autos von verschiedenen Filialen aus. Kundinnen und Kunden holen ein Auto oft an einer Filiale ab und geben es an einer anderen zurück, weshalb das Unternehmen sowohl den Abhol- als auch den Rückgabeort jeder Miete kennen muss. Jedes zurückgegebene Auto wird vor der nächsten Vermietung kurz auf neue Schäden untersucht."
     },
     "examples": [
       {
@@ -191,8 +191,8 @@
   {
     "id": "movie-theater-tickets",
     "prompt": {
-      "en": "A movie theater sells tickets for screenings of movies.",
-      "de": "Ein Kino verkauft Tickets für Vorführungen von Filmen."
+      "en": "A movie theater sells tickets for screenings of movies. The theater has several auditoriums of different sizes, and the same movie is usually shown multiple times a day across different rooms. Popular screenings can sell out, so the theater needs to know how many seats are still available for each one.",
+      "de": "Ein Kino verkauft Tickets für Vorführungen von Filmen. Das Kino hat mehrere unterschiedlich große Säle, und derselbe Film läuft meist mehrmals täglich in verschiedenen Räumen. Beliebte Vorführungen können ausverkauft sein, weshalb das Kino wissen muss, wie viele Plätze für jede Vorführung noch frei sind."
     },
     "examples": [
       {
@@ -212,8 +212,8 @@
   {
     "id": "vet-clinic-appointments",
     "prompt": {
-      "en": "A veterinary clinic tracks pet owners, their pets, and appointments.",
-      "de": "Eine Tierarztpraxis verwaltet Besitzer, deren Haustiere und Termine."
+      "en": "A veterinary clinic tracks pet owners, their pets, and appointments. Owners often bring in more than one pet over time, and each appointment is booked for a specific reason, like a checkup or vaccination. After a visit, the vet may prescribe a treatment that the clinic wants a record of.",
+      "de": "Eine Tierarztpraxis verwaltet Besitzer, deren Haustiere und Termine. Besitzer bringen im Laufe der Zeit oft mehr als ein Haustier mit, und jeder Termin wird für einen bestimmten Grund gebucht, etwa eine Untersuchung oder Impfung. Nach einem Besuch kann der Tierarzt eine Behandlung verordnen, über die die Praxis Aufzeichnungen führen möchte."
     },
     "examples": [
       {
@@ -233,8 +233,8 @@
   {
     "id": "hospital-patient-visits",
     "prompt": {
-      "en": "A hospital tracks patients, doctors and their visits.",
-      "de": "Ein Krankenhaus verwaltet Patienten, Ärzte und deren Besuche."
+      "en": "A hospital tracks patients, doctors and their visits. A visit usually ends with a diagnosis and sometimes a prescription for medication, and the hospital wants to know exactly which doctor saw a patient during a particular visit.",
+      "de": "Ein Krankenhaus verwaltet Patienten, Ärzte und deren Besuche. Ein Besuch endet meist mit einer Diagnose und manchmal mit einem Rezept für ein Medikament, und das Krankenhaus möchte genau wissen, welcher Arzt einen Patienten bei einem bestimmten Besuch behandelt hat."
     },
     "examples": [
       {
@@ -254,8 +254,8 @@
   {
     "id": "school-class-attendance",
     "prompt": {
-      "en": "A school tracks which students attend which classes, taught by teachers.",
-      "de": "Eine Schule verfolgt, welche Schüler welche von Lehrern unterrichteten Klassen besuchen."
+      "en": "A school tracks which students attend which classes, taught by teachers. Each class has a roster of enrolled students, and every teacher is on staff at exactly one school and usually teaches several different classes across different subjects.",
+      "de": "Eine Schule verfolgt, welche Schüler welche von Lehrern unterrichteten Klassen besuchen. Jede Klasse hat eine Liste eingeschriebener Schüler, und jeder Lehrer ist an genau einer Schule angestellt und unterrichtet meist mehrere verschiedene Klassen in unterschiedlichen Fächern."
     },
     "examples": [
       {
@@ -275,8 +275,8 @@
   {
     "id": "university-course-enrollment",
     "prompt": {
-      "en": "A university tracks student enrollment in courses taught by professors.",
-      "de": "Eine Universität verwaltet die Einschreibung von Studierenden in von Professoren gehaltene Kurse."
+      "en": "A university tracks student enrollment in courses taught by professors. Professors belong to a department and usually teach more than one course per semester. The registrar cares most about knowing, at a glance, which students are currently enrolled in which courses.",
+      "de": "Eine Universität verwaltet die Einschreibung von Studierenden in von Professoren gehaltene Kurse. Professoren gehören einer Fakultät an und unterrichten meist mehr als einen Kurs pro Semester. Dem Prüfungsamt ist vor allem wichtig, auf einen Blick zu sehen, welche Studierenden aktuell in welchen Kursen eingeschrieben sind."
     },
     "examples": [
       {
@@ -296,8 +296,8 @@
   {
     "id": "podcast-platform",
     "prompt": {
-      "en": "A podcast platform organizes shows into episodes that listeners subscribe to.",
-      "de": "Eine Podcast-Plattform organisiert Sendungen in Folgen, die Hörer abonnieren."
+      "en": "A podcast platform organizes shows into episodes that listeners subscribe to. Each show publishes new episodes on its own schedule. Some listeners just want to follow shows they like, while the platform is also curious how far individual listeners get into specific episodes.",
+      "de": "Eine Podcast-Plattform organisiert Sendungen in Folgen, die Hörer abonnieren. Jede Sendung veröffentlicht neue Folgen nach ihrem eigenen Zeitplan. Manche Hörer wollen einfach nur Sendungen abonnieren, die ihnen gefallen, während die Plattform auch wissen möchte, wie weit einzelne Hörer in bestimmten Folgen kommen."
     },
     "examples": [
       {
@@ -317,8 +317,8 @@
   {
     "id": "ride-sharing-trips",
     "prompt": {
-      "en": "A ride-sharing app matches riders with drivers for trips.",
-      "de": "Eine Mitfahr-App verbindet Fahrgäste mit Fahrern für Fahrten."
+      "en": "A ride-sharing app matches riders with drivers for trips. Drivers use their own vehicle for every trip, and the app calculates a fare based on the distance traveled. Riders pay electronically once a trip is complete.",
+      "de": "Eine Mitfahr-App verbindet Fahrgäste mit Fahrern für Fahrten. Fahrer nutzen für jede Fahrt ihr eigenes Fahrzeug, und die App berechnet den Fahrpreis anhand der zurückgelegten Strecke. Fahrgäste zahlen elektronisch, sobald eine Fahrt abgeschlossen ist."
     },
     "examples": [
       {
@@ -338,14 +338,14 @@
   {
     "id": "food-delivery-orders",
     "prompt": {
-      "en": "A food delivery app connects customers, restaurants and couriers.",
-      "de": "Eine Lieferservice-App verbindet Kunden, Restaurants und Kuriere."
+      "en": "A food delivery app connects customers, restaurants and couriers. A customer places an order at one restaurant at a time, and once the kitchen has it ready, an available courier is assigned to pick it up and deliver it. The app wants to measure how long the whole thing takes, from order to doorstep.",
+      "de": "Eine Lieferservice-App verbindet Kunden, Restaurants und Kuriere. Ein Kunde bestellt jeweils bei einem Restaurant, und sobald die Küche fertig ist, wird ein verfügbarer Kurier zugewiesen, der die Bestellung abholt und ausliefert. Die App möchte messen, wie lange der gesamte Vorgang dauert - von der Bestellung bis vor die Haustür."
     },
     "examples": [
       {
         "diagram": {
-          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string address\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string cuisine\n    }\n    COURIER {\n        string id PK\n        string name\n        string vehicleType\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        string restaurantId FK\n        string courierId FK\n        datetime placedAt\n        float total\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    RESTAURANT ||--o{ ORDER_ : prepares\n    COURIER ||--o{ ORDER_ : delivers",
-          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string adresse\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string kueche\n    }\n    KURIER {\n        string id PK\n        string name\n        string fahrzeugtyp\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        string restaurantId FK\n        string kurierId FK\n        datetime aufgegebenAm\n        float gesamtbetrag\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    RESTAURANT ||--o{ BESTELLUNG : bereitet_zu\n    KURIER ||--o{ BESTELLUNG : liefert"
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string address\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string cuisine\n    }\n    COURIER {\n        string id PK\n        string name\n        string vehicleType\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        string restaurantId FK\n        string courierId FK\n        datetime placedAt\n        datetime deliveredAt\n        float total\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    RESTAURANT ||--o{ ORDER_ : prepares\n    COURIER ||--o{ ORDER_ : delivers",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string adresse\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string kueche\n    }\n    KURIER {\n        string id PK\n        string name\n        string fahrzeugtyp\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        string restaurantId FK\n        string kurierId FK\n        datetime aufgegebenAm\n        datetime zugestelltAm\n        float gesamtbetrag\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    RESTAURANT ||--o{ BESTELLUNG : bereitet_zu\n    KURIER ||--o{ BESTELLUNG : liefert"
         }
       },
       {
@@ -359,8 +359,8 @@
   {
     "id": "ecommerce-catalog-orders",
     "prompt": {
-      "en": "An online shop organizes products into categories and lets customers order them.",
-      "de": "Ein Onlineshop ordnet Produkte in Kategorien ein und lässt Kunden diese bestellen."
+      "en": "An online shop organizes products into categories and lets customers order them. Some categories are nested inside broader ones - Electronics might contain Phones and Laptops as subcategories - and each order can include several products with different quantities.",
+      "de": "Ein Onlineshop ordnet Produkte in Kategorien ein und lässt Kunden diese bestellen. Manche Kategorien sind in umfassendere Kategorien verschachtelt - Elektronik könnte zum Beispiel Handys und Laptops als Unterkategorien enthalten - und eine Bestellung kann mehrere Produkte mit unterschiedlichen Mengen enthalten."
     },
     "examples": [
       {
@@ -380,8 +380,8 @@
   {
     "id": "warehouse-shipments",
     "prompt": {
-      "en": "A warehouse stores items and sends them out in shipments.",
-      "de": "Ein Lager lagert Artikel und versendet sie in Lieferungen."
+      "en": "A warehouse stores items and sends them out in shipments. Each item has its own weight, and a shipment can bundle several different items together before being handed off to a carrier for delivery.",
+      "de": "Ein Lager lagert Artikel und versendet sie in Lieferungen. Jeder Artikel hat sein eigenes Gewicht, und eine Lieferung kann mehrere verschiedene Artikel bündeln, bevor sie einem Spediteur zur Zustellung übergeben wird."
     },
     "examples": [
       {
@@ -401,8 +401,8 @@
   {
     "id": "parking-garage-tickets",
     "prompt": {
-      "en": "A parking garage issues tickets to vehicles for their assigned spot.",
-      "de": "Ein Parkhaus stellt Fahrzeugen Tickets für ihren zugewiesenen Stellplatz aus."
+      "en": "A parking garage issues tickets to vehicles for their assigned spot. Most drivers just pull in, take a spot, and pay for the time they used when they leave, but some vehicles hold a monthly pass that reserves the same spot every day.",
+      "de": "Ein Parkhaus stellt Fahrzeugen Tickets für ihren zugewiesenen Stellplatz aus. Die meisten Fahrer fahren einfach hinein, nehmen sich einen Platz und bezahlen beim Verlassen für die genutzte Zeit, aber manche Fahrzeuge haben eine Monatskarte, die täglich denselben Platz reserviert."
     },
     "examples": [
       {
@@ -422,8 +422,8 @@
   {
     "id": "museum-exhibits",
     "prompt": {
-      "en": "A museum organizes exhibits into galleries and sells tickets to visitors.",
-      "de": "Ein Museum ordnet Exponate in Galerien ein und verkauft Tickets an Besucher."
+      "en": "A museum organizes exhibits into galleries and sells tickets to visitors. Exhibits run for a limited time before the museum rotates in new ones, and each is created by an artist. General admission gets a visitor into the museum, though some special exhibits require an extra add-on.",
+      "de": "Ein Museum ordnet Exponate in Galerien ein und verkauft Tickets an Besucher. Ausstellungen laufen für eine begrenzte Zeit, bevor das Museum neue zeigt, und jede wird von einem Künstler geschaffen. Mit einem allgemeinen Eintrittsticket kommt man ins Museum, wobei manche Sonderausstellungen einen Aufpreis erfordern."
     },
     "examples": [
       {
@@ -443,8 +443,8 @@
   {
     "id": "conference-talks",
     "prompt": {
-      "en": "A conference schedules talks given by speakers and attended by attendees.",
-      "de": "Eine Konferenz plant Vorträge, die von Referenten gehalten und von Teilnehmern besucht werden."
+      "en": "A conference schedules talks given by speakers and attended by attendees. Multiple talks run in parallel across different rooms throughout the day, and attendees pick which ones to go to based on their own interests.",
+      "de": "Eine Konferenz plant Vorträge, die von Referenten gehalten und von Teilnehmern besucht werden. Über den Tag verteilt laufen in verschiedenen Räumen mehrere Vorträge parallel, und Teilnehmer wählen nach eigenem Interesse aus, welche sie besuchen."
     },
     "examples": [
       {
@@ -464,8 +464,8 @@
   {
     "id": "freelance-marketplace",
     "prompt": {
-      "en": "A freelance marketplace lets clients post gigs and freelancers submit proposals.",
-      "de": "Ein Freelancer-Marktplatz lässt Auftraggeber Aufträge veröffentlichen und Freiberufler Angebote einreichen."
+      "en": "A freelance marketplace lets clients post gigs and freelancers submit proposals. A gig usually attracts proposals from several freelancers with different bid amounts, and the client picks one to actually hire - though many gigs never get a bid the client likes at all.",
+      "de": "Ein Freelancer-Marktplatz lässt Auftraggeber Aufträge veröffentlichen und Freiberufler Angebote einreichen. Ein Auftrag zieht meist Angebote von mehreren Freiberuflern mit unterschiedlichen Geboten an, und der Auftraggeber wählt einen davon tatsächlich aus - wobei viele Aufträge nie ein Angebot bekommen, das dem Auftraggeber gefällt."
     },
     "examples": [
       {
@@ -485,8 +485,8 @@
   {
     "id": "insurance-claims",
     "prompt": {
-      "en": "An insurer tracks policyholders, their policies, and claims filed against them.",
-      "de": "Ein Versicherer verwaltet Versicherte, deren Policen und die dagegen eingereichten Schadensfälle."
+      "en": "An insurer tracks policyholders, their policies, and claims filed against them. Policies come in different coverage types - like auto, home, or health - each with its own premium, and a policyholder can file more than one claim against the same policy over its lifetime.",
+      "de": "Ein Versicherer verwaltet Versicherte, deren Policen und die dagegen eingereichten Schadensfälle. Policen gibt es in unterschiedlichen Deckungsarten - etwa Kfz, Wohngebäude oder Kranken -, jede mit eigener Prämie, und ein Versicherter kann im Laufe der Zeit mehrere Schadensfälle gegen dieselbe Police einreichen."
     },
     "examples": [
       {
@@ -506,8 +506,8 @@
   {
     "id": "voting-system",
     "prompt": {
-      "en": "A voting system tracks elections, candidates and voters casting ballots.",
-      "de": "Ein Wahlsystem verwaltet Wahlen, Kandidaten und Wähler, die Stimmzettel abgeben."
+      "en": "A voting system tracks elections, candidates and voters casting ballots. Each voter can cast exactly one ballot per election, and after polls close, officials need an accurate count of how many votes each candidate received.",
+      "de": "Ein Wahlsystem verwaltet Wahlen, Kandidaten und Wähler, die Stimmzettel abgeben. Jeder Wähler kann pro Wahl genau einen Stimmzettel abgeben, und nach Schließung der Wahllokale benötigen die Wahlleiter eine genaue Auszählung, wie viele Stimmen jeder Kandidat erhalten hat."
     },
     "examples": [
       {
@@ -527,14 +527,14 @@
   {
     "id": "loyalty-points-program",
     "prompt": {
-      "en": "A shop rewards customers with loyalty points for their purchases.",
-      "de": "Ein Geschäft belohnt Kunden mit Treuepunkten für ihre Käufe."
+      "en": "A shop rewards customers with loyalty points for their purchases. Every purchase earns a customer some points based on how much they spent, and once a customer has enough saved up, they can redeem points for a reward like a free item or discount.",
+      "de": "Ein Geschäft belohnt Kunden mit Treuepunkten für ihre Käufe. Jeder Einkauf bringt einem Kunden Punkte ein, abhängig davon, wie viel er ausgegeben hat, und sobald ein Kunde genug angespart hat, kann er die Punkte gegen eine Prämie wie einen Gratisartikel oder Rabatt einlösen."
     },
     "examples": [
       {
         "diagram": {
-          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    POINTS_ACCOUNT {\n        string id PK\n        string customerId FK\n        int balance\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        float amount\n        datetime purchasedAt\n    }\n    POINTS_TRANSACTION {\n        string id PK\n        string accountId FK\n        string purchaseId FK\n        int pointsChange\n        datetime occurredAt\n    }\n    CUSTOMER ||--|| POINTS_ACCOUNT : has\n    CUSTOMER ||--o{ PURCHASE : makes\n    PURCHASE ||--|| POINTS_TRANSACTION : earns\n    POINTS_ACCOUNT ||--o{ POINTS_TRANSACTION : records",
-          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    PUNKTEKONTO {\n        string id PK\n        string kundeId FK\n        int kontostand\n    }\n    KAUF {\n        string id PK\n        string kundeId FK\n        float betrag\n        datetime getaetigtAm\n    }\n    PUNKTEBUCHUNG {\n        string id PK\n        string kontoId FK\n        string kaufId FK\n        int punkteAenderung\n        datetime erfolgtAm\n    }\n    KUNDE ||--|| PUNKTEKONTO : hat\n    KUNDE ||--o{ KAUF : taetigt\n    KAUF ||--|| PUNKTEBUCHUNG : erzielt\n    PUNKTEKONTO ||--o{ PUNKTEBUCHUNG : erfasst"
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    POINTS_ACCOUNT {\n        string id PK\n        string customerId FK\n        int balance\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        float amount\n        datetime purchasedAt\n    }\n    POINTS_TRANSACTION {\n        string id PK\n        string accountId FK\n        string purchaseId FK\n        int pointsChange\n        datetime occurredAt\n    }\n    CUSTOMER ||--|| POINTS_ACCOUNT : has\n    CUSTOMER ||--o{ PURCHASE : makes\n    PURCHASE ||--o| POINTS_TRANSACTION : earns\n    POINTS_ACCOUNT ||--o{ POINTS_TRANSACTION : records",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    PUNKTEKONTO {\n        string id PK\n        string kundeId FK\n        int kontostand\n    }\n    KAUF {\n        string id PK\n        string kundeId FK\n        float betrag\n        datetime getaetigtAm\n    }\n    PUNKTEBUCHUNG {\n        string id PK\n        string kontoId FK\n        string kaufId FK\n        int punkteAenderung\n        datetime erfolgtAm\n    }\n    KUNDE ||--|| PUNKTEKONTO : hat\n    KUNDE ||--o{ KAUF : taetigt\n    KAUF ||--o| PUNKTEBUCHUNG : erzielt\n    PUNKTEKONTO ||--o{ PUNKTEBUCHUNG : erfasst"
         }
       },
       {
@@ -548,8 +548,8 @@
   {
     "id": "blog-posts-comments",
     "prompt": {
-      "en": "A blog lets authors write posts that readers comment on.",
-      "de": "Ein Blog lässt Autoren Beiträge schreiben, die Leser kommentieren."
+      "en": "A blog lets authors write posts that readers comment on. Posts are usually filed under a couple of relevant tags so readers can browse by topic, and the blog wants to know who left each comment.",
+      "de": "Ein Blog lässt Autoren Beiträge schreiben, die Leser kommentieren. Beiträge werden meist mit ein paar passenden Schlagworten versehen, damit Leser nach Thema stöbern können, und der Blog möchte wissen, wer welchen Kommentar hinterlassen hat."
     },
     "examples": [
       {
@@ -569,8 +569,8 @@
   {
     "id": "forum-threads",
     "prompt": {
-      "en": "A forum organizes discussion boards into threads that users reply to.",
-      "de": "Ein Forum ordnet Diskussionsbereiche in Themen, auf die Nutzer antworten."
+      "en": "A forum organizes discussion boards into threads that users reply to. A board is usually split into a few topical categories, and popular threads can accumulate dozens of replies from different users over time.",
+      "de": "Ein Forum ordnet Diskussionsbereiche in Themen, auf die Nutzer antworten. Ein Forum ist meist in ein paar thematische Kategorien unterteilt, und beliebte Themen können im Laufe der Zeit dutzende Antworten von verschiedenen Nutzern ansammeln."
     },
     "examples": [
       {
@@ -590,8 +590,8 @@
   {
     "id": "support-ticket-desk",
     "prompt": {
-      "en": "A support desk lets customers open tickets that agents handle.",
-      "de": "Ein Support-Desk lässt Kunden Tickets eröffnen, die von Mitarbeitern bearbeitet werden."
+      "en": "A support desk lets customers open tickets that agents handle. Tickets get a priority level so agents know what to work on first, and as an agent works a ticket they add updates - like status changes or notes - that the customer can see.",
+      "de": "Ein Support-Desk lässt Kunden Tickets eröffnen, die von Mitarbeitern bearbeitet werden. Tickets bekommen eine Prioritätsstufe, damit Mitarbeiter wissen, was zuerst zu bearbeiten ist, und während ein Mitarbeiter ein Ticket bearbeitet, fügt er Updates hinzu - etwa Statusänderungen oder Notizen -, die der Kunde einsehen kann."
     },
     "examples": [
       {
@@ -602,8 +602,8 @@
       },
       {
         "diagram": {
-          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    AGENT {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string customerId FK\n        string agentId FK\n        string subject\n        string status\n    }\n    CUSTOMER ||--o{ TICKET : opens\n    AGENT ||--o{ TICKET : handles",
-          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    MITARBEITER {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string kundeId FK\n        string mitarbeiterId FK\n        string betreff\n        string status\n    }\n    KUNDE ||--o{ TICKET : eroeffnet\n    MITARBEITER ||--o{ TICKET : bearbeitet"
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    AGENT {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string customerId FK\n        string agentId FK\n        string subject\n        string priority\n        string status\n    }\n    CUSTOMER ||--o{ TICKET : opens\n    AGENT ||--o{ TICKET : handles",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    MITARBEITER {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string kundeId FK\n        string mitarbeiterId FK\n        string betreff\n        string prioritaet\n        string status\n    }\n    KUNDE ||--o{ TICKET : eroeffnet\n    MITARBEITER ||--o{ TICKET : bearbeitet"
         }
       }
     ]
@@ -611,14 +611,14 @@
   {
     "id": "streaming-subscriptions",
     "prompt": {
-      "en": "A streaming service gives subscribers on a plan access to watch titles.",
-      "de": "Ein Streaming-Dienst gewährt Abonnenten mit einem Tarif Zugriff auf Titel."
+      "en": "A streaming service gives subscribers on a plan access to watch titles. Plans differ in monthly price and how many simultaneous streams they allow, and the service wants to know which titles a subscriber has been watching.",
+      "de": "Ein Streaming-Dienst gewährt Abonnenten mit einem Tarif Zugriff auf Titel. Tarife unterscheiden sich im Monatspreis und darin, wie viele gleichzeitige Streams sie erlauben, und der Dienst möchte wissen, welche Titel ein Abonnent geschaut hat."
     },
     "examples": [
       {
         "diagram": {
-          "en": "erDiagram\n    PLAN {\n        string id PK\n        string name\n        float monthlyPrice\n    }\n    SUBSCRIBER {\n        string id PK\n        string name\n        string email\n    }\n    SUBSCRIPTION {\n        string id PK\n        string subscriberId FK\n        string planId FK\n        date startedAt\n        boolean active\n    }\n    TITLE {\n        string id PK\n        string name\n        int releaseYear\n        string genre\n    }\n    WATCH_EVENT {\n        string id PK\n        string subscriberId FK\n        string titleId FK\n        datetime watchedAt\n        int progressPercent\n    }\n    PLAN ||--o{ SUBSCRIPTION : defines\n    SUBSCRIBER ||--|| SUBSCRIPTION : has\n    SUBSCRIBER ||--o{ WATCH_EVENT : logs\n    TITLE ||--o{ WATCH_EVENT : \"is watched as\"",
-          "de": "erDiagram\n    TARIF {\n        string id PK\n        string name\n        float monatspreis\n    }\n    ABONNENT {\n        string id PK\n        string name\n        string email\n    }\n    ABONNEMENT {\n        string id PK\n        string abonnentId FK\n        string tarifId FK\n        date beginnAm\n        boolean aktiv\n    }\n    TITEL {\n        string id PK\n        string name\n        int erscheinungsjahr\n        string genre\n    }\n    WIEDERGABE_EREIGNIS {\n        string id PK\n        string abonnentId FK\n        string titelId FK\n        datetime angesehenAm\n        int fortschrittProzent\n    }\n    TARIF ||--o{ ABONNEMENT : definiert\n    ABONNENT ||--|| ABONNEMENT : hat\n    ABONNENT ||--o{ WIEDERGABE_EREIGNIS : erfasst\n    TITEL ||--o{ WIEDERGABE_EREIGNIS : \"wird angesehen als\""
+          "en": "erDiagram\n    PLAN {\n        string id PK\n        string name\n        float monthlyPrice\n        int maxStreams\n    }\n    SUBSCRIBER {\n        string id PK\n        string name\n        string email\n    }\n    SUBSCRIPTION {\n        string id PK\n        string subscriberId FK\n        string planId FK\n        date startedAt\n        boolean active\n    }\n    TITLE {\n        string id PK\n        string name\n        int releaseYear\n        string genre\n    }\n    WATCH_EVENT {\n        string id PK\n        string subscriberId FK\n        string titleId FK\n        datetime watchedAt\n        int progressPercent\n    }\n    PLAN ||--o{ SUBSCRIPTION : defines\n    SUBSCRIBER ||--|| SUBSCRIPTION : has\n    SUBSCRIBER ||--o{ WATCH_EVENT : logs\n    TITLE ||--o{ WATCH_EVENT : \"is watched as\"",
+          "de": "erDiagram\n    TARIF {\n        string id PK\n        string name\n        float monatspreis\n        int maxGleichzeitigeStreams\n    }\n    ABONNENT {\n        string id PK\n        string name\n        string email\n    }\n    ABONNEMENT {\n        string id PK\n        string abonnentId FK\n        string tarifId FK\n        date beginnAm\n        boolean aktiv\n    }\n    TITEL {\n        string id PK\n        string name\n        int erscheinungsjahr\n        string genre\n    }\n    WIEDERGABE_EREIGNIS {\n        string id PK\n        string abonnentId FK\n        string titelId FK\n        datetime angesehenAm\n        int fortschrittProzent\n    }\n    TARIF ||--o{ ABONNEMENT : definiert\n    ABONNENT ||--|| ABONNEMENT : hat\n    ABONNENT ||--o{ WIEDERGABE_EREIGNIS : erfasst\n    TITEL ||--o{ WIEDERGABE_EREIGNIS : \"wird angesehen als\""
         }
       },
       {
@@ -632,8 +632,8 @@
   {
     "id": "bike-sharing",
     "prompt": {
-      "en": "A bike-sharing service tracks bikes at stations and rentals made by riders.",
-      "de": "Ein Fahrradverleih verwaltet Fahrräder an Stationen und Ausleihen durch Nutzer."
+      "en": "A bike-sharing service tracks bikes at stations and rentals made by riders. Riders do not need to return a bike to the same station they picked it up from, and the company keeps a maintenance log for each bike so it can be pulled from service when something is wrong.",
+      "de": "Ein Fahrradverleih verwaltet Fahrräder an Stationen und Ausleihen durch Nutzer. Nutzer müssen ein Fahrrad nicht an der Station zurückgeben, an der sie es ausgeliehen haben, und das Unternehmen führt für jedes Fahrrad ein Wartungsprotokoll, damit es bei Problemen aus dem Betrieb genommen werden kann."
     },
     "examples": [
       {
@@ -653,8 +653,8 @@
   {
     "id": "apartment-maintenance",
     "prompt": {
-      "en": "An apartment building tracks maintenance requests filed by tenants for their units.",
-      "de": "Ein Wohngebäude verwaltet Instandhaltungsanfragen von Mietern für ihre Wohnungen."
+      "en": "An apartment building tracks maintenance requests filed by tenants for their units. Each unit has exactly one tenant living in it at a time, and when something breaks, the tenant files a request describing the issue.",
+      "de": "Ein Wohngebäude verwaltet Instandhaltungsanfragen von Mietern für ihre Wohnungen. In jeder Wohnung wohnt zu einem Zeitpunkt genau ein Mieter, und wenn etwas kaputtgeht, stellt der Mieter eine Anfrage mit einer Beschreibung des Problems."
     },
     "examples": [
       {
@@ -674,8 +674,8 @@
   {
     "id": "real-estate-listings",
     "prompt": {
-      "en": "A real estate agency lets agents manage listings of properties for clients.",
-      "de": "Ein Immobilienbüro lässt Makler Angebote von Immobilien für Kunden verwalten."
+      "en": "A real estate agency lets agents manage listings of properties for clients. Agents work for an agency and typically manage several property listings at once, each with its own asking price. Some agents also work closely with individual buyers, helping them find a property that fits their budget.",
+      "de": "Ein Immobilienbüro lässt Makler Angebote von Immobilien für Kunden verwalten. Makler arbeiten für ein Büro und verwalten meist mehrere Immobilienangebote gleichzeitig, jedes mit einem eigenen Angebotspreis. Manche Makler arbeiten außerdem eng mit einzelnen Käufern zusammen und helfen ihnen, eine Immobilie im Rahmen ihres Budgets zu finden."
     },
     "examples": [
       {
@@ -695,8 +695,8 @@
   {
     "id": "recipe-app",
     "prompt": {
-      "en": "A recipe app breaks recipes down into ingredients and steps.",
-      "de": "Eine Rezept-App gliedert Rezepte in Zutaten und Schritte."
+      "en": "A recipe app breaks recipes down into ingredients and steps. A recipe lists which ingredients it needs and walks the cook through the process one numbered step at a time.",
+      "de": "Eine Rezept-App gliedert Rezepte in Zutaten und Schritte. Ein Rezept listet auf, welche Zutaten es braucht, und führt die Köchin oder den Koch Schritt für Schritt nummeriert durch die Zubereitung."
     },
     "examples": [
       {
@@ -716,8 +716,8 @@
   {
     "id": "coupon-codes",
     "prompt": {
-      "en": "A shop tracks coupons and which customers redeem them.",
-      "de": "Ein Geschäft verwaltet Gutscheine und welche Kunden sie einlösen."
+      "en": "A shop tracks coupons and which customers redeem them. Coupons are often grouped into a seasonal marketing campaign with a start and end date, and the shop wants to know which customers have redeemed a given coupon.",
+      "de": "Ein Geschäft verwaltet Gutscheine und welche Kunden sie einlösen. Gutscheine werden oft zu einer saisonalen Marketingkampagne mit Start- und Enddatum zusammengefasst, und das Geschäft möchte wissen, welche Kunden einen bestimmten Gutschein eingelöst haben."
     },
     "examples": [
       {
@@ -737,8 +737,8 @@
   {
     "id": "task-tracker",
     "prompt": {
-      "en": "A task tracker organizes tasks into projects and assigns them to users.",
-      "de": "Ein Aufgaben-Tracker ordnet Aufgaben in Projekte ein und weist sie Nutzern zu."
+      "en": "A task tracker organizes tasks into projects and assigns them to users. Tasks belong to a project and get a status like To Do, In Progress, or Done, and team members can leave comments on a task to discuss how it is going.",
+      "de": "Ein Aufgaben-Tracker ordnet Aufgaben in Projekte ein und weist sie Nutzern zu. Aufgaben gehören zu einem Projekt und bekommen einen Status wie To Do, In Progress oder Done, und Teammitglieder können Kommentare zu einer Aufgabe hinterlassen, um den Fortschritt zu besprechen."
     },
     "examples": [
       {
@@ -758,8 +758,8 @@
   {
     "id": "book-club",
     "prompt": {
-      "en": "A book club schedules meetings where members discuss a chosen book.",
-      "de": "Ein Buchklub plant Treffen, bei denen Mitglieder ein ausgewähltes Buch besprechen."
+      "en": "A book club schedules meetings where members discuss a chosen book. Before each meeting, the club settles on one book that everyone will read and discuss together. Some clubs also like keeping a light record of who is planning to come and what everyone thought of the book afterward.",
+      "de": "Ein Buchklub plant Treffen, bei denen Mitglieder ein ausgewähltes Buch besprechen. Vor jedem Treffen einigt sich der Klub auf ein Buch, das alle gemeinsam lesen und besprechen. Manche Klubs führen zusätzlich lose Buch, wer vorhat zu kommen und wie das Buch im Nachhinein bei allen ankam."
     },
     "examples": [
       {
@@ -779,8 +779,8 @@
   {
     "id": "carpool-rides",
     "prompt": {
-      "en": "A carpool app lets drivers offer rides that passengers join.",
-      "de": "Eine Mitfahr-App lässt Fahrer Fahrten anbieten, denen Mitfahrer beitreten."
+      "en": "A carpool app lets drivers offer rides that passengers join. A driver posts a ride with an origin, destination, and departure time. Some setups also let each passenger specify exactly where along the route they would like to be picked up.",
+      "de": "Eine Mitfahr-App lässt Fahrer Fahrten anbieten, denen Mitfahrer beitreten. Ein Fahrer stellt eine Fahrt mit Start, Ziel und Abfahrtszeit ein. Manche Systeme lassen Mitfahrer zusätzlich angeben, wo genau entlang der Strecke sie abgeholt werden möchten."
     },
     "examples": [
       {
@@ -800,8 +800,8 @@
   {
     "id": "blood-donation",
     "prompt": {
-      "en": "A blood bank tracks donors and the donations they make.",
-      "de": "Eine Blutbank verwaltet Spender und die von ihnen geleisteten Spenden."
+      "en": "A blood bank tracks donors and the donations they make. Donors have a blood type that determines who they can help. Some blood banks also process each donation into a storable unit and track its expiry date so nothing gets used past its shelf life.",
+      "de": "Eine Blutbank verwaltet Spender und die von ihnen geleisteten Spenden. Spender haben eine Blutgruppe, die bestimmt, wem sie helfen können. Manche Blutbanken verarbeiten jede Spende zusätzlich zu einer lagerfähigen Konserve und verfolgen deren Ablaufdatum, damit nichts über die Haltbarkeit hinaus verwendet wird."
     },
     "examples": [
       {
@@ -821,8 +821,8 @@
   {
     "id": "gaming-leaderboard",
     "prompt": {
-      "en": "A gaming platform records scores that players achieve in games.",
-      "de": "Eine Gaming-Plattform erfasst Punktestände, die Spieler in Spielen erzielen."
+      "en": "A gaming platform records scores that players achieve in games. Players compete across different games and rack up points over time. Some games also award special achievements the first time a player pulls off something noteworthy.",
+      "de": "Eine Gaming-Plattform erfasst Punktestände, die Spieler in Spielen erzielen. Spieler treten in verschiedenen Spielen gegeneinander an und sammeln im Laufe der Zeit Punkte. Manche Spiele vergeben außerdem besondere Erfolge, sobald ein Spieler zum ersten Mal etwas Bemerkenswertes schafft."
     },
     "examples": [
       {
@@ -842,8 +842,8 @@
   {
     "id": "pet-daycare",
     "prompt": {
-      "en": "A pet daycare tracks pets owned by clients and their daycare bookings.",
-      "de": "Eine Hundetagesstätte verwaltet Haustiere von Kunden und deren Betreuungsbuchungen."
+      "en": "A pet daycare tracks pets owned by clients and their daycare bookings. Owners can bring in more than one pet. Some daycares also assign a specific staff member to keep an eye on a pet while it is there.",
+      "de": "Eine Hundetagesstätte verwaltet Haustiere von Kunden und deren Betreuungsbuchungen. Besitzer können mehr als ein Haustier vorbeibringen. Manche Tagesstätten weisen einem Haustier während seines Aufenthalts außerdem ein bestimmtes Personalmitglied zu, das ein Auge darauf hat."
     },
     "examples": [
       {
@@ -863,8 +863,8 @@
   {
     "id": "bakery-orders",
     "prompt": {
-      "en": "A bakery sells baked goods that customers order.",
-      "de": "Eine Bäckerei verkauft Backwaren, die Kunden bestellen."
+      "en": "A bakery sells baked goods that customers order. Customers order a mix of items - a couple of croissants, a loaf of sourdough - and some orders include a custom request, like a birthday cake with a specific message written on it.",
+      "de": "Eine Bäckerei verkauft Backwaren, die Kunden bestellen. Kunden bestellen eine Mischung aus Artikeln - ein paar Croissants, ein Sauerteigbrot - und manche Bestellungen enthalten einen Sonderwunsch, etwa eine Geburtstagstorte mit einer bestimmten Aufschrift."
     },
     "examples": [
       {
@@ -884,8 +884,8 @@
   {
     "id": "airline-bookings",
     "prompt": {
-      "en": "An airline lets passengers book seats on flights.",
-      "de": "Eine Fluggesellschaft lässt Passagiere Plätze auf Flügen buchen."
+      "en": "An airline lets passengers book seats on flights. Passengers pick a fare class - like Economy or Business - when they book a flight. Some airlines also assign each passenger a specific seat on a specific aircraft.",
+      "de": "Eine Fluggesellschaft lässt Passagiere Plätze auf Flügen buchen. Passagiere wählen beim Buchen eines Fluges eine Tarifklasse - etwa Economy oder Business. Manche Fluggesellschaften weisen jedem Passagier zusätzlich einen bestimmten Sitzplatz in einem bestimmten Flugzeug zu."
     },
     "examples": [
       {
@@ -905,8 +905,8 @@
   {
     "id": "concert-ticketing",
     "prompt": {
-      "en": "A ticketing platform sells tickets to concerts performed by artists.",
-      "de": "Eine Ticketing-Plattform verkauft Tickets für Konzerte, die von Künstlern gespielt werden."
+      "en": "A ticketing platform sells tickets to concerts performed by artists. A concert happens at a specific venue, and the venue capacity limits how many tickets can be sold. Some venues also sell tickets by section - floor seats usually cost more than seats up in the balcony.",
+      "de": "Eine Ticketing-Plattform verkauft Tickets für Konzerte, die von Künstlern gespielt werden. Ein Konzert findet an einem bestimmten Veranstaltungsort statt, und dessen Kapazität begrenzt, wie viele Tickets verkauft werden können. Manche Veranstaltungsorte verkaufen Tickets zusätzlich nach Bereich - Plätze im Innenraum kosten meist mehr als Plätze auf dem Balkon."
     },
     "examples": [
       {
@@ -926,8 +926,8 @@
   {
     "id": "grocery-purchases",
     "prompt": {
-      "en": "A grocery store tracks customer purchases and the products bought.",
-      "de": "Ein Supermarkt verfolgt Einkäufe von Kunden und die gekauften Produkte."
+      "en": "A grocery store tracks customer purchases and the products bought. A single purchase - one trip through the checkout - usually includes several different products. Some stores also organize their products into categories like produce, dairy, and bakery.",
+      "de": "Ein Supermarkt verfolgt Einkäufe von Kunden und die gekauften Produkte. Ein einzelner Einkauf - ein Gang durch die Kasse - umfasst meist mehrere verschiedene Produkte. Manche Geschäfte ordnen ihre Produkte zusätzlich in Kategorien wie Obst und Gemüse, Milchprodukte und Backwaren ein."
     },
     "examples": [
       {
@@ -947,8 +947,8 @@
   {
     "id": "coworking-desk-bookings",
     "prompt": {
-      "en": "A coworking space lets members book desks.",
-      "de": "Ein Coworking-Space lässt Mitglieder Arbeitsplätze buchen."
+      "en": "A coworking space lets members book desks. Members reserve a specific desk for a given day. Some coworking spaces also group desks into rooms across different floors and let members book a specific time block rather than the whole day.",
+      "de": "Ein Coworking-Space lässt Mitglieder Arbeitsplätze buchen. Mitglieder reservieren einen bestimmten Arbeitsplatz für einen bestimmten Tag. Manche Coworking-Spaces gruppieren Arbeitsplätze zusätzlich in Räumen auf verschiedenen Etagen und lassen Mitglieder einen bestimmten Zeitblock statt des ganzen Tages buchen."
     },
     "examples": [
       {
@@ -968,8 +968,8 @@
   {
     "id": "photography-studio-bookings",
     "prompt": {
-      "en": "A photography studio lets clients book sessions with photographers.",
-      "de": "Ein Fotostudio lässt Kunden Termine mit Fotografen buchen."
+      "en": "A photography studio lets clients book sessions with photographers. A client books a session with a specific photographer at a certain time and place, like a park or a studio. Afterward, some photographers deliver an online gallery of edited and unedited photos.",
+      "de": "Ein Fotostudio lässt Kunden Termine mit Fotografen buchen. Ein Kunde bucht einen Termin bei einem bestimmten Fotografen zu einer bestimmten Zeit und an einem bestimmten Ort, etwa einem Park oder Studio. Danach liefern manche Fotografen eine Online-Galerie mit bearbeiteten und unbearbeiteten Fotos."
     },
     "examples": [
       {
@@ -980,8 +980,8 @@
       },
       {
         "diagram": {
-          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n    }\n    PHOTOGRAPHER {\n        string id PK\n        string name\n    }\n    SESSION {\n        string id PK\n        string clientId FK\n        string photographerId FK\n        date sessionDate\n    }\n    CLIENT ||--o{ SESSION : books\n    PHOTOGRAPHER ||--o{ SESSION : conducts",
-          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    FOTOGRAF {\n        string id PK\n        string name\n    }\n    TERMIN {\n        string id PK\n        string kundeId FK\n        string fotografId FK\n        date datum\n    }\n    KUNDE ||--o{ TERMIN : bucht\n    FOTOGRAF ||--o{ TERMIN : fuehrt_durch"
+          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n    }\n    PHOTOGRAPHER {\n        string id PK\n        string name\n    }\n    SESSION {\n        string id PK\n        string clientId FK\n        string photographerId FK\n        date sessionDate\n        string location\n    }\n    CLIENT ||--o{ SESSION : books\n    PHOTOGRAPHER ||--o{ SESSION : conducts",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    FOTOGRAF {\n        string id PK\n        string name\n    }\n    TERMIN {\n        string id PK\n        string kundeId FK\n        string fotografId FK\n        date datum\n        string ort\n    }\n    KUNDE ||--o{ TERMIN : bucht\n    FOTOGRAF ||--o{ TERMIN : fuehrt_durch"
         }
       }
     ]
@@ -989,8 +989,8 @@
   {
     "id": "language-learning-course",
     "prompt": {
-      "en": "A language school organizes courses taught by teachers into lessons that students enroll in.",
-      "de": "Eine Sprachschule gliedert von Lehrern unterrichtete Kurse in Lektionen, für die sich Schüler einschreiben."
+      "en": "A language school organizes courses taught by teachers into lessons that students enroll in. A course is aimed at a certain proficiency level - like Beginner or Intermediate. Some schools also break a course down into a series of lessons, each covering its own topic like ordering food or asking for directions.",
+      "de": "Eine Sprachschule gliedert von Lehrern unterrichtete Kurse in Lektionen, für die sich Schüler einschreiben. Ein Kurs richtet sich an ein bestimmtes Sprachniveau - etwa Anfänger oder Fortgeschritten. Manche Schulen gliedern einen Kurs zusätzlich in eine Reihe von Lektionen, die jeweils ein eigenes Thema behandeln, etwa Essen bestellen oder nach dem Weg fragen."
     },
     "examples": [
       {
@@ -1001,8 +1001,8 @@
       },
       {
         "diagram": {
-          "en": "erDiagram\n    TEACHER {\n        string id PK\n        string name\n    }\n    COURSE {\n        string id PK\n        string teacherId FK\n        string title\n    }\n    STUDENT {\n        string id PK\n        string name\n    }\n    TEACHER ||--o{ COURSE : teaches\n    STUDENT }o--o{ COURSE : \"enrolls in\"",
-          "de": "erDiagram\n    LEHRER {\n        string id PK\n        string name\n    }\n    KURS {\n        string id PK\n        string lehrerId FK\n        string titel\n    }\n    SCHUELER {\n        string id PK\n        string name\n    }\n    LEHRER ||--o{ KURS : unterrichtet\n    SCHUELER }o--o{ KURS : \"schreibt sich ein in\""
+          "en": "erDiagram\n    TEACHER {\n        string id PK\n        string name\n    }\n    COURSE {\n        string id PK\n        string teacherId FK\n        string title\n        string level\n    }\n    STUDENT {\n        string id PK\n        string name\n    }\n    TEACHER ||--o{ COURSE : teaches\n    STUDENT }o--o{ COURSE : \"enrolls in\"",
+          "de": "erDiagram\n    LEHRER {\n        string id PK\n        string name\n    }\n    KURS {\n        string id PK\n        string lehrerId FK\n        string titel\n        string niveau\n    }\n    SCHUELER {\n        string id PK\n        string name\n    }\n    LEHRER ||--o{ KURS : unterrichtet\n    SCHUELER }o--o{ KURS : \"schreibt sich ein in\""
         }
       }
     ]
@@ -1010,8 +1010,8 @@
   {
     "id": "volunteer-events",
     "prompt": {
-      "en": "A volunteer organization lets volunteers sign up for events.",
-      "de": "Eine Freiwilligenorganisation lässt Freiwillige sich für Veranstaltungen anmelden."
+      "en": "A volunteer organization lets volunteers sign up for events. Events need people to sign up and help out, and some organizations like matching volunteers to events based on specific skills, like first aid or driving.",
+      "de": "Eine Freiwilligenorganisation lässt Freiwillige sich für Veranstaltungen anmelden. Events brauchen Leute, die sich anmelden und mithelfen, und manche Organisationen ordnen Freiwillige gerne anhand bestimmter Fähigkeiten wie Erste Hilfe oder Fahren den Events zu."
     },
     "examples": [
       {
@@ -1031,8 +1031,8 @@
   {
     "id": "community-garden",
     "prompt": {
-      "en": "A community garden divides itself into plots tended by members.",
-      "de": "Ein Gemeinschaftsgarten teilt sich in Beete auf, die von Mitgliedern gepflegt werden."
+      "en": "A community garden divides itself into plots tended by members. Members look after one or more plots, sometimes sharing the work on a single plot with another member, and the garden wants a simple way to see which plots are currently claimed by someone.",
+      "de": "Ein Gemeinschaftsgarten teilt sich in Beete auf, die von Mitgliedern gepflegt werden. Mitglieder kümmern sich um ein oder mehrere Beete, manchmal teilen sie sich die Arbeit an einem Beet mit einem anderen Mitglied, und der Garten möchte auf einfache Weise sehen können, welche Beete gerade von jemandem beansprucht sind."
     },
     "examples": [
       {
