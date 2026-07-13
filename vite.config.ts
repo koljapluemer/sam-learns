@@ -36,6 +36,10 @@ export default defineConfig({
             if (id.includes('dexie') || id.includes('lucide-vue-next')) {
               return 'simplify-app'
             }
+
+            if (id.includes('mermaid')) {
+              return 'erd-mermaid'
+            }
           }
         }
       }

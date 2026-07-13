@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "juice-shop-inventory",
+    "prompt": {
+      "en": "A shop sells 3 types of juice and needs to track their inventory.",
+      "de": "Ein Laden verkauft 3 Saftsorten und muss deren Lagerbestand verwalten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    SUPPLIER {\n        string id PK\n        string name\n        string phone\n    }\n    JUICE {\n        string sku PK\n        string name\n        string flavor\n        float pricePerLiter\n    }\n    STOCK_BATCH {\n        string id PK\n        string juiceSku FK\n        string supplierId FK\n        int quantityLiters\n        date receivedAt\n        date expiresAt\n    }\n    SALE {\n        string id PK\n        string juiceSku FK\n        int quantitySold\n        datetime soldAt\n    }\n    SUPPLIER ||--o{ STOCK_BATCH : delivers\n    JUICE ||--o{ STOCK_BATCH : \"is stocked as\"\n    JUICE ||--o{ SALE : \"is sold as\"",
+          "de": "erDiagram\n    LIEFERANT {\n        string id PK\n        string name\n        string telefon\n    }\n    SAFT {\n        string sku PK\n        string name\n        string sorte\n        float preisProLiter\n    }\n    LAGERCHARGE {\n        string id PK\n        string saftSku FK\n        string lieferantId FK\n        int mengeInLiter\n        date eingegangenAm\n        date haltbarBis\n    }\n    VERKAUF {\n        string id PK\n        string saftSku FK\n        int verkaufteMenge\n        datetime verkauftAm\n    }\n    LIEFERANT ||--o{ LAGERCHARGE : liefert\n    SAFT ||--o{ LAGERCHARGE : \"wird gelagert als\"\n    SAFT ||--o{ VERKAUF : \"wird verkauft als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    JUICE {\n        string sku PK\n        string name\n        string flavor\n        float pricePerLiter\n        int reorderThreshold\n    }\n    BATCH {\n        string id PK\n        string juiceSku FK\n        int quantityLiters\n        date receivedAt\n    }\n    INVENTORY_COUNT {\n        string id PK\n        string juiceSku FK\n        int countedQuantity\n        date countedAt\n    }\n    JUICE ||--o{ BATCH : \"is stocked as\"\n    JUICE ||--o{ INVENTORY_COUNT : \"is audited as\"",
+          "de": "erDiagram\n    SAFT {\n        string sku PK\n        string name\n        string sorte\n        float preisProLiter\n        int mindestbestand\n    }\n    CHARGE {\n        string id PK\n        string saftSku FK\n        int mengeInLiter\n        date eingegangenAm\n    }\n    BESTANDSZAEHLUNG {\n        string id PK\n        string saftSku FK\n        int gezaehlteMenge\n        date gezaehltAm\n    }\n    SAFT ||--o{ CHARGE : \"wird gelagert als\"\n    SAFT ||--o{ BESTANDSZAEHLUNG : \"wird geprueft als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "bus-company-network",
+    "prompt": {
+      "en": "Represent a bus company's stops, routes and zones.",
+      "de": "Bilde die Haltestellen, Linien und Zonen eines Busunternehmens ab."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    ZONE {\n        string id PK\n        string name\n        int fareLevel\n    }\n    STOP {\n        string id PK\n        string zoneId FK\n        string name\n        float latitude\n        float longitude\n    }\n    ROUTE {\n        string id PK\n        string name\n    }\n    ROUTE_STOP {\n        string id PK\n        string routeId FK\n        string stopId FK\n        int sequenceNumber\n    }\n    ZONE ||--o{ STOP : contains\n    ROUTE ||--o{ ROUTE_STOP : \"is composed of\"\n    STOP ||--o{ ROUTE_STOP : \"appears in\"",
+          "de": "erDiagram\n    ZONE {\n        string id PK\n        string name\n        int tarifstufe\n    }\n    HALTESTELLE {\n        string id PK\n        string zoneId FK\n        string name\n        float breitengrad\n        float laengengrad\n    }\n    LINIE {\n        string id PK\n        string name\n    }\n    LINIENHALT {\n        string id PK\n        string linieId FK\n        string haltestelleId FK\n        int reihenfolge\n    }\n    ZONE ||--o{ HALTESTELLE : enthaelt\n    LINIE ||--o{ LINIENHALT : \"besteht aus\"\n    HALTESTELLE ||--o{ LINIENHALT : \"erscheint in\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    ZONE {\n        string id PK\n        string name\n    }\n    STOP {\n        string id PK\n        string zoneId FK\n        string name\n    }\n    ROUTE {\n        string id PK\n        string name\n    }\n    DRIVER {\n        string id PK\n        string name\n        string licenseNumber\n    }\n    TRIP {\n        string id PK\n        string routeId FK\n        string driverId FK\n        datetime departureTime\n    }\n    ZONE ||--o{ STOP : contains\n    ROUTE }o--o{ STOP : \"passes through\"\n    ROUTE ||--o{ TRIP : \"is scheduled as\"\n    DRIVER ||--o{ TRIP : operates",
+          "de": "erDiagram\n    ZONE {\n        string id PK\n        string name\n    }\n    HALTESTELLE {\n        string id PK\n        string zoneId FK\n        string name\n    }\n    LINIE {\n        string id PK\n        string name\n    }\n    FAHRER {\n        string id PK\n        string name\n        string fuehrerscheinnummer\n    }\n    FAHRT {\n        string id PK\n        string linieId FK\n        string fahrerId FK\n        datetime abfahrtszeit\n    }\n    ZONE ||--o{ HALTESTELLE : enthaelt\n    LINIE }o--o{ HALTESTELLE : \"faehrt durch\"\n    LINIE ||--o{ FAHRT : \"wird geplant als\"\n    FAHRER ||--o{ FAHRT : faehrt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "messaging-app",
+    "prompt": {
+      "en": "A messaging app where users sign up and chat with their friends.",
+      "de": "Eine Messaging-App, in der sich Nutzer anmelden und mit Freunden chatten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    USER {\n        string id PK\n        string username\n        string email\n        datetime joinedAt\n    }\n    FRIENDSHIP {\n        string id PK\n        string userAId FK\n        string userBId FK\n        datetime becameFriendsAt\n    }\n    CONVERSATION {\n        string id PK\n        datetime startedAt\n    }\n    MESSAGE {\n        string id PK\n        string conversationId FK\n        string senderId FK\n        string body\n        datetime sentAt\n    }\n    FRIENDSHIP }o--|| USER : userA\n    FRIENDSHIP }o--|| USER : userB\n    USER }o--o{ CONVERSATION : \"participates in\"\n    CONVERSATION ||--o{ MESSAGE : contains\n    USER ||--o{ MESSAGE : sends",
+          "de": "erDiagram\n    NUTZER {\n        string id PK\n        string benutzername\n        string email\n        datetime beigetretenAm\n    }\n    FREUNDSCHAFT {\n        string id PK\n        string nutzerAId FK\n        string nutzerBId FK\n        datetime seitWannBefreundet\n    }\n    UNTERHALTUNG {\n        string id PK\n        datetime gestartetAm\n    }\n    NACHRICHT {\n        string id PK\n        string unterhaltungId FK\n        string absenderId FK\n        string text\n        datetime gesendetAm\n    }\n    FREUNDSCHAFT }o--|| NUTZER : nutzerA\n    FREUNDSCHAFT }o--|| NUTZER : nutzerB\n    NUTZER }o--o{ UNTERHALTUNG : \"nimmt teil an\"\n    UNTERHALTUNG ||--o{ NACHRICHT : enthaelt\n    NUTZER ||--o{ NACHRICHT : sendet"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    USER {\n        string id PK\n        string username\n        string email\n    }\n    FRIEND_REQUEST {\n        string id PK\n        string senderId FK\n        string receiverId FK\n        string status\n        datetime sentAt\n    }\n    MESSAGE {\n        string id PK\n        string senderId FK\n        string receiverId FK\n        string body\n        datetime sentAt\n    }\n    FRIEND_REQUEST }o--|| USER : sender\n    FRIEND_REQUEST }o--|| USER : receiver\n    MESSAGE }o--|| USER : sender\n    MESSAGE }o--|| USER : receiver",
+          "de": "erDiagram\n    NUTZER {\n        string id PK\n        string benutzername\n        string email\n    }\n    FREUNDSCHAFTSANFRAGE {\n        string id PK\n        string absenderId FK\n        string empfaengerId FK\n        string status\n        datetime gesendetAm\n    }\n    NACHRICHT {\n        string id PK\n        string absenderId FK\n        string empfaengerId FK\n        string text\n        datetime gesendetAm\n    }\n    FREUNDSCHAFTSANFRAGE }o--|| NUTZER : absender\n    FREUNDSCHAFTSANFRAGE }o--|| NUTZER : empfaenger\n    NACHRICHT }o--|| NUTZER : absender\n    NACHRICHT }o--|| NUTZER : empfaenger"
+        }
+      }
+    ]
+  },
+  {
+    "id": "library-lending",
+    "prompt": {
+      "en": "A library tracks which members have borrowed which books.",
+      "de": "Eine Bibliothek verfolgt, welche Mitglieder welche Bücher ausgeliehen haben."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    MEMBER {\n        string id PK\n        string name\n        string email\n        date joinedAt\n    }\n    BOOK {\n        string isbn PK\n        string title\n        string author\n    }\n    COPY {\n        string id PK\n        string isbn FK\n        string shelfLocation\n        string condition\n    }\n    LOAN {\n        string id PK\n        string copyId FK\n        string memberId FK\n        date borrowedAt\n        date dueAt\n        date returnedAt\n    }\n    HOLD {\n        string id PK\n        string isbn FK\n        string memberId FK\n        datetime requestedAt\n    }\n    BOOK ||--o{ COPY : \"is printed as\"\n    COPY ||--o{ LOAN : \"is loaned as\"\n    MEMBER ||--o{ LOAN : borrows\n    BOOK ||--o{ HOLD : \"is reserved via\"\n    MEMBER ||--o{ HOLD : requests",
+          "de": "erDiagram\n    MITGLIED {\n        string id PK\n        string name\n        string email\n        date beigetretenAm\n    }\n    BUCH {\n        string isbn PK\n        string titel\n        string autor\n    }\n    EXEMPLAR {\n        string id PK\n        string isbn FK\n        string standort\n        string zustand\n    }\n    AUSLEIHE {\n        string id PK\n        string exemplarId FK\n        string mitgliedId FK\n        date ausgeliehenAm\n        date faelligAm\n        date zurueckgegebenAm\n    }\n    VORMERKUNG {\n        string id PK\n        string isbn FK\n        string mitgliedId FK\n        datetime angefordertAm\n    }\n    BUCH ||--o{ EXEMPLAR : \"wird gedruckt als\"\n    EXEMPLAR ||--o{ AUSLEIHE : \"wird ausgeliehen als\"\n    MITGLIED ||--o{ AUSLEIHE : leiht\n    BUCH ||--o{ VORMERKUNG : \"wird vorgemerkt ueber\"\n    MITGLIED ||--o{ VORMERKUNG : fordert_an"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    MEMBER {\n        string id PK\n        string name\n        string email\n    }\n    BOOK {\n        string isbn PK\n        string title\n        string author\n        int totalCopies\n    }\n    LOAN {\n        string id PK\n        string bookIsbn FK\n        string memberId FK\n        date borrowedAt\n        date dueAt\n        float fineAmount\n    }\n    BOOK ||--o{ LOAN : \"is loaned as\"\n    MEMBER ||--o{ LOAN : borrows",
+          "de": "erDiagram\n    MITGLIED {\n        string id PK\n        string name\n        string email\n    }\n    BUCH {\n        string isbn PK\n        string titel\n        string autor\n        int exemplareGesamt\n    }\n    AUSLEIHE {\n        string id PK\n        string buchIsbn FK\n        string mitgliedId FK\n        date ausgeliehenAm\n        date faelligAm\n        float mahngebuehr\n    }\n    BUCH ||--o{ AUSLEIHE : \"wird ausgeliehen als\"\n    MITGLIED ||--o{ AUSLEIHE : leiht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "restaurant-reservations",
+    "prompt": {
+      "en": "A restaurant lets guests reserve tables.",
+      "de": "Ein Restaurant ermöglicht Gästen, Tische zu reservieren."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    GUEST {\n        string id PK\n        string name\n        string phone\n    }\n    TABLE {\n        string id PK\n        int capacity\n        string section\n    }\n    TIME_SLOT {\n        string id PK\n        string tableId FK\n        date slotDate\n        time startTime\n        time endTime\n    }\n    RESERVATION {\n        string id PK\n        string timeSlotId FK\n        string guestId FK\n        int partySize\n        string status\n    }\n    TABLE ||--o{ TIME_SLOT : \"is available in\"\n    TIME_SLOT ||--o{ RESERVATION : \"is booked as\"\n    GUEST ||--o{ RESERVATION : makes",
+          "de": "erDiagram\n    GAST {\n        string id PK\n        string name\n        string telefon\n    }\n    TISCH {\n        string id PK\n        int sitzplaetze\n        string bereich\n    }\n    ZEITFENSTER {\n        string id PK\n        string tischId FK\n        date datum\n        time startzeit\n        time endzeit\n    }\n    RESERVIERUNG {\n        string id PK\n        string zeitfensterId FK\n        string gastId FK\n        int personenzahl\n        string status\n    }\n    TISCH ||--o{ ZEITFENSTER : \"ist verfuegbar in\"\n    ZEITFENSTER ||--o{ RESERVIERUNG : \"wird gebucht als\"\n    GAST ||--o{ RESERVIERUNG : macht"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    GUEST {\n        string id PK\n        string name\n        string phone\n    }\n    TABLE {\n        string id PK\n        int capacity\n    }\n    RESERVATION {\n        string id PK\n        string tableId FK\n        string guestId FK\n        datetime reservedFor\n        int partySize\n        string status\n    }\n    TABLE ||--o{ RESERVATION : hosts\n    GUEST ||--o{ RESERVATION : makes",
+          "de": "erDiagram\n    GAST {\n        string id PK\n        string name\n        string telefon\n    }\n    TISCH {\n        string id PK\n        int sitzplaetze\n    }\n    RESERVIERUNG {\n        string id PK\n        string tischId FK\n        string gastId FK\n        datetime reserviertFuer\n        int personenzahl\n        string status\n    }\n    TISCH ||--o{ RESERVIERUNG : \"wird genutzt fuer\"\n    GAST ||--o{ RESERVIERUNG : macht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "online-bookstore",
+    "prompt": {
+      "en": "An online bookstore lets customers order books.",
+      "de": "Ein Online-Buchladen ermöglicht Kunden, Bücher zu bestellen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    ADDRESS {\n        string id PK\n        string customerId FK\n        string street\n        string city\n        string postalCode\n    }\n    BOOK {\n        string isbn PK\n        string title\n        float price\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        string addressId FK\n        datetime placedAt\n        string status\n    }\n    ORDER_ITEM {\n        string id PK\n        string orderId FK\n        string bookIsbn FK\n        int quantity\n        float unitPrice\n    }\n    CUSTOMER ||--o{ ADDRESS : has\n    CUSTOMER ||--o{ ORDER_ : places\n    ADDRESS ||--o{ ORDER_ : \"ships to\"\n    ORDER_ ||--o{ ORDER_ITEM : contains\n    BOOK ||--o{ ORDER_ITEM : \"ordered as\"",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    ADRESSE {\n        string id PK\n        string kundeId FK\n        string strasse\n        string stadt\n        string postleitzahl\n    }\n    BUCH {\n        string isbn PK\n        string titel\n        float preis\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        string adresseId FK\n        datetime aufgegebenAm\n        string status\n    }\n    BESTELLPOSITION {\n        string id PK\n        string bestellungId FK\n        string buchIsbn FK\n        int menge\n        float einzelpreis\n    }\n    KUNDE ||--o{ ADRESSE : hat\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    ADRESSE ||--o{ BESTELLUNG : \"ist Lieferziel von\"\n    BESTELLUNG ||--o{ BESTELLPOSITION : enthaelt\n    BUCH ||--o{ BESTELLPOSITION : \"wird bestellt als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    BOOK {\n        string isbn PK\n        string title\n        float price\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        string bookIsbn FK\n        datetime purchasedAt\n        float pricePaid\n    }\n    CUSTOMER ||--o{ PURCHASE : makes\n    BOOK ||--o{ PURCHASE : \"is bought as\"",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    BUCH {\n        string isbn PK\n        string titel\n        float preis\n    }\n    KAUF {\n        string id PK\n        string kundeId FK\n        string buchIsbn FK\n        datetime gekauftAm\n        float bezahlterPreis\n    }\n    KUNDE ||--o{ KAUF : taetigt\n    BUCH ||--o{ KAUF : \"wird gekauft als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "gym-class-bookings",
+    "prompt": {
+      "en": "A gym lets members book spots in classes taught by trainers.",
+      "de": "Ein Fitnessstudio ermöglicht Mitgliedern, Plätze in von Trainern geleiteten Kursen zu buchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    TRAINER {\n        string id PK\n        string name\n        string specialty\n    }\n    ROOM {\n        string id PK\n        string name\n        int capacity\n    }\n    CLASS_SESSION {\n        string id PK\n        string trainerId FK\n        string roomId FK\n        string title\n        date sessionDate\n        time startTime\n    }\n    MEMBER {\n        string id PK\n        string name\n        string membershipType\n    }\n    BOOKING {\n        string id PK\n        string sessionId FK\n        string memberId FK\n        datetime bookedAt\n    }\n    TRAINER ||--o{ CLASS_SESSION : leads\n    ROOM ||--o{ CLASS_SESSION : hosts\n    CLASS_SESSION ||--o{ BOOKING : fills\n    MEMBER ||--o{ BOOKING : makes",
+          "de": "erDiagram\n    TRAINER {\n        string id PK\n        string name\n        string spezialgebiet\n    }\n    RAUM {\n        string id PK\n        string name\n        int kapazitaet\n    }\n    KURSTERMIN {\n        string id PK\n        string trainerId FK\n        string raumId FK\n        string titel\n        date datum\n        time startzeit\n    }\n    MITGLIED {\n        string id PK\n        string name\n        string mitgliedschaftsart\n    }\n    BUCHUNG {\n        string id PK\n        string kursterminId FK\n        string mitgliedId FK\n        datetime gebuchtAm\n    }\n    TRAINER ||--o{ KURSTERMIN : leitet\n    RAUM ||--o{ KURSTERMIN : beherbergt\n    KURSTERMIN ||--o{ BUCHUNG : fuellt\n    MITGLIED ||--o{ BUCHUNG : macht"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    TRAINER {\n        string id PK\n        string name\n    }\n    CLASS_SESSION {\n        string id PK\n        string trainerId FK\n        string title\n        date sessionDate\n    }\n    MEMBER {\n        string id PK\n        string name\n        int classesRemaining\n    }\n    ATTENDANCE {\n        string id PK\n        string sessionId FK\n        string memberId FK\n        datetime checkedInAt\n    }\n    TRAINER ||--o{ CLASS_SESSION : leads\n    CLASS_SESSION ||--o{ ATTENDANCE : has\n    MEMBER ||--o{ ATTENDANCE : \"checks into\"",
+          "de": "erDiagram\n    TRAINER {\n        string id PK\n        string name\n    }\n    KURSTERMIN {\n        string id PK\n        string trainerId FK\n        string titel\n        date datum\n    }\n    MITGLIED {\n        string id PK\n        string name\n        int verbleibendeKurse\n    }\n    ANWESENHEIT {\n        string id PK\n        string kursterminId FK\n        string mitgliedId FK\n        datetime eingechecktAm\n    }\n    TRAINER ||--o{ KURSTERMIN : leitet\n    KURSTERMIN ||--o{ ANWESENHEIT : hat\n    MITGLIED ||--o{ ANWESENHEIT : \"checkt ein bei\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "hotel-room-bookings",
+    "prompt": {
+      "en": "A hotel lets guests book rooms of different types.",
+      "de": "Ein Hotel ermöglicht Gästen, Zimmer verschiedener Typen zu buchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    ROOM_TYPE {\n        string id PK\n        string name\n        float nightlyRate\n        int maxOccupancy\n    }\n    ROOM {\n        string id PK\n        string roomTypeId FK\n        int floorNumber\n        string roomNumber\n    }\n    GUEST {\n        string id PK\n        string name\n        string email\n    }\n    BOOKING {\n        string id PK\n        string guestId FK\n        string roomTypeId FK\n        date checkIn\n        date checkOut\n        string status\n    }\n    PAYMENT {\n        string id PK\n        string bookingId FK\n        float amount\n        datetime paidAt\n        string method\n    }\n    ROOM_TYPE ||--o{ ROOM : \"is offered as\"\n    GUEST ||--o{ BOOKING : makes\n    ROOM_TYPE ||--o{ BOOKING : \"is reserved as\"\n    BOOKING ||--|| PAYMENT : \"is settled by\"",
+          "de": "erDiagram\n    ZIMMERTYP {\n        string id PK\n        string name\n        float preisProNacht\n        int maxBelegung\n    }\n    ZIMMER {\n        string id PK\n        string zimmertypId FK\n        int etage\n        string zimmernummer\n    }\n    GAST {\n        string id PK\n        string name\n        string email\n    }\n    BUCHUNG {\n        string id PK\n        string gastId FK\n        string zimmertypId FK\n        date anreise\n        date abreise\n        string status\n    }\n    ZAHLUNG {\n        string id PK\n        string buchungId FK\n        float betrag\n        datetime bezahltAm\n        string methode\n    }\n    ZIMMERTYP ||--o{ ZIMMER : \"wird angeboten als\"\n    GAST ||--o{ BUCHUNG : macht\n    ZIMMERTYP ||--o{ BUCHUNG : \"wird reserviert als\"\n    BUCHUNG ||--|| ZAHLUNG : \"wird beglichen durch\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    ROOM {\n        string id PK\n        string roomNumber\n        string bedType\n        float nightlyRate\n    }\n    GUEST {\n        string id PK\n        string name\n        string email\n    }\n    BOOKING {\n        string id PK\n        string guestId FK\n        string roomId FK\n        date checkIn\n        date checkOut\n    }\n    ROOM ||--o{ BOOKING : \"is reserved via\"\n    GUEST ||--o{ BOOKING : makes",
+          "de": "erDiagram\n    ZIMMER {\n        string id PK\n        string zimmernummer\n        string betttyp\n        float preisProNacht\n    }\n    GAST {\n        string id PK\n        string name\n        string email\n    }\n    BUCHUNG {\n        string id PK\n        string gastId FK\n        string zimmerId FK\n        date anreise\n        date abreise\n    }\n    ZIMMER ||--o{ BUCHUNG : \"wird reserviert als\"\n    GAST ||--o{ BUCHUNG : macht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "car-rental",
+    "prompt": {
+      "en": "A car rental company rents out cars from different branches.",
+      "de": "Ein Autovermieter verleiht Autos von verschiedenen Filialen aus."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    BRANCH {\n        string id PK\n        string city\n        string address\n    }\n    CAR {\n        string id PK\n        string branchId FK\n        string licensePlate\n        string model\n        float dailyRate\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string licenseNumber\n    }\n    RENTAL {\n        string id PK\n        string carId FK\n        string customerId FK\n        string returnBranchId FK\n        datetime pickupAt\n        datetime returnAt\n    }\n    INSPECTION {\n        string id PK\n        string rentalId FK\n        int mileage\n        string damageNotes\n        datetime inspectedAt\n    }\n    BRANCH ||--o{ CAR : stores\n    CUSTOMER ||--o{ RENTAL : makes\n    CAR ||--o{ RENTAL : \"is rented via\"\n    BRANCH ||--o{ RENTAL : \"receives return at\"\n    RENTAL ||--|| INSPECTION : \"ends with\"",
+          "de": "erDiagram\n    FILIALE {\n        string id PK\n        string stadt\n        string adresse\n    }\n    AUTO {\n        string id PK\n        string filialeId FK\n        string kennzeichen\n        string modell\n        float tagespreis\n    }\n    KUNDE {\n        string id PK\n        string name\n        string fuehrerscheinnummer\n    }\n    MIETE {\n        string id PK\n        string autoId FK\n        string kundeId FK\n        string rueckgabeFilialeId FK\n        datetime abholungAm\n        datetime rueckgabeAm\n    }\n    INSPEKTION {\n        string id PK\n        string mieteId FK\n        int kilometerstand\n        string schadensnotizen\n        datetime geprueftAm\n    }\n    FILIALE ||--o{ AUTO : lagert\n    KUNDE ||--o{ MIETE : macht\n    AUTO ||--o{ MIETE : \"wird vermietet als\"\n    FILIALE ||--o{ MIETE : \"nimmt Rueckgabe entgegen\"\n    MIETE ||--|| INSPEKTION : \"endet mit\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    BRANCH {\n        string id PK\n        string city\n    }\n    CAR {\n        string id PK\n        string branchId FK\n        string licensePlate\n        float dailyRate\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string licenseNumber\n    }\n    RENTAL {\n        string id PK\n        string carId FK\n        string customerId FK\n        datetime pickupAt\n        datetime returnAt\n    }\n    BRANCH ||--o{ CAR : stores\n    CUSTOMER ||--o{ RENTAL : makes\n    CAR ||--o{ RENTAL : \"is rented via\"",
+          "de": "erDiagram\n    FILIALE {\n        string id PK\n        string stadt\n    }\n    AUTO {\n        string id PK\n        string filialeId FK\n        string kennzeichen\n        float tagespreis\n    }\n    KUNDE {\n        string id PK\n        string name\n        string fuehrerscheinnummer\n    }\n    MIETE {\n        string id PK\n        string autoId FK\n        string kundeId FK\n        datetime abholungAm\n        datetime rueckgabeAm\n    }\n    FILIALE ||--o{ AUTO : lagert\n    KUNDE ||--o{ MIETE : macht\n    AUTO ||--o{ MIETE : \"wird vermietet als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "movie-theater-tickets",
+    "prompt": {
+      "en": "A movie theater sells tickets for screenings of movies.",
+      "de": "Ein Kino verkauft Tickets für Vorführungen von Filmen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    MOVIE {\n        string id PK\n        string title\n        int durationMinutes\n        string rating\n    }\n    AUDITORIUM {\n        string id PK\n        string name\n        int seatCount\n    }\n    SCREENING {\n        string id PK\n        string movieId FK\n        string auditoriumId FK\n        datetime startTime\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string screeningId FK\n        string customerId FK\n        string seatNumber\n        float price\n    }\n    MOVIE ||--o{ SCREENING : \"is shown as\"\n    AUDITORIUM ||--o{ SCREENING : hosts\n    SCREENING ||--o{ TICKET : \"is booked via\"\n    CUSTOMER ||--o{ TICKET : buys",
+          "de": "erDiagram\n    FILM {\n        string id PK\n        string titel\n        int laengeInMinuten\n        string freigabe\n    }\n    SAAL {\n        string id PK\n        string name\n        int sitzplaetze\n    }\n    VORFUEHRUNG {\n        string id PK\n        string filmId FK\n        string saalId FK\n        datetime startzeit\n    }\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string vorfuehrungId FK\n        string kundeId FK\n        string sitzplatznummer\n        float preis\n    }\n    FILM ||--o{ VORFUEHRUNG : \"wird gezeigt als\"\n    SAAL ||--o{ VORFUEHRUNG : beherbergt\n    VORFUEHRUNG ||--o{ TICKET : \"wird gebucht als\"\n    KUNDE ||--o{ TICKET : kauft"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    MOVIE {\n        string id PK\n        string title\n        string rating\n    }\n    SCREENING {\n        string id PK\n        string movieId FK\n        datetime startTime\n        int availableSeats\n    }\n    TICKET {\n        string id PK\n        string screeningId FK\n        string customerName\n        datetime purchasedAt\n        float price\n    }\n    MOVIE ||--o{ SCREENING : \"is shown as\"\n    SCREENING ||--o{ TICKET : \"is booked via\"",
+          "de": "erDiagram\n    FILM {\n        string id PK\n        string titel\n        string freigabe\n    }\n    VORFUEHRUNG {\n        string id PK\n        string filmId FK\n        datetime startzeit\n        int freiePlaetze\n    }\n    TICKET {\n        string id PK\n        string vorfuehrungId FK\n        string kundenname\n        datetime gekauftAm\n        float preis\n    }\n    FILM ||--o{ VORFUEHRUNG : \"wird gezeigt als\"\n    VORFUEHRUNG ||--o{ TICKET : \"wird gebucht als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "vet-clinic-appointments",
+    "prompt": {
+      "en": "A veterinary clinic tracks pet owners, their pets, and appointments.",
+      "de": "Eine Tierarztpraxis verwaltet Besitzer, deren Haustiere und Termine."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    OWNER {\n        string id PK\n        string name\n        string phone\n    }\n    PET {\n        string id PK\n        string ownerId FK\n        string name\n        string species\n        date birthDate\n    }\n    VET {\n        string id PK\n        string name\n        string specialty\n    }\n    APPOINTMENT {\n        string id PK\n        string petId FK\n        string vetId FK\n        datetime scheduledAt\n        string reason\n    }\n    TREATMENT {\n        string id PK\n        string appointmentId FK\n        string description\n        float cost\n    }\n    OWNER ||--o{ PET : owns\n    PET ||--o{ APPOINTMENT : has\n    VET ||--o{ APPOINTMENT : conducts\n    APPOINTMENT ||--o{ TREATMENT : \"results in\"",
+          "de": "erDiagram\n    BESITZER {\n        string id PK\n        string name\n        string telefon\n    }\n    HAUSTIER {\n        string id PK\n        string besitzerId FK\n        string name\n        string tierart\n        date geburtsdatum\n    }\n    TIERARZT {\n        string id PK\n        string name\n        string fachgebiet\n    }\n    TERMIN {\n        string id PK\n        string haustierId FK\n        string tierarztId FK\n        datetime geplantAm\n        string grund\n    }\n    BEHANDLUNG {\n        string id PK\n        string terminId FK\n        string beschreibung\n        float kosten\n    }\n    BESITZER ||--o{ HAUSTIER : besitzt\n    HAUSTIER ||--o{ TERMIN : hat\n    TIERARZT ||--o{ TERMIN : fuehrt_durch\n    TERMIN ||--o{ BEHANDLUNG : \"fuehrt zu\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    OWNER {\n        string id PK\n        string name\n        string phone\n    }\n    PET {\n        string id PK\n        string ownerId FK\n        string name\n        string species\n    }\n    APPOINTMENT {\n        string id PK\n        string petId FK\n        datetime scheduledAt\n        string notes\n    }\n    OWNER ||--o{ PET : owns\n    PET ||--o{ APPOINTMENT : has",
+          "de": "erDiagram\n    BESITZER {\n        string id PK\n        string name\n        string telefon\n    }\n    HAUSTIER {\n        string id PK\n        string besitzerId FK\n        string name\n        string tierart\n    }\n    TERMIN {\n        string id PK\n        string haustierId FK\n        datetime geplantAm\n        string notizen\n    }\n    BESITZER ||--o{ HAUSTIER : besitzt\n    HAUSTIER ||--o{ TERMIN : hat"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hospital-patient-visits",
+    "prompt": {
+      "en": "A hospital tracks patients, doctors and their visits.",
+      "de": "Ein Krankenhaus verwaltet Patienten, Ärzte und deren Besuche."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    PATIENT {\n        string id PK\n        string name\n        date dateOfBirth\n    }\n    DOCTOR {\n        string id PK\n        string name\n        string specialty\n    }\n    VISIT {\n        string id PK\n        string patientId FK\n        string doctorId FK\n        date visitDate\n        string diagnosis\n    }\n    MEDICATION {\n        string code PK\n        string name\n        string dosageForm\n    }\n    PRESCRIPTION {\n        string id PK\n        string visitId FK\n        string medicationCode FK\n        string dosage\n        int durationDays\n    }\n    PATIENT ||--o{ VISIT : has\n    DOCTOR ||--o{ VISIT : conducts\n    VISIT ||--o{ PRESCRIPTION : \"results in\"\n    MEDICATION ||--o{ PRESCRIPTION : \"is prescribed as\"",
+          "de": "erDiagram\n    PATIENT {\n        string id PK\n        string name\n        date geburtsdatum\n    }\n    ARZT {\n        string id PK\n        string name\n        string fachgebiet\n    }\n    BESUCH {\n        string id PK\n        string patientId FK\n        string arztId FK\n        date besuchsdatum\n        string diagnose\n    }\n    MEDIKAMENT {\n        string code PK\n        string name\n        string darreichungsform\n    }\n    REZEPT {\n        string id PK\n        string besuchId FK\n        string medikamentCode FK\n        string dosierung\n        int dauerInTagen\n    }\n    PATIENT ||--o{ BESUCH : hat\n    ARZT ||--o{ BESUCH : fuehrt_durch\n    BESUCH ||--o{ REZEPT : \"fuehrt zu\"\n    MEDIKAMENT ||--o{ REZEPT : \"wird verschrieben als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    PATIENT {\n        string id PK\n        string name\n        date dateOfBirth\n    }\n    VISIT {\n        string id PK\n        string patientId FK\n        date visitDate\n        string doctorName\n        string diagnosis\n    }\n    PRESCRIPTION {\n        string id PK\n        string visitId FK\n        string medicationName\n        string dosage\n    }\n    PATIENT ||--o{ VISIT : has\n    VISIT ||--o{ PRESCRIPTION : \"results in\"",
+          "de": "erDiagram\n    PATIENT {\n        string id PK\n        string name\n        date geburtsdatum\n    }\n    BESUCH {\n        string id PK\n        string patientId FK\n        date besuchsdatum\n        string arztname\n        string diagnose\n    }\n    REZEPT {\n        string id PK\n        string besuchId FK\n        string medikamentname\n        string dosierung\n    }\n    PATIENT ||--o{ BESUCH : hat\n    BESUCH ||--o{ REZEPT : \"fuehrt zu\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "school-class-attendance",
+    "prompt": {
+      "en": "A school tracks which students attend which classes, taught by teachers.",
+      "de": "Eine Schule verfolgt, welche Schüler welche von Lehrern unterrichteten Klassen besuchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    SCHOOL {\n        string id PK\n        string name\n    }\n    TEACHER {\n        string id PK\n        string schoolId FK\n        string name\n        string subject\n    }\n    CLASS_ {\n        string id PK\n        string teacherId FK\n        string name\n        string room\n    }\n    STUDENT {\n        string id PK\n        string schoolId FK\n        string name\n        int gradeLevel\n    }\n    ATTENDANCE {\n        string id PK\n        string classId FK\n        string studentId FK\n        date attendanceDate\n        boolean present\n    }\n    SCHOOL ||--o{ TEACHER : employs\n    SCHOOL ||--o{ STUDENT : enrolls\n    TEACHER ||--o{ CLASS_ : teaches\n    CLASS_ ||--o{ ATTENDANCE : records\n    STUDENT ||--o{ ATTENDANCE : has",
+          "de": "erDiagram\n    SCHULE {\n        string id PK\n        string name\n    }\n    LEHRER {\n        string id PK\n        string schuleId FK\n        string name\n        string fach\n    }\n    KLASSE {\n        string id PK\n        string lehrerId FK\n        string name\n        string raum\n    }\n    SCHUELER {\n        string id PK\n        string schuleId FK\n        string name\n        int klassenstufe\n    }\n    ANWESENHEIT {\n        string id PK\n        string klasseId FK\n        string schuelerId FK\n        date datum\n        boolean anwesend\n    }\n    SCHULE ||--o{ LEHRER : beschaeftigt\n    SCHULE ||--o{ SCHUELER : nimmt_auf\n    LEHRER ||--o{ KLASSE : unterrichtet\n    KLASSE ||--o{ ANWESENHEIT : erfasst\n    SCHUELER ||--o{ ANWESENHEIT : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    TEACHER {\n        string id PK\n        string name\n    }\n    CLASS_ {\n        string id PK\n        string teacherId FK\n        string name\n    }\n    STUDENT {\n        string id PK\n        string name\n        int gradeLevel\n    }\n    TEACHER ||--o{ CLASS_ : teaches\n    STUDENT }o--o{ CLASS_ : attends",
+          "de": "erDiagram\n    LEHRER {\n        string id PK\n        string name\n    }\n    KLASSE {\n        string id PK\n        string lehrerId FK\n        string name\n    }\n    SCHUELER {\n        string id PK\n        string name\n        int klassenstufe\n    }\n    LEHRER ||--o{ KLASSE : unterrichtet\n    SCHUELER }o--o{ KLASSE : besucht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "university-course-enrollment",
+    "prompt": {
+      "en": "A university tracks student enrollment in courses taught by professors.",
+      "de": "Eine Universität verwaltet die Einschreibung von Studierenden in von Professoren gehaltene Kurse."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    DEPARTMENT {\n        string id PK\n        string name\n    }\n    PROFESSOR {\n        string id PK\n        string departmentId FK\n        string name\n    }\n    COURSE {\n        string id PK\n        string professorId FK\n        string title\n        int credits\n    }\n    STUDENT {\n        string id PK\n        string name\n        string major\n    }\n    ENROLLMENT {\n        string id PK\n        string courseId FK\n        string studentId FK\n        string semester\n        string grade\n    }\n    DEPARTMENT ||--o{ PROFESSOR : employs\n    PROFESSOR ||--o{ COURSE : teaches\n    COURSE ||--o{ ENROLLMENT : has\n    STUDENT ||--o{ ENROLLMENT : makes",
+          "de": "erDiagram\n    FAKULTAET {\n        string id PK\n        string name\n    }\n    PROFESSOR {\n        string id PK\n        string fakultaetId FK\n        string name\n    }\n    KURS {\n        string id PK\n        string professorId FK\n        string titel\n        int leistungspunkte\n    }\n    STUDENT {\n        string id PK\n        string name\n        string studiengang\n    }\n    EINSCHREIBUNG {\n        string id PK\n        string kursId FK\n        string studentId FK\n        string semester\n        string note\n    }\n    FAKULTAET ||--o{ PROFESSOR : beschaeftigt\n    PROFESSOR ||--o{ KURS : unterrichtet\n    KURS ||--o{ EINSCHREIBUNG : hat\n    STUDENT ||--o{ EINSCHREIBUNG : macht"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    PROFESSOR {\n        string id PK\n        string name\n    }\n    COURSE {\n        string id PK\n        string professorId FK\n        string title\n    }\n    STUDENT {\n        string id PK\n        string name\n    }\n    PROFESSOR ||--o{ COURSE : teaches\n    STUDENT }o--o{ COURSE : \"enrolls in\"",
+          "de": "erDiagram\n    PROFESSOR {\n        string id PK\n        string name\n    }\n    KURS {\n        string id PK\n        string professorId FK\n        string titel\n    }\n    STUDENT {\n        string id PK\n        string name\n    }\n    PROFESSOR ||--o{ KURS : unterrichtet\n    STUDENT }o--o{ KURS : \"schreibt sich ein in\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "podcast-platform",
+    "prompt": {
+      "en": "A podcast platform organizes shows into episodes that listeners subscribe to.",
+      "de": "Eine Podcast-Plattform organisiert Sendungen in Folgen, die Hörer abonnieren."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    SHOW {\n        string id PK\n        string title\n        string category\n    }\n    EPISODE {\n        string id PK\n        string showId FK\n        string title\n        int durationMinutes\n        date publishedAt\n    }\n    LISTENER {\n        string id PK\n        string username\n        string email\n    }\n    SUBSCRIPTION {\n        string id PK\n        string listenerId FK\n        string showId FK\n        date subscribedAt\n    }\n    SHOW ||--o{ EPISODE : \"is made of\"\n    LISTENER ||--o{ SUBSCRIPTION : has\n    SHOW ||--o{ SUBSCRIPTION : \"is subscribed via\"",
+          "de": "erDiagram\n    SENDUNG {\n        string id PK\n        string titel\n        string kategorie\n    }\n    FOLGE {\n        string id PK\n        string sendungId FK\n        string titel\n        int laengeInMinuten\n        date veroeffentlichtAm\n    }\n    HOERER {\n        string id PK\n        string benutzername\n        string email\n    }\n    ABONNEMENT {\n        string id PK\n        string hoererId FK\n        string sendungId FK\n        date abonniertAm\n    }\n    SENDUNG ||--o{ FOLGE : \"besteht aus\"\n    HOERER ||--o{ ABONNEMENT : hat\n    SENDUNG ||--o{ ABONNEMENT : \"wird abonniert als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    SHOW {\n        string id PK\n        string title\n    }\n    EPISODE {\n        string id PK\n        string showId FK\n        string title\n        int durationMinutes\n    }\n    LISTENER {\n        string id PK\n        string username\n    }\n    PLAYBACK {\n        string id PK\n        string episodeId FK\n        string listenerId FK\n        int progressSeconds\n        datetime lastPlayedAt\n    }\n    SHOW ||--o{ EPISODE : \"is made of\"\n    EPISODE ||--o{ PLAYBACK : has\n    LISTENER ||--o{ PLAYBACK : logs",
+          "de": "erDiagram\n    SENDUNG {\n        string id PK\n        string titel\n    }\n    FOLGE {\n        string id PK\n        string sendungId FK\n        string titel\n        int laengeInMinuten\n    }\n    HOERER {\n        string id PK\n        string benutzername\n    }\n    WIEDERGABE {\n        string id PK\n        string folgeId FK\n        string hoererId FK\n        int fortschrittInSekunden\n        datetime zuletztGehoertAm\n    }\n    SENDUNG ||--o{ FOLGE : \"besteht aus\"\n    FOLGE ||--o{ WIEDERGABE : hat\n    HOERER ||--o{ WIEDERGABE : erfasst"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ride-sharing-trips",
+    "prompt": {
+      "en": "A ride-sharing app matches riders with drivers for trips.",
+      "de": "Eine Mitfahr-App verbindet Fahrgäste mit Fahrern für Fahrten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    RIDER {\n        string id PK\n        string name\n        string phone\n    }\n    DRIVER {\n        string id PK\n        string name\n        string licenseNumber\n    }\n    VEHICLE {\n        string id PK\n        string driverId FK\n        string plateNumber\n        string model\n    }\n    TRIP {\n        string id PK\n        string riderId FK\n        string driverId FK\n        string vehicleId FK\n        datetime requestedAt\n        float distanceKm\n    }\n    PAYMENT {\n        string id PK\n        string tripId FK\n        float amount\n        string method\n    }\n    DRIVER ||--o{ VEHICLE : owns\n    RIDER ||--o{ TRIP : requests\n    DRIVER ||--o{ TRIP : accepts\n    VEHICLE ||--o{ TRIP : \"is used for\"\n    TRIP ||--|| PAYMENT : \"is settled by\"",
+          "de": "erDiagram\n    FAHRGAST {\n        string id PK\n        string name\n        string telefon\n    }\n    FAHRER {\n        string id PK\n        string name\n        string fuehrerscheinnummer\n    }\n    FAHRZEUG {\n        string id PK\n        string fahrerId FK\n        string kennzeichen\n        string modell\n    }\n    FAHRT {\n        string id PK\n        string fahrgastId FK\n        string fahrerId FK\n        string fahrzeugId FK\n        datetime angefordertAm\n        float distanzInKm\n    }\n    ZAHLUNG {\n        string id PK\n        string fahrtId FK\n        float betrag\n        string methode\n    }\n    FAHRER ||--o{ FAHRZEUG : besitzt\n    FAHRGAST ||--o{ FAHRT : fordert_an\n    FAHRER ||--o{ FAHRT : nimmt_an\n    FAHRZEUG ||--o{ FAHRT : \"wird genutzt fuer\"\n    FAHRT ||--|| ZAHLUNG : \"wird beglichen durch\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    RIDER {\n        string id PK\n        string name\n    }\n    DRIVER {\n        string id PK\n        string name\n    }\n    TRIP {\n        string id PK\n        string riderId FK\n        string driverId FK\n        datetime requestedAt\n        float fare\n    }\n    RIDER ||--o{ TRIP : requests\n    DRIVER ||--o{ TRIP : accepts",
+          "de": "erDiagram\n    FAHRGAST {\n        string id PK\n        string name\n    }\n    FAHRER {\n        string id PK\n        string name\n    }\n    FAHRT {\n        string id PK\n        string fahrgastId FK\n        string fahrerId FK\n        datetime angefordertAm\n        float fahrpreis\n    }\n    FAHRGAST ||--o{ FAHRT : fordert_an\n    FAHRER ||--o{ FAHRT : nimmt_an"
+        }
+      }
+    ]
+  },
+  {
+    "id": "food-delivery-orders",
+    "prompt": {
+      "en": "A food delivery app connects customers, restaurants and couriers.",
+      "de": "Eine Lieferservice-App verbindet Kunden, Restaurants und Kuriere."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string address\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string cuisine\n    }\n    COURIER {\n        string id PK\n        string name\n        string vehicleType\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        string restaurantId FK\n        string courierId FK\n        datetime placedAt\n        float total\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    RESTAURANT ||--o{ ORDER_ : prepares\n    COURIER ||--o{ ORDER_ : delivers",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string adresse\n    }\n    RESTAURANT {\n        string id PK\n        string name\n        string kueche\n    }\n    KURIER {\n        string id PK\n        string name\n        string fahrzeugtyp\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        string restaurantId FK\n        string kurierId FK\n        datetime aufgegebenAm\n        float gesamtbetrag\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    RESTAURANT ||--o{ BESTELLUNG : bereitet_zu\n    KURIER ||--o{ BESTELLUNG : liefert"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    RESTAURANT {\n        string id PK\n        string name\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        string restaurantId FK\n        datetime placedAt\n    }\n    DELIVERY {\n        string id PK\n        string orderId FK\n        string courierId FK\n        datetime deliveredAt\n    }\n    COURIER {\n        string id PK\n        string name\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    RESTAURANT ||--o{ ORDER_ : prepares\n    ORDER_ ||--|| DELIVERY : \"is fulfilled as\"\n    COURIER ||--o{ DELIVERY : handles",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    RESTAURANT {\n        string id PK\n        string name\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        string restaurantId FK\n        datetime aufgegebenAm\n    }\n    LIEFERUNG {\n        string id PK\n        string bestellungId FK\n        string kurierId FK\n        datetime zugestelltAm\n    }\n    KURIER {\n        string id PK\n        string name\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    RESTAURANT ||--o{ BESTELLUNG : bereitet_zu\n    BESTELLUNG ||--|| LIEFERUNG : \"wird erfuellt als\"\n    KURIER ||--o{ LIEFERUNG : uebernimmt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ecommerce-catalog-orders",
+    "prompt": {
+      "en": "An online shop organizes products into categories and lets customers order them.",
+      "de": "Ein Onlineshop ordnet Produkte in Kategorien ein und lässt Kunden diese bestellen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CATEGORY {\n        string id PK\n        string name\n    }\n    PRODUCT {\n        string id PK\n        string categoryId FK\n        string name\n        float price\n        int stockQuantity\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        datetime placedAt\n        string status\n    }\n    ORDER_ITEM {\n        string id PK\n        string orderId FK\n        string productId FK\n        int quantity\n        float unitPrice\n    }\n    CATEGORY ||--o{ PRODUCT : groups\n    CUSTOMER ||--o{ ORDER_ : places\n    ORDER_ ||--o{ ORDER_ITEM : contains\n    PRODUCT ||--o{ ORDER_ITEM : \"ordered as\"",
+          "de": "erDiagram\n    KATEGORIE {\n        string id PK\n        string name\n    }\n    PRODUKT {\n        string id PK\n        string kategorieId FK\n        string name\n        float preis\n        int lagerbestand\n    }\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        datetime aufgegebenAm\n        string status\n    }\n    BESTELLPOSITION {\n        string id PK\n        string bestellungId FK\n        string produktId FK\n        int menge\n        float einzelpreis\n    }\n    KATEGORIE ||--o{ PRODUKT : gruppiert\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    BESTELLUNG ||--o{ BESTELLPOSITION : enthaelt\n    PRODUKT ||--o{ BESTELLPOSITION : \"wird bestellt als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CATEGORY {\n        string id PK\n        string parentCategoryId FK\n        string name\n    }\n    PRODUCT {\n        string id PK\n        string categoryId FK\n        string name\n        float price\n    }\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        datetime placedAt\n    }\n    CATEGORY ||--o{ CATEGORY : \"is subcategory of\"\n    CATEGORY ||--o{ PRODUCT : groups\n    CUSTOMER ||--o{ ORDER_ : places\n    ORDER_ }o--o{ PRODUCT : includes",
+          "de": "erDiagram\n    KATEGORIE {\n        string id PK\n        string uebergeordneteKategorieId FK\n        string name\n    }\n    PRODUKT {\n        string id PK\n        string kategorieId FK\n        string name\n        float preis\n    }\n    KUNDE {\n        string id PK\n        string name\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        datetime aufgegebenAm\n    }\n    KATEGORIE ||--o{ KATEGORIE : \"ist Unterkategorie von\"\n    KATEGORIE ||--o{ PRODUKT : gruppiert\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    BESTELLUNG }o--o{ PRODUKT : enthaelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "warehouse-shipments",
+    "prompt": {
+      "en": "A warehouse stores items and sends them out in shipments.",
+      "de": "Ein Lager lagert Artikel und versendet sie in Lieferungen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    WAREHOUSE {\n        string id PK\n        string name\n        string location\n    }\n    ITEM {\n        string sku PK\n        string name\n        float weightKg\n    }\n    CARRIER {\n        string id PK\n        string name\n    }\n    SHIPMENT {\n        string id PK\n        string warehouseId FK\n        string carrierId FK\n        datetime shippedAt\n        string destination\n    }\n    SHIPMENT_LINE {\n        string id PK\n        string shipmentId FK\n        string itemSku FK\n        int quantity\n    }\n    WAREHOUSE ||--o{ ITEM : stores\n    WAREHOUSE ||--o{ SHIPMENT : sends\n    CARRIER ||--o{ SHIPMENT : transports\n    SHIPMENT ||--o{ SHIPMENT_LINE : contains\n    ITEM ||--o{ SHIPMENT_LINE : \"packed as\"",
+          "de": "erDiagram\n    LAGER {\n        string id PK\n        string name\n        string standort\n    }\n    ARTIKEL {\n        string sku PK\n        string name\n        float gewichtInKg\n    }\n    SPEDITEUR {\n        string id PK\n        string name\n    }\n    LIEFERUNG {\n        string id PK\n        string lagerId FK\n        string spediteurId FK\n        datetime versendetAm\n        string zielort\n    }\n    LIEFERPOSITION {\n        string id PK\n        string lieferungId FK\n        string artikelSku FK\n        int menge\n    }\n    LAGER ||--o{ ARTIKEL : lagert\n    LAGER ||--o{ LIEFERUNG : versendet\n    SPEDITEUR ||--o{ LIEFERUNG : transportiert\n    LIEFERUNG ||--o{ LIEFERPOSITION : enthaelt\n    ARTIKEL ||--o{ LIEFERPOSITION : \"wird verpackt als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    WAREHOUSE {\n        string id PK\n        string name\n    }\n    ITEM {\n        string sku PK\n        string name\n        int quantityOnHand\n    }\n    SHIPMENT {\n        string id PK\n        string warehouseId FK\n        datetime shippedAt\n    }\n    WAREHOUSE ||--o{ ITEM : stores\n    WAREHOUSE ||--o{ SHIPMENT : sends\n    SHIPMENT }o--o{ ITEM : contains",
+          "de": "erDiagram\n    LAGER {\n        string id PK\n        string name\n    }\n    ARTIKEL {\n        string sku PK\n        string name\n        int lagerbestand\n    }\n    LIEFERUNG {\n        string id PK\n        string lagerId FK\n        datetime versendetAm\n    }\n    LAGER ||--o{ ARTIKEL : lagert\n    LAGER ||--o{ LIEFERUNG : versendet\n    LIEFERUNG }o--o{ ARTIKEL : enthaelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "parking-garage-tickets",
+    "prompt": {
+      "en": "A parking garage issues tickets to vehicles for their assigned spot.",
+      "de": "Ein Parkhaus stellt Fahrzeugen Tickets für ihren zugewiesenen Stellplatz aus."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    GARAGE {\n        string id PK\n        string name\n        int totalSpots\n    }\n    SPOT {\n        string id PK\n        string garageId FK\n        int level\n        string spotNumber\n    }\n    VEHICLE {\n        string id PK\n        string licensePlate\n        string type\n    }\n    TICKET {\n        string id PK\n        string spotId FK\n        string vehicleId FK\n        datetime entryTime\n        datetime exitTime\n        float amountDue\n    }\n    GARAGE ||--o{ SPOT : contains\n    SPOT ||--o{ TICKET : \"is assigned via\"\n    VEHICLE ||--o{ TICKET : receives",
+          "de": "erDiagram\n    PARKHAUS {\n        string id PK\n        string name\n        int stellplaetzeGesamt\n    }\n    STELLPLATZ {\n        string id PK\n        string parkhausId FK\n        int ebene\n        string platznummer\n    }\n    FAHRZEUG {\n        string id PK\n        string kennzeichen\n        string typ\n    }\n    TICKET {\n        string id PK\n        string stellplatzId FK\n        string fahrzeugId FK\n        datetime einfahrtszeit\n        datetime ausfahrtszeit\n        float faelligerBetrag\n    }\n    PARKHAUS ||--o{ STELLPLATZ : enthaelt\n    STELLPLATZ ||--o{ TICKET : \"wird zugewiesen ueber\"\n    FAHRZEUG ||--o{ TICKET : erhaelt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    SPOT {\n        string id PK\n        int level\n        string spotNumber\n        boolean reservedForPermit\n    }\n    VEHICLE {\n        string id PK\n        string licensePlate\n    }\n    PERMIT {\n        string id PK\n        string vehicleId FK\n        string spotId FK\n        date validFrom\n        date validUntil\n        float monthlyFee\n    }\n    SPOT ||--o| PERMIT : \"is reserved by\"\n    VEHICLE ||--o{ PERMIT : holds",
+          "de": "erDiagram\n    STELLPLATZ {\n        string id PK\n        int ebene\n        string platznummer\n        boolean reserviertFuerDauerkarte\n    }\n    FAHRZEUG {\n        string id PK\n        string kennzeichen\n    }\n    DAUERKARTE {\n        string id PK\n        string fahrzeugId FK\n        string stellplatzId FK\n        date gueltigAb\n        date gueltigBis\n        float monatsgebuehr\n    }\n    STELLPLATZ ||--o| DAUERKARTE : \"wird reserviert durch\"\n    FAHRZEUG ||--o{ DAUERKARTE : besitzt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "museum-exhibits",
+    "prompt": {
+      "en": "A museum organizes exhibits into galleries and sells tickets to visitors.",
+      "de": "Ein Museum ordnet Exponate in Galerien ein und verkauft Tickets an Besucher."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    GALLERY {\n        string id PK\n        string name\n        int floor\n    }\n    ARTIST {\n        string id PK\n        string name\n        string nationality\n    }\n    EXHIBIT {\n        string id PK\n        string galleryId FK\n        string artistId FK\n        string title\n        date startDate\n        date endDate\n    }\n    VISITOR {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string visitorId FK\n        string exhibitId FK\n        datetime purchasedAt\n        float price\n    }\n    GALLERY ||--o{ EXHIBIT : houses\n    ARTIST ||--o{ EXHIBIT : creates\n    VISITOR ||--o{ TICKET : buys\n    EXHIBIT ||--o{ TICKET : \"grants access to\"",
+          "de": "erDiagram\n    GALERIE {\n        string id PK\n        string name\n        int etage\n    }\n    KUENSTLER {\n        string id PK\n        string name\n        string nationalitaet\n    }\n    EXPONAT {\n        string id PK\n        string galerieId FK\n        string kuenstlerId FK\n        string titel\n        date beginndatum\n        date enddatum\n    }\n    BESUCHER {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string besucherId FK\n        string exponatId FK\n        datetime gekauftAm\n        float preis\n    }\n    GALERIE ||--o{ EXPONAT : beherbergt\n    KUENSTLER ||--o{ EXPONAT : erschafft\n    BESUCHER ||--o{ TICKET : kauft\n    EXPONAT ||--o{ TICKET : \"gewaehrt Zugang zu\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    GALLERY {\n        string id PK\n        string name\n    }\n    EXHIBIT {\n        string id PK\n        string galleryId FK\n        string title\n    }\n    VISITOR {\n        string id PK\n        string name\n    }\n    GALLERY ||--o{ EXHIBIT : houses\n    VISITOR }o--o{ GALLERY : visits",
+          "de": "erDiagram\n    GALERIE {\n        string id PK\n        string name\n    }\n    EXPONAT {\n        string id PK\n        string galerieId FK\n        string titel\n    }\n    BESUCHER {\n        string id PK\n        string name\n    }\n    GALERIE ||--o{ EXPONAT : beherbergt\n    BESUCHER }o--o{ GALERIE : besucht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "conference-talks",
+    "prompt": {
+      "en": "A conference schedules talks given by speakers and attended by attendees.",
+      "de": "Eine Konferenz plant Vorträge, die von Referenten gehalten und von Teilnehmern besucht werden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CONFERENCE {\n        string id PK\n        string name\n        int year\n    }\n    ROOM {\n        string id PK\n        string conferenceId FK\n        string name\n        int capacity\n    }\n    SPEAKER {\n        string id PK\n        string name\n        string company\n    }\n    TALK {\n        string id PK\n        string roomId FK\n        string speakerId FK\n        string title\n        datetime startTime\n    }\n    ATTENDEE {\n        string id PK\n        string name\n        string email\n    }\n    CONFERENCE ||--o{ ROOM : has\n    ROOM ||--o{ TALK : hosts\n    SPEAKER ||--o{ TALK : gives\n    ATTENDEE }o--o{ TALK : attends",
+          "de": "erDiagram\n    KONFERENZ {\n        string id PK\n        string name\n        int jahr\n    }\n    RAUM {\n        string id PK\n        string konferenzId FK\n        string name\n        int kapazitaet\n    }\n    REFERENT {\n        string id PK\n        string name\n        string firma\n    }\n    VORTRAG {\n        string id PK\n        string raumId FK\n        string referentId FK\n        string titel\n        datetime startzeit\n    }\n    TEILNEHMER {\n        string id PK\n        string name\n        string email\n    }\n    KONFERENZ ||--o{ RAUM : hat\n    RAUM ||--o{ VORTRAG : beherbergt\n    REFERENT ||--o{ VORTRAG : haelt\n    TEILNEHMER }o--o{ VORTRAG : besucht"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    SPEAKER {\n        string id PK\n        string name\n    }\n    TALK {\n        string id PK\n        string speakerId FK\n        string title\n    }\n    ATTENDEE {\n        string id PK\n        string name\n    }\n    ATTENDANCE {\n        string id PK\n        string talkId FK\n        string attendeeId FK\n        datetime checkedInAt\n    }\n    SPEAKER ||--o{ TALK : gives\n    TALK ||--o{ ATTENDANCE : has\n    ATTENDEE ||--o{ ATTENDANCE : makes",
+          "de": "erDiagram\n    REFERENT {\n        string id PK\n        string name\n    }\n    VORTRAG {\n        string id PK\n        string referentId FK\n        string titel\n    }\n    TEILNEHMER {\n        string id PK\n        string name\n    }\n    ANWESENHEIT {\n        string id PK\n        string vortragId FK\n        string teilnehmerId FK\n        datetime eingechecktAm\n    }\n    REFERENT ||--o{ VORTRAG : haelt\n    VORTRAG ||--o{ ANWESENHEIT : hat\n    TEILNEHMER ||--o{ ANWESENHEIT : macht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "freelance-marketplace",
+    "prompt": {
+      "en": "A freelance marketplace lets clients post gigs and freelancers submit proposals.",
+      "de": "Ein Freelancer-Marktplatz lässt Auftraggeber Aufträge veröffentlichen und Freiberufler Angebote einreichen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n        string company\n    }\n    GIG {\n        string id PK\n        string clientId FK\n        string title\n        float budget\n        date postedAt\n    }\n    FREELANCER {\n        string id PK\n        string name\n        float hourlyRate\n    }\n    PROPOSAL {\n        string id PK\n        string gigId FK\n        string freelancerId FK\n        float bidAmount\n        datetime submittedAt\n    }\n    CONTRACT {\n        string id PK\n        string proposalId FK\n        date startedAt\n        float agreedAmount\n    }\n    CLIENT ||--o{ GIG : posts\n    FREELANCER ||--o{ PROPOSAL : submits\n    GIG ||--o{ PROPOSAL : receives\n    PROPOSAL ||--o| CONTRACT : \"is accepted as\"",
+          "de": "erDiagram\n    AUFTRAGGEBER {\n        string id PK\n        string name\n        string firma\n    }\n    AUFTRAG {\n        string id PK\n        string auftraggeberId FK\n        string titel\n        float budget\n        date veroeffentlichtAm\n    }\n    FREIBERUFLER {\n        string id PK\n        string name\n        float stundensatz\n    }\n    ANGEBOT {\n        string id PK\n        string auftragId FK\n        string freiberuflerId FK\n        float gebotsbetrag\n        datetime eingereichtAm\n    }\n    VERTRAG {\n        string id PK\n        string angebotId FK\n        date beginnAm\n        float vereinbarterBetrag\n    }\n    AUFTRAGGEBER ||--o{ AUFTRAG : veroeffentlicht\n    FREIBERUFLER ||--o{ ANGEBOT : reicht_ein\n    AUFTRAG ||--o{ ANGEBOT : erhaelt\n    ANGEBOT ||--o| VERTRAG : \"wird angenommen als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n    }\n    GIG {\n        string id PK\n        string clientId FK\n        string title\n    }\n    FREELANCER {\n        string id PK\n        string name\n    }\n    CLIENT ||--o{ GIG : posts\n    GIG }o--o{ FREELANCER : \"receives interest from\"",
+          "de": "erDiagram\n    AUFTRAGGEBER {\n        string id PK\n        string name\n    }\n    AUFTRAG {\n        string id PK\n        string auftraggeberId FK\n        string titel\n    }\n    FREIBERUFLER {\n        string id PK\n        string name\n    }\n    AUFTRAGGEBER ||--o{ AUFTRAG : veroeffentlicht\n    AUFTRAG }o--o{ FREIBERUFLER : \"erhaelt Interesse von\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "insurance-claims",
+    "prompt": {
+      "en": "An insurer tracks policyholders, their policies, and claims filed against them.",
+      "de": "Ein Versicherer verwaltet Versicherte, deren Policen und die dagegen eingereichten Schadensfälle."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    COVERAGE_TYPE {\n        string id PK\n        string name\n        string description\n    }\n    POLICYHOLDER {\n        string id PK\n        string name\n        date dateOfBirth\n    }\n    POLICY {\n        string id PK\n        string policyholderId FK\n        string coverageTypeId FK\n        date startDate\n        float premium\n    }\n    ADJUSTER {\n        string id PK\n        string name\n    }\n    CLAIM {\n        string id PK\n        string policyId FK\n        string adjusterId FK\n        datetime filedAt\n        float amount\n        string status\n    }\n    COVERAGE_TYPE ||--o{ POLICY : defines\n    POLICYHOLDER ||--o{ POLICY : holds\n    POLICY ||--o{ CLAIM : \"is claimed against\"\n    ADJUSTER ||--o{ CLAIM : reviews",
+          "de": "erDiagram\n    DECKUNGSART {\n        string id PK\n        string name\n        string beschreibung\n    }\n    VERSICHERTER {\n        string id PK\n        string name\n        date geburtsdatum\n    }\n    POLICE {\n        string id PK\n        string versicherterId FK\n        string deckungsartId FK\n        date beginndatum\n        float praemie\n    }\n    SACHBEARBEITER {\n        string id PK\n        string name\n    }\n    SCHADENSFALL {\n        string id PK\n        string policeId FK\n        string sachbearbeiterId FK\n        datetime eingereichtAm\n        float betrag\n        string status\n    }\n    DECKUNGSART ||--o{ POLICE : definiert\n    VERSICHERTER ||--o{ POLICE : haelt\n    POLICE ||--o{ SCHADENSFALL : \"wird beansprucht gegen\"\n    SACHBEARBEITER ||--o{ SCHADENSFALL : prueft"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    POLICYHOLDER {\n        string id PK\n        string name\n    }\n    POLICY {\n        string id PK\n        string policyholderId FK\n        string policyNumber\n        float premium\n    }\n    CLAIM {\n        string id PK\n        string policyId FK\n        datetime filedAt\n        float amount\n    }\n    POLICYHOLDER ||--o{ POLICY : holds\n    POLICY ||--o{ CLAIM : \"results in\"",
+          "de": "erDiagram\n    VERSICHERTER {\n        string id PK\n        string name\n    }\n    POLICE {\n        string id PK\n        string versicherterId FK\n        string policennummer\n        float praemie\n    }\n    SCHADENSFALL {\n        string id PK\n        string policeId FK\n        datetime eingereichtAm\n        float betrag\n    }\n    VERSICHERTER ||--o{ POLICE : haelt\n    POLICE ||--o{ SCHADENSFALL : \"fuehrt zu\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "voting-system",
+    "prompt": {
+      "en": "A voting system tracks elections, candidates and voters casting ballots.",
+      "de": "Ein Wahlsystem verwaltet Wahlen, Kandidaten und Wähler, die Stimmzettel abgeben."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    ELECTION {\n        string id PK\n        string name\n        date electionDate\n    }\n    PARTY {\n        string id PK\n        string name\n    }\n    CANDIDATE {\n        string id PK\n        string electionId FK\n        string partyId FK\n        string name\n    }\n    VOTER {\n        string id PK\n        string name\n        string registeredAddress\n    }\n    BALLOT {\n        string id PK\n        string electionId FK\n        string voterId FK\n        string candidateId FK\n        datetime castAt\n    }\n    ELECTION ||--o{ CANDIDATE : lists\n    PARTY ||--o{ CANDIDATE : nominates\n    ELECTION ||--o{ BALLOT : collects\n    VOTER ||--o{ BALLOT : casts\n    CANDIDATE ||--o{ BALLOT : receives",
+          "de": "erDiagram\n    WAHL {\n        string id PK\n        string name\n        date wahltag\n    }\n    PARTEI {\n        string id PK\n        string name\n    }\n    KANDIDAT {\n        string id PK\n        string wahlId FK\n        string parteiId FK\n        string name\n    }\n    WAEHLER {\n        string id PK\n        string name\n        string meldeadresse\n    }\n    STIMMZETTEL {\n        string id PK\n        string wahlId FK\n        string waehlerId FK\n        string kandidatId FK\n        datetime abgegebenAm\n    }\n    WAHL ||--o{ KANDIDAT : listet_auf\n    PARTEI ||--o{ KANDIDAT : nominiert\n    WAHL ||--o{ STIMMZETTEL : sammelt\n    WAEHLER ||--o{ STIMMZETTEL : gibt_ab\n    KANDIDAT ||--o{ STIMMZETTEL : erhaelt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    ELECTION {\n        string id PK\n        string name\n        date electionDate\n    }\n    CANDIDATE {\n        string id PK\n        string electionId FK\n        string name\n    }\n    VOTER {\n        string id PK\n        string name\n    }\n    PARTICIPATION {\n        string id PK\n        string electionId FK\n        string voterId FK\n        datetime votedAt\n    }\n    VOTE_TALLY {\n        string id PK\n        string candidateId FK\n        int voteCount\n    }\n    ELECTION ||--o{ CANDIDATE : lists\n    ELECTION ||--o{ PARTICIPATION : has\n    VOTER ||--o{ PARTICIPATION : makes\n    CANDIDATE ||--|| VOTE_TALLY : accumulates",
+          "de": "erDiagram\n    WAHL {\n        string id PK\n        string name\n        date wahltag\n    }\n    KANDIDAT {\n        string id PK\n        string wahlId FK\n        string name\n    }\n    WAEHLER {\n        string id PK\n        string name\n    }\n    TEILNAHME {\n        string id PK\n        string wahlId FK\n        string waehlerId FK\n        datetime gewaehltAm\n    }\n    STIMMENZAEHLUNG {\n        string id PK\n        string kandidatId FK\n        int stimmenanzahl\n    }\n    WAHL ||--o{ KANDIDAT : listet_auf\n    WAHL ||--o{ TEILNAHME : hat\n    WAEHLER ||--o{ TEILNAHME : macht\n    KANDIDAT ||--|| STIMMENZAEHLUNG : sammelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "loyalty-points-program",
+    "prompt": {
+      "en": "A shop rewards customers with loyalty points for their purchases.",
+      "de": "Ein Geschäft belohnt Kunden mit Treuepunkten für ihre Käufe."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    POINTS_ACCOUNT {\n        string id PK\n        string customerId FK\n        int balance\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        float amount\n        datetime purchasedAt\n    }\n    POINTS_TRANSACTION {\n        string id PK\n        string accountId FK\n        string purchaseId FK\n        int pointsChange\n        datetime occurredAt\n    }\n    CUSTOMER ||--|| POINTS_ACCOUNT : has\n    CUSTOMER ||--o{ PURCHASE : makes\n    PURCHASE ||--|| POINTS_TRANSACTION : earns\n    POINTS_ACCOUNT ||--o{ POINTS_TRANSACTION : records",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    PUNKTEKONTO {\n        string id PK\n        string kundeId FK\n        int kontostand\n    }\n    KAUF {\n        string id PK\n        string kundeId FK\n        float betrag\n        datetime getaetigtAm\n    }\n    PUNKTEBUCHUNG {\n        string id PK\n        string kontoId FK\n        string kaufId FK\n        int punkteAenderung\n        datetime erfolgtAm\n    }\n    KUNDE ||--|| PUNKTEKONTO : hat\n    KUNDE ||--o{ KAUF : taetigt\n    KAUF ||--|| PUNKTEBUCHUNG : erzielt\n    PUNKTEKONTO ||--o{ PUNKTEBUCHUNG : erfasst"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        int totalPoints\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        float amount\n        int pointsEarned\n        datetime purchasedAt\n    }\n    REWARD {\n        string id PK\n        string customerId FK\n        int pointsRedeemed\n        string rewardName\n        datetime redeemedAt\n    }\n    CUSTOMER ||--o{ PURCHASE : makes\n    CUSTOMER ||--o{ REWARD : redeems",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        int punkteGesamt\n    }\n    KAUF {\n        string id PK\n        string kundeId FK\n        float betrag\n        int erzieltePunkte\n        datetime getaetigtAm\n    }\n    PRAEMIE {\n        string id PK\n        string kundeId FK\n        int eingeloestePunkte\n        string praemienname\n        datetime eingeloestAm\n    }\n    KUNDE ||--o{ KAUF : taetigt\n    KUNDE ||--o{ PRAEMIE : loest_ein"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blog-posts-comments",
+    "prompt": {
+      "en": "A blog lets authors write posts that readers comment on.",
+      "de": "Ein Blog lässt Autoren Beiträge schreiben, die Leser kommentieren."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    AUTHOR {\n        string id PK\n        string name\n        string email\n    }\n    POST {\n        string id PK\n        string authorId FK\n        string title\n        string body\n        datetime publishedAt\n    }\n    TAG {\n        string id PK\n        string name\n    }\n    COMMENT {\n        string id PK\n        string postId FK\n        string authorName\n        string body\n        datetime postedAt\n    }\n    AUTHOR ||--o{ POST : writes\n    POST }o--o{ TAG : \"is tagged with\"\n    POST ||--o{ COMMENT : has",
+          "de": "erDiagram\n    AUTOR {\n        string id PK\n        string name\n        string email\n    }\n    BEITRAG {\n        string id PK\n        string autorId FK\n        string titel\n        string text\n        datetime veroeffentlichtAm\n    }\n    SCHLAGWORT {\n        string id PK\n        string name\n    }\n    KOMMENTAR {\n        string id PK\n        string beitragId FK\n        string kommentatorname\n        string text\n        datetime geschriebenAm\n    }\n    AUTOR ||--o{ BEITRAG : schreibt\n    BEITRAG }o--o{ SCHLAGWORT : \"wird markiert mit\"\n    BEITRAG ||--o{ KOMMENTAR : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    AUTHOR {\n        string id PK\n        string name\n    }\n    POST {\n        string id PK\n        string authorId FK\n        string title\n        string body\n    }\n    READER {\n        string id PK\n        string name\n        string email\n    }\n    COMMENT {\n        string id PK\n        string postId FK\n        string readerId FK\n        string body\n        datetime postedAt\n    }\n    AUTHOR ||--o{ POST : writes\n    POST ||--o{ COMMENT : has\n    READER ||--o{ COMMENT : writes",
+          "de": "erDiagram\n    AUTOR {\n        string id PK\n        string name\n    }\n    BEITRAG {\n        string id PK\n        string autorId FK\n        string titel\n        string text\n    }\n    LESER {\n        string id PK\n        string name\n        string email\n    }\n    KOMMENTAR {\n        string id PK\n        string beitragId FK\n        string leserId FK\n        string text\n        datetime geschriebenAm\n    }\n    AUTOR ||--o{ BEITRAG : schreibt\n    BEITRAG ||--o{ KOMMENTAR : hat\n    LESER ||--o{ KOMMENTAR : schreibt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "forum-threads",
+    "prompt": {
+      "en": "A forum organizes discussion boards into threads that users reply to.",
+      "de": "Ein Forum ordnet Diskussionsbereiche in Themen, auf die Nutzer antworten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    BOARD {\n        string id PK\n        string name\n    }\n    CATEGORY {\n        string id PK\n        string boardId FK\n        string name\n    }\n    USER {\n        string id PK\n        string username\n        date joinedAt\n    }\n    THREAD {\n        string id PK\n        string categoryId FK\n        string userId FK\n        string title\n        datetime createdAt\n    }\n    REPLY {\n        string id PK\n        string threadId FK\n        string userId FK\n        string body\n        datetime postedAt\n    }\n    BOARD ||--o{ CATEGORY : organizes\n    CATEGORY ||--o{ THREAD : contains\n    USER ||--o{ THREAD : starts\n    THREAD ||--o{ REPLY : has\n    USER ||--o{ REPLY : writes",
+          "de": "erDiagram\n    FORUM {\n        string id PK\n        string name\n    }\n    KATEGORIE {\n        string id PK\n        string forumId FK\n        string name\n    }\n    NUTZER {\n        string id PK\n        string benutzername\n        date beigetretenAm\n    }\n    THEMA {\n        string id PK\n        string kategorieId FK\n        string nutzerId FK\n        string titel\n        datetime erstelltAm\n    }\n    ANTWORT {\n        string id PK\n        string themaId FK\n        string nutzerId FK\n        string text\n        datetime geschriebenAm\n    }\n    FORUM ||--o{ KATEGORIE : organisiert\n    KATEGORIE ||--o{ THEMA : enthaelt\n    NUTZER ||--o{ THEMA : startet\n    THEMA ||--o{ ANTWORT : hat\n    NUTZER ||--o{ ANTWORT : schreibt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    USER {\n        string id PK\n        string username\n    }\n    THREAD {\n        string id PK\n        string userId FK\n        string title\n    }\n    REPLY {\n        string id PK\n        string threadId FK\n        string userId FK\n        string body\n    }\n    USER ||--o{ THREAD : starts\n    THREAD ||--o{ REPLY : has\n    USER ||--o{ REPLY : writes",
+          "de": "erDiagram\n    NUTZER {\n        string id PK\n        string benutzername\n    }\n    THEMA {\n        string id PK\n        string nutzerId FK\n        string titel\n    }\n    ANTWORT {\n        string id PK\n        string themaId FK\n        string nutzerId FK\n        string text\n    }\n    NUTZER ||--o{ THEMA : startet\n    THEMA ||--o{ ANTWORT : hat\n    NUTZER ||--o{ ANTWORT : schreibt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "support-ticket-desk",
+    "prompt": {
+      "en": "A support desk lets customers open tickets that agents handle.",
+      "de": "Ein Support-Desk lässt Kunden Tickets eröffnen, die von Mitarbeitern bearbeitet werden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    TEAM {\n        string id PK\n        string name\n    }\n    AGENT {\n        string id PK\n        string teamId FK\n        string name\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string customerId FK\n        string agentId FK\n        string subject\n        string priority\n        string status\n        datetime openedAt\n    }\n    TICKET_UPDATE {\n        string id PK\n        string ticketId FK\n        string note\n        datetime updatedAt\n    }\n    TEAM ||--o{ AGENT : employs\n    CUSTOMER ||--o{ TICKET : opens\n    AGENT ||--o{ TICKET : handles\n    TICKET ||--o{ TICKET_UPDATE : has",
+          "de": "erDiagram\n    TEAM {\n        string id PK\n        string name\n    }\n    MITARBEITER {\n        string id PK\n        string teamId FK\n        string name\n    }\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string kundeId FK\n        string mitarbeiterId FK\n        string betreff\n        string prioritaet\n        string status\n        datetime eroeffnetAm\n    }\n    TICKET_UPDATE {\n        string id PK\n        string ticketId FK\n        string notiz\n        datetime aktualisiertAm\n    }\n    TEAM ||--o{ MITARBEITER : beschaeftigt\n    KUNDE ||--o{ TICKET : eroeffnet\n    MITARBEITER ||--o{ TICKET : bearbeitet\n    TICKET ||--o{ TICKET_UPDATE : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    AGENT {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string customerId FK\n        string agentId FK\n        string subject\n        string status\n    }\n    CUSTOMER ||--o{ TICKET : opens\n    AGENT ||--o{ TICKET : handles",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    MITARBEITER {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string kundeId FK\n        string mitarbeiterId FK\n        string betreff\n        string status\n    }\n    KUNDE ||--o{ TICKET : eroeffnet\n    MITARBEITER ||--o{ TICKET : bearbeitet"
+        }
+      }
+    ]
+  },
+  {
+    "id": "streaming-subscriptions",
+    "prompt": {
+      "en": "A streaming service gives subscribers on a plan access to watch titles.",
+      "de": "Ein Streaming-Dienst gewährt Abonnenten mit einem Tarif Zugriff auf Titel."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    PLAN {\n        string id PK\n        string name\n        float monthlyPrice\n    }\n    SUBSCRIBER {\n        string id PK\n        string name\n        string email\n    }\n    SUBSCRIPTION {\n        string id PK\n        string subscriberId FK\n        string planId FK\n        date startedAt\n        boolean active\n    }\n    TITLE {\n        string id PK\n        string name\n        int releaseYear\n        string genre\n    }\n    WATCH_EVENT {\n        string id PK\n        string subscriberId FK\n        string titleId FK\n        datetime watchedAt\n        int progressPercent\n    }\n    PLAN ||--o{ SUBSCRIPTION : defines\n    SUBSCRIBER ||--|| SUBSCRIPTION : has\n    SUBSCRIBER ||--o{ WATCH_EVENT : logs\n    TITLE ||--o{ WATCH_EVENT : \"is watched as\"",
+          "de": "erDiagram\n    TARIF {\n        string id PK\n        string name\n        float monatspreis\n    }\n    ABONNENT {\n        string id PK\n        string name\n        string email\n    }\n    ABONNEMENT {\n        string id PK\n        string abonnentId FK\n        string tarifId FK\n        date beginnAm\n        boolean aktiv\n    }\n    TITEL {\n        string id PK\n        string name\n        int erscheinungsjahr\n        string genre\n    }\n    WIEDERGABE_EREIGNIS {\n        string id PK\n        string abonnentId FK\n        string titelId FK\n        datetime angesehenAm\n        int fortschrittProzent\n    }\n    TARIF ||--o{ ABONNEMENT : definiert\n    ABONNENT ||--|| ABONNEMENT : hat\n    ABONNENT ||--o{ WIEDERGABE_EREIGNIS : erfasst\n    TITEL ||--o{ WIEDERGABE_EREIGNIS : \"wird angesehen als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    SUBSCRIBER {\n        string id PK\n        string name\n        string planTier\n    }\n    TITLE {\n        string id PK\n        string name\n        string genre\n    }\n    SUBSCRIBER }o--o{ TITLE : watches",
+          "de": "erDiagram\n    ABONNENT {\n        string id PK\n        string name\n        string tarifstufe\n    }\n    TITEL {\n        string id PK\n        string name\n        string genre\n    }\n    ABONNENT }o--o{ TITEL : schaut"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bike-sharing",
+    "prompt": {
+      "en": "A bike-sharing service tracks bikes at stations and rentals made by riders.",
+      "de": "Ein Fahrradverleih verwaltet Fahrräder an Stationen und Ausleihen durch Nutzer."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    STATION {\n        string id PK\n        string name\n        int dockCount\n    }\n    BIKE {\n        string id PK\n        string currentStationId FK\n        string model\n        date lastServicedAt\n    }\n    RIDER {\n        string id PK\n        string name\n        string email\n    }\n    RENTAL {\n        string id PK\n        string bikeId FK\n        string riderId FK\n        string startStationId FK\n        string endStationId FK\n        datetime startedAt\n        datetime endedAt\n    }\n    MAINTENANCE_LOG {\n        string id PK\n        string bikeId FK\n        string issue\n        date resolvedAt\n    }\n    STATION ||--o{ BIKE : holds\n    RIDER ||--o{ RENTAL : makes\n    BIKE ||--o{ RENTAL : \"is rented via\"\n    STATION ||--o{ RENTAL : \"starts at\"\n    STATION ||--o{ RENTAL : \"ends at\"\n    BIKE ||--o{ MAINTENANCE_LOG : has",
+          "de": "erDiagram\n    STATION {\n        string id PK\n        string name\n        int anzahlDocks\n    }\n    FAHRRAD {\n        string id PK\n        string aktuelleStationId FK\n        string modell\n        date zuletztGewartetAm\n    }\n    NUTZER {\n        string id PK\n        string name\n        string email\n    }\n    AUSLEIHE {\n        string id PK\n        string fahrradId FK\n        string nutzerId FK\n        string startStationId FK\n        string endStationId FK\n        datetime gestartetAm\n        datetime beendetAm\n    }\n    WARTUNGSPROTOKOLL {\n        string id PK\n        string fahrradId FK\n        string problem\n        date behobenAm\n    }\n    STATION ||--o{ FAHRRAD : haelt\n    NUTZER ||--o{ AUSLEIHE : macht\n    FAHRRAD ||--o{ AUSLEIHE : \"wird ausgeliehen als\"\n    STATION ||--o{ AUSLEIHE : \"startet bei\"\n    STATION ||--o{ AUSLEIHE : \"endet bei\"\n    FAHRRAD ||--o{ WARTUNGSPROTOKOLL : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    STATION {\n        string id PK\n        string name\n    }\n    BIKE {\n        string id PK\n        string stationId FK\n        string status\n    }\n    RIDER {\n        string id PK\n        string name\n    }\n    RENTAL {\n        string id PK\n        string bikeId FK\n        string riderId FK\n        datetime startedAt\n        datetime endedAt\n    }\n    STATION ||--o{ BIKE : holds\n    RIDER ||--o{ RENTAL : makes\n    BIKE ||--o{ RENTAL : \"is rented via\"",
+          "de": "erDiagram\n    STATION {\n        string id PK\n        string name\n    }\n    FAHRRAD {\n        string id PK\n        string stationId FK\n        string status\n    }\n    NUTZER {\n        string id PK\n        string name\n    }\n    AUSLEIHE {\n        string id PK\n        string fahrradId FK\n        string nutzerId FK\n        datetime gestartetAm\n        datetime beendetAm\n    }\n    STATION ||--o{ FAHRRAD : haelt\n    NUTZER ||--o{ AUSLEIHE : macht\n    FAHRRAD ||--o{ AUSLEIHE : \"wird ausgeliehen als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "apartment-maintenance",
+    "prompt": {
+      "en": "An apartment building tracks maintenance requests filed by tenants for their units.",
+      "de": "Ein Wohngebäude verwaltet Instandhaltungsanfragen von Mietern für ihre Wohnungen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    BUILDING {\n        string id PK\n        string address\n    }\n    UNIT {\n        string id PK\n        string buildingId FK\n        string unitNumber\n    }\n    TENANT {\n        string id PK\n        string unitId FK\n        string name\n        date leaseStart\n    }\n    TECHNICIAN {\n        string id PK\n        string name\n        string trade\n    }\n    REQUEST {\n        string id PK\n        string unitId FK\n        string tenantId FK\n        string technicianId FK\n        string description\n        string status\n        datetime filedAt\n    }\n    BUILDING ||--o{ UNIT : contains\n    UNIT ||--|| TENANT : \"is occupied by\"\n    TENANT ||--o{ REQUEST : files\n    UNIT ||--o{ REQUEST : \"is subject of\"\n    TECHNICIAN ||--o{ REQUEST : resolves",
+          "de": "erDiagram\n    GEBAEUDE {\n        string id PK\n        string adresse\n    }\n    WOHNUNG {\n        string id PK\n        string gebaeudeId FK\n        string wohnungsnummer\n    }\n    MIETER {\n        string id PK\n        string wohnungId FK\n        string name\n        date mietbeginn\n    }\n    HAUSMEISTER {\n        string id PK\n        string name\n        string gewerk\n    }\n    ANFRAGE {\n        string id PK\n        string wohnungId FK\n        string mieterId FK\n        string hausmeisterId FK\n        string beschreibung\n        string status\n        datetime gestelltAm\n    }\n    GEBAEUDE ||--o{ WOHNUNG : enthaelt\n    WOHNUNG ||--|| MIETER : \"wird bewohnt von\"\n    MIETER ||--o{ ANFRAGE : stellt\n    WOHNUNG ||--o{ ANFRAGE : \"ist Gegenstand von\"\n    HAUSMEISTER ||--o{ ANFRAGE : loest"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    UNIT {\n        string id PK\n        string unitNumber\n    }\n    TENANT {\n        string id PK\n        string unitId FK\n        string name\n    }\n    REQUEST {\n        string id PK\n        string unitId FK\n        string tenantId FK\n        string description\n        string status\n    }\n    UNIT ||--|| TENANT : \"is occupied by\"\n    TENANT ||--o{ REQUEST : files",
+          "de": "erDiagram\n    WOHNUNG {\n        string id PK\n        string wohnungsnummer\n    }\n    MIETER {\n        string id PK\n        string wohnungId FK\n        string name\n    }\n    ANFRAGE {\n        string id PK\n        string wohnungId FK\n        string mieterId FK\n        string beschreibung\n        string status\n    }\n    WOHNUNG ||--|| MIETER : \"wird bewohnt von\"\n    MIETER ||--o{ ANFRAGE : stellt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "real-estate-listings",
+    "prompt": {
+      "en": "A real estate agency lets agents manage listings of properties for clients.",
+      "de": "Ein Immobilienbüro lässt Makler Angebote von Immobilien für Kunden verwalten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    AGENCY {\n        string id PK\n        string name\n    }\n    AGENT {\n        string id PK\n        string agencyId FK\n        string name\n        string licenseNumber\n    }\n    PROPERTY {\n        string id PK\n        string address\n        float squareMeters\n    }\n    LISTING {\n        string id PK\n        string agentId FK\n        string propertyId FK\n        float askingPrice\n        date listedAt\n    }\n    CLIENT {\n        string id PK\n        string name\n        float budget\n    }\n    AGENCY ||--o{ AGENT : employs\n    AGENT ||--o{ LISTING : manages\n    PROPERTY ||--|| LISTING : \"is advertised as\"\n    CLIENT }o--o{ LISTING : \"makes offers on\"",
+          "de": "erDiagram\n    IMMOBILIENBUERO {\n        string id PK\n        string name\n    }\n    MAKLER {\n        string id PK\n        string bueroId FK\n        string name\n        string lizenznummer\n    }\n    IMMOBILIE {\n        string id PK\n        string adresse\n        float quadratmeter\n    }\n    ANGEBOT {\n        string id PK\n        string maklerId FK\n        string immobilieId FK\n        float angebotspreis\n        date eingestelltAm\n    }\n    KUNDE {\n        string id PK\n        string name\n        float budget\n    }\n    IMMOBILIENBUERO ||--o{ MAKLER : beschaeftigt\n    MAKLER ||--o{ ANGEBOT : verwaltet\n    IMMOBILIE ||--|| ANGEBOT : \"wird beworben als\"\n    KUNDE }o--o{ ANGEBOT : \"gibt Gebote ab auf\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    AGENT {\n        string id PK\n        string name\n    }\n    PROPERTY {\n        string id PK\n        string agentId FK\n        string address\n    }\n    CLIENT {\n        string id PK\n        string agentId FK\n        string name\n        float budget\n    }\n    AGENT ||--o{ PROPERTY : lists\n    AGENT ||--o{ CLIENT : represents",
+          "de": "erDiagram\n    MAKLER {\n        string id PK\n        string name\n    }\n    IMMOBILIE {\n        string id PK\n        string maklerId FK\n        string adresse\n    }\n    KUNDE {\n        string id PK\n        string maklerId FK\n        string name\n        float budget\n    }\n    MAKLER ||--o{ IMMOBILIE : listet\n    MAKLER ||--o{ KUNDE : vertritt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "recipe-app",
+    "prompt": {
+      "en": "A recipe app breaks recipes down into ingredients and steps.",
+      "de": "Eine Rezept-App gliedert Rezepte in Zutaten und Schritte."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    AUTHOR {\n        string id PK\n        string name\n    }\n    RECIPE {\n        string id PK\n        string authorId FK\n        string title\n        int servings\n    }\n    INGREDIENT {\n        string id PK\n        string name\n        string unit\n    }\n    RECIPE_INGREDIENT {\n        string id PK\n        string recipeId FK\n        string ingredientId FK\n        float amount\n    }\n    STEP {\n        string id PK\n        string recipeId FK\n        int stepNumber\n        string instruction\n    }\n    AUTHOR ||--o{ RECIPE : writes\n    RECIPE ||--o{ RECIPE_INGREDIENT : requires\n    INGREDIENT ||--o{ RECIPE_INGREDIENT : \"is used as\"\n    RECIPE ||--o{ STEP : \"is made of\"",
+          "de": "erDiagram\n    AUTOR {\n        string id PK\n        string name\n    }\n    REZEPT {\n        string id PK\n        string autorId FK\n        string titel\n        int portionen\n    }\n    ZUTAT {\n        string id PK\n        string name\n        string einheit\n    }\n    REZEPT_ZUTAT {\n        string id PK\n        string rezeptId FK\n        string zutatId FK\n        float menge\n    }\n    SCHRITT {\n        string id PK\n        string rezeptId FK\n        int schrittnummer\n        string anleitung\n    }\n    AUTOR ||--o{ REZEPT : schreibt\n    REZEPT ||--o{ REZEPT_ZUTAT : benoetigt\n    ZUTAT ||--o{ REZEPT_ZUTAT : \"wird verwendet als\"\n    REZEPT ||--o{ SCHRITT : \"besteht aus\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    RECIPE {\n        string id PK\n        string title\n    }\n    INGREDIENT {\n        string id PK\n        string name\n    }\n    STEP {\n        string id PK\n        string recipeId FK\n        int stepNumber\n        string instruction\n    }\n    RECIPE ||--o{ STEP : \"is made of\"\n    STEP }o--o{ INGREDIENT : uses",
+          "de": "erDiagram\n    REZEPT {\n        string id PK\n        string titel\n    }\n    ZUTAT {\n        string id PK\n        string name\n    }\n    SCHRITT {\n        string id PK\n        string rezeptId FK\n        int schrittnummer\n        string anleitung\n    }\n    REZEPT ||--o{ SCHRITT : \"besteht aus\"\n    SCHRITT }o--o{ ZUTAT : verwendet"
+        }
+      }
+    ]
+  },
+  {
+    "id": "coupon-codes",
+    "prompt": {
+      "en": "A shop tracks coupons and which customers redeem them.",
+      "de": "Ein Geschäft verwaltet Gutscheine und welche Kunden sie einlösen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CAMPAIGN {\n        string id PK\n        string name\n        date startDate\n        date endDate\n    }\n    COUPON {\n        string id PK\n        string campaignId FK\n        string code\n        int discountPercent\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    REDEMPTION {\n        string id PK\n        string couponId FK\n        string customerId FK\n        datetime redeemedAt\n        float orderAmount\n    }\n    CAMPAIGN ||--o{ COUPON : includes\n    CUSTOMER ||--o{ REDEMPTION : makes\n    COUPON ||--o{ REDEMPTION : \"is used via\"",
+          "de": "erDiagram\n    KAMPAGNE {\n        string id PK\n        string name\n        date startdatum\n        date enddatum\n    }\n    GUTSCHEIN {\n        string id PK\n        string kampagneId FK\n        string code\n        int rabattProzent\n    }\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    EINLOESUNG {\n        string id PK\n        string gutscheinId FK\n        string kundeId FK\n        datetime eingeloestAm\n        float bestellwert\n    }\n    KAMPAGNE ||--o{ GUTSCHEIN : umfasst\n    KUNDE ||--o{ EINLOESUNG : macht\n    GUTSCHEIN ||--o{ EINLOESUNG : \"wird genutzt als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    COUPON {\n        string id PK\n        string code\n        int discountPercent\n        int maxUses\n    }\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    CUSTOMER }o--o{ COUPON : redeems",
+          "de": "erDiagram\n    GUTSCHEIN {\n        string id PK\n        string code\n        int rabattProzent\n        int maxNutzungen\n    }\n    KUNDE {\n        string id PK\n        string name\n    }\n    KUNDE }o--o{ GUTSCHEIN : loest_ein"
+        }
+      }
+    ]
+  },
+  {
+    "id": "task-tracker",
+    "prompt": {
+      "en": "A task tracker organizes tasks into projects and assigns them to users.",
+      "de": "Ein Aufgaben-Tracker ordnet Aufgaben in Projekte ein und weist sie Nutzern zu."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    PROJECT {\n        string id PK\n        string name\n        date deadline\n    }\n    USER {\n        string id PK\n        string name\n        string email\n    }\n    TASK {\n        string id PK\n        string projectId FK\n        string assigneeId FK\n        string title\n        string status\n        date dueDate\n    }\n    LABEL {\n        string id PK\n        string name\n        string color\n    }\n    COMMENT {\n        string id PK\n        string taskId FK\n        string userId FK\n        string body\n        datetime postedAt\n    }\n    PROJECT ||--o{ TASK : contains\n    USER ||--o{ TASK : \"is assigned\"\n    TASK }o--o{ LABEL : \"is tagged with\"\n    TASK ||--o{ COMMENT : has\n    USER ||--o{ COMMENT : writes",
+          "de": "erDiagram\n    PROJEKT {\n        string id PK\n        string name\n        date frist\n    }\n    NUTZER {\n        string id PK\n        string name\n        string email\n    }\n    AUFGABE {\n        string id PK\n        string projektId FK\n        string zustaendigerId FK\n        string titel\n        string status\n        date faelligAm\n    }\n    LABEL {\n        string id PK\n        string name\n        string farbe\n    }\n    KOMMENTAR {\n        string id PK\n        string aufgabeId FK\n        string nutzerId FK\n        string text\n        datetime geschriebenAm\n    }\n    PROJEKT ||--o{ AUFGABE : enthaelt\n    NUTZER ||--o{ AUFGABE : \"ist zugewiesen\"\n    AUFGABE }o--o{ LABEL : \"ist markiert mit\"\n    AUFGABE ||--o{ KOMMENTAR : hat\n    NUTZER ||--o{ KOMMENTAR : schreibt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    PROJECT {\n        string id PK\n        string name\n    }\n    TASK {\n        string id PK\n        string projectId FK\n        string title\n        string status\n    }\n    USER {\n        string id PK\n        string name\n    }\n    PROJECT ||--o{ TASK : contains\n    TASK }o--o{ USER : \"is assigned to\"",
+          "de": "erDiagram\n    PROJEKT {\n        string id PK\n        string name\n    }\n    AUFGABE {\n        string id PK\n        string projektId FK\n        string titel\n        string status\n    }\n    NUTZER {\n        string id PK\n        string name\n    }\n    PROJEKT ||--o{ AUFGABE : enthaelt\n    AUFGABE }o--o{ NUTZER : \"ist zugewiesen an\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "book-club",
+    "prompt": {
+      "en": "A book club schedules meetings where members discuss a chosen book.",
+      "de": "Ein Buchklub plant Treffen, bei denen Mitglieder ein ausgewähltes Buch besprechen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    MEMBER {\n        string id PK\n        string name\n        string email\n    }\n    BOOK {\n        string isbn PK\n        string title\n        string author\n    }\n    MEETING {\n        string id PK\n        string bookIsbn FK\n        string hostId FK\n        date meetingDate\n    }\n    RSVP {\n        string id PK\n        string meetingId FK\n        string memberId FK\n        boolean attending\n    }\n    RATING {\n        string id PK\n        string bookIsbn FK\n        string memberId FK\n        int stars\n        string review\n    }\n    MEMBER ||--o{ MEETING : hosts\n    BOOK ||--|| MEETING : \"is discussed at\"\n    MEMBER ||--o{ RSVP : submits\n    MEETING ||--o{ RSVP : collects\n    MEMBER ||--o{ RATING : gives\n    BOOK ||--o{ RATING : receives",
+          "de": "erDiagram\n    MITGLIED {\n        string id PK\n        string name\n        string email\n    }\n    BUCH {\n        string isbn PK\n        string titel\n        string autor\n    }\n    TREFFEN {\n        string id PK\n        string buchIsbn FK\n        string gastgeberId FK\n        date termin\n    }\n    ZUSAGE {\n        string id PK\n        string treffenId FK\n        string mitgliedId FK\n        boolean nimmtTeil\n    }\n    BEWERTUNG {\n        string id PK\n        string buchIsbn FK\n        string mitgliedId FK\n        int sterne\n        string rezension\n    }\n    MITGLIED ||--o{ TREFFEN : ist_gastgeber_von\n    BUCH ||--|| TREFFEN : \"wird besprochen bei\"\n    MITGLIED ||--o{ ZUSAGE : gibt_ab\n    TREFFEN ||--o{ ZUSAGE : sammelt\n    MITGLIED ||--o{ BEWERTUNG : gibt\n    BUCH ||--o{ BEWERTUNG : erhaelt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    MEMBER {\n        string id PK\n        string name\n    }\n    BOOK {\n        string isbn PK\n        string title\n    }\n    MEETING {\n        string id PK\n        string bookIsbn FK\n        date meetingDate\n    }\n    MEMBER }o--o{ MEETING : attends\n    BOOK ||--|| MEETING : \"is discussed at\"",
+          "de": "erDiagram\n    MITGLIED {\n        string id PK\n        string name\n    }\n    BUCH {\n        string isbn PK\n        string titel\n    }\n    TREFFEN {\n        string id PK\n        string buchIsbn FK\n        date termin\n    }\n    MITGLIED }o--o{ TREFFEN : nimmt_teil_an\n    BUCH ||--|| TREFFEN : \"wird besprochen bei\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "carpool-rides",
+    "prompt": {
+      "en": "A carpool app lets drivers offer rides that passengers join.",
+      "de": "Eine Mitfahr-App lässt Fahrer Fahrten anbieten, denen Mitfahrer beitreten."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    DRIVER {\n        string id PK\n        string name\n        string licenseNumber\n    }\n    VEHICLE {\n        string id PK\n        string driverId FK\n        string plateNumber\n        int seatCount\n    }\n    RIDE {\n        string id PK\n        string driverId FK\n        string vehicleId FK\n        string origin\n        string destination\n        datetime departureTime\n    }\n    PASSENGER {\n        string id PK\n        string name\n    }\n    SEAT_RESERVATION {\n        string id PK\n        string rideId FK\n        string passengerId FK\n        string pickupPoint\n    }\n    DRIVER ||--o{ VEHICLE : owns\n    DRIVER ||--o{ RIDE : offers\n    VEHICLE ||--o{ RIDE : \"is used for\"\n    RIDE ||--o{ SEAT_RESERVATION : has\n    PASSENGER ||--o{ SEAT_RESERVATION : makes",
+          "de": "erDiagram\n    FAHRER {\n        string id PK\n        string name\n        string fuehrerscheinnummer\n    }\n    FAHRZEUG {\n        string id PK\n        string fahrerId FK\n        string kennzeichen\n        int sitzplaetze\n    }\n    FAHRT {\n        string id PK\n        string fahrerId FK\n        string fahrzeugId FK\n        string start\n        string ziel\n        datetime abfahrtszeit\n    }\n    MITFAHRER {\n        string id PK\n        string name\n    }\n    SITZPLATZRESERVIERUNG {\n        string id PK\n        string fahrtId FK\n        string mitfahrerId FK\n        string abholpunkt\n    }\n    FAHRER ||--o{ FAHRZEUG : besitzt\n    FAHRER ||--o{ FAHRT : bietet_an\n    FAHRZEUG ||--o{ FAHRT : \"wird genutzt fuer\"\n    FAHRT ||--o{ SITZPLATZRESERVIERUNG : hat\n    MITFAHRER ||--o{ SITZPLATZRESERVIERUNG : macht"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    DRIVER {\n        string id PK\n        string name\n    }\n    RIDE {\n        string id PK\n        string driverId FK\n        string origin\n        string destination\n        datetime departureTime\n        int seatsAvailable\n    }\n    PASSENGER {\n        string id PK\n        string name\n    }\n    DRIVER ||--o{ RIDE : offers\n    PASSENGER }o--o{ RIDE : joins",
+          "de": "erDiagram\n    FAHRER {\n        string id PK\n        string name\n    }\n    FAHRT {\n        string id PK\n        string fahrerId FK\n        string start\n        string ziel\n        datetime abfahrtszeit\n        int freiePlaetze\n    }\n    MITFAHRER {\n        string id PK\n        string name\n    }\n    FAHRER ||--o{ FAHRT : bietet_an\n    MITFAHRER }o--o{ FAHRT : tritt_bei"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blood-donation",
+    "prompt": {
+      "en": "A blood bank tracks donors and the donations they make.",
+      "de": "Eine Blutbank verwaltet Spender und die von ihnen geleisteten Spenden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    DONOR {\n        string id PK\n        string name\n        string bloodType\n    }\n    BLOOD_BANK {\n        string id PK\n        string name\n        string location\n    }\n    DONATION {\n        string id PK\n        string donorId FK\n        string bloodBankId FK\n        datetime donatedAt\n        int volumeMl\n    }\n    BLOOD_UNIT {\n        string id PK\n        string donationId FK\n        date expiresAt\n        string status\n    }\n    HOSPITAL_REQUEST {\n        string id PK\n        string bloodBankId FK\n        string bloodType\n        int unitsNeeded\n        datetime requestedAt\n    }\n    DONOR ||--o{ DONATION : makes\n    BLOOD_BANK ||--o{ DONATION : receives\n    DONATION ||--|| BLOOD_UNIT : \"results in\"\n    BLOOD_BANK ||--o{ HOSPITAL_REQUEST : fulfills",
+          "de": "erDiagram\n    SPENDER {\n        string id PK\n        string name\n        string blutgruppe\n    }\n    BLUTBANK {\n        string id PK\n        string name\n        string standort\n    }\n    SPENDE {\n        string id PK\n        string spenderId FK\n        string blutbankId FK\n        datetime gespendetAm\n        int volumenInMl\n    }\n    BLUTKONSERVE {\n        string id PK\n        string spendeId FK\n        date haltbarBis\n        string status\n    }\n    KRANKENHAUSANFRAGE {\n        string id PK\n        string blutbankId FK\n        string blutgruppe\n        int benoetigteEinheiten\n        datetime angefragtAm\n    }\n    SPENDER ||--o{ SPENDE : leistet\n    BLUTBANK ||--o{ SPENDE : erhaelt\n    SPENDE ||--|| BLUTKONSERVE : \"fuehrt zu\"\n    BLUTBANK ||--o{ KRANKENHAUSANFRAGE : erfuellt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    DONOR {\n        string id PK\n        string name\n        string bloodType\n    }\n    BLOOD_BANK {\n        string id PK\n        string name\n    }\n    DONATION {\n        string id PK\n        string donorId FK\n        string bloodBankId FK\n        datetime donatedAt\n        int volumeMl\n    }\n    DONOR ||--o{ DONATION : makes\n    BLOOD_BANK ||--o{ DONATION : receives",
+          "de": "erDiagram\n    SPENDER {\n        string id PK\n        string name\n        string blutgruppe\n    }\n    BLUTBANK {\n        string id PK\n        string name\n    }\n    SPENDE {\n        string id PK\n        string spenderId FK\n        string blutbankId FK\n        datetime gespendetAm\n        int volumenInMl\n    }\n    SPENDER ||--o{ SPENDE : leistet\n    BLUTBANK ||--o{ SPENDE : erhaelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gaming-leaderboard",
+    "prompt": {
+      "en": "A gaming platform records scores that players achieve in games.",
+      "de": "Eine Gaming-Plattform erfasst Punktestände, die Spieler in Spielen erzielen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    PLAYER {\n        string id PK\n        string username\n        date joinedAt\n    }\n    GAME {\n        string id PK\n        string title\n        string genre\n    }\n    MATCH {\n        string id PK\n        string gameId FK\n        datetime playedAt\n    }\n    SCORE {\n        string id PK\n        string matchId FK\n        string playerId FK\n        int points\n    }\n    ACHIEVEMENT {\n        string id PK\n        string playerId FK\n        string gameId FK\n        string title\n        datetime unlockedAt\n    }\n    GAME ||--o{ MATCH : \"is played as\"\n    MATCH ||--o{ SCORE : produces\n    PLAYER ||--o{ SCORE : achieves\n    PLAYER ||--o{ ACHIEVEMENT : unlocks\n    GAME ||--o{ ACHIEVEMENT : defines",
+          "de": "erDiagram\n    SPIELER {\n        string id PK\n        string benutzername\n        date beigetretenAm\n    }\n    SPIEL {\n        string id PK\n        string titel\n        string genre\n    }\n    PARTIE {\n        string id PK\n        string spielId FK\n        datetime gespieltAm\n    }\n    PUNKTESTAND {\n        string id PK\n        string partieId FK\n        string spielerId FK\n        int punkte\n    }\n    ERFOLG {\n        string id PK\n        string spielerId FK\n        string spielId FK\n        string titel\n        datetime freigeschaltetAm\n    }\n    SPIEL ||--o{ PARTIE : \"wird gespielt als\"\n    PARTIE ||--o{ PUNKTESTAND : erzeugt\n    SPIELER ||--o{ PUNKTESTAND : erzielt\n    SPIELER ||--o{ ERFOLG : schaltet_frei\n    SPIEL ||--o{ ERFOLG : definiert"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    PLAYER {\n        string id PK\n        string username\n    }\n    GAME {\n        string id PK\n        string title\n    }\n    SCORE {\n        string id PK\n        string playerId FK\n        string gameId FK\n        int points\n        datetime achievedAt\n    }\n    PLAYER ||--o{ SCORE : achieves\n    GAME ||--o{ SCORE : \"is recorded for\"",
+          "de": "erDiagram\n    SPIELER {\n        string id PK\n        string benutzername\n    }\n    SPIEL {\n        string id PK\n        string titel\n    }\n    PUNKTESTAND {\n        string id PK\n        string spielerId FK\n        string spielId FK\n        int punkte\n        datetime erzieltAm\n    }\n    SPIELER ||--o{ PUNKTESTAND : erzielt\n    SPIEL ||--o{ PUNKTESTAND : \"wird erfasst fuer\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "pet-daycare",
+    "prompt": {
+      "en": "A pet daycare tracks pets owned by clients and their daycare bookings.",
+      "de": "Eine Hundetagesstätte verwaltet Haustiere von Kunden und deren Betreuungsbuchungen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    OWNER {\n        string id PK\n        string name\n        string phone\n    }\n    PET {\n        string id PK\n        string ownerId FK\n        string name\n        string species\n        string breed\n    }\n    STAFF {\n        string id PK\n        string name\n        string role\n    }\n    BOOKING {\n        string id PK\n        string petId FK\n        string staffId FK\n        datetime dropOffAt\n        datetime pickUpAt\n    }\n    VACCINATION {\n        string id PK\n        string petId FK\n        string vaccineName\n        date administeredAt\n    }\n    OWNER ||--o{ PET : owns\n    PET ||--o{ BOOKING : has\n    STAFF ||--o{ BOOKING : supervises\n    PET ||--o{ VACCINATION : has",
+          "de": "erDiagram\n    BESITZER {\n        string id PK\n        string name\n        string telefon\n    }\n    HAUSTIER {\n        string id PK\n        string besitzerId FK\n        string name\n        string tierart\n        string rasse\n    }\n    PERSONAL {\n        string id PK\n        string name\n        string rolle\n    }\n    BUCHUNG {\n        string id PK\n        string haustierId FK\n        string personalId FK\n        datetime abgabeUm\n        datetime abholungUm\n    }\n    IMPFUNG {\n        string id PK\n        string haustierId FK\n        string impfstoffname\n        date verabreichtAm\n    }\n    BESITZER ||--o{ HAUSTIER : besitzt\n    HAUSTIER ||--o{ BUCHUNG : hat\n    PERSONAL ||--o{ BUCHUNG : beaufsichtigt\n    HAUSTIER ||--o{ IMPFUNG : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    OWNER {\n        string id PK\n        string name\n    }\n    PET {\n        string id PK\n        string ownerId FK\n        string name\n    }\n    BOOKING {\n        string id PK\n        string petId FK\n        datetime dropOffAt\n        datetime pickUpAt\n    }\n    OWNER ||--o{ PET : owns\n    PET ||--o{ BOOKING : has",
+          "de": "erDiagram\n    BESITZER {\n        string id PK\n        string name\n    }\n    HAUSTIER {\n        string id PK\n        string besitzerId FK\n        string name\n    }\n    BUCHUNG {\n        string id PK\n        string haustierId FK\n        datetime abgabeUm\n        datetime abholungUm\n    }\n    BESITZER ||--o{ HAUSTIER : besitzt\n    HAUSTIER ||--o{ BUCHUNG : hat"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bakery-orders",
+    "prompt": {
+      "en": "A bakery sells baked goods that customers order.",
+      "de": "Eine Bäckerei verkauft Backwaren, die Kunden bestellen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n        string phone\n    }\n    BAKERY_ITEM {\n        string id PK\n        string name\n        float price\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        datetime pickupTime\n        datetime placedAt\n    }\n    ORDER_LINE {\n        string id PK\n        string orderId FK\n        string itemId FK\n        int quantity\n    }\n    CUSTOM_REQUEST {\n        string id PK\n        string orderId FK\n        string description\n        float extraCost\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    ORDER_ ||--o{ ORDER_LINE : contains\n    BAKERY_ITEM ||--o{ ORDER_LINE : \"ordered as\"\n    ORDER_ ||--o| CUSTOM_REQUEST : includes",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string telefon\n    }\n    BACKWARE {\n        string id PK\n        string name\n        float preis\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        datetime abholzeit\n        datetime aufgegebenAm\n    }\n    BESTELLPOSITION {\n        string id PK\n        string bestellungId FK\n        string backwareId FK\n        int menge\n    }\n    SONDERWUNSCH {\n        string id PK\n        string bestellungId FK\n        string beschreibung\n        float aufpreis\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    BESTELLUNG ||--o{ BESTELLPOSITION : enthaelt\n    BACKWARE ||--o{ BESTELLPOSITION : \"wird bestellt als\"\n    BESTELLUNG ||--o| SONDERWUNSCH : enthaelt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    BAKERY_ITEM {\n        string id PK\n        string name\n        float price\n    }\n    ORDER_ {\n        string id PK\n        string customerId FK\n        datetime placedAt\n    }\n    CUSTOMER ||--o{ ORDER_ : places\n    ORDER_ }o--o{ BAKERY_ITEM : includes",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    BACKWARE {\n        string id PK\n        string name\n        float preis\n    }\n    BESTELLUNG {\n        string id PK\n        string kundeId FK\n        datetime aufgegebenAm\n    }\n    KUNDE ||--o{ BESTELLUNG : gibt_auf\n    BESTELLUNG }o--o{ BACKWARE : enthaelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "airline-bookings",
+    "prompt": {
+      "en": "An airline lets passengers book seats on flights.",
+      "de": "Eine Fluggesellschaft lässt Passagiere Plätze auf Flügen buchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    AIRCRAFT {\n        string id PK\n        string model\n        int seatCapacity\n    }\n    FLIGHT {\n        string id PK\n        string aircraftId FK\n        string flightNumber\n        datetime departureTime\n        string origin\n        string destination\n    }\n    PASSENGER {\n        string id PK\n        string name\n        string passportNumber\n    }\n    BOOKING {\n        string id PK\n        string flightId FK\n        string passengerId FK\n        datetime bookedAt\n        string fareClass\n    }\n    SEAT_ASSIGNMENT {\n        string id PK\n        string bookingId FK\n        string seatNumber\n    }\n    AIRCRAFT ||--o{ FLIGHT : operates\n    FLIGHT ||--o{ BOOKING : \"is booked via\"\n    PASSENGER ||--o{ BOOKING : makes\n    BOOKING ||--|| SEAT_ASSIGNMENT : has",
+          "de": "erDiagram\n    FLUGZEUG {\n        string id PK\n        string modell\n        int sitzplatzkapazitaet\n    }\n    FLUG {\n        string id PK\n        string flugzeugId FK\n        string flugnummer\n        datetime abflugszeit\n        string abflugsort\n        string zielort\n    }\n    PASSAGIER {\n        string id PK\n        string name\n        string reisepassnummer\n    }\n    BUCHUNG {\n        string id PK\n        string flugId FK\n        string passagierId FK\n        datetime gebuchtAm\n        string tarifklasse\n    }\n    SITZPLATZZUWEISUNG {\n        string id PK\n        string buchungId FK\n        string sitzplatznummer\n    }\n    FLUGZEUG ||--o{ FLUG : fliegt\n    FLUG ||--o{ BUCHUNG : \"wird gebucht als\"\n    PASSAGIER ||--o{ BUCHUNG : macht\n    BUCHUNG ||--|| SITZPLATZZUWEISUNG : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    FLIGHT {\n        string id PK\n        string flightNumber\n        datetime departureTime\n    }\n    PASSENGER {\n        string id PK\n        string name\n    }\n    BOOKING {\n        string id PK\n        string flightId FK\n        string passengerId FK\n        string fareClass\n    }\n    FLIGHT ||--o{ BOOKING : \"is booked via\"\n    PASSENGER ||--o{ BOOKING : makes",
+          "de": "erDiagram\n    FLUG {\n        string id PK\n        string flugnummer\n        datetime abflugszeit\n    }\n    PASSAGIER {\n        string id PK\n        string name\n    }\n    BUCHUNG {\n        string id PK\n        string flugId FK\n        string passagierId FK\n        string tarifklasse\n    }\n    FLUG ||--o{ BUCHUNG : \"wird gebucht als\"\n    PASSAGIER ||--o{ BUCHUNG : macht"
+        }
+      }
+    ]
+  },
+  {
+    "id": "concert-ticketing",
+    "prompt": {
+      "en": "A ticketing platform sells tickets to concerts performed by artists.",
+      "de": "Eine Ticketing-Plattform verkauft Tickets für Konzerte, die von Künstlern gespielt werden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    ARTIST {\n        string id PK\n        string name\n        string genre\n    }\n    VENUE {\n        string id PK\n        string name\n        string city\n        int capacity\n    }\n    CONCERT {\n        string id PK\n        string artistId FK\n        string venueId FK\n        date concertDate\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string concertId FK\n        string customerId FK\n        string seatSection\n        float price\n    }\n    ARTIST ||--o{ CONCERT : performs_at\n    VENUE ||--o{ CONCERT : hosts\n    CONCERT ||--o{ TICKET : \"is sold as\"\n    CUSTOMER ||--o{ TICKET : buys",
+          "de": "erDiagram\n    KUENSTLER {\n        string id PK\n        string name\n        string genre\n    }\n    VERANSTALTUNGSORT {\n        string id PK\n        string name\n        string stadt\n        int kapazitaet\n    }\n    KONZERT {\n        string id PK\n        string kuenstlerId FK\n        string veranstaltungsortId FK\n        date konzertdatum\n    }\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    TICKET {\n        string id PK\n        string konzertId FK\n        string kundeId FK\n        string sitzbereich\n        float preis\n    }\n    KUENSTLER ||--o{ KONZERT : tritt_auf\n    VERANSTALTUNGSORT ||--o{ KONZERT : beherbergt\n    KONZERT ||--o{ TICKET : \"wird verkauft als\"\n    KUNDE ||--o{ TICKET : kauft"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    ARTIST {\n        string id PK\n        string name\n    }\n    CONCERT {\n        string id PK\n        string artistId FK\n        date concertDate\n        string location\n    }\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string concertId FK\n        string customerId FK\n        float price\n    }\n    ARTIST ||--o{ CONCERT : performs_at\n    CONCERT ||--o{ TICKET : \"is sold as\"\n    CUSTOMER ||--o{ TICKET : buys",
+          "de": "erDiagram\n    KUENSTLER {\n        string id PK\n        string name\n    }\n    KONZERT {\n        string id PK\n        string kuenstlerId FK\n        date konzertdatum\n        string ort\n    }\n    KUNDE {\n        string id PK\n        string name\n    }\n    TICKET {\n        string id PK\n        string konzertId FK\n        string kundeId FK\n        float preis\n    }\n    KUENSTLER ||--o{ KONZERT : tritt_auf\n    KONZERT ||--o{ TICKET : \"wird verkauft als\"\n    KUNDE ||--o{ TICKET : kauft"
+        }
+      }
+    ]
+  },
+  {
+    "id": "grocery-purchases",
+    "prompt": {
+      "en": "A grocery store tracks customer purchases and the products bought.",
+      "de": "Ein Supermarkt verfolgt Einkäufe von Kunden und die gekauften Produkte."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CATEGORY {\n        string id PK\n        string name\n    }\n    PRODUCT {\n        string id PK\n        string categoryId FK\n        string name\n        float price\n    }\n    CUSTOMER {\n        string id PK\n        string name\n        string loyaltyId\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        datetime purchasedAt\n        float total\n    }\n    PURCHASE_LINE {\n        string id PK\n        string purchaseId FK\n        string productId FK\n        int quantity\n    }\n    CATEGORY ||--o{ PRODUCT : groups\n    CUSTOMER ||--o{ PURCHASE : makes\n    PURCHASE ||--o{ PURCHASE_LINE : contains\n    PRODUCT ||--o{ PURCHASE_LINE : \"bought as\"",
+          "de": "erDiagram\n    KATEGORIE {\n        string id PK\n        string name\n    }\n    PRODUKT {\n        string id PK\n        string kategorieId FK\n        string name\n        float preis\n    }\n    KUNDE {\n        string id PK\n        string name\n        string kundenkartennummer\n    }\n    EINKAUF {\n        string id PK\n        string kundeId FK\n        datetime getaetigtAm\n        float gesamtbetrag\n    }\n    EINKAUFSPOSITION {\n        string id PK\n        string einkaufId FK\n        string produktId FK\n        int menge\n    }\n    KATEGORIE ||--o{ PRODUKT : gruppiert\n    KUNDE ||--o{ EINKAUF : taetigt\n    EINKAUF ||--o{ EINKAUFSPOSITION : enthaelt\n    PRODUKT ||--o{ EINKAUFSPOSITION : \"wird gekauft als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    PRODUCT {\n        string id PK\n        string name\n        float price\n    }\n    CUSTOMER {\n        string id PK\n        string name\n    }\n    PURCHASE {\n        string id PK\n        string customerId FK\n        datetime purchasedAt\n    }\n    CUSTOMER ||--o{ PURCHASE : makes\n    PURCHASE }o--o{ PRODUCT : includes",
+          "de": "erDiagram\n    PRODUKT {\n        string id PK\n        string name\n        float preis\n    }\n    KUNDE {\n        string id PK\n        string name\n    }\n    EINKAUF {\n        string id PK\n        string kundeId FK\n        datetime getaetigtAm\n    }\n    KUNDE ||--o{ EINKAUF : taetigt\n    EINKAUF }o--o{ PRODUKT : enthaelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "coworking-desk-bookings",
+    "prompt": {
+      "en": "A coworking space lets members book desks.",
+      "de": "Ein Coworking-Space lässt Mitglieder Arbeitsplätze buchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    BUILDING {\n        string id PK\n        string address\n    }\n    ROOM {\n        string id PK\n        string buildingId FK\n        string name\n        int floor\n    }\n    DESK {\n        string id PK\n        string roomId FK\n        string deskNumber\n    }\n    MEMBER {\n        string id PK\n        string name\n        string membershipPlan\n    }\n    BOOKING {\n        string id PK\n        string deskId FK\n        string memberId FK\n        date bookedDate\n        time startTime\n        time endTime\n    }\n    BUILDING ||--o{ ROOM : contains\n    ROOM ||--o{ DESK : contains\n    MEMBER ||--o{ BOOKING : makes\n    DESK ||--o{ BOOKING : \"is reserved via\"",
+          "de": "erDiagram\n    GEBAEUDE {\n        string id PK\n        string adresse\n    }\n    RAUM {\n        string id PK\n        string gebaeudeId FK\n        string name\n        int etage\n    }\n    ARBEITSPLATZ {\n        string id PK\n        string raumId FK\n        string platznummer\n    }\n    MITGLIED {\n        string id PK\n        string name\n        string mitgliedschaftsplan\n    }\n    BUCHUNG {\n        string id PK\n        string arbeitsplatzId FK\n        string mitgliedId FK\n        date datum\n        time startzeit\n        time endzeit\n    }\n    GEBAEUDE ||--o{ RAUM : enthaelt\n    RAUM ||--o{ ARBEITSPLATZ : enthaelt\n    MITGLIED ||--o{ BUCHUNG : macht\n    ARBEITSPLATZ ||--o{ BUCHUNG : \"wird reserviert als\""
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    DESK {\n        string id PK\n        string deskNumber\n        string zone\n    }\n    MEMBER {\n        string id PK\n        string name\n    }\n    BOOKING {\n        string id PK\n        string deskId FK\n        string memberId FK\n        date bookedDate\n    }\n    MEMBER ||--o{ BOOKING : makes\n    DESK ||--o{ BOOKING : \"is reserved via\"",
+          "de": "erDiagram\n    ARBEITSPLATZ {\n        string id PK\n        string platznummer\n        string bereich\n    }\n    MITGLIED {\n        string id PK\n        string name\n    }\n    BUCHUNG {\n        string id PK\n        string arbeitsplatzId FK\n        string mitgliedId FK\n        date datum\n    }\n    MITGLIED ||--o{ BUCHUNG : macht\n    ARBEITSPLATZ ||--o{ BUCHUNG : \"wird reserviert als\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "photography-studio-bookings",
+    "prompt": {
+      "en": "A photography studio lets clients book sessions with photographers.",
+      "de": "Ein Fotostudio lässt Kunden Termine mit Fotografen buchen."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n        string email\n    }\n    PHOTOGRAPHER {\n        string id PK\n        string name\n        string specialty\n    }\n    SESSION {\n        string id PK\n        string clientId FK\n        string photographerId FK\n        date sessionDate\n        string location\n    }\n    GALLERY {\n        string id PK\n        string sessionId FK\n        datetime deliveredAt\n    }\n    PHOTO {\n        string id PK\n        string galleryId FK\n        string filename\n        boolean isEdited\n    }\n    CLIENT ||--o{ SESSION : books\n    PHOTOGRAPHER ||--o{ SESSION : conducts\n    SESSION ||--|| GALLERY : \"results in\"\n    GALLERY ||--o{ PHOTO : contains",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n        string email\n    }\n    FOTOGRAF {\n        string id PK\n        string name\n        string spezialgebiet\n    }\n    TERMIN {\n        string id PK\n        string kundeId FK\n        string fotografId FK\n        date datum\n        string ort\n    }\n    GALERIE {\n        string id PK\n        string terminId FK\n        datetime geliefertAm\n    }\n    FOTO {\n        string id PK\n        string galerieId FK\n        string dateiname\n        boolean bearbeitet\n    }\n    KUNDE ||--o{ TERMIN : bucht\n    FOTOGRAF ||--o{ TERMIN : fuehrt_durch\n    TERMIN ||--|| GALERIE : \"fuehrt zu\"\n    GALERIE ||--o{ FOTO : enthaelt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    CLIENT {\n        string id PK\n        string name\n    }\n    PHOTOGRAPHER {\n        string id PK\n        string name\n    }\n    SESSION {\n        string id PK\n        string clientId FK\n        string photographerId FK\n        date sessionDate\n    }\n    CLIENT ||--o{ SESSION : books\n    PHOTOGRAPHER ||--o{ SESSION : conducts",
+          "de": "erDiagram\n    KUNDE {\n        string id PK\n        string name\n    }\n    FOTOGRAF {\n        string id PK\n        string name\n    }\n    TERMIN {\n        string id PK\n        string kundeId FK\n        string fotografId FK\n        date datum\n    }\n    KUNDE ||--o{ TERMIN : bucht\n    FOTOGRAF ||--o{ TERMIN : fuehrt_durch"
+        }
+      }
+    ]
+  },
+  {
+    "id": "language-learning-course",
+    "prompt": {
+      "en": "A language school organizes courses taught by teachers into lessons that students enroll in.",
+      "de": "Eine Sprachschule gliedert von Lehrern unterrichtete Kurse in Lektionen, für die sich Schüler einschreiben."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    TEACHER {\n        string id PK\n        string name\n        string language\n    }\n    COURSE {\n        string id PK\n        string teacherId FK\n        string title\n        string level\n    }\n    LESSON {\n        string id PK\n        string courseId FK\n        int lessonNumber\n        string topic\n    }\n    STUDENT {\n        string id PK\n        string name\n        string nativeLanguage\n    }\n    ENROLLMENT {\n        string id PK\n        string courseId FK\n        string studentId FK\n        date enrolledAt\n    }\n    TEACHER ||--o{ COURSE : teaches\n    COURSE ||--o{ LESSON : \"is made of\"\n    STUDENT ||--o{ ENROLLMENT : makes\n    COURSE ||--o{ ENROLLMENT : has",
+          "de": "erDiagram\n    LEHRER {\n        string id PK\n        string name\n        string sprache\n    }\n    KURS {\n        string id PK\n        string lehrerId FK\n        string titel\n        string niveau\n    }\n    LEKTION {\n        string id PK\n        string kursId FK\n        int lektionsnummer\n        string thema\n    }\n    SCHUELER {\n        string id PK\n        string name\n        string muttersprache\n    }\n    EINSCHREIBUNG {\n        string id PK\n        string kursId FK\n        string schuelerId FK\n        date eingeschriebenAm\n    }\n    LEHRER ||--o{ KURS : unterrichtet\n    KURS ||--o{ LEKTION : \"besteht aus\"\n    SCHUELER ||--o{ EINSCHREIBUNG : macht\n    KURS ||--o{ EINSCHREIBUNG : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    TEACHER {\n        string id PK\n        string name\n    }\n    COURSE {\n        string id PK\n        string teacherId FK\n        string title\n    }\n    STUDENT {\n        string id PK\n        string name\n    }\n    TEACHER ||--o{ COURSE : teaches\n    STUDENT }o--o{ COURSE : \"enrolls in\"",
+          "de": "erDiagram\n    LEHRER {\n        string id PK\n        string name\n    }\n    KURS {\n        string id PK\n        string lehrerId FK\n        string titel\n    }\n    SCHUELER {\n        string id PK\n        string name\n    }\n    LEHRER ||--o{ KURS : unterrichtet\n    SCHUELER }o--o{ KURS : \"schreibt sich ein in\""
+        }
+      }
+    ]
+  },
+  {
+    "id": "volunteer-events",
+    "prompt": {
+      "en": "A volunteer organization lets volunteers sign up for events.",
+      "de": "Eine Freiwilligenorganisation lässt Freiwillige sich für Veranstaltungen anmelden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    ORGANIZATION {\n        string id PK\n        string name\n    }\n    EVENT {\n        string id PK\n        string organizationId FK\n        string title\n        date eventDate\n        string location\n    }\n    VOLUNTEER {\n        string id PK\n        string name\n        string email\n    }\n    SIGNUP {\n        string id PK\n        string eventId FK\n        string volunteerId FK\n        datetime signedUpAt\n        float hoursLogged\n    }\n    SKILL {\n        string id PK\n        string name\n    }\n    ORGANIZATION ||--o{ EVENT : hosts\n    VOLUNTEER ||--o{ SIGNUP : makes\n    EVENT ||--o{ SIGNUP : collects\n    VOLUNTEER }o--o{ SKILL : has",
+          "de": "erDiagram\n    ORGANISATION {\n        string id PK\n        string name\n    }\n    VERANSTALTUNG {\n        string id PK\n        string organisationId FK\n        string titel\n        date datum\n        string ort\n    }\n    FREIWILLIGER {\n        string id PK\n        string name\n        string email\n    }\n    ANMELDUNG {\n        string id PK\n        string veranstaltungId FK\n        string freiwilligerId FK\n        datetime angemeldetAm\n        float geleisteteStunden\n    }\n    FAEHIGKEIT {\n        string id PK\n        string name\n    }\n    ORGANISATION ||--o{ VERANSTALTUNG : veranstaltet\n    FREIWILLIGER ||--o{ ANMELDUNG : macht\n    VERANSTALTUNG ||--o{ ANMELDUNG : sammelt\n    FREIWILLIGER }o--o{ FAEHIGKEIT : hat"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    EVENT {\n        string id PK\n        string title\n        date eventDate\n    }\n    VOLUNTEER {\n        string id PK\n        string name\n    }\n    SIGNUP {\n        string id PK\n        string eventId FK\n        string volunteerId FK\n        datetime signedUpAt\n    }\n    VOLUNTEER ||--o{ SIGNUP : makes\n    EVENT ||--o{ SIGNUP : collects",
+          "de": "erDiagram\n    VERANSTALTUNG {\n        string id PK\n        string titel\n        date datum\n    }\n    FREIWILLIGER {\n        string id PK\n        string name\n    }\n    ANMELDUNG {\n        string id PK\n        string veranstaltungId FK\n        string freiwilligerId FK\n        datetime angemeldetAm\n    }\n    FREIWILLIGER ||--o{ ANMELDUNG : macht\n    VERANSTALTUNG ||--o{ ANMELDUNG : sammelt"
+        }
+      }
+    ]
+  },
+  {
+    "id": "community-garden",
+    "prompt": {
+      "en": "A community garden divides itself into plots tended by members.",
+      "de": "Ein Gemeinschaftsgarten teilt sich in Beete auf, die von Mitgliedern gepflegt werden."
+    },
+    "examples": [
+      {
+        "diagram": {
+          "en": "erDiagram\n    GARDEN {\n        string id PK\n        string name\n        string address\n    }\n    PLOT {\n        string id PK\n        string gardenId FK\n        string plotNumber\n        float sizeSqm\n    }\n    MEMBER {\n        string id PK\n        string name\n        date joinedAt\n    }\n    PLANTING {\n        string id PK\n        string plotId FK\n        string memberId FK\n        string cropName\n        date plantedAt\n    }\n    HARVEST_LOG {\n        string id PK\n        string plantingId FK\n        date harvestedAt\n        float weightKg\n    }\n    GARDEN ||--o{ PLOT : contains\n    MEMBER }o--o{ PLOT : tends\n    PLOT ||--o{ PLANTING : has\n    MEMBER ||--o{ PLANTING : makes\n    PLANTING ||--o{ HARVEST_LOG : produces",
+          "de": "erDiagram\n    GARTEN {\n        string id PK\n        string name\n        string adresse\n    }\n    BEET {\n        string id PK\n        string gartenId FK\n        string beetnummer\n        float flaecheInQm\n    }\n    MITGLIED {\n        string id PK\n        string name\n        date beigetretenAm\n    }\n    PFLANZUNG {\n        string id PK\n        string beetId FK\n        string mitgliedId FK\n        string pflanzenart\n        date gepflanztAm\n    }\n    ERNTEPROTOKOLL {\n        string id PK\n        string pflanzungId FK\n        date geerntetAm\n        float gewichtInKg\n    }\n    GARTEN ||--o{ BEET : enthaelt\n    MITGLIED }o--o{ BEET : pflegt\n    BEET ||--o{ PFLANZUNG : hat\n    MITGLIED ||--o{ PFLANZUNG : macht\n    PFLANZUNG ||--o{ ERNTEPROTOKOLL : erzeugt"
+        }
+      },
+      {
+        "diagram": {
+          "en": "erDiagram\n    GARDEN {\n        string id PK\n        string name\n    }\n    PLOT {\n        string id PK\n        string gardenId FK\n        string plotNumber\n    }\n    MEMBER {\n        string id PK\n        string name\n    }\n    GARDEN ||--o{ PLOT : contains\n    MEMBER }o--o{ PLOT : tends",
+          "de": "erDiagram\n    GARTEN {\n        string id PK\n        string name\n    }\n    BEET {\n        string id PK\n        string gartenId FK\n        string beetnummer\n    }\n    MITGLIED {\n        string id PK\n        string name\n    }\n    GARTEN ||--o{ BEET : enthaelt\n    MITGLIED }o--o{ BEET : pflegt"
+        }
+      }
+    ]
+  }
+]

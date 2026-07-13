@@ -15,7 +15,9 @@ for confidence/correctness w/ 5 buttons.
 Score the answer w/ ts-fsrs, persisting learning data via dexie. 
 For exercise selection: First prefer showing random new (=never done) exercises, if no more are new, pick random due according to fsrs, if none due, pick lowest retention % according to fsrs.
 
-Keep it lean, do not overdesign.
+Keep it lean, do not overdesign. 
 Prototype!
 Stick to @./agents.md.
 Use daisy+tailwind+lucide. 
+
+Integrate into app properly, following patterns (frontpage etc.)

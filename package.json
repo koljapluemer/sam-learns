@@ -20,6 +20,7 @@
     "katex": "^0.17.0",
     "lucide-vue-next": "^1.0.0",
     "mathlive": "^0.110.0",
+    "mermaid": "^11.16.0",
     "papaparse": "^5.5.4",
     "svg-pan-zoom": "^3.6.2",
     "tailwindcss": "^4.3.2",

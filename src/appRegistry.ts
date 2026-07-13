@@ -61,5 +61,15 @@ export const apps: AppDefinition[] = [
       title: 'World Map',
       description: 'Practice locating countries on the world map.'
     }
+  },
+  {
+    slug: 'entity-relation-intuition',
+    name: 'ER Diagram Intuition',
+    description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',
+    component: () => import('./apps/entity-relation-intuition/app/App.vue'),
+    meta: {
+      title: 'ER Diagram Intuition',
+      description: 'Build intuition for basic ER modeling by comparing your sketch to example solutions.'
+    }
   }
 ]
