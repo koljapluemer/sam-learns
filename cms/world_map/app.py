@@ -8,10 +8,12 @@ map renderer the learner app uses. The wrapper adds a target-country
 highlight for curation purposes only — it does not affect the exercise
 learners see.
 
-Two tabs, one per exercise type:
+Three tabs, one per exercise type:
 - "Find in neighborhood": curate enabled/zoom/pan-crop per country.
 - "Find on world map": curate enabled per country (no zoom/pan — the
   exercise always starts at the full, un-zoomed world view).
+- "Identify country": curate enabled per country for the "which country
+  is this" multiple-choice exercise (full world view, target circled).
 
 Controls live inside each tab's content area (not `st.sidebar`, which is
 global and would otherwise mix both tabs' widgets together).
@@ -24,10 +26,13 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from data_io import (
+    IdentifyCountryConfig,
     NeighborhoodConfig,
     WorldMapConfig,
+    load_identify_country_config,
     load_neighborhood_config,
     load_world_map_config,
+    save_identify_country_config,
     save_neighborhood_config,
     save_world_map_config,
 )
@@ -209,10 +214,90 @@ def render_world_map_tab(dev_server_url: str) -> None:
         st.caption(f"{enabled_count} of {len(config)} countries enabled · {reviewed_count} of {len(config)} reviewed")
 
 
+def render_identify_country_tab(dev_server_url: str) -> None:
+    config = load_identify_country_config()
+    countries = sorted(config.keys())
+
+    if not countries:
+        st.warning("No countries in the config yet. Run `uv run python world_map/scripts/import_seed_data.py` first.")
+        return
+
+    if "ic_current_country" not in st.session_state:
+        st.session_state.ic_current_country = countries[0]
+    if "ic_nav_generation" not in st.session_state:
+        st.session_state.ic_nav_generation = 0
+    if st.session_state.ic_current_country not in countries:
+        st.session_state.ic_current_country = countries[0]
+
+    def save_entry(country: str, enabled: bool, reviewed: bool) -> None:
+        config[country] = {"enabled": enabled, "reviewed": reviewed}
+        save_identify_country_config(config)
+
+    controls_col, preview_col = st.columns([1, 3])
+
+    with controls_col:
+        st.subheader("Country")
+        country = st.selectbox(
+            "Country",
+            countries,
+            index=countries.index(st.session_state.ic_current_country),
+            key=f"ic_country_picker_{st.session_state.ic_nav_generation}",
+        )
+        st.session_state.ic_current_country = country
+        entry: IdentifyCountryConfig = config[country]
+
+        enabled = st.checkbox("Enabled", value=entry["enabled"], key=widget_key("ic", "enabled", country))
+        highlight_target = st.checkbox("Highlight + circle target country", value=True, key="ic_highlight_target")
+
+        if enabled != entry["enabled"]:
+            save_entry(country, enabled, reviewed=True)
+            st.success("Saved")
+
+        def decide_and_advance(enabled_value: bool) -> None:
+            save_entry(country, enabled_value, reviewed=True)
+            pool = [c for c in countries if c != country and not config[c]["reviewed"]]
+            if pool:
+                st.session_state.ic_current_country = random.choice(pool)
+                st.session_state.ic_nav_generation += 1
+                st.rerun()
+            else:
+                st.info("No countries left to review.")
+
+        st.divider()
+        undecided = [c for c in countries if c != country and not config[c]["reviewed"]]
+        st.caption(f"{len(undecided)} countries left to review")
+        enable_col, disable_col = st.columns(2)
+        if enable_col.button("Enable and load random next", use_container_width=True, key="ic_enable_next"):
+            decide_and_advance(True)
+        if disable_col.button("Disable and load random next", use_container_width=True, key="ic_disable_next"):
+            decide_and_advance(False)
+
+    with preview_col:
+        st.title(f"{country} — identify country exercise preview")
+        st.caption("full, un-zoomed world view; learner picks the country name from two options")
+        render_preview(
+            dev_server_url,
+            {
+                "preview": 1,
+                "country": country,
+                "highlight": 1 if highlight_target else 0,
+                "marker": 1 if highlight_target else 0,
+            },
+        )
+        st.divider()
+        enabled_count = sum(1 for c in config.values() if c["enabled"])
+        reviewed_count = sum(1 for c in config.values() if c["reviewed"])
+        st.caption(f"{enabled_count} of {len(config)} countries enabled · {reviewed_count} of {len(config)} reviewed")
+
+
 DEV_SERVER_URL = st.sidebar.text_input("Frontend dev server URL", value="http://localhost:5173")
 
-neighborhood_tab, world_map_tab = st.tabs(["Find in neighborhood", "Find on world map"])
+neighborhood_tab, world_map_tab, identify_country_tab = st.tabs(
+    ["Find in neighborhood", "Find on world map", "Identify country"]
+)
 with neighborhood_tab:
     render_neighborhood_tab(DEV_SERVER_URL)
 with world_map_tab:
     render_world_map_tab(DEV_SERVER_URL)
+with identify_country_tab:
+    render_identify_country_tab(DEV_SERVER_URL)

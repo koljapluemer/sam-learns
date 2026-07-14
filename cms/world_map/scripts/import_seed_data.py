@@ -17,9 +17,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from data_io import (  # noqa: E402
     geo_data_path,
+    identify_country_config_path,
+    load_identify_country_config,
     load_neighborhood_config,
     load_world_map_config,
     neighborhood_config_path,
+    save_identify_country_config,
     save_neighborhood_config,
     save_world_map_config,
     world_map_config_path,
@@ -75,6 +78,20 @@ def main() -> None:
 
     save_world_map_config(world_map_config)
     print(f"wrote {world_map_config_path()} ({world_map_added} new countries added, {len(world_map_config)} total)")
+
+    identify_country_config = load_identify_country_config()
+    identify_country_added = 0
+    for country in config:
+        if country in identify_country_config:
+            continue
+        identify_country_config[country] = {"enabled": False, "reviewed": False}
+        identify_country_added += 1
+
+    save_identify_country_config(identify_country_config)
+    print(
+        f"wrote {identify_country_config_path()} "
+        f"({identify_country_added} new countries added, {len(identify_country_config)} total)"
+    )
 
 
 if __name__ == "__main__":

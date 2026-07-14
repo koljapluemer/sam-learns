@@ -7,7 +7,8 @@ const messages = {
     },
     exercise: {
       instruction: 'Find {country} in its neighborhood',
-      instructionWorldMap: 'Find {country} on the world map'
+      instructionWorldMap: 'Find {country} on the world map',
+      instructionIdentify: 'Which country is this?'
     },
     loading: {
       label: 'Loading…'
@@ -19,12 +20,11 @@ const messages = {
   }
 } as const
 
-const locales = ['en'] as const
+export const locales = ['en'] as const
 export type AppLocale = (typeof locales)[number]
 
 export const { useAppI18n, setAppLocale, getStoredLocale } = createLocalI18n({
   messages,
   locales,
-  defaultLocale: 'en',
-  storageKey: 'world-map:locale'
+  defaultLocale: 'en'
 })

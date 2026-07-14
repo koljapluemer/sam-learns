@@ -1,10 +1,11 @@
 """Load/save the world-map exercise curation configs.
 
-Two config files, one per exercise type, both under
-public/data/world-map/ and both fetched at runtime by the learner app:
+Three config files, one per exercise type, all under
+public/data/world-map/ and all fetched at runtime by the learner app:
 
 - neighborhood-exercises.json: "find in its neighborhood" exercise
 - world-map-exercises.json: "find on world map" exercise
+- identify-country-exercises.json: "which country is this" exercise
 """
 
 import json
@@ -19,6 +20,11 @@ class NeighborhoodConfig(TypedDict):
 
 
 class WorldMapConfig(TypedDict):
+    enabled: bool
+    reviewed: bool
+
+
+class IdentifyCountryConfig(TypedDict):
     enabled: bool
     reviewed: bool
 
@@ -43,6 +49,10 @@ def neighborhood_config_path() -> Path:
 
 def world_map_config_path() -> Path:
     return data_dir() / "world-map-exercises.json"
+
+
+def identify_country_config_path() -> Path:
+    return data_dir() / "identify-country-exercises.json"
 
 
 def geo_data_path() -> Path:
@@ -92,3 +102,22 @@ def load_world_map_config() -> dict[str, WorldMapConfig]:
 
 def save_world_map_config(config: dict[str, WorldMapConfig]) -> None:
     world_map_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+
+
+def load_identify_country_config() -> dict[str, IdentifyCountryConfig]:
+    """Load the config, backfilling `reviewed` the same way as the neighborhood config."""
+    path = identify_country_config_path()
+    if not path.exists():
+        return {}
+    raw: dict[str, dict] = json.loads(path.read_text())
+    return {
+        name: {
+            "enabled": entry["enabled"],
+            "reviewed": entry.get("reviewed", entry["enabled"]),
+        }
+        for name, entry in raw.items()
+    }
+
+
+def save_identify_country_config(config: dict[str, IdentifyCountryConfig]) -> None:
+    identify_country_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))

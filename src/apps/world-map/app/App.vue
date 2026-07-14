@@ -3,7 +3,8 @@ import { computed, defineAsyncComponent, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { Globe } from 'lucide-vue-next'
 import type { FeatureCollection } from 'geojson'
-import { useAppI18n } from './i18n'
+import { locales, useAppI18n } from './i18n'
+import { useAppShell } from '@/shared/shell/shellState'
 import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 
 const ExercisePage = defineAsyncComponent(() => import('../pages/exercise/PageExercise.vue'))
@@ -17,6 +18,7 @@ const previewCountry = computed(() => String(route.query.country ?? ''))
 const previewZoom = computed(() => Number(route.query.zoom ?? 100))
 const previewPanIndex = computed(() => Number(route.query.panIndex ?? 4))
 const previewHighlight = computed(() => route.query.highlight === '1')
+const previewMarker = computed(() => route.query.marker === '1')
 
 const geoData = ref<FeatureCollection | null>(null)
 
@@ -25,6 +27,10 @@ onMounted(async () => {
     geoData.value = await getGeoData()
   }
 })
+
+if (!isPreview.value) {
+  useAppShell(() => ({ title: t('app.title'), icon: Globe, layout: 'contained', locales }))
+}
 </script>
 
 <template>
@@ -39,34 +45,16 @@ onMounted(async () => {
       :zoom="previewZoom"
       :pan-index="previewPanIndex"
       :highlight="previewHighlight"
+      :marker="previewMarker"
     />
   </div>
 
-  <div
-    v-else
-    data-theme="light"
-    class="flex min-h-screen w-full flex-col bg-base-100 text-base-content"
-  >
-    <nav class="navbar border-b border-base-300 bg-base-100/95 shadow-sm">
-      <div class="flex-1">
-        <div class="flex items-center gap-2">
-          <Globe
-            :size="24"
-            aria-hidden="true"
-          />
-          <span class="text-lg font-semibold">{{ t('app.title') }}</span>
-        </div>
+  <Suspense v-else>
+    <ExercisePage />
+    <template #fallback>
+      <div class="flex w-full max-w-xl items-center justify-center rounded-box border border-base-300 bg-base-100 p-10 text-sm text-base-content/70">
+        {{ t('loading.label') }}
       </div>
-    </nav>
-    <main class="flex w-full flex-1 justify-center bg-base-200/40 px-4 py-8">
-      <Suspense>
-        <ExercisePage />
-        <template #fallback>
-          <div class="flex w-full max-w-xl items-center justify-center rounded-box border border-base-300 bg-base-100 p-10 text-sm text-base-content/70">
-            {{ t('loading.label') }}
-          </div>
-        </template>
-      </Suspense>
-    </main>
-  </div>
+    </template>
+  </Suspense>
 </template>

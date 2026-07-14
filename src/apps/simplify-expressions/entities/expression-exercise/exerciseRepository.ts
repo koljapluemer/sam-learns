@@ -1,5 +1,7 @@
 import { appDb } from '@/apps/simplify-expressions/db/appDb'
 import type { ExerciseAttempt, TopicProgress } from './exerciseTypes'
+// shared cross-cutting infra, see docs/adding-an-app.md
+import { logActivity } from '@/shared/activity/useLearningEvent'
 
 const memoryState = {
   exerciseAttempts: [] as ExerciseAttempt[],
@@ -30,6 +32,7 @@ export async function saveAttemptAndProgress(attempt: ExerciseAttempt, progress:
   if (!hasIndexedDb()) {
     memoryState.exerciseAttempts.push(attempt)
     memoryState.topicProgress.set(progress.topic, progress)
+    await logActivity('simplify-expressions')
     return
   }
 
@@ -37,6 +40,7 @@ export async function saveAttemptAndProgress(attempt: ExerciseAttempt, progress:
     await appDb.exerciseAttempts.add(attempt)
     await appDb.topicProgress.put(progress)
   })
+  await logActivity('simplify-expressions')
 }
 
 export function resetExerciseRepositoryForTests() {

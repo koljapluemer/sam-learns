@@ -1,5 +1,7 @@
 import { appDb, makeGapKey, type ClozeGapProgressRow, type LearningEventRow, type TopicProgressRow } from '@/apps/triangle-congruence/db/appDb'
 import type { TriangleTheorem } from '../triangle/triangleTypes'
+// shared cross-cutting infra, see docs/adding-an-app.md
+import { logActivity } from '@/shared/activity/useLearningEvent'
 
 const memoryState = {
   topicProgress: new Map<TriangleTheorem, TopicProgressRow>(),
@@ -37,6 +39,7 @@ export async function saveTopicProgressAndEvent(topicRow: TopicProgressRow, even
   if (!hasIndexedDb()) {
     memoryState.topicProgress.set(topicRow.topicId, topicRow)
     memoryState.learningEvents.push(event)
+    await logActivity('triangle-congruence')
     return
   }
 
@@ -44,6 +47,7 @@ export async function saveTopicProgressAndEvent(topicRow: TopicProgressRow, even
     await appDb.topicProgress.put(topicRow)
     await appDb.learningEvents.add(event)
   })
+  await logActivity('triangle-congruence')
 }
 
 export async function saveClozeGapProgressAndEvent(
@@ -55,6 +59,7 @@ export async function saveClozeGapProgressAndEvent(
     memoryState.clozeGapProgress.set(gapRow.gapKey, gapRow)
     memoryState.topicProgress.set(topicRow.topicId, topicRow)
     memoryState.learningEvents.push(event)
+    await logActivity('triangle-congruence')
     return
   }
 
@@ -63,6 +68,7 @@ export async function saveClozeGapProgressAndEvent(
     await appDb.topicProgress.put(topicRow)
     await appDb.learningEvents.add(event)
   })
+  await logActivity('triangle-congruence')
 }
 
 export function resetProgressRepositoryForTests() {

@@ -1,14 +1,14 @@
 {
   "Afghanistan": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Albania": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Algeria": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "American Samoa": {
@@ -16,12 +16,12 @@
     "reviewed": true
   },
   "Andorra": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Angola": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Anguilla": {
     "enabled": false,
@@ -33,10 +33,10 @@
   },
   "Argentina": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Armenia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Aruba": {
@@ -44,31 +44,31 @@
     "reviewed": true
   },
   "Ashmore and Cartier Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Australia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Austria": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Azerbaijan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Bahamas": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Bahrain": {
     "enabled": false,
     "reviewed": true
   },
   "Bangladesh": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Barbados": {
@@ -77,18 +77,18 @@
   },
   "Belarus": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Belgium": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Belize": {
     "enabled": false,
     "reviewed": true
   },
   "Benin": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Bermuda": {
@@ -97,26 +97,26 @@
   },
   "Bhutan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Bolivia": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Bosnia and Herz.": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Botswana": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Br. Indian Ocean Ter.": {
     "enabled": false,
     "reviewed": true
   },
-  "Brazil": {
+  "Bosnia and Herz.": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Botswana": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Br. Indian Ocean Ter.": {
     "enabled": true,
+    "reviewed": true
+  },
+  "Brazil": {
+    "enabled": false,
     "reviewed": true
   },
   "British Virgin Is.": {
@@ -124,35 +124,35 @@
     "reviewed": true
   },
   "Brunei": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Bulgaria": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Burkina Faso": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Burundi": {
     "enabled": false,
     "reviewed": true
   },
   "Cabo Verde": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Cambodia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Cameroon": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Canada": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Cayman Is.": {
@@ -160,91 +160,91 @@
     "reviewed": true
   },
   "Central African Rep.": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Chad": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Chile": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "China": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Colombia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Comoros": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Congo": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Cook Is.": {
     "enabled": false,
     "reviewed": true
   },
   "Costa Rica": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Croatia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Cuba": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Cura\u00e7ao": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Cyprus": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Czechia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "C\u00f4te d'Ivoire": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Dem. Rep. Congo": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Denmark": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Djibouti": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Dominica": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Dominican Rep.": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Ecuador": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Egypt": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "El Salvador": {
@@ -252,71 +252,71 @@
     "reviewed": true
   },
   "Eq. Guinea": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Eritrea": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Estonia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Ethiopia": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Faeroe Is.": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Falkland Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Fiji": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Finland": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Fr. Polynesia": {
     "enabled": false,
     "reviewed": true
   },
-  "France": {
+  "Fr. Polynesia": {
     "enabled": true,
     "reviewed": true
   },
+  "France": {
+    "enabled": false,
+    "reviewed": true
+  },
   "Gabon": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Gambia": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Georgia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Germany": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Ghana": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Greece": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Greenland": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Grenada": {
@@ -324,27 +324,27 @@
     "reviewed": true
   },
   "Guam": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Guatemala": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Guernsey": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Guinea": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Guinea-Bissau": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Guyana": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Haiti": {
@@ -352,91 +352,91 @@
     "reviewed": true
   },
   "Heard I. and McDonald Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Honduras": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Hong Kong": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Hungary": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Iceland": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "India": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Indian Ocean Ter.": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Indonesia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Iran": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Iraq": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Ireland": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Isle of Man": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Israel": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Italy": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Jamaica": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Japan": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Jersey": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Jordan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Kazakhstan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Kenya": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Kiribati": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Kosovo": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Kuwait": {
@@ -444,31 +444,31 @@
     "reviewed": true
   },
   "Kyrgyzstan": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Laos": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Latvia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Lebanon": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Lesotho": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Liberia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Libya": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Liechtenstein": {
@@ -477,34 +477,34 @@
   },
   "Lithuania": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Luxembourg": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Macao": {
     "enabled": false,
     "reviewed": true
   },
   "Madagascar": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Malawi": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Malaysia": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Maldives": {
     "enabled": false,
     "reviewed": true
   },
-  "Mali": {
+  "Malawi": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Malaysia": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Maldives": {
     "enabled": true,
+    "reviewed": true
+  },
+  "Mali": {
+    "enabled": false,
     "reviewed": true
   },
   "Malta": {
@@ -512,11 +512,11 @@
     "reviewed": true
   },
   "Marshall Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Mauritania": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Mauritius": {
@@ -525,14 +525,14 @@
   },
   "Mexico": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Micronesia": {
     "enabled": false,
     "reviewed": true
   },
   "Moldova": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Monaco": {
@@ -540,12 +540,12 @@
     "reviewed": true
   },
   "Mongolia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Montenegro": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Montserrat": {
     "enabled": false,
@@ -553,58 +553,58 @@
   },
   "Morocco": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Mozambique": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Myanmar": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "N. Cyprus": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "N. Mariana Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Namibia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Nauru": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Nepal": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Netherlands": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "New Caledonia": {
     "enabled": false,
     "reviewed": true
   },
-  "New Zealand": {
+  "New Caledonia": {
     "enabled": true,
     "reviewed": true
   },
+  "New Zealand": {
+    "enabled": false,
+    "reviewed": true
+  },
   "Nicaragua": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Niger": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Nigeria": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Niue": {
@@ -612,67 +612,67 @@
     "reviewed": true
   },
   "Norfolk Island": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "North Korea": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "North Macedonia": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Norway": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Oman": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Pakistan": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Palau": {
     "enabled": false,
     "reviewed": true
   },
-  "Palestine": {
+  "Norway": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Oman": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Pakistan": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Palau": {
     "enabled": true,
+    "reviewed": true
+  },
+  "Palestine": {
+    "enabled": false,
     "reviewed": true
   },
   "Panama": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Papua New Guinea": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Paraguay": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Peru": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Philippines": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Pitcairn Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Poland": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Portugal": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Puerto Rico": {
@@ -681,14 +681,14 @@
   },
   "Qatar": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Romania": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Russia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Rwanda": {
@@ -696,15 +696,15 @@
     "reviewed": true
   },
   "S. Geo. and the Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "S. Sudan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Saint Helena": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Saint Lucia": {
@@ -712,7 +712,7 @@
     "reviewed": true
   },
   "Samoa": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "San Marino": {
@@ -720,31 +720,31 @@
     "reviewed": true
   },
   "Saudi Arabia": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Senegal": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Serbia": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Seychelles": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Siachen Glacier": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Sierra Leone": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Singapore": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Sint Maarten": {
@@ -753,38 +753,38 @@
   },
   "Slovakia": {
     "enabled": false,
-    "reviewed": false
-  },
-  "Slovenia": {
-    "enabled": true,
     "reviewed": true
   },
-  "Solomon Is.": {
+  "Slovenia": {
     "enabled": false,
     "reviewed": true
   },
-  "Somalia": {
+  "Solomon Is.": {
     "enabled": true,
     "reviewed": true
   },
+  "Somalia": {
+    "enabled": false,
+    "reviewed": true
+  },
   "Somaliland": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "South Africa": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "South Korea": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Spain": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Sri Lanka": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "St-Barth\u00e9lemy": {
@@ -800,7 +800,7 @@
     "reviewed": true
   },
   "St. Pierre and Miquelon": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "St. Vin. and Gren.": {
@@ -808,55 +808,55 @@
     "reviewed": true
   },
   "Sudan": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Suriname": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Sweden": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Switzerland": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "Syria": {
-    "enabled": true,
-    "reviewed": true
-  },
-  "S\u00e3o Tom\u00e9 and Principe": {
     "enabled": false,
     "reviewed": true
   },
-  "Taiwan": {
+  "Suriname": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Sweden": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Switzerland": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "Syria": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "S\u00e3o Tom\u00e9 and Principe": {
     "enabled": true,
+    "reviewed": true
+  },
+  "Taiwan": {
+    "enabled": false,
     "reviewed": true
   },
   "Tajikistan": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Tanzania": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Thailand": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Timor-Leste": {
-    "enabled": false,
-    "reviewed": true
-  },
-  "Togo": {
     "enabled": true,
     "reviewed": true
   },
-  "Tonga": {
+  "Togo": {
     "enabled": false,
+    "reviewed": true
+  },
+  "Tonga": {
+    "enabled": true,
     "reviewed": true
   },
   "Trinidad and Tobago": {
@@ -865,14 +865,14 @@
   },
   "Tunisia": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Turkey": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Turkmenistan": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Turks and Caicos Is.": {
@@ -880,8 +880,8 @@
     "reviewed": true
   },
   "Tuvalu": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "U.S. Virgin Is.": {
     "enabled": false,
@@ -889,66 +889,66 @@
   },
   "Uganda": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Ukraine": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "United Arab Emirates": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "United Kingdom": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "United States of America": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Uruguay": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Uzbekistan": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Vanuatu": {
-    "enabled": false,
-    "reviewed": false
+    "enabled": true,
+    "reviewed": true
   },
   "Vatican": {
     "enabled": false,
     "reviewed": true
   },
   "Venezuela": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "Vietnam": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "W. Sahara": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Wallis and Futuna Is.": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   },
   "Yemen": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Zambia": {
     "enabled": false,
-    "reviewed": false
+    "reviewed": true
   },
   "Zimbabwe": {
-    "enabled": true,
+    "enabled": false,
     "reviewed": true
   },
   "eSwatini": {
@@ -956,7 +956,7 @@
     "reviewed": true
   },
   "\u00c5land": {
-    "enabled": false,
+    "enabled": true,
     "reviewed": true
   }
 }

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './Home.vue'
+import StatsPage from './StatsPage.vue'
 import { apps } from './appRegistry'
 
 const router = createRouter({
@@ -12,6 +13,15 @@ const router = createRouter({
       meta: {
         title: 'Sam Learns Things',
         description: 'A meta-app for learning apps and interfaces.'
+      }
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: StatsPage,
+      meta: {
+        title: 'Daily Usage',
+        description: 'Cross-app daily usage stats, stored locally on this device.'
       }
     }
   ].concat(

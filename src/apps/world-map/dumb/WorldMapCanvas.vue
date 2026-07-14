@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { geoPath, select, zoom as d3zoom, zoomIdentity } from 'd3'
+import { geoCentroid, geoPath, select, zoom as d3zoom, zoomIdentity } from 'd3'
 import type { FeatureCollection } from 'geojson'
-import { computeMapProjection } from './mapProjection'
+import { computeMapProjection, computeMarkerRadius, findCountryFeature } from './mapProjection'
 
 const props = defineProps<{
   geoData: FeatureCollection
@@ -11,6 +11,8 @@ const props = defineProps<{
   panIndex?: number
   highlightCountry?: string
   highlightColor?: string
+  markerCountry?: string
+  markerColor?: string
   interactive?: boolean
 }>()
 
@@ -19,6 +21,7 @@ const emit = defineEmits<{
 }>()
 
 const DEFAULT_FILL = '#cbd5e1'
+const DEFAULT_MARKER_COLOR = '#3b82f6'
 const ZOOM_SCALE_EXTENT: [number, number] = [1, 8]
 
 const containerRef = ref<HTMLDivElement | null>(null)
@@ -63,6 +66,20 @@ function render() {
       if (name) emit('countryClicked', name)
     })
 
+  const markerFeature = props.markerCountry ? findCountryFeature(props.geoData, props.markerCountry) : undefined
+  if (markerFeature) {
+    const [cx, cy] = projection(geoCentroid(markerFeature)) ?? [0, 0]
+    const radius = computeMarkerRadius(width, height)
+    g.append('circle')
+      .attr('cx', cx)
+      .attr('cy', cy)
+      .attr('r', radius)
+      .attr('fill', 'none')
+      .attr('stroke', props.markerColor ?? DEFAULT_MARKER_COLOR)
+      .attr('stroke-width', 2)
+      .style('pointer-events', 'none')
+  }
+
   if (props.interactive) {
     const behavior = d3zoom<SVGSVGElement, unknown>()
       .scaleExtent(ZOOM_SCALE_EXTENT)
@@ -83,7 +100,19 @@ onMounted(() => {
 
 onUnmounted(() => resizeObserver?.disconnect())
 
-watch(() => [props.geoData, props.targetCountry, props.zoom, props.panIndex, props.highlightCountry, props.highlightColor], render)
+watch(
+  () => [
+    props.geoData,
+    props.targetCountry,
+    props.zoom,
+    props.panIndex,
+    props.highlightCountry,
+    props.highlightColor,
+    props.markerCountry,
+    props.markerColor
+  ],
+  render
+)
 </script>
 
 <template>

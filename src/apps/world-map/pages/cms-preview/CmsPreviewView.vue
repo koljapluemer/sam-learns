@@ -8,6 +8,7 @@ defineProps<{
   zoom: number
   panIndex: number
   highlight: boolean
+  marker: boolean
 }>()
 
 const CMS_HIGHLIGHT_COLOR = '#f59e0b'
@@ -21,5 +22,7 @@ const CMS_HIGHLIGHT_COLOR = '#f59e0b'
     :pan-index="panIndex"
     :highlight-country="highlight ? country : undefined"
     :highlight-color="highlight ? CMS_HIGHLIGHT_COLOR : undefined"
+    :marker-country="marker ? country : undefined"
+    :marker-color="CMS_HIGHLIGHT_COLOR"
   />
 </template>

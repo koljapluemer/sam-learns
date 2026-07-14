@@ -163,12 +163,11 @@ const messages = {
   }
 } as const
 
-const locales = ['de', 'en'] as const
+export const locales = ['de', 'en'] as const
 export type AppLocale = (typeof locales)[number]
 
 export const { useAppI18n, setAppLocale, getStoredLocale } = createLocalI18n({
   messages,
   locales,
-  defaultLocale: 'de',
-  storageKey: 'simplify-expressions:locale'
+  defaultLocale: 'de'
 })

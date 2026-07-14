@@ -7,6 +7,10 @@ const ZOOM_MIN = 100
 const ZOOM_RANGE = 75
 const ZOOM_COUNTRY_WEIGHT = 0.6
 
+const MARKER_TARGET_RADIUS_PX = 15
+const MARKER_MIN_FRACTION = 0.03
+const MARKER_MAX_FRACTION = 0.14
+
 export function clamp01(value: number): number {
   return Math.max(0, Math.min(1, value))
 }
@@ -31,6 +35,13 @@ export function panIndexToTranslate(panIndex: number, width: number, height: num
 
 export function findCountryFeature(geoData: FeatureCollection, countryName: string): Feature | undefined {
   return geoData.features.find((feature) => feature.properties?.name === countryName)
+}
+
+export function computeMarkerRadius(width: number, height: number): number {
+  const base = Math.min(width, height)
+  const min = base * MARKER_MIN_FRACTION
+  const max = base * MARKER_MAX_FRACTION
+  return Math.min(Math.max(MARKER_TARGET_RADIUS_PX, min), max)
 }
 
 export function computeMapProjection(input: {

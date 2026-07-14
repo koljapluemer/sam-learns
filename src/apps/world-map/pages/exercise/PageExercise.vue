@@ -6,6 +6,7 @@ import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 import { loadNextExercise, submitAnswer, type NextExercise, type SubmittedAnswer } from '@/apps/world-map/entities/progress/progressScheduler'
 import NeighborhoodExerciseView from './NeighborhoodExerciseView.vue'
 import WorldMapExerciseView from './WorldMapExerciseView.vue'
+import IdentifyCountryExerciseView from './IdentifyCountryExerciseView.vue'
 
 type PageState = { mode: 'loading' } | { mode: 'no-exercises' } | { mode: 'exercise'; exercise: NextExercise }
 
@@ -55,6 +56,15 @@ async function handleSubmitted(result: SubmittedAnswer) {
       :country="state.exercise.country"
       :zoom="state.exercise.zoom"
       :pan-index="state.exercise.panIndex"
+      @submitted="handleSubmitted"
+    />
+
+    <IdentifyCountryExerciseView
+      v-else-if="state.exercise.type === 'identify-country'"
+      :key="`identify-${state.exercise.country}-${state.exercise.distractor}`"
+      :geo-data="geoData"
+      :country="state.exercise.country"
+      :distractor="state.exercise.distractor"
       @submitted="handleSubmitted"
     />
 

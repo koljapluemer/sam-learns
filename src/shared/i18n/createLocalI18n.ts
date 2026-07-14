@@ -1,4 +1,6 @@
-import { ref, type Ref } from 'vue'
+import { computed, watchEffect, type Ref } from 'vue'
+import { preferredLocale, setPreferredLocale } from './preferredLocale'
+import { resolveEffectiveLocale } from './resolveEffectiveLocale'
 
 export type MessageValue = string | { [key: string]: MessageValue }
 export type MessageDictionary = Record<string, MessageValue>
@@ -7,7 +9,6 @@ export type CreateLocalI18nConfig<TLocale extends string, TMessages extends Reco
   messages: TMessages
   locales: readonly TLocale[]
   defaultLocale: TLocale
-  storageKey: string
 }
 
 export type LocalI18n<TLocale extends string> = {
@@ -45,31 +46,28 @@ function formatMessage(template: string, params?: Record<string, string | number
 export function createLocalI18n<TLocale extends string, TMessages extends Record<TLocale, MessageDictionary>>(
   config: CreateLocalI18nConfig<TLocale, TMessages>
 ): LocalI18n<TLocale> {
-  const { messages, locales, defaultLocale, storageKey } = config
+  const { messages, locales, defaultLocale } = config
 
-  function isValidLocale(value: string | null): value is TLocale {
-    return value !== null && (locales as readonly string[]).includes(value)
+  // Effective locale = the shared, global preferred locale intersected with what THIS
+  // app actually supports. Apps with a restricted locale set (e.g. German-only) are
+  // meant to stay restricted regardless of the global preference — see docs/adding-an-app.md.
+  const currentLocale = computed(() => resolveEffectiveLocale(locales, defaultLocale, preferredLocale.value))
+
+  function setAppLocale(locale: TLocale) {
+    setPreferredLocale(locale)
   }
 
   function getStoredLocale(): TLocale {
-    const stored = window.localStorage.getItem(storageKey)
-    return isValidLocale(stored) ? stored : defaultLocale
-  }
-
-  function setStoredLocale(locale: TLocale) {
-    window.localStorage.setItem(storageKey, locale)
-  }
-
-  const currentLocale = ref(getStoredLocale()) as Ref<TLocale>
-  document.documentElement.lang = currentLocale.value
-
-  function setAppLocale(locale: TLocale) {
-    currentLocale.value = locale
-    setStoredLocale(locale)
-    document.documentElement.lang = locale
+    return currentLocale.value
   }
 
   function useAppI18n() {
+    // Tied to the calling component's lifecycle: keeps `<html lang>` pointed at
+    // whichever app is actually mounted, and stops updating once that app unmounts.
+    watchEffect(() => {
+      document.documentElement.lang = currentLocale.value
+    })
+
     return {
       locale: currentLocale,
       t(path: string, params?: Record<string, string | number>) {

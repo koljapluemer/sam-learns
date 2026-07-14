@@ -1,6 +1,8 @@
 import { createEmptyCard, fsrs, type Card, type Rating } from 'ts-fsrs'
 import { appDb } from '@/apps/entity-relation-intuition/db/appDb'
 import { getScenarios, type Scenario } from '@/apps/entity-relation-intuition/entities/scenario-content/scenarioContent'
+// shared cross-cutting infra, see docs/adding-an-app.md
+import { logActivity } from '@/shared/activity/useLearningEvent'
 
 const scheduler = fsrs()
 
@@ -49,4 +51,6 @@ export async function submitRating(scenarioId: string, rating: Rating): Promise<
       rating
     })
   ])
+
+  await logActivity('entity-relation-intuition')
 }
