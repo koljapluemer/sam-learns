@@ -34,7 +34,7 @@ onMounted(async () => {
 })
 
 if (!isPreview.value) {
-  useAppShell(() => ({ title: t('app.title'), icon: Globe, layout: 'contained', locales }))
+  useAppShell(() => ({ title: t('app.title'), icon: Globe, layout: 'full-bleed', locales }))
 }
 </script>
 

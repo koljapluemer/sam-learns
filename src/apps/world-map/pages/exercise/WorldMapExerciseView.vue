@@ -66,16 +66,8 @@ function handleClick(clickedCountry: string) {
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
-    <div
-      class="card card-border bg-base-100 p-3 text-center shadow-sm"
-      :class="{ 'bg-success/10': isCorrect }"
-    >
-      <p class="text-sm font-medium">
-        {{ t('exercise.instructionWorldMap', { country }) }}
-      </p>
-    </div>
-    <div class="h-[60vh] w-full overflow-hidden rounded-box border border-base-300">
+  <div class="relative h-full w-full">
+    <div class="absolute inset-0">
       <WorldMapCanvas
         :geo-data="geoData"
         :target-country="country"
@@ -84,6 +76,16 @@ function handleClick(clickedCountry: string) {
         interactive
         @country-clicked="handleClick"
       />
+    </div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center px-3 pt-20 sm:pt-24">
+      <div
+        class="card card-border pointer-events-auto bg-base-100/90 p-3 text-center shadow-sm backdrop-blur"
+        :class="{ 'bg-success/10': isCorrect }"
+      >
+        <p class="text-sm font-medium">
+          {{ t('exercise.instructionWorldMap', { country }) }}
+        </p>
+      </div>
     </div>
   </div>
 </template>

@@ -34,17 +34,17 @@ async function handleSubmitted(result: SubmittedAnswer) {
 </script>
 
 <template>
-  <section class="flex w-full max-w-2xl flex-col gap-4">
+  <section class="relative h-screen w-full overflow-hidden">
     <div
       v-if="state.mode === 'loading' || !geoData"
-      class="flex justify-center py-16 text-sm text-base-content/70"
+      class="flex h-full items-center justify-center text-sm text-base-content/70"
     >
       {{ t('loading.label') }}
     </div>
 
     <div
       v-else-if="state.mode === 'no-exercises'"
-      class="flex flex-col items-center gap-2 py-16 text-center text-sm text-base-content/70"
+      class="flex h-full flex-col items-center justify-center gap-2 text-center text-sm text-base-content/70"
     >
       <p>{{ t('noExercises.title') }}</p>
       <p>{{ t('noExercises.subtitle') }}</p>
