@@ -8,7 +8,8 @@ const messages = {
     exercise: {
       instruction: 'Find {country} in its neighborhood',
       instructionWorldMap: 'Find {country} on the world map',
-      instructionIdentify: 'Which country is this?'
+      instructionIdentify: 'Which country is this?',
+      instructionDistractorChoice: 'Which country is highlighted?'
     },
     loading: {
       label: 'Loading…'

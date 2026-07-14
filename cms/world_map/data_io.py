@@ -1,11 +1,13 @@
 """Load/save the world-map exercise curation configs.
 
-Three config files, one per exercise type, all under
+Four config files, one per exercise type, all under
 public/data/world-map/ and all fetched at runtime by the learner app:
 
 - neighborhood-exercises.json: "find in its neighborhood" exercise
 - world-map-exercises.json: "find on world map" exercise
 - identify-country-exercises.json: "which country is this" exercise
+- distractor-choice-exercises.json: zoomed "which country is this" exercise
+  with a curated per-country distractor list
 """
 
 import json
@@ -26,6 +28,13 @@ class WorldMapConfig(TypedDict):
 
 class IdentifyCountryConfig(TypedDict):
     enabled: bool
+    reviewed: bool
+
+
+class DistractorChoiceConfig(TypedDict):
+    enabled: bool
+    zoom: int
+    distractors: list[str]
     reviewed: bool
 
 
@@ -53,6 +62,10 @@ def world_map_config_path() -> Path:
 
 def identify_country_config_path() -> Path:
     return data_dir() / "identify-country-exercises.json"
+
+
+def distractor_choice_config_path() -> Path:
+    return data_dir() / "distractor-choice-exercises.json"
 
 
 def geo_data_path() -> Path:
@@ -121,3 +134,24 @@ def load_identify_country_config() -> dict[str, IdentifyCountryConfig]:
 
 def save_identify_country_config(config: dict[str, IdentifyCountryConfig]) -> None:
     identify_country_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+
+
+def load_distractor_choice_config() -> dict[str, DistractorChoiceConfig]:
+    """Load the config, backfilling `reviewed`/`distractors` for legacy entries."""
+    path = distractor_choice_config_path()
+    if not path.exists():
+        return {}
+    raw: dict[str, dict] = json.loads(path.read_text())
+    return {
+        name: {
+            "enabled": entry["enabled"],
+            "zoom": entry["zoom"],
+            "distractors": entry.get("distractors", []),
+            "reviewed": entry.get("reviewed", entry["enabled"]),
+        }
+        for name, entry in raw.items()
+    }
+
+
+def save_distractor_choice_config(config: dict[str, DistractorChoiceConfig]) -> None:
+    distractor_choice_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))

@@ -19,6 +19,11 @@ const previewZoom = computed(() => Number(route.query.zoom ?? 100))
 const previewPanIndex = computed(() => Number(route.query.panIndex ?? 4))
 const previewHighlight = computed(() => route.query.highlight === '1')
 const previewMarker = computed(() => route.query.marker === '1')
+const previewDistractors = computed(() =>
+  String(route.query.distractors ?? '')
+    .split(',')
+    .filter(Boolean)
+)
 
 const geoData = ref<FeatureCollection | null>(null)
 
@@ -46,6 +51,7 @@ if (!isPreview.value) {
       :pan-index="previewPanIndex"
       :highlight="previewHighlight"
       :marker="previewMarker"
+      :distractors="previewDistractors"
     />
   </div>
 

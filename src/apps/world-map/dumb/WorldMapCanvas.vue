@@ -11,6 +11,8 @@ const props = defineProps<{
   panIndex?: number
   highlightCountry?: string
   highlightColor?: string
+  secondaryHighlightCountries?: string[]
+  secondaryHighlightColor?: string
   markerCountry?: string
   markerColor?: string
   interactive?: boolean
@@ -48,6 +50,7 @@ function render() {
     panIndex: props.panIndex
   })
   const path = geoPath(projection)
+  const secondaryHighlightSet = new Set(props.secondaryHighlightCountries ?? [])
 
   g.selectAll('path')
     .data(props.geoData.features)
@@ -57,9 +60,12 @@ function render() {
     .attr('data-country', (feature) => feature.properties?.name ?? '')
     .attr('stroke', '#f8fafc')
     .attr('stroke-width', 0.5)
-    .attr('fill', (feature) =>
-      feature.properties?.name === props.highlightCountry ? (props.highlightColor ?? DEFAULT_FILL) : DEFAULT_FILL
-    )
+    .attr('fill', (feature) => {
+      const name = feature.properties?.name
+      if (name === props.highlightCountry) return props.highlightColor ?? DEFAULT_FILL
+      if (name && secondaryHighlightSet.has(name)) return props.secondaryHighlightColor ?? DEFAULT_FILL
+      return DEFAULT_FILL
+    })
     .style('cursor', 'pointer')
     .on('click', (_event, feature) => {
       const name = feature.properties?.name
@@ -108,6 +114,8 @@ watch(
     props.panIndex,
     props.highlightCountry,
     props.highlightColor,
+    props.secondaryHighlightCountries,
+    props.secondaryHighlightColor,
     props.markerCountry,
     props.markerColor
   ],

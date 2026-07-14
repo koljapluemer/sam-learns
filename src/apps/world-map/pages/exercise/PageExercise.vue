@@ -7,6 +7,7 @@ import { loadNextExercise, submitAnswer, type NextExercise, type SubmittedAnswer
 import NeighborhoodExerciseView from './NeighborhoodExerciseView.vue'
 import WorldMapExerciseView from './WorldMapExerciseView.vue'
 import IdentifyCountryExerciseView from './IdentifyCountryExerciseView.vue'
+import DistractorChoiceExerciseView from './DistractorChoiceExerciseView.vue'
 
 type PageState = { mode: 'loading' } | { mode: 'no-exercises' } | { mode: 'exercise'; exercise: NextExercise }
 
@@ -65,6 +66,17 @@ async function handleSubmitted(result: SubmittedAnswer) {
       :geo-data="geoData"
       :country="state.exercise.country"
       :distractor="state.exercise.distractor"
+      @submitted="handleSubmitted"
+    />
+
+    <DistractorChoiceExerciseView
+      v-else-if="state.exercise.type === 'distractor-choice'"
+      :key="`distractor-choice-${state.exercise.country}-${state.exercise.distractor}`"
+      :geo-data="geoData"
+      :country="state.exercise.country"
+      :distractor="state.exercise.distractor"
+      :zoom="state.exercise.zoom"
+      :pan-index="state.exercise.panIndex"
       @submitted="handleSubmitted"
     />
 

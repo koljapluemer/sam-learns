@@ -1,7 +1,7 @@
 import Dexie, { type EntityTable } from 'dexie'
 import type { Card } from 'ts-fsrs'
 
-export type ExerciseType = 'find-in-neighborhood' | 'find-on-world-map' | 'identify-country'
+export type ExerciseType = 'find-in-neighborhood' | 'find-on-world-map' | 'identify-country' | 'distractor-choice'
 
 export type CountryProgressRow = Card & { country: string }
 export type ExerciseProgressRow = Card & { exerciseKey: string; exerciseType: ExerciseType; country: string; panIndex?: number }
@@ -42,5 +42,7 @@ export function makeExerciseKey(type: ExerciseType, country: string, panIndex?: 
       return `${country}:world-map`
     case 'identify-country':
       return `${country}:identify-country`
+    case 'distractor-choice':
+      return `${country}:distractor-choice`
   }
 }

@@ -1,0 +1,2824 @@
+{
+  "Afghanistan": {
+    "distractors": [
+      "Iran",
+      "Pakistan",
+      "Tajikistan",
+      "Turkmenistan",
+      "Uzbekistan",
+      "Albania",
+      "Algeria"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "Albania": {
+    "distractors": [
+      "Greece",
+      "Kosovo",
+      "Montenegro",
+      "North Macedonia",
+      "Serbia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "Algeria": {
+    "distractors": [
+      "Libya",
+      "Mali",
+      "Mauritania",
+      "Morocco",
+      "Niger",
+      "Tunisia",
+      "W. Sahara"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 113
+  },
+  "American Samoa": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 101
+  },
+  "Andorra": {
+    "distractors": [
+      "France",
+      "Spain"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 147
+  },
+  "Angola": {
+    "distractors": [
+      "Congo",
+      "Dem. Rep. Congo",
+      "Namibia",
+      "Zambia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Anguilla": {
+    "distractors": [
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 103
+  },
+  "Antigua and Barb.": {
+    "distractors": [
+      "Anguilla",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Argentina": {
+    "distractors": [
+      "Bolivia",
+      "Brazil",
+      "Chile",
+      "Paraguay",
+      "Uruguay"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "Armenia": {
+    "distractors": [
+      "Azerbaijan",
+      "Georgia",
+      "Iran",
+      "Turkey"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "Aruba": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 150
+  },
+  "Ashmore and Cartier Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "Australia": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 108
+  },
+  "Austria": {
+    "distractors": [
+      "Czechia",
+      "Germany",
+      "Hungary",
+      "Italy",
+      "Liechtenstein",
+      "Slovakia",
+      "Slovenia",
+      "Switzerland"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Azerbaijan": {
+    "distractors": [
+      "Armenia",
+      "Georgia",
+      "Iran",
+      "Russia",
+      "Turkey"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Bahamas": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 133
+  },
+  "Bahrain": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "Bangladesh": {
+    "distractors": [
+      "India",
+      "Myanmar"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "Barbados": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "Belarus": {
+    "distractors": [
+      "Latvia",
+      "Lithuania",
+      "Poland",
+      "Russia",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "Belgium": {
+    "distractors": [
+      "France",
+      "Germany",
+      "Luxembourg",
+      "Netherlands"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "Belize": {
+    "distractors": [
+      "Guatemala",
+      "Mexico"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "Benin": {
+    "distractors": [
+      "Burkina Faso",
+      "Niger",
+      "Nigeria",
+      "Togo"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "Bermuda": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "Bhutan": {
+    "distractors": [
+      "China",
+      "India"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Bolivia": {
+    "distractors": [
+      "Argentina",
+      "Brazil",
+      "Chile",
+      "Paraguay",
+      "Peru"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 116
+  },
+  "Bosnia and Herz.": {
+    "distractors": [
+      "Croatia",
+      "Montenegro",
+      "Serbia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 128
+  },
+  "Botswana": {
+    "distractors": [
+      "Namibia",
+      "South Africa",
+      "Zimbabwe"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "Br. Indian Ocean Ter.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 101
+  },
+  "Brazil": {
+    "distractors": [
+      "Argentina",
+      "Bolivia",
+      "Colombia",
+      "Guyana",
+      "Paraguay",
+      "Peru",
+      "Suriname",
+      "Uruguay",
+      "Venezuela"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 108
+  },
+  "British Virgin Is.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "Brunei": {
+    "distractors": [
+      "Malaysia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "Bulgaria": {
+    "distractors": [
+      "Greece",
+      "North Macedonia",
+      "Romania",
+      "Serbia",
+      "Turkey"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "Burkina Faso": {
+    "distractors": [
+      "Benin",
+      "C\u00f4te d'Ivoire",
+      "Ghana",
+      "Mali",
+      "Niger",
+      "Togo"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Burundi": {
+    "distractors": [
+      "Dem. Rep. Congo",
+      "Rwanda",
+      "Tanzania"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "Cabo Verde": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "Cambodia": {
+    "distractors": [
+      "Laos",
+      "Thailand",
+      "Vietnam"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "Cameroon": {
+    "distractors": [
+      "Central African Rep.",
+      "Chad",
+      "Congo",
+      "Eq. Guinea",
+      "Gabon",
+      "Nigeria"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Canada": {
+    "distractors": [
+      "United States of America"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "Cayman Is.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "Central African Rep.": {
+    "distractors": [
+      "Cameroon",
+      "Chad",
+      "Congo",
+      "Dem. Rep. Congo",
+      "S. Sudan",
+      "Sudan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "Chad": {
+    "distractors": [
+      "Cameroon",
+      "Central African Rep.",
+      "Libya",
+      "Niger",
+      "Nigeria",
+      "Sudan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Chile": {
+    "distractors": [
+      "Argentina",
+      "Bolivia",
+      "Peru"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "China": {
+    "distractors": [
+      "Afghanistan",
+      "Bhutan",
+      "India",
+      "Kazakhstan",
+      "Kyrgyzstan",
+      "Laos",
+      "Mongolia",
+      "Myanmar",
+      "Nepal",
+      "North Korea",
+      "Pakistan",
+      "Russia",
+      "Tajikistan",
+      "Vietnam"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "Colombia": {
+    "distractors": [
+      "Brazil",
+      "Ecuador",
+      "Panama",
+      "Peru",
+      "Venezuela"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "Comoros": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 141
+  },
+  "Congo": {
+    "distractors": [
+      "Angola",
+      "Cameroon",
+      "Central African Rep.",
+      "Dem. Rep. Congo",
+      "Gabon"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "Cook Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 150
+  },
+  "Costa Rica": {
+    "distractors": [
+      "Nicaragua",
+      "Panama"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Croatia": {
+    "distractors": [
+      "Bosnia and Herz.",
+      "Hungary",
+      "Montenegro",
+      "Serbia",
+      "Slovenia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Cuba": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is.",
+      "United States of America"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "Cura\u00e7ao": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "Cyprus": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "Czechia": {
+    "distractors": [
+      "Austria",
+      "Poland",
+      "Slovakia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "C\u00f4te d'Ivoire": {
+    "distractors": [
+      "Burkina Faso",
+      "Ghana",
+      "Guinea",
+      "Liberia",
+      "Mali"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Dem. Rep. Congo": {
+    "distractors": [
+      "Angola",
+      "Burundi",
+      "Central African Rep.",
+      "Congo",
+      "Rwanda",
+      "S. Sudan",
+      "Tanzania",
+      "Uganda",
+      "Zambia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "Denmark": {
+    "distractors": [
+      "Germany"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 129
+  },
+  "Djibouti": {
+    "distractors": [
+      "Eritrea",
+      "Ethiopia",
+      "Somalia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "Dominica": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "Dominican Rep.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Ecuador": {
+    "distractors": [
+      "Colombia",
+      "Peru"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Egypt": {
+    "distractors": [
+      "Israel",
+      "Libya",
+      "Palestine",
+      "Sudan"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 116
+  },
+  "El Salvador": {
+    "distractors": [
+      "Guatemala",
+      "Honduras"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "Eq. Guinea": {
+    "distractors": [
+      "Cameroon",
+      "Gabon"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "Eritrea": {
+    "distractors": [
+      "Djibouti",
+      "Ethiopia",
+      "Sudan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "Estonia": {
+    "distractors": [
+      "Latvia",
+      "Russia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "Ethiopia": {
+    "distractors": [
+      "Djibouti",
+      "Eritrea",
+      "Kenya",
+      "S. Sudan",
+      "Somalia",
+      "Sudan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "Faeroe Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 142
+  },
+  "Falkland Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 134
+  },
+  "Fiji": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "Finland": {
+    "distractors": [
+      "Norway",
+      "Russia",
+      "Sweden"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Fr. Polynesia": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "France": {
+    "distractors": [
+      "Andorra",
+      "Belgium",
+      "Germany",
+      "Italy",
+      "Luxembourg",
+      "Monaco",
+      "Spain",
+      "Switzerland"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Gabon": {
+    "distractors": [
+      "Cameroon",
+      "Congo",
+      "Eq. Guinea"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Gambia": {
+    "distractors": [
+      "Senegal"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "Georgia": {
+    "distractors": [
+      "Armenia",
+      "Azerbaijan",
+      "Russia",
+      "Turkey"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "Germany": {
+    "distractors": [
+      "Austria",
+      "Belgium",
+      "Czechia",
+      "Denmark",
+      "France",
+      "Luxembourg",
+      "Netherlands",
+      "Poland",
+      "Switzerland"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Ghana": {
+    "distractors": [
+      "Burkina Faso",
+      "C\u00f4te d'Ivoire",
+      "Togo"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "Greece": {
+    "distractors": [
+      "Albania",
+      "Bulgaria",
+      "North Macedonia",
+      "Turkey"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 124
+  },
+  "Greenland": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "Grenada": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 103
+  },
+  "Guam": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 146
+  },
+  "Guatemala": {
+    "distractors": [
+      "Belize",
+      "El Salvador",
+      "Honduras",
+      "Mexico"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "Guernsey": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 154
+  },
+  "Guinea": {
+    "distractors": [
+      "C\u00f4te d'Ivoire",
+      "Guinea-Bissau",
+      "Liberia",
+      "Mali",
+      "Senegal",
+      "Sierra Leone"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Guinea-Bissau": {
+    "distractors": [
+      "Guinea",
+      "Senegal"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "Guyana": {
+    "distractors": [
+      "Brazil",
+      "Suriname",
+      "Venezuela"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Haiti": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "Heard I. and McDonald Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Honduras": {
+    "distractors": [
+      "El Salvador",
+      "Guatemala",
+      "Nicaragua"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "Hong Kong": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 143
+  },
+  "Hungary": {
+    "distractors": [
+      "Austria",
+      "Croatia",
+      "Romania",
+      "Serbia",
+      "Slovakia",
+      "Slovenia",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Iceland": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "India": {
+    "distractors": [
+      "Bangladesh",
+      "Bhutan",
+      "China",
+      "Myanmar",
+      "Nepal",
+      "Pakistan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "Indian Ocean Ter.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "Indonesia": {
+    "distractors": [
+      "Malaysia",
+      "Papua New Guinea"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "Iran": {
+    "distractors": [
+      "Afghanistan",
+      "Armenia",
+      "Azerbaijan",
+      "Iraq",
+      "Pakistan",
+      "Turkey",
+      "Turkmenistan"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "Iraq": {
+    "distractors": [
+      "Iran",
+      "Jordan",
+      "Kuwait",
+      "Saudi Arabia",
+      "Syria",
+      "Turkey"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Ireland": {
+    "distractors": [
+      "United Kingdom"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "Isle of Man": {
+    "distractors": [
+      "Jersey",
+      "Guernsey",
+      "\u00c5land",
+      "Faeroe Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "Israel": {
+    "distractors": [
+      "Egypt",
+      "Jordan",
+      "Lebanon",
+      "Palestine",
+      "Syria"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "Italy": {
+    "distractors": [
+      "Austria",
+      "France",
+      "San Marino",
+      "Slovenia",
+      "Switzerland",
+      "Vatican"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Jamaica": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "Japan": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Jersey": {
+    "distractors": [],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "Jordan": {
+    "distractors": [
+      "Iraq",
+      "Israel",
+      "Palestine",
+      "Saudi Arabia",
+      "Syria"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "Kazakhstan": {
+    "distractors": [
+      "China",
+      "Kyrgyzstan",
+      "Russia",
+      "Turkmenistan",
+      "Uzbekistan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "Kenya": {
+    "distractors": [
+      "Ethiopia",
+      "S. Sudan",
+      "Somalia",
+      "Tanzania",
+      "Uganda"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "Kiribati": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "Kosovo": {
+    "distractors": [
+      "Albania",
+      "Montenegro",
+      "North Macedonia",
+      "Serbia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "Kuwait": {
+    "distractors": [
+      "Iraq",
+      "Saudi Arabia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "Kyrgyzstan": {
+    "distractors": [
+      "China",
+      "Kazakhstan",
+      "Tajikistan",
+      "Uzbekistan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "Laos": {
+    "distractors": [
+      "Cambodia",
+      "China",
+      "Myanmar",
+      "Thailand",
+      "Vietnam"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Latvia": {
+    "distractors": [
+      "Belarus",
+      "Estonia",
+      "Lithuania",
+      "Russia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 127
+  },
+  "Lebanon": {
+    "distractors": [
+      "Israel",
+      "Syria"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "Lesotho": {
+    "distractors": [
+      "South Africa"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "Liberia": {
+    "distractors": [
+      "C\u00f4te d'Ivoire",
+      "Guinea",
+      "Sierra Leone"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "Libya": {
+    "distractors": [
+      "Algeria",
+      "Chad",
+      "Egypt",
+      "Niger",
+      "Sudan",
+      "Tunisia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "Liechtenstein": {
+    "distractors": [
+      "Austria",
+      "Switzerland"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "Lithuania": {
+    "distractors": [
+      "Belarus",
+      "Latvia",
+      "Poland",
+      "Estonia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "Luxembourg": {
+    "distractors": [
+      "Belgium",
+      "France",
+      "Germany"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "Macao": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "Madagascar": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "Malawi": {
+    "distractors": [
+      "Mozambique",
+      "Tanzania",
+      "Zambia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 112
+  },
+  "Malaysia": {
+    "distractors": [
+      "Brunei",
+      "Indonesia",
+      "Thailand"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "Maldives": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "Mali": {
+    "distractors": [
+      "Algeria",
+      "Burkina Faso",
+      "C\u00f4te d'Ivoire",
+      "Guinea",
+      "Mauritania",
+      "Niger",
+      "Senegal"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Malta": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "Marshall Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "Mauritania": {
+    "distractors": [
+      "Algeria",
+      "Mali",
+      "Senegal",
+      "W. Sahara"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "Mauritius": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 141
+  },
+  "Mexico": {
+    "distractors": [
+      "Belize",
+      "Guatemala",
+      "United States of America"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "Micronesia": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "Moldova": {
+    "distractors": [
+      "Romania",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "Monaco": {
+    "distractors": [
+      "France"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "Mongolia": {
+    "distractors": [
+      "China",
+      "Russia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Montenegro": {
+    "distractors": [
+      "Albania",
+      "Bosnia and Herz.",
+      "Croatia",
+      "Kosovo",
+      "Serbia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 133
+  },
+  "Montserrat": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "Morocco": {
+    "distractors": [
+      "Algeria",
+      "Spain",
+      "W. Sahara"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Mozambique": {
+    "distractors": [
+      "Malawi",
+      "South Africa",
+      "Tanzania",
+      "Zambia",
+      "Zimbabwe",
+      "eSwatini"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "Myanmar": {
+    "distractors": [
+      "Bangladesh",
+      "China",
+      "India",
+      "Laos",
+      "Thailand"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "N. Cyprus": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "N. Mariana Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Namibia": {
+    "distractors": [
+      "Angola",
+      "Botswana",
+      "South Africa",
+      "Zambia",
+      "Zimbabwe"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "Nauru": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 159
+  },
+  "Nepal": {
+    "distractors": [
+      "China",
+      "India"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "Netherlands": {
+    "distractors": [
+      "Belgium",
+      "Germany"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "New Caledonia": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "New Zealand": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Nicaragua": {
+    "distractors": [
+      "Costa Rica",
+      "Honduras"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "Niger": {
+    "distractors": [
+      "Algeria",
+      "Benin",
+      "Burkina Faso",
+      "Chad",
+      "Libya",
+      "Mali",
+      "Nigeria"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Nigeria": {
+    "distractors": [
+      "Benin",
+      "Cameroon",
+      "Chad",
+      "Niger",
+      "Nicaragua"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "Niue": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "Norfolk Island": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 157
+  },
+  "North Korea": {
+    "distractors": [
+      "China",
+      "Russia",
+      "South Korea"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "North Macedonia": {
+    "distractors": [
+      "Albania",
+      "Bulgaria",
+      "Greece",
+      "Kosovo",
+      "Serbia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "Norway": {
+    "distractors": [
+      "Finland",
+      "Sweden"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "Oman": {
+    "distractors": [
+      "Saudi Arabia",
+      "United Arab Emirates",
+      "Yemen"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Pakistan": {
+    "distractors": [
+      "Afghanistan",
+      "China",
+      "India",
+      "Iran"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "Palau": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Palestine": {
+    "distractors": [
+      "Egypt",
+      "Israel",
+      "Jordan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "Panama": {
+    "distractors": [
+      "Colombia",
+      "Costa Rica"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Papua New Guinea": {
+    "distractors": [
+      "Indonesia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Paraguay": {
+    "distractors": [
+      "Argentina",
+      "Bolivia",
+      "Brazil"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Peru": {
+    "distractors": [
+      "Bolivia",
+      "Brazil",
+      "Chile",
+      "Colombia",
+      "Ecuador"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "Philippines": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Pitcairn Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "Poland": {
+    "distractors": [
+      "Belarus",
+      "Czechia",
+      "Germany",
+      "Lithuania",
+      "Russia",
+      "Slovakia",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "Portugal": {
+    "distractors": [
+      "Spain"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "Puerto Rico": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "Qatar": {
+    "distractors": [
+      "Bahrain",
+      "Kuwait",
+      "Oman"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "Romania": {
+    "distractors": [
+      "Bulgaria",
+      "Hungary",
+      "Moldova",
+      "Serbia",
+      "Ukraine"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "Russia": {
+    "distractors": [
+      "Azerbaijan",
+      "Belarus",
+      "China",
+      "Estonia",
+      "Finland",
+      "Georgia",
+      "Kazakhstan",
+      "Latvia",
+      "Lithuania",
+      "Mongolia",
+      "North Korea",
+      "Norway",
+      "Poland",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 105
+  },
+  "Rwanda": {
+    "distractors": [
+      "Burundi",
+      "Dem. Rep. Congo",
+      "Tanzania",
+      "Uganda"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "S. Geo. and the Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "S. Sudan": {
+    "distractors": [
+      "Central African Rep.",
+      "Dem. Rep. Congo",
+      "Ethiopia",
+      "Kenya",
+      "Sudan",
+      "Uganda"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "Saint Helena": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Saint Lucia": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 146
+  },
+  "Samoa": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "San Marino": {
+    "distractors": [
+      "Italy"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 155
+  },
+  "Saudi Arabia": {
+    "distractors": [
+      "Iraq",
+      "Jordan",
+      "Kuwait",
+      "Oman",
+      "Qatar",
+      "United Arab Emirates",
+      "Yemen"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "Senegal": {
+    "distractors": [
+      "Gambia",
+      "Guinea",
+      "Guinea-Bissau",
+      "Mali",
+      "Mauritania"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "Serbia": {
+    "distractors": [
+      "Albania",
+      "Bosnia and Herz.",
+      "Bulgaria",
+      "Croatia",
+      "Hungary",
+      "Kosovo",
+      "Montenegro",
+      "North Macedonia",
+      "Romania"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Seychelles": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "Siachen Glacier": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "Sierra Leone": {
+    "distractors": [
+      "Guinea",
+      "Liberia",
+      "Burkina Faso"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "Singapore": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "Sint Maarten": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 159
+  },
+  "Slovakia": {
+    "distractors": [
+      "Austria",
+      "Czechia",
+      "Hungary",
+      "Poland",
+      "Ukraine"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Slovenia": {
+    "distractors": [
+      "Austria",
+      "Croatia",
+      "Hungary",
+      "Italy"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "Solomon Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "Somalia": {
+    "distractors": [
+      "Djibouti",
+      "Ethiopia",
+      "Kenya"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "Somaliland": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "South Africa": {
+    "distractors": [
+      "Botswana",
+      "Lesotho",
+      "Mozambique",
+      "Namibia",
+      "Zimbabwe",
+      "eSwatini"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "South Korea": {
+    "distractors": [
+      "North Korea"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "Spain": {
+    "distractors": [
+      "Andorra",
+      "France",
+      "Morocco",
+      "Portugal"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Sri Lanka": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "St-Barth\u00e9lemy": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 159
+  },
+  "St-Martin": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "St. Kitts and Nevis": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "St. Pierre and Miquelon": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "St. Vin. and Gren.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "Sudan": {
+    "distractors": [
+      "Central African Rep.",
+      "Chad",
+      "Egypt",
+      "Eritrea",
+      "Ethiopia",
+      "Libya",
+      "S. Sudan"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "Suriname": {
+    "distractors": [
+      "Brazil",
+      "Guyana"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "Sweden": {
+    "distractors": [
+      "Finland",
+      "Norway"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Switzerland": {
+    "distractors": [
+      "Austria",
+      "France",
+      "Germany",
+      "Italy",
+      "Liechtenstein"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "Syria": {
+    "distractors": [
+      "Iraq",
+      "Israel",
+      "Jordan",
+      "Lebanon",
+      "Turkey"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "S\u00e3o Tom\u00e9 and Principe": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 144
+  },
+  "Taiwan": {
+    "distractors": [
+      "South Korea",
+      "Japan",
+      "Indonesia",
+      "Malaysia",
+      "Hong Kong"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "Tajikistan": {
+    "distractors": [
+      "Afghanistan",
+      "China",
+      "Kyrgyzstan",
+      "Uzbekistan"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "Tanzania": {
+    "distractors": [
+      "Burundi",
+      "Dem. Rep. Congo",
+      "Kenya",
+      "Malawi",
+      "Mozambique",
+      "Rwanda",
+      "Uganda",
+      "Zambia"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "Thailand": {
+    "distractors": [
+      "Cambodia",
+      "Laos",
+      "Malaysia",
+      "Myanmar"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Timor-Leste": {
+    "distractors": [
+      "Indonesia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 133
+  },
+  "Togo": {
+    "distractors": [
+      "Benin",
+      "Burkina Faso",
+      "Ghana"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "Tonga": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "Trinidad and Tobago": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Turks and Caicos Is.",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "Tunisia": {
+    "distractors": [
+      "Algeria",
+      "Libya"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "Turkey": {
+    "distractors": [
+      "Armenia",
+      "Azerbaijan",
+      "Bulgaria",
+      "Georgia",
+      "Greece",
+      "Iran",
+      "Iraq",
+      "Syria"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "Turkmenistan": {
+    "distractors": [
+      "Afghanistan",
+      "Iran",
+      "Kazakhstan",
+      "Uzbekistan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Turks and Caicos Is.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "U.S. Virgin Is."
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 147
+  },
+  "Tuvalu": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 158
+  },
+  "U.S. Virgin Is.": {
+    "distractors": [
+      "Anguilla",
+      "Antigua and Barb.",
+      "Aruba",
+      "Bahamas",
+      "Barbados",
+      "British Virgin Is.",
+      "Cayman Is.",
+      "Cuba",
+      "Cura\u00e7ao",
+      "Dominica",
+      "Dominican Rep.",
+      "Grenada",
+      "Haiti",
+      "Jamaica",
+      "Montserrat",
+      "Puerto Rico",
+      "Saint Lucia",
+      "Sint Maarten",
+      "St-Martin",
+      "St. Kitts and Nevis",
+      "St. Vin. and Gren.",
+      "Trinidad and Tobago",
+      "Turks and Caicos Is."
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "Uganda": {
+    "distractors": [
+      "Dem. Rep. Congo",
+      "Kenya",
+      "Rwanda",
+      "S. Sudan",
+      "Tanzania"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "Ukraine": {
+    "distractors": [
+      "Belarus",
+      "Hungary",
+      "Moldova",
+      "Poland",
+      "Romania",
+      "Russia",
+      "Slovakia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "United Arab Emirates": {
+    "distractors": [
+      "Oman",
+      "Saudi Arabia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "United Kingdom": {
+    "distractors": [
+      "Ireland"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "United States of America": {
+    "distractors": [
+      "Canada",
+      "Cuba",
+      "Mexico"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "Uruguay": {
+    "distractors": [
+      "Argentina",
+      "Brazil"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "Uzbekistan": {
+    "distractors": [
+      "Afghanistan",
+      "Kazakhstan",
+      "Kyrgyzstan",
+      "Tajikistan",
+      "Turkmenistan"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "Vanuatu": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "Vatican": {
+    "distractors": [
+      "Italy"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 171
+  },
+  "Venezuela": {
+    "distractors": [
+      "Colombia",
+      "Guyana",
+      "Guinea-Bissau",
+      "Suriname"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "Vietnam": {
+    "distractors": [
+      "Cambodia",
+      "China",
+      "Laos"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "W. Sahara": {
+    "distractors": [
+      "Algeria",
+      "Mauritania",
+      "Morocco"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "Wallis and Futuna Is.": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "Yemen": {
+    "distractors": [
+      "Oman",
+      "Saudi Arabia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "Zambia": {
+    "distractors": [
+      "Angola",
+      "Dem. Rep. Congo",
+      "Malawi",
+      "Mozambique",
+      "Namibia",
+      "Tanzania",
+      "Zimbabwe"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "Zimbabwe": {
+    "distractors": [
+      "Botswana",
+      "Mozambique",
+      "South Africa",
+      "Zambia"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "eSwatini": {
+    "distractors": [
+      "Mozambique"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "\u00c5land": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 142
+  }
+}

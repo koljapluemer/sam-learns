@@ -3,6 +3,7 @@ import { appDb, makeExerciseKey, type ExerciseType } from '@/apps/world-map/db/a
 import { getEnabledCountries as getEnabledNeighborhoodCountries } from '@/apps/world-map/entities/neighborhood-content/neighborhoodContent'
 import { getEnabledCountries as getEnabledWorldMapCountries } from '@/apps/world-map/entities/world-map-content/worldMapContent'
 import { getEnabledCountries as getEnabledIdentifyCountries } from '@/apps/world-map/entities/identify-country-content/identifyCountryContent'
+import { getEnabledCountries as getEnabledDistractorChoiceCountries } from '@/apps/world-map/entities/distractor-choice-content/distractorChoiceContent'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
 
@@ -13,6 +14,7 @@ export type NextExercise =
   | { type: 'find-in-neighborhood'; country: string; zoom: number; panIndex: number }
   | { type: 'find-on-world-map'; country: string }
   | { type: 'identify-country'; country: string; distractor: string }
+  | { type: 'distractor-choice'; country: string; zoom: number; panIndex: number; distractor: string }
 
 export type SubmittedAnswer = {
   type: ExerciseType
@@ -22,11 +24,18 @@ export type SubmittedAnswer = {
   msToFirstClick: number
 }
 
-type CountryCandidate = { country: string; enabledTypes: ExerciseType[]; neighborhoodZoom?: number }
+type CountryCandidate = {
+  country: string
+  enabledTypes: ExerciseType[]
+  neighborhoodZoom?: number
+  distractorChoiceZoom?: number
+  distractorChoiceDistractors?: string[]
+}
 type ExerciseInstance =
   | { type: 'find-in-neighborhood'; panIndex: number }
   | { type: 'find-on-world-map' }
   | { type: 'identify-country' }
+  | { type: 'distractor-choice' }
 
 let lastCountry: string | null = null
 
@@ -39,10 +48,11 @@ function pickRandom<T>(items: T[]): T {
 }
 
 async function getCandidateCountries(): Promise<CountryCandidate[]> {
-  const [neighborhoodCountries, worldMapCountries, identifyCountries] = await Promise.all([
+  const [neighborhoodCountries, worldMapCountries, identifyCountries, distractorChoiceCountries] = await Promise.all([
     getEnabledNeighborhoodCountries(),
     getEnabledWorldMapCountries(),
-    getEnabledIdentifyCountries()
+    getEnabledIdentifyCountries(),
+    getEnabledDistractorChoiceCountries()
   ])
 
   const candidates = new Map<string, CountryCandidate>()
@@ -58,6 +68,21 @@ async function getCandidateCountries(): Promise<CountryCandidate[]> {
     const existing = candidates.get(entry.country)
     if (existing) existing.enabledTypes.push('identify-country')
     else candidates.set(entry.country, { country: entry.country, enabledTypes: ['identify-country'] })
+  }
+  for (const entry of distractorChoiceCountries) {
+    const existing = candidates.get(entry.country)
+    if (existing) {
+      existing.enabledTypes.push('distractor-choice')
+      existing.distractorChoiceZoom = entry.zoom
+      existing.distractorChoiceDistractors = entry.distractors
+    } else {
+      candidates.set(entry.country, {
+        country: entry.country,
+        enabledTypes: ['distractor-choice'],
+        distractorChoiceZoom: entry.zoom,
+        distractorChoiceDistractors: entry.distractors
+      })
+    }
   }
   return Array.from(candidates.values())
 }
@@ -84,7 +109,11 @@ async function pickCountry(): Promise<CountryCandidate | undefined> {
   return pickRandom(pool)
 }
 
-function buildInstanceCandidates(enabledTypes: ExerciseType[], identifyCountryPoolSize: number): ExerciseInstance[] {
+function buildInstanceCandidates(
+  enabledTypes: ExerciseType[],
+  identifyCountryPoolSize: number,
+  distractorChoiceCount: number
+): ExerciseInstance[] {
   const instances: ExerciseInstance[] = []
   if (enabledTypes.includes('find-in-neighborhood')) {
     for (let panIndex = 0; panIndex < PAN_INDEX_COUNT; panIndex += 1) {
@@ -97,12 +126,20 @@ function buildInstanceCandidates(enabledTypes: ExerciseType[], identifyCountryPo
   if (enabledTypes.includes('identify-country') && identifyCountryPoolSize > 1) {
     instances.push({ type: 'identify-country' })
   }
+  if (enabledTypes.includes('distractor-choice') && distractorChoiceCount > 0) {
+    instances.push({ type: 'distractor-choice' })
+  }
   return instances
 }
 
-async function pickExerciseInstance(country: string, enabledTypes: ExerciseType[], identifyCountryPoolSize: number): Promise<ExerciseInstance> {
+async function pickExerciseInstance(
+  country: string,
+  enabledTypes: ExerciseType[],
+  identifyCountryPoolSize: number,
+  distractorChoiceCount: number
+): Promise<ExerciseInstance> {
   const now = new Date()
-  const candidates = buildInstanceCandidates(enabledTypes, identifyCountryPoolSize)
+  const candidates = buildInstanceCandidates(enabledTypes, identifyCountryPoolSize, distractorChoiceCount)
   const rows = await Promise.all(
     candidates.map((instance) =>
       appDb.exerciseProgress.get(makeExerciseKey(instance.type, country, instance.type === 'find-in-neighborhood' ? instance.panIndex : undefined))
@@ -120,13 +157,36 @@ async function pickExerciseInstance(country: string, enabledTypes: ExerciseType[
   return pickRandom(pool)
 }
 
+function buildDistractorChoiceExercise(picked: CountryCandidate): NextExercise {
+  const distractors = picked.distractorChoiceDistractors ?? []
+  return {
+    type: 'distractor-choice',
+    country: picked.country,
+    zoom: picked.distractorChoiceZoom ?? 140,
+    panIndex: Math.floor(Math.random() * PAN_INDEX_COUNT),
+    distractor: pickRandom(distractors)
+  }
+}
+
 export async function loadNextExercise(): Promise<NextExercise | undefined> {
   const picked = await pickCountry()
   if (!picked) return undefined
 
   lastCountry = picked.country
+
+  const isFreshCountry = !(await appDb.countryProgress.get(picked.country))
+  const hasIntroExercise = picked.enabledTypes.includes('distractor-choice') && (picked.distractorChoiceDistractors?.length ?? 0) > 0
+  if (isFreshCountry && hasIntroExercise) {
+    return buildDistractorChoiceExercise(picked)
+  }
+
   const identifyCountryPool = (await getEnabledIdentifyCountries()).map((entry) => entry.country)
-  const instance = await pickExerciseInstance(picked.country, picked.enabledTypes, identifyCountryPool.length)
+  const instance = await pickExerciseInstance(
+    picked.country,
+    picked.enabledTypes,
+    identifyCountryPool.length,
+    picked.distractorChoiceDistractors?.length ?? 0
+  )
 
   if (instance.type === 'find-in-neighborhood') {
     return { type: 'find-in-neighborhood', country: picked.country, zoom: picked.neighborhoodZoom ?? 100, panIndex: instance.panIndex }
@@ -134,6 +194,9 @@ export async function loadNextExercise(): Promise<NextExercise | undefined> {
   if (instance.type === 'identify-country') {
     const distractor = pickRandom(identifyCountryPool.filter((country) => country !== picked.country))
     return { type: 'identify-country', country: picked.country, distractor }
+  }
+  if (instance.type === 'distractor-choice') {
+    return buildDistractorChoiceExercise(picked)
   }
   return { type: 'find-on-world-map', country: picked.country }
 }

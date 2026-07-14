@@ -9,9 +9,11 @@ defineProps<{
   panIndex: number
   highlight: boolean
   marker: boolean
+  distractors?: string[]
 }>()
 
 const CMS_HIGHLIGHT_COLOR = '#f59e0b'
+const CMS_DISTRACTOR_COLOR = '#a855f7'
 </script>
 
 <template>
@@ -22,6 +24,8 @@ const CMS_HIGHLIGHT_COLOR = '#f59e0b'
     :pan-index="panIndex"
     :highlight-country="highlight ? country : undefined"
     :highlight-color="highlight ? CMS_HIGHLIGHT_COLOR : undefined"
+    :secondary-highlight-countries="highlight ? distractors : undefined"
+    :secondary-highlight-color="CMS_DISTRACTOR_COLOR"
     :marker-country="marker ? country : undefined"
     :marker-color="CMS_HIGHLIGHT_COLOR"
   />
