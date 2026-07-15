@@ -33,20 +33,6 @@ function closeFeedbackModal() {
         </template>
       </Suspense>
     </div>
-    <footer class="border-t border-base-300 bg-base-100 px-4 py-4">
-      <div class="mx-auto flex w-full max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p class="text-sm text-base-content/70">
-          {{ t('app.footerNote') }}
-        </p>
-        <button
-          class="btn btn-ghost btn-sm self-start sm:self-auto"
-          type="button"
-          @click="openFeedbackModal"
-        >
-          {{ t('app.feedback') }}
-        </button>
-      </div>
-    </footer>
     <AppFeedbackModal
       v-if="isFeedbackModalOpen"
       :is-open="isFeedbackModalOpen"
