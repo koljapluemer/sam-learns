@@ -57,19 +57,19 @@ function render() {
     .enter()
     .append('path')
     .attr('d', (feature) => path(feature) ?? '')
-    .attr('data-country', (feature) => feature.properties?.name ?? '')
+    .attr('data-country', (feature) => feature.properties?.code ?? '')
     .attr('stroke', '#f8fafc')
     .attr('stroke-width', 0.5)
     .attr('fill', (feature) => {
-      const name = feature.properties?.name
-      if (name === props.highlightCountry) return props.highlightColor ?? DEFAULT_FILL
-      if (name && secondaryHighlightSet.has(name)) return props.secondaryHighlightColor ?? DEFAULT_FILL
+      const code = feature.properties?.code
+      if (code === props.highlightCountry) return props.highlightColor ?? DEFAULT_FILL
+      if (code && secondaryHighlightSet.has(code)) return props.secondaryHighlightColor ?? DEFAULT_FILL
       return DEFAULT_FILL
     })
     .style('cursor', 'pointer')
     .on('click', (_event, feature) => {
-      const name = feature.properties?.name
-      if (name) emit('countryClicked', name)
+      const code = feature.properties?.code
+      if (code) emit('countryClicked', code)
     })
 
   const markerFeature = props.markerCountry ? findCountryFeature(props.geoData, props.markerCountry) : undefined

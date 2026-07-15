@@ -19,8 +19,10 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from country_codes import short_name_to_code  # noqa: E402
 from data_io import load_distractor_choice_config, save_distractor_choice_config  # noqa: E402
 
+# Natural Earth short names, kept human-readable here; resolved to codes below.
 CARIBBEAN_ISLANDS = [
     "Anguilla",
     "Antigua and Barb.",
@@ -50,22 +52,28 @@ CARIBBEAN_ISLANDS = [
 
 
 def main() -> None:
+    name_to_code = short_name_to_code()
+    missing_names = [name for name in CARIBBEAN_ISLANDS if name not in name_to_code]
+    if missing_names:
+        raise SystemExit(f"not present in worldmap.geo.json: {missing_names}")
+    codes = [name_to_code[name] for name in CARIBBEAN_ISLANDS]
+
     config = load_distractor_choice_config()
-    missing = [name for name in CARIBBEAN_ISLANDS if name not in config]
+    missing = [code for code in codes if code not in config]
     if missing:
         raise SystemExit(f"not present in distractor-choice-exercises.json: {missing}")
 
     updated = 0
-    for island in CARIBBEAN_ISLANDS:
-        entry = config[island]
-        others = {other for other in CARIBBEAN_ISLANDS if other != island}
+    for code in codes:
+        entry = config[code]
+        others = {other for other in codes if other != code}
         merged = sorted(set(entry["distractors"]) | others)
         if merged != entry["distractors"]:
             entry["distractors"] = merged
             updated += 1
 
     save_distractor_choice_config(config)
-    print(f"updated {updated} of {len(CARIBBEAN_ISLANDS)} Caribbean islands with mutual distractors")
+    print(f"updated {updated} of {len(codes)} Caribbean islands with mutual distractors")
 
 
 if __name__ == "__main__":

@@ -3,30 +3,30 @@
 Run once via: uv run python world_map/scripts/import_distractor_seed_data.py
 
 Parses world_map/countryInfo.txt (a geonames.org countryInfo dump) to derive,
-for every country already present in map.geo.json, an initial distractor list
-(its land neighbours) and a default zoom level (heuristic based on land area).
-Everything is seeded disabled/unreviewed; a curator enables + tunes distractors
-in the "Distractor choice" CMS tab.
+for every country already present in worldmap.geo.json, an initial distractor
+list (its land neighbours) and a default zoom level (heuristic based on land
+area). Everything is seeded disabled/unreviewed; a curator enables + tunes
+distractors in the "Distractor choice" CMS tab.
 
 Re-running is safe: it will NOT clobber curation decisions already saved in
 distractor-choice-exercises.json for countries that already have an entry,
 matching import_seed_data.py's convention.
 
-countryInfo.txt names differ from map.geo.json's Natural-Earth-style names
-(e.g. "Ivory Coast" vs "Côte d'Ivoire", "Bosnia and Herzegovina" vs
-"Bosnia and Herz."). ALIAS maps the former to the latter for every case where
-they differ and both datasets actually contain the country.
+countryInfo.txt names differ from worldmap.geo.json's Natural-Earth-style
+short names (e.g. "Ivory Coast" vs "Côte d'Ivoire", "Bosnia and Herzegovina"
+vs "Bosnia and Herz."). ALIAS maps the former to the latter for every case
+where they differ and both datasets actually contain the country; from there,
+short_name_to_code() resolves to the country code used as the config key.
 """
 
-import json
 import math
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from country_codes import short_name_to_code  # noqa: E402
 from data_io import (  # noqa: E402
     distractor_choice_config_path,
-    geo_data_path,
     load_distractor_choice_config,
     save_distractor_choice_config,
 )
@@ -123,44 +123,43 @@ def parse_country_info() -> list[dict]:
 
 
 def main() -> None:
-    geo_data = json.loads(geo_data_path().read_text())
-    geo_names = {feature["properties"]["name"] for feature in geo_data["features"]}
+    name_to_code = short_name_to_code()
 
     rows = parse_country_info()
-    iso_to_geo_name: dict[str, str] = {}
+    iso_to_code: dict[str, str] = {}
     iso_to_area: dict[str, float] = {}
     iso_to_neighbours: dict[str, list[str]] = {}
     for row in rows:
         geo_name = ALIAS.get(row["country"], row["country"])
-        if geo_name in geo_names:
-            iso_to_geo_name[row["iso"]] = geo_name
+        if geo_name in name_to_code:
+            iso_to_code[row["iso"]] = name_to_code[geo_name]
         iso_to_area[row["iso"]] = row["area"]
         iso_to_neighbours[row["iso"]] = row["neighbours"]
 
     config = load_distractor_choice_config()
     added = 0
-    for iso, geo_name in iso_to_geo_name.items():
-        if geo_name in config:
+    for iso, code in iso_to_code.items():
+        if code in config:
             continue
 
         distractors = sorted(
             {
-                iso_to_geo_name[n_iso]
+                iso_to_code[n_iso]
                 for n_iso in iso_to_neighbours.get(iso, [])
-                if n_iso in iso_to_geo_name and iso_to_geo_name[n_iso] != geo_name
+                if n_iso in iso_to_code and iso_to_code[n_iso] != code
             }
         )
         zoom = estimate_zoom(iso_to_area.get(iso, 0.0))
-        config[geo_name] = {"enabled": False, "zoom": zoom, "distractors": distractors, "reviewed": False}
+        config[code] = {"enabled": False, "zoom": zoom, "distractors": distractors, "reviewed": False}
         added += 1
 
-    # map.geo.json features with no countryInfo.txt row at all (disputed
+    # worldmap.geo.json features with no countryInfo.txt row at all (disputed
     # territories/glaciers with no ISO code) still get a bare entry so the
     # CMS can list and manually curate them.
-    for geo_name in geo_names:
-        if geo_name in config:
+    for code in name_to_code.values():
+        if code in config:
             continue
-        config[geo_name] = {"enabled": False, "zoom": FALLBACK_ZOOM, "distractors": [], "reviewed": False}
+        config[code] = {"enabled": False, "zoom": FALLBACK_ZOOM, "distractors": [], "reviewed": False}
         added += 1
 
     save_distractor_choice_config(config)

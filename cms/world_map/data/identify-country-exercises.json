@@ -1,0 +1,962 @@
+{
+  "ABW": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AFG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AGO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AIA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ALB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ALD": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "AND": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "ARE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ARG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ARM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ASM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ATC": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "ATG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AUS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AUT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "AZE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BDI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BEL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BEN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BFA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BGD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BGR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BHR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BHS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BIH": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BLM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BLR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BLZ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BMU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BOL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BRA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BRB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BRN": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "BTN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "BWA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CAF": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CAN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CHE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CHL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CHN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CIV": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CMR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "COD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "COG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "COK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "COL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "COM": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "CPV": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "CRI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CUB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CUW": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CYM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CYN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CYP": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "CZE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "DEU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "DJI": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "DMA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "DNK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "DOM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "DZA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ECU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "EGY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ERI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ESP": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "EST": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ETH": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "FIN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "FJI": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "FLK": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "FRA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "FRO": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "FSM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GAB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GBR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GEO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GGY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GHA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GIN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GMB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GNB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GNQ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GRC": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GRD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GRL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GTM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "GUM": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "GUY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "HKG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "HMD": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "HND": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "HRV": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "HTI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "HUN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "IDN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "IMN": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "IND": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "IOA": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "IOT": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "IRL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "IRN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "IRQ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ISL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ISR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ITA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "JAM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "JEY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "JOR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "JPN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KAS": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "KAZ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KEN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KGZ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KHM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KIR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KNA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KOR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KOS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "KWT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LAO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LBN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LBR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LBY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LCA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LIE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LKA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LSO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LTU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LUX": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "LVA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MAC": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MAF": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MAR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MCO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MDA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MDG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MDV": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "MEX": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MHL": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "MKD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MLI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MLT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MMR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MNE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MNG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MNP": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "MOZ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MRT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MSR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MUS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MWI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "MYS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NAM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NCL": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "NER": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NFK": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "NGA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NIC": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NIU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NLD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NOR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NPL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "NRU": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "NZL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "OMN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PAK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PAN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PCN": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "PER": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PHL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PLW": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "PNG": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "POL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PRI": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PRK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PRT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PRY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PSX": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "PYF": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "QAT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ROU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "RUS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "RWA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SAH": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SAU": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SDN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SDS": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SEN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SGP": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SGS": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SHN": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SLB": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SLE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SLV": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SMR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SOL": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SOM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SPM": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SRB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "STP": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SUR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SVK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SVN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SWE": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SWZ": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SXM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "SYC": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "SYR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TCA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TCD": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TGO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "THA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TJK": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TKM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TLS": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "TON": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "TTO": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TUN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TUR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TUV": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "TWN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "TZA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "UGA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "UKR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "URY": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "USA": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "UZB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VAT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VCT": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VEN": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VGB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VIR": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VNM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "VUT": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "WLF": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "WSM": {
+    "enabled": true,
+    "reviewed": true
+  },
+  "YEM": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ZAF": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ZMB": {
+    "enabled": false,
+    "reviewed": true
+  },
+  "ZWE": {
+    "enabled": false,
+    "reviewed": true
+  }
+}

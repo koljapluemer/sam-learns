@@ -1,35 +1,59 @@
 # world_map CMS
 
-Curates the four config files the `world-map` frontend app fetches to know
-which countries have which exercise enabled:
+Curates the four config files (one per exercise type) that determine which
+countries have which `world-map` frontend exercise enabled. These configs
+are curation source-of-truth and live entirely in this folder, keyed by
+country code (not name — see "Country codes" below):
 
-- `public/data/world-map/neighborhood-exercises.json` — "find in its
+- `world_map/data/neighborhood-exercises.json` — "find in its
   neighborhood" exercise: enabled + zoom level per country.
-- `public/data/world-map/world-map-exercises.json` — "find on world map"
+- `world_map/data/world-map-exercises.json` — "find on world map"
   exercise: enabled per country (no zoom — this exercise always starts at
   the full, un-zoomed world view).
-- `public/data/world-map/identify-country-exercises.json` — "which country
+- `world_map/data/identify-country-exercises.json` — "which country
   is this" exercise: enabled per country (no zoom — full world view with
   the target circled; the learner picks the name from two options).
-- `public/data/world-map/distractor-choice-exercises.json` — zoomed "which
+- `world_map/data/distractor-choice-exercises.json` — zoomed "which
   country is this" exercise: enabled + zoom level + a curated list of
   plausible distractor countries per country (the learner picks the name
   from two options, but the wrong option always comes from that country's
   own curated list rather than a random country anywhere in the world).
 
-## First-time setup
+Each config also carries a `reviewed` flag used only by this CMS to track
+curation progress — never exported to the frontend.
 
-Requires a sibling checkout of `learn-worldmap` (used as the source of the
-geojson map data and initial zoom values):
+None of the above are fetched directly by the frontend. Every save
+re-exports `public/data/world-map/countries.json`, a single combined,
+per-country file holding only the fields the frontend actually needs (see
+`data_io.export_countries`). Run
+`uv run python world_map/scripts/export_frontend_data.py` to rebuild it (and
+the geo data below) from scratch, e.g. after cloning the repo or hand-editing
+the config files directly.
+
+## Country codes
+
+`world_map/worldmap.geo.json` is the original, un-truncated Natural-Earth-style
+geo data (240 features) that everything else in this folder derives from.
+Countries are identified everywhere — config keys, distractor lists, the
+frontend's `map.geo.json`/`countries.json` — by `code`, i.e. Natural
+Earth's `adm0_a3` (e.g. `"USA"`), which is short, unique, and set for every
+feature (unlike `iso_a2`/`iso_a3`, which are missing for a handful of
+countries, including France and Norway). Countries are displayed to humans
+using `name_long` (e.g. "Central African Republic"), since Natural Earth's
+short `name` is often abbreviated (e.g. "Central African Rep."). See
+`country_codes.py`.
+
+## First-time setup
 
 ```
 uv run python world_map/scripts/import_seed_data.py
 ```
 
-This copies `map.geo.json` into `public/data/world-map/` and creates the
-first three config files with every country disabled by default. Re-running
-is safe — it won't overwrite curation decisions already saved for countries
-that already have a config entry.
+This creates the first three config files with every country disabled by
+default, using zoom levels from a sibling `learn-worldmap` checkout's
+`generate/in/zoomLevelData.json`, and exports the geo data + countries.json.
+Re-running is safe — it won't overwrite curation decisions already saved for
+countries that already have a config entry.
 
 The fourth config file (`distractor-choice-exercises.json`) is seeded
 separately from `world_map/countryInfo.txt` (a geonames.org country-info

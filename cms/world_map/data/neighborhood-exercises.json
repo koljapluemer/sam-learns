@@ -1,0 +1,1202 @@
+{
+  "ABW": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "AFG": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 169
+  },
+  "AGO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "AIA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "ALB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 149
+  },
+  "ALD": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "AND": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "ARE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "ARG": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "ARM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 137
+  },
+  "ASM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 102
+  },
+  "ATC": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 101
+  },
+  "ATG": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "AUS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "AUT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 163
+  },
+  "AZE": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 149
+  },
+  "BDI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "BEL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "BEN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "BFA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "BGD": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 135
+  },
+  "BGR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "BHR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "BHS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 156
+  },
+  "BIH": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "BLM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "BLR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 148
+  },
+  "BLZ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "BMU": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "BOL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "BRA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "BRB": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "BRN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 112
+  },
+  "BTN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "BWA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "CAF": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 162
+  },
+  "CAN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "CHE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 141
+  },
+  "CHL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "CHN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "CIV": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "CMR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "COD": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "COG": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "COK": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "COL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "COM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "CPV": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "CRI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "CUB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "CUW": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "CYM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 129
+  },
+  "CYN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 116
+  },
+  "CYP": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "CZE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "DEU": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 161
+  },
+  "DJI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "DMA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 106
+  },
+  "DNK": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 142
+  },
+  "DOM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "DZA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "ECU": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 147
+  },
+  "EGY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "ERI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "ESP": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 188
+  },
+  "EST": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "ETH": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 171
+  },
+  "FIN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 167
+  },
+  "FJI": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "FLK": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "FRA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "FRO": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 106
+  },
+  "FSM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "GAB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "GBR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 155
+  },
+  "GEO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "GGY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "GHA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 142
+  },
+  "GIN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "GMB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "GNB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "GNQ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "GRC": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 170
+  },
+  "GRD": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "GRL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "GTM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "GUM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 102
+  },
+  "GUY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 142
+  },
+  "HKG": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "HMD": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "HND": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 129
+  },
+  "HRV": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "HTI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "HUN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 151
+  },
+  "IDN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 200
+  },
+  "IMN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 108
+  },
+  "IND": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 200
+  },
+  "IOA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "IOT": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "IRL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 134
+  },
+  "IRN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "IRQ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "ISL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "ISR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "ITA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 200
+  },
+  "JAM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 111
+  },
+  "JEY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "JOR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "JPN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 164
+  },
+  "KAS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 106
+  },
+  "KAZ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 170
+  },
+  "KEN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "KGZ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "KHM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "KIR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "KNA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "KOR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 131
+  },
+  "KOS": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "KWT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "LAO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 162
+  },
+  "LBN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "LBR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 132
+  },
+  "LBY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "LCA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 108
+  },
+  "LIE": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "LKA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "LSO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 112
+  },
+  "LTU": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 135
+  },
+  "LUX": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "LVA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "MAC": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "MAF": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "MAR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 163
+  },
+  "MCO": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "MDA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 128
+  },
+  "MDG": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 146
+  },
+  "MDV": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 103
+  },
+  "MEX": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 194
+  },
+  "MHL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "MKD": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "MLI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "MLT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "MMR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 177
+  },
+  "MNE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 137
+  },
+  "MNG": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 141
+  },
+  "MNP": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 112
+  },
+  "MOZ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "MRT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "MSR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 106
+  },
+  "MUS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 102
+  },
+  "MWI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 149
+  },
+  "MYS": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 154
+  },
+  "NAM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "NCL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "NER": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "NFK": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "NGA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 142
+  },
+  "NIC": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "NIU": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "NLD": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "NOR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 200
+  },
+  "NPL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "NRU": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "NZL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "OMN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 162
+  },
+  "PAK": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "PAN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "PCN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "PER": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "PHL": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 159
+  },
+  "PLW": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "PNG": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 151
+  },
+  "POL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "PRI": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "PRK": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 148
+  },
+  "PRT": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 200
+  },
+  "PRY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "PSX": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "PYF": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "QAT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "ROU": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "RUS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "RWA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "SAH": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "SAU": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "SDN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "SDS": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "SEN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 132
+  },
+  "SGP": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "SGS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "SHN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 136
+  },
+  "SLB": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 136
+  },
+  "SLE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "SLV": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "SMR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 102
+  },
+  "SOL": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 136
+  },
+  "SOM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 155
+  },
+  "SPM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 106
+  },
+  "SRB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "STP": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "SUR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "SVK": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 131
+  },
+  "SVN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "SWE": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 179
+  },
+  "SWZ": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "SXM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "SYC": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "SYR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 179
+  },
+  "TCA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "TCD": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "TGO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "THA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "TJK": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "TKM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 140
+  },
+  "TLS": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 119
+  },
+  "TON": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "TTO": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "TUN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "TUR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 155
+  },
+  "TUV": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 102
+  },
+  "TWN": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "TZA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 161
+  },
+  "UGA": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "UKR": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 159
+  },
+  "URY": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "USA": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "UZB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 161
+  },
+  "VAT": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "VCT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "VEN": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "VGB": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "VIR": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "VNM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "VUT": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "WLF": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 150
+  },
+  "WSM": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "YEM": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 163
+  },
+  "ZAF": {
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 153
+  },
+  "ZMB": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "ZWE": {
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  }
+}

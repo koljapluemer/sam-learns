@@ -28,6 +28,7 @@ from urllib.parse import urlencode
 import streamlit as st
 import streamlit.components.v1 as components
 
+from country_codes import code_to_name
 from data_io import (
     DistractorChoiceConfig,
     IdentifyCountryConfig,
@@ -44,6 +45,16 @@ from data_io import (
 )
 
 st.set_page_config(page_title="World Map CMS", layout="wide")
+
+NAME_BY_CODE = code_to_name()
+
+
+def country_label(code: str) -> str:
+    return f"{NAME_BY_CODE.get(code, code)} ({code})"
+
+
+def sorted_by_name(codes: list[str]) -> list[str]:
+    return sorted(codes, key=lambda code: NAME_BY_CODE.get(code, code))
 
 
 def widget_key(prefix: str, name: str, country: str) -> str:
@@ -72,7 +83,7 @@ def render_preview(dev_server_url: str, preview_query: dict[str, int | str]) -> 
 
 def render_neighborhood_tab(dev_server_url: str) -> None:
     config = load_neighborhood_config()
-    countries = sorted(config.keys())
+    countries = sorted_by_name(list(config.keys()))
 
     if not countries:
         st.warning("No countries in the config yet. Run `uv run python world_map/scripts/import_seed_data.py` first.")
@@ -98,6 +109,7 @@ def render_neighborhood_tab(dev_server_url: str) -> None:
             countries,
             index=countries.index(st.session_state.n_current_country),
             key=f"n_country_picker_{st.session_state.n_nav_generation}",
+            format_func=country_label,
         )
         st.session_state.n_current_country = country
         entry: NeighborhoodConfig = config[country]
@@ -140,7 +152,7 @@ def render_neighborhood_tab(dev_server_url: str) -> None:
             decide_and_advance(False)
 
     with preview_col:
-        st.title(f"{country} — neighborhood exercise preview")
+        st.title(f"{country_label(country)} — neighborhood exercise preview")
         st.caption(f"pan index {pan_index} of 0-8, zoom {zoom}")
         render_preview(
             dev_server_url,
@@ -154,7 +166,7 @@ def render_neighborhood_tab(dev_server_url: str) -> None:
 
 def render_world_map_tab(dev_server_url: str) -> None:
     config = load_world_map_config()
-    countries = sorted(config.keys())
+    countries = sorted_by_name(list(config.keys()))
 
     if not countries:
         st.warning("No countries in the config yet. Run `uv run python world_map/scripts/import_seed_data.py` first.")
@@ -180,6 +192,7 @@ def render_world_map_tab(dev_server_url: str) -> None:
             countries,
             index=countries.index(st.session_state.wm_current_country),
             key=f"wm_country_picker_{st.session_state.wm_nav_generation}",
+            format_func=country_label,
         )
         st.session_state.wm_current_country = country
         entry: WorldMapConfig = config[country]
@@ -211,7 +224,7 @@ def render_world_map_tab(dev_server_url: str) -> None:
             decide_and_advance(False)
 
     with preview_col:
-        st.title(f"{country} — world map exercise preview")
+        st.title(f"{country_label(country)} — world map exercise preview")
         st.caption("full, un-zoomed world view")
         render_preview(dev_server_url, {"preview": 1, "country": country, "highlight": 1 if highlight_target else 0})
         st.divider()
@@ -222,7 +235,7 @@ def render_world_map_tab(dev_server_url: str) -> None:
 
 def render_identify_country_tab(dev_server_url: str) -> None:
     config = load_identify_country_config()
-    countries = sorted(config.keys())
+    countries = sorted_by_name(list(config.keys()))
 
     if not countries:
         st.warning("No countries in the config yet. Run `uv run python world_map/scripts/import_seed_data.py` first.")
@@ -248,6 +261,7 @@ def render_identify_country_tab(dev_server_url: str) -> None:
             countries,
             index=countries.index(st.session_state.ic_current_country),
             key=f"ic_country_picker_{st.session_state.ic_nav_generation}",
+            format_func=country_label,
         )
         st.session_state.ic_current_country = country
         entry: IdentifyCountryConfig = config[country]
@@ -279,7 +293,7 @@ def render_identify_country_tab(dev_server_url: str) -> None:
             decide_and_advance(False)
 
     with preview_col:
-        st.title(f"{country} — identify country exercise preview")
+        st.title(f"{country_label(country)} — identify country exercise preview")
         st.caption("full, un-zoomed world view; learner picks the country name from two options")
         render_preview(
             dev_server_url,
@@ -298,7 +312,7 @@ def render_identify_country_tab(dev_server_url: str) -> None:
 
 def render_distractor_choice_tab(dev_server_url: str) -> None:
     config = load_distractor_choice_config()
-    countries = sorted(config.keys())
+    countries = sorted_by_name(list(config.keys()))
 
     if not countries:
         st.warning(
@@ -327,6 +341,7 @@ def render_distractor_choice_tab(dev_server_url: str) -> None:
             countries,
             index=countries.index(st.session_state.dc_current_country),
             key=f"dc_country_picker_{st.session_state.dc_nav_generation}",
+            format_func=country_label,
         )
         st.session_state.dc_current_country = country
         entry: DistractorChoiceConfig = config[country]
@@ -351,7 +366,7 @@ def render_distractor_choice_tab(dev_server_url: str) -> None:
 
         for distractor in list(current_distractors):
             name_col, remove_col = st.columns([4, 1])
-            name_col.write(distractor)
+            name_col.write(country_label(distractor))
             if remove_col.button("Remove", key=f"dc_remove_{country}_{distractor}"):
                 current_distractors.remove(distractor)
                 save_entry(country, zoom, enabled, current_distractors, reviewed=True)
@@ -359,7 +374,9 @@ def render_distractor_choice_tab(dev_server_url: str) -> None:
 
         add_picker_key = f"dc_add_picker_{country}_{st.session_state.dc_nav_generation}"
         add_options = [c for c in countries if c != country and c not in current_distractors]
-        new_distractor = st.selectbox("Add distractor", [""] + add_options, key=add_picker_key)
+        new_distractor = st.selectbox(
+            "Add distractor", [""] + add_options, key=add_picker_key, format_func=lambda c: country_label(c) if c else ""
+        )
         if st.button("Add", key=f"dc_add_btn_{country}") and new_distractor:
             current_distractors.append(new_distractor)
             save_entry(country, zoom, enabled, current_distractors, reviewed=True)
@@ -394,7 +411,7 @@ def render_distractor_choice_tab(dev_server_url: str) -> None:
             decide_and_advance(False)
 
     with preview_col:
-        st.title(f"{country} — distractor choice exercise preview")
+        st.title(f"{country_label(country)} — distractor choice exercise preview")
         st.caption(f"pan index {pan_index} of 0-8, zoom {zoom} · target amber, distractors purple")
         render_preview(
             dev_server_url,

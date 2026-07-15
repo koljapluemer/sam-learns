@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from '@/apps/world-map/app/i18n'
 import WorldMapCanvas from '@/apps/world-map/dumb/WorldMapCanvas.vue'
+import { getCountryDisplayName } from '@/apps/world-map/dumb/mapProjection'
 import type { SubmittedAnswer } from '@/apps/world-map/entities/progress/progressScheduler'
 
 const props = defineProps<{
@@ -83,7 +84,7 @@ function handleClick(clickedCountry: string) {
         :class="{ 'bg-success/10': isCorrect }"
       >
         <p class="text-sm font-medium">
-          {{ t('exercise.instructionWorldMap', { country }) }}
+          {{ t('exercise.instructionWorldMap', { country: getCountryDisplayName(geoData, country) }) }}
         </p>
       </div>
     </div>

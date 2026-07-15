@@ -1,18 +1,18 @@
-export type IdentifyCountryConfig = { enabled: boolean }
+type CountriesData = Record<string, { identifyCountry?: { enabled: boolean } }>
 export type EnabledCountry = { country: string }
 
-let configPromise: Promise<Record<string, IdentifyCountryConfig>> | null = null
+let dataPromise: Promise<CountriesData> | null = null
 
-function loadConfig(): Promise<Record<string, IdentifyCountryConfig>> {
-  if (!configPromise) {
-    configPromise = fetch('/data/world-map/identify-country-exercises.json').then((response) => response.json())
+function loadData(): Promise<CountriesData> {
+  if (!dataPromise) {
+    dataPromise = fetch('/data/world-map/countries.json').then((response) => response.json())
   }
-  return configPromise
+  return dataPromise
 }
 
 export async function getEnabledCountries(): Promise<EnabledCountry[]> {
-  const config = await loadConfig()
-  return Object.entries(config)
-    .filter(([, value]) => value.enabled)
+  const data = await loadData()
+  return Object.entries(data)
+    .filter(([, value]) => value.identifyCountry?.enabled)
     .map(([country]) => ({ country }))
 }

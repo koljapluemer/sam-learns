@@ -1,0 +1,2824 @@
+{
+  "ABW": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 150
+  },
+  "AFG": {
+    "distractors": [
+      "IRN",
+      "PAK",
+      "TJK",
+      "TKM",
+      "UZB",
+      "ALB",
+      "DZA"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "AGO": {
+    "distractors": [
+      "COG",
+      "COD",
+      "NAM",
+      "ZMB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "AIA": {
+    "distractors": [
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 103
+  },
+  "ALB": {
+    "distractors": [
+      "GRC",
+      "KOS",
+      "MNE",
+      "MKD",
+      "SRB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "ALD": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 142
+  },
+  "AND": {
+    "distractors": [
+      "FRA",
+      "ESP"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 147
+  },
+  "ARE": {
+    "distractors": [
+      "OMN",
+      "SAU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "ARG": {
+    "distractors": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "PRY",
+      "URY"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "ARM": {
+    "distractors": [
+      "AZE",
+      "GEO",
+      "IRN",
+      "TUR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "ASM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 101
+  },
+  "ATC": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "ATG": {
+    "distractors": [
+      "AIA",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "AUS": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 108
+  },
+  "AUT": {
+    "distractors": [
+      "CZE",
+      "DEU",
+      "HUN",
+      "ITA",
+      "LIE",
+      "SVK",
+      "SVN",
+      "CHE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "AZE": {
+    "distractors": [
+      "ARM",
+      "GEO",
+      "IRN",
+      "RUS",
+      "TUR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "BDI": {
+    "distractors": [
+      "COD",
+      "RWA",
+      "TZA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "BEL": {
+    "distractors": [
+      "FRA",
+      "DEU",
+      "LUX",
+      "NLD"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "BEN": {
+    "distractors": [
+      "BFA",
+      "NER",
+      "NGA",
+      "TGO"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "BFA": {
+    "distractors": [
+      "BEN",
+      "CIV",
+      "GHA",
+      "MLI",
+      "NER",
+      "TGO"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "BGD": {
+    "distractors": [
+      "IND",
+      "MMR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "BGR": {
+    "distractors": [
+      "GRC",
+      "MKD",
+      "ROU",
+      "SRB",
+      "TUR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "BHR": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "BHS": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 133
+  },
+  "BIH": {
+    "distractors": [
+      "HRV",
+      "MNE",
+      "SRB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 128
+  },
+  "BLM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 159
+  },
+  "BLR": {
+    "distractors": [
+      "LVA",
+      "LTU",
+      "POL",
+      "RUS",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "BLZ": {
+    "distractors": [
+      "GTM",
+      "MEX"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "BMU": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "BOL": {
+    "distractors": [
+      "ARG",
+      "BRA",
+      "CHL",
+      "PRY",
+      "PER"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 116
+  },
+  "BRA": {
+    "distractors": [
+      "ARG",
+      "BOL",
+      "COL",
+      "GUY",
+      "PRY",
+      "PER",
+      "SUR",
+      "URY",
+      "VEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 108
+  },
+  "BRB": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "BRN": {
+    "distractors": [
+      "MYS"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "BTN": {
+    "distractors": [
+      "CHN",
+      "IND"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "BWA": {
+    "distractors": [
+      "NAM",
+      "ZAF",
+      "ZWE"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "CAF": {
+    "distractors": [
+      "CMR",
+      "TCD",
+      "COG",
+      "COD",
+      "SDS",
+      "SDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "CAN": {
+    "distractors": [
+      "USA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "CHE": {
+    "distractors": [
+      "AUT",
+      "FRA",
+      "DEU",
+      "ITA",
+      "LIE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "CHL": {
+    "distractors": [
+      "ARG",
+      "BOL",
+      "PER"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "CHN": {
+    "distractors": [
+      "AFG",
+      "BTN",
+      "IND",
+      "KAZ",
+      "KGZ",
+      "LAO",
+      "MNG",
+      "MMR",
+      "NPL",
+      "PRK",
+      "PAK",
+      "RUS",
+      "TJK",
+      "VNM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "CIV": {
+    "distractors": [
+      "BFA",
+      "GHA",
+      "GIN",
+      "LBR",
+      "MLI"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "CMR": {
+    "distractors": [
+      "CAF",
+      "TCD",
+      "COG",
+      "GNQ",
+      "GAB",
+      "NGA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "COD": {
+    "distractors": [
+      "AGO",
+      "BDI",
+      "CAF",
+      "COG",
+      "RWA",
+      "SDS",
+      "TZA",
+      "UGA",
+      "ZMB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "COG": {
+    "distractors": [
+      "AGO",
+      "CMR",
+      "CAF",
+      "COD",
+      "GAB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "COK": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 150
+  },
+  "COL": {
+    "distractors": [
+      "BRA",
+      "ECU",
+      "PAN",
+      "PER",
+      "VEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "COM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 141
+  },
+  "CPV": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "CRI": {
+    "distractors": [
+      "NIC",
+      "PAN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "CUB": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR",
+      "USA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "CUW": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "CYM": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "CYN": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "CYP": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "CZE": {
+    "distractors": [
+      "AUT",
+      "POL",
+      "SVK"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "DEU": {
+    "distractors": [
+      "AUT",
+      "BEL",
+      "CZE",
+      "DNK",
+      "FRA",
+      "LUX",
+      "NLD",
+      "POL",
+      "CHE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "DJI": {
+    "distractors": [
+      "ERI",
+      "ETH",
+      "SOM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "DMA": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "DNK": {
+    "distractors": [
+      "DEU"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 129
+  },
+  "DOM": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "DZA": {
+    "distractors": [
+      "LBY",
+      "MLI",
+      "MRT",
+      "MAR",
+      "NER",
+      "TUN",
+      "SAH"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 113
+  },
+  "ECU": {
+    "distractors": [
+      "COL",
+      "PER"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "EGY": {
+    "distractors": [
+      "ISR",
+      "LBY",
+      "PSX",
+      "SDN"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 116
+  },
+  "ERI": {
+    "distractors": [
+      "DJI",
+      "ETH",
+      "SDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "ESP": {
+    "distractors": [
+      "AND",
+      "FRA",
+      "MAR",
+      "PRT"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "EST": {
+    "distractors": [
+      "LVA",
+      "RUS"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "ETH": {
+    "distractors": [
+      "DJI",
+      "ERI",
+      "KEN",
+      "SDS",
+      "SOM",
+      "SDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "FIN": {
+    "distractors": [
+      "NOR",
+      "RUS",
+      "SWE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "FJI": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "FLK": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 134
+  },
+  "FRA": {
+    "distractors": [
+      "AND",
+      "BEL",
+      "DEU",
+      "ITA",
+      "LUX",
+      "MCO",
+      "ESP",
+      "CHE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "FRO": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 142
+  },
+  "FSM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "GAB": {
+    "distractors": [
+      "CMR",
+      "COG",
+      "GNQ"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "GBR": {
+    "distractors": [
+      "IRL"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "GEO": {
+    "distractors": [
+      "ARM",
+      "AZE",
+      "RUS",
+      "TUR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "GGY": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 154
+  },
+  "GHA": {
+    "distractors": [
+      "BFA",
+      "CIV",
+      "TGO"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "GIN": {
+    "distractors": [
+      "CIV",
+      "GNB",
+      "LBR",
+      "MLI",
+      "SEN",
+      "SLE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "GMB": {
+    "distractors": [
+      "SEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "GNB": {
+    "distractors": [
+      "GIN",
+      "SEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "GNQ": {
+    "distractors": [
+      "CMR",
+      "GAB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "GRC": {
+    "distractors": [
+      "ALB",
+      "BGR",
+      "MKD",
+      "TUR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 124
+  },
+  "GRD": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 103
+  },
+  "GRL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 113
+  },
+  "GTM": {
+    "distractors": [
+      "BLZ",
+      "SLV",
+      "HND",
+      "MEX"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "GUM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 146
+  },
+  "GUY": {
+    "distractors": [
+      "BRA",
+      "SUR",
+      "VEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "HKG": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 143
+  },
+  "HMD": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "HND": {
+    "distractors": [
+      "SLV",
+      "GTM",
+      "NIC"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "HRV": {
+    "distractors": [
+      "BIH",
+      "HUN",
+      "MNE",
+      "SRB",
+      "SVN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "HTI": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 120
+  },
+  "HUN": {
+    "distractors": [
+      "AUT",
+      "HRV",
+      "ROU",
+      "SRB",
+      "SVK",
+      "SVN",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "IDN": {
+    "distractors": [
+      "MYS",
+      "PNG"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "IMN": {
+    "distractors": [
+      "JEY",
+      "GGY",
+      "ALD",
+      "FRO"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "IND": {
+    "distractors": [
+      "BGD",
+      "BTN",
+      "CHN",
+      "MMR",
+      "NPL",
+      "PAK"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "IOA": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "IOT": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 101
+  },
+  "IRL": {
+    "distractors": [
+      "GBR"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "IRN": {
+    "distractors": [
+      "AFG",
+      "ARM",
+      "AZE",
+      "IRQ",
+      "PAK",
+      "TUR",
+      "TKM"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "IRQ": {
+    "distractors": [
+      "IRN",
+      "JOR",
+      "KWT",
+      "SAU",
+      "SYR",
+      "TUR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "ISL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 125
+  },
+  "ISR": {
+    "distractors": [
+      "EGY",
+      "JOR",
+      "LBN",
+      "PSX",
+      "SYR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "ITA": {
+    "distractors": [
+      "AUT",
+      "FRA",
+      "SMR",
+      "SVN",
+      "CHE",
+      "VAT"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "JAM": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "JEY": {
+    "distractors": [],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "JOR": {
+    "distractors": [
+      "IRQ",
+      "ISR",
+      "PSX",
+      "SAU",
+      "SYR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "JPN": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "KAS": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "KAZ": {
+    "distractors": [
+      "CHN",
+      "KGZ",
+      "RUS",
+      "TKM",
+      "UZB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 112
+  },
+  "KEN": {
+    "distractors": [
+      "ETH",
+      "SDS",
+      "SOM",
+      "TZA",
+      "UGA"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "KGZ": {
+    "distractors": [
+      "CHN",
+      "KAZ",
+      "TJK",
+      "UZB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "KHM": {
+    "distractors": [
+      "LAO",
+      "THA",
+      "VNM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "KIR": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "KNA": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "KOR": {
+    "distractors": [
+      "PRK"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "KOS": {
+    "distractors": [
+      "ALB",
+      "MNE",
+      "MKD",
+      "SRB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "KWT": {
+    "distractors": [
+      "IRQ",
+      "SAU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "LAO": {
+    "distractors": [
+      "KHM",
+      "CHN",
+      "MMR",
+      "THA",
+      "VNM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "LBN": {
+    "distractors": [
+      "ISR",
+      "SYR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "LBR": {
+    "distractors": [
+      "CIV",
+      "GIN",
+      "SLE"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "LBY": {
+    "distractors": [
+      "DZA",
+      "TCD",
+      "EGY",
+      "NER",
+      "SDN",
+      "TUN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "LCA": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 146
+  },
+  "LIE": {
+    "distractors": [
+      "AUT",
+      "CHE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "LKA": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "LSO": {
+    "distractors": [
+      "ZAF"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "LTU": {
+    "distractors": [
+      "BLR",
+      "LVA",
+      "POL",
+      "EST"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "LUX": {
+    "distractors": [
+      "BEL",
+      "FRA",
+      "DEU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "LVA": {
+    "distractors": [
+      "BLR",
+      "EST",
+      "LTU",
+      "RUS"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 127
+  },
+  "MAC": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "MAF": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "MAR": {
+    "distractors": [
+      "DZA",
+      "ESP",
+      "SAH"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "MCO": {
+    "distractors": [
+      "FRA"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 110
+  },
+  "MDA": {
+    "distractors": [
+      "ROU",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "MDG": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 118
+  },
+  "MDV": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "MEX": {
+    "distractors": [
+      "BLZ",
+      "GTM",
+      "USA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "MHL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "MKD": {
+    "distractors": [
+      "ALB",
+      "BGR",
+      "GRC",
+      "KOS",
+      "SRB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "MLI": {
+    "distractors": [
+      "DZA",
+      "BFA",
+      "CIV",
+      "GIN",
+      "MRT",
+      "NER",
+      "SEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "MLT": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "MMR": {
+    "distractors": [
+      "BGD",
+      "CHN",
+      "IND",
+      "LAO",
+      "THA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "MNE": {
+    "distractors": [
+      "ALB",
+      "BIH",
+      "HRV",
+      "KOS",
+      "SRB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 133
+  },
+  "MNG": {
+    "distractors": [
+      "CHN",
+      "RUS"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "MNP": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "MOZ": {
+    "distractors": [
+      "MWI",
+      "ZAF",
+      "TZA",
+      "ZMB",
+      "ZWE",
+      "SWZ"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "MRT": {
+    "distractors": [
+      "DZA",
+      "MLI",
+      "SEN",
+      "SAH"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "MSR": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 104
+  },
+  "MUS": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 141
+  },
+  "MWI": {
+    "distractors": [
+      "MOZ",
+      "TZA",
+      "ZMB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 112
+  },
+  "MYS": {
+    "distractors": [
+      "BRN",
+      "IDN",
+      "THA"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "NAM": {
+    "distractors": [
+      "AGO",
+      "BWA",
+      "ZAF",
+      "ZMB",
+      "ZWE"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "NCL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "NER": {
+    "distractors": [
+      "DZA",
+      "BEN",
+      "BFA",
+      "TCD",
+      "LBY",
+      "MLI",
+      "NGA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "NFK": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 157
+  },
+  "NGA": {
+    "distractors": [
+      "BEN",
+      "CMR",
+      "TCD",
+      "NER",
+      "NIC"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "NIC": {
+    "distractors": [
+      "CRI",
+      "HND"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "NIU": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "NLD": {
+    "distractors": [
+      "BEL",
+      "DEU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 129
+  },
+  "NOR": {
+    "distractors": [
+      "FIN",
+      "SWE"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 121
+  },
+  "NPL": {
+    "distractors": [
+      "CHN",
+      "IND"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "NRU": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 159
+  },
+  "NZL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "OMN": {
+    "distractors": [
+      "SAU",
+      "ARE",
+      "YEM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "PAK": {
+    "distractors": [
+      "AFG",
+      "CHN",
+      "IND",
+      "IRN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "PAN": {
+    "distractors": [
+      "COL",
+      "CRI"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "PCN": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 156
+  },
+  "PER": {
+    "distractors": [
+      "BOL",
+      "BRA",
+      "CHL",
+      "COL",
+      "ECU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "PHL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "PLW": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "PNG": {
+    "distractors": [
+      "IDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "POL": {
+    "distractors": [
+      "BLR",
+      "CZE",
+      "DEU",
+      "LTU",
+      "RUS",
+      "SVK",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "PRI": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 135
+  },
+  "PRK": {
+    "distractors": [
+      "CHN",
+      "RUS",
+      "KOR"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 125
+  },
+  "PRT": {
+    "distractors": [
+      "ESP"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 126
+  },
+  "PRY": {
+    "distractors": [
+      "ARG",
+      "BOL",
+      "BRA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "PSX": {
+    "distractors": [
+      "EGY",
+      "ISR",
+      "JOR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "PYF": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "QAT": {
+    "distractors": [
+      "BHR",
+      "KWT",
+      "OMN"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "ROU": {
+    "distractors": [
+      "BGR",
+      "HUN",
+      "MDA",
+      "SRB",
+      "UKR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "RUS": {
+    "distractors": [
+      "AZE",
+      "BLR",
+      "CHN",
+      "EST",
+      "FIN",
+      "GEO",
+      "KAZ",
+      "LVA",
+      "LTU",
+      "MNG",
+      "PRK",
+      "NOR",
+      "POL",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 105
+  },
+  "RWA": {
+    "distractors": [
+      "BDI",
+      "COD",
+      "TZA",
+      "UGA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 131
+  },
+  "SAH": {
+    "distractors": [
+      "DZA",
+      "MRT",
+      "MAR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 122
+  },
+  "SAU": {
+    "distractors": [
+      "IRQ",
+      "JOR",
+      "KWT",
+      "OMN",
+      "QAT",
+      "ARE",
+      "YEM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 114
+  },
+  "SDN": {
+    "distractors": [
+      "CAF",
+      "TCD",
+      "EGY",
+      "ERI",
+      "ETH",
+      "LBY",
+      "SDS"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 114
+  },
+  "SDS": {
+    "distractors": [
+      "CAF",
+      "COD",
+      "ETH",
+      "KEN",
+      "SDN",
+      "UGA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "SEN": {
+    "distractors": [
+      "GMB",
+      "GIN",
+      "GNB",
+      "MLI",
+      "MRT"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "SGP": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 145
+  },
+  "SGS": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 138
+  },
+  "SHN": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "SLB": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 130
+  },
+  "SLE": {
+    "distractors": [
+      "GIN",
+      "LBR",
+      "BFA"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 127
+  },
+  "SLV": {
+    "distractors": [
+      "GTM",
+      "HND"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "SMR": {
+    "distractors": [
+      "ITA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 155
+  },
+  "SOL": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "SOM": {
+    "distractors": [
+      "DJI",
+      "ETH",
+      "KEN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "SPM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "SRB": {
+    "distractors": [
+      "ALB",
+      "BIH",
+      "BGR",
+      "HRV",
+      "HUN",
+      "KOS",
+      "MNE",
+      "MKD",
+      "ROU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 126
+  },
+  "STP": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 144
+  },
+  "SUR": {
+    "distractors": [
+      "BRA",
+      "GUY"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "SVK": {
+    "distractors": [
+      "AUT",
+      "CZE",
+      "HUN",
+      "POL",
+      "UKR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "SVN": {
+    "distractors": [
+      "AUT",
+      "HRV",
+      "HUN",
+      "ITA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 132
+  },
+  "SWE": {
+    "distractors": [
+      "FIN",
+      "NOR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "SWZ": {
+    "distractors": [
+      "MOZ"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 107
+  },
+  "SXM": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 159
+  },
+  "SYC": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 147
+  },
+  "SYR": {
+    "distractors": [
+      "IRQ",
+      "ISR",
+      "JOR",
+      "LBN",
+      "TUR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 123
+  },
+  "TCA": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 147
+  },
+  "TCD": {
+    "distractors": [
+      "CMR",
+      "CAF",
+      "LBY",
+      "NER",
+      "NGA",
+      "SDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 115
+  },
+  "TGO": {
+    "distractors": [
+      "BEN",
+      "BFA",
+      "GHA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 128
+  },
+  "THA": {
+    "distractors": [
+      "KHM",
+      "LAO",
+      "MYS",
+      "MMR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "TJK": {
+    "distractors": [
+      "AFG",
+      "CHN",
+      "KGZ",
+      "UZB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 130
+  },
+  "TKM": {
+    "distractors": [
+      "AFG",
+      "IRN",
+      "KAZ",
+      "UZB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "TLS": {
+    "distractors": [
+      "IDN"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 133
+  },
+  "TON": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": true,
+    "zoom": 105
+  },
+  "TTO": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 137
+  },
+  "TUN": {
+    "distractors": [
+      "DZA",
+      "LBY"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 124
+  },
+  "TUR": {
+    "distractors": [
+      "ARM",
+      "AZE",
+      "BGR",
+      "GEO",
+      "GRC",
+      "IRN",
+      "IRQ",
+      "SYR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "TUV": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 158
+  },
+  "TWN": {
+    "distractors": [
+      "KOR",
+      "JPN",
+      "IDN",
+      "MYS",
+      "HKG"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 115
+  },
+  "TZA": {
+    "distractors": [
+      "BDI",
+      "COD",
+      "KEN",
+      "MWI",
+      "MOZ",
+      "RWA",
+      "UGA",
+      "ZMB"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "UGA": {
+    "distractors": [
+      "COD",
+      "KEN",
+      "RWA",
+      "SDS",
+      "TZA"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 122
+  },
+  "UKR": {
+    "distractors": [
+      "BLR",
+      "HUN",
+      "MDA",
+      "POL",
+      "ROU",
+      "RUS",
+      "SVK"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 118
+  },
+  "URY": {
+    "distractors": [
+      "ARG",
+      "BRA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 123
+  },
+  "USA": {
+    "distractors": [
+      "CAN",
+      "CUB",
+      "MEX"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 107
+  },
+  "UZB": {
+    "distractors": [
+      "AFG",
+      "KAZ",
+      "KGZ",
+      "TJK",
+      "TKM"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  },
+  "VAT": {
+    "distractors": [
+      "ITA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 171
+  },
+  "VCT": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "VEN": {
+    "distractors": [
+      "COL",
+      "GUY",
+      "GNB",
+      "SUR"
+    ],
+    "enabled": true,
+    "reviewed": true,
+    "zoom": 117
+  },
+  "VGB": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA",
+      "VIR"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 151
+  },
+  "VIR": {
+    "distractors": [
+      "AIA",
+      "ATG",
+      "ABW",
+      "BHS",
+      "BRB",
+      "VGB",
+      "CYM",
+      "CUB",
+      "CUW",
+      "DMA",
+      "DOM",
+      "GRD",
+      "HTI",
+      "JAM",
+      "MSR",
+      "PRI",
+      "LCA",
+      "SXM",
+      "MAF",
+      "KNA",
+      "VCT",
+      "TTO",
+      "TCA"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 148
+  },
+  "VNM": {
+    "distractors": [
+      "KHM",
+      "CHN",
+      "LAO"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 121
+  },
+  "VUT": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 134
+  },
+  "WLF": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 149
+  },
+  "WSM": {
+    "distractors": [],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 140
+  },
+  "YEM": {
+    "distractors": [
+      "OMN",
+      "SAU"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 119
+  },
+  "ZAF": {
+    "distractors": [
+      "BWA",
+      "LSO",
+      "MOZ",
+      "NAM",
+      "ZWE",
+      "SWZ"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 116
+  },
+  "ZMB": {
+    "distractors": [
+      "AGO",
+      "COD",
+      "MWI",
+      "MOZ",
+      "NAM",
+      "TZA",
+      "ZWE"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 117
+  },
+  "ZWE": {
+    "distractors": [
+      "BWA",
+      "MOZ",
+      "ZAF",
+      "ZMB"
+    ],
+    "enabled": false,
+    "reviewed": false,
+    "zoom": 120
+  }
+}

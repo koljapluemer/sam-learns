@@ -1,18 +1,18 @@
-export type CountryConfig = { enabled: boolean; zoom: number }
+type CountriesData = Record<string, { neighborhood?: { enabled: boolean; zoom: number } }>
 export type EnabledCountry = { country: string; zoom: number }
 
-let configPromise: Promise<Record<string, CountryConfig>> | null = null
+let dataPromise: Promise<CountriesData> | null = null
 
-function loadConfig(): Promise<Record<string, CountryConfig>> {
-  if (!configPromise) {
-    configPromise = fetch('/data/world-map/neighborhood-exercises.json').then((response) => response.json())
+function loadData(): Promise<CountriesData> {
+  if (!dataPromise) {
+    dataPromise = fetch('/data/world-map/countries.json').then((response) => response.json())
   }
-  return configPromise
+  return dataPromise
 }
 
 export async function getEnabledCountries(): Promise<EnabledCountry[]> {
-  const config = await loadConfig()
-  return Object.entries(config)
-    .filter(([, value]) => value.enabled)
-    .map(([country, value]) => ({ country, zoom: value.zoom }))
+  const data = await loadData()
+  return Object.entries(data)
+    .filter(([, value]) => value.neighborhood?.enabled)
+    .map(([country, value]) => ({ country, zoom: value.neighborhood!.zoom }))
 }

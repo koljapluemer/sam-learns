@@ -1,18 +1,18 @@
-export type CountryConfig = { enabled: boolean; zoom: number; distractors: string[] }
+type CountriesData = Record<string, { distractorChoice?: { enabled: boolean; zoom: number; distractors: string[] } }>
 export type EnabledCountry = { country: string; zoom: number; distractors: string[] }
 
-let configPromise: Promise<Record<string, CountryConfig>> | null = null
+let dataPromise: Promise<CountriesData> | null = null
 
-function loadConfig(): Promise<Record<string, CountryConfig>> {
-  if (!configPromise) {
-    configPromise = fetch('/data/world-map/distractor-choice-exercises.json').then((response) => response.json())
+function loadData(): Promise<CountriesData> {
+  if (!dataPromise) {
+    dataPromise = fetch('/data/world-map/countries.json').then((response) => response.json())
   }
-  return configPromise
+  return dataPromise
 }
 
 export async function getEnabledCountries(): Promise<EnabledCountry[]> {
-  const config = await loadConfig()
-  return Object.entries(config)
-    .filter(([, value]) => value.enabled && value.distractors.length > 0)
-    .map(([country, value]) => ({ country, zoom: value.zoom, distractors: value.distractors }))
+  const data = await loadData()
+  return Object.entries(data)
+    .filter(([, value]) => value.distractorChoice?.enabled && value.distractorChoice.distractors.length > 0)
+    .map(([country, value]) => ({ country, zoom: value.distractorChoice!.zoom, distractors: value.distractorChoice!.distractors }))
 }

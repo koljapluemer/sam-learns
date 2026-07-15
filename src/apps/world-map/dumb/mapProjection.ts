@@ -33,8 +33,12 @@ export function panIndexToTranslate(panIndex: number, width: number, height: num
   return [cellX * cellWidth + cellWidth / 2, cellY * cellHeight + cellHeight / 2]
 }
 
-export function findCountryFeature(geoData: FeatureCollection, countryName: string): Feature | undefined {
-  return geoData.features.find((feature) => feature.properties?.name === countryName)
+export function findCountryFeature(geoData: FeatureCollection, countryCode: string): Feature | undefined {
+  return geoData.features.find((feature) => feature.properties?.code === countryCode)
+}
+
+export function getCountryDisplayName(geoData: FeatureCollection, countryCode: string): string {
+  return findCountryFeature(geoData, countryCode)?.properties?.name ?? countryCode
 }
 
 export function computeMarkerRadius(width: number, height: number): number {

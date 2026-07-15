@@ -1,22 +1,23 @@
-"""One-off seed import from the sibling learn-worldmap repo.
+"""One-off seed import for the CMS's own curation configs.
 
 Run once via: uv run python world_map/scripts/import_seed_data.py
 
-Copies the geojson map data as-is and derives an initial curation config
-(everything disabled by default) from learn-worldmap's zoom level table.
-Re-running is safe for the geojson (always overwritten) but will NOT
-clobber curation decisions already saved in neighborhood-exercises.json
-for countries that already have an entry.
+The geo data itself (world_map/worldmap.geo.json) is already checked into
+this folder, so this script only derives an initial curation config
+(everything disabled by default) from a sibling learn-worldmap repo's zoom
+level table, and exports the frontend-facing files.
+
+Re-running is safe: it will NOT clobber curation decisions already saved
+in neighborhood-exercises.json for countries that already have an entry.
 """
 
 import json
-import shutil
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from country_codes import short_name_to_code  # noqa: E402
 from data_io import (  # noqa: E402
-    geo_data_path,
     identify_country_config_path,
     load_identify_country_config,
     load_neighborhood_config,
@@ -27,6 +28,7 @@ from data_io import (  # noqa: E402
     save_world_map_config,
     world_map_config_path,
 )
+from export_frontend_data import export_geo_data  # noqa: E402
 
 DEFAULT_ZOOM = 150
 
@@ -46,23 +48,21 @@ def find_source_repo() -> Path:
 
 
 def main() -> None:
+    export_geo_data()
+
     source_repo = find_source_repo()
-
-    source_geojson = source_repo / "src" / "modules" / "map-data" / "map.geo.json"
-    shutil.copyfile(source_geojson, geo_data_path())
-    print(f"copied {source_geojson} -> {geo_data_path()}")
-
     zoom_level_data = json.loads((source_repo / "generate" / "in" / "zoomLevelData.json").read_text())
+    name_to_code = short_name_to_code()
 
     config = load_neighborhood_config()
     added = 0
     for entry in zoom_level_data:
-        country = entry["name"]
-        if country in config:
+        code = name_to_code.get(entry["name"])
+        if code is None or code in config:
             continue
         zoom_raw = entry.get("zoomNeighborhood", "")
         zoom = int(zoom_raw) if zoom_raw else DEFAULT_ZOOM
-        config[country] = {"enabled": False, "zoom": zoom, "reviewed": False}
+        config[code] = {"enabled": False, "zoom": zoom, "reviewed": False}
         added += 1
 
     save_neighborhood_config(config)
@@ -70,10 +70,10 @@ def main() -> None:
 
     world_map_config = load_world_map_config()
     world_map_added = 0
-    for country in config:
-        if country in world_map_config:
+    for code in config:
+        if code in world_map_config:
             continue
-        world_map_config[country] = {"enabled": False, "reviewed": False}
+        world_map_config[code] = {"enabled": False, "reviewed": False}
         world_map_added += 1
 
     save_world_map_config(world_map_config)
@@ -81,10 +81,10 @@ def main() -> None:
 
     identify_country_config = load_identify_country_config()
     identify_country_added = 0
-    for country in config:
-        if country in identify_country_config:
+    for code in config:
+        if code in identify_country_config:
             continue
-        identify_country_config[country] = {"enabled": False, "reviewed": False}
+        identify_country_config[code] = {"enabled": False, "reviewed": False}
         identify_country_added += 1
 
     save_identify_country_config(identify_country_config)
