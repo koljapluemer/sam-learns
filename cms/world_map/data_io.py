@@ -14,6 +14,12 @@ source-of-truth only, not served to the frontend:
 Every save_* function re-exports public/data/world-map/countries.json (see
 export_countries below) so the frontend dev server's CMS preview reflects
 edits immediately, without a separate build step.
+
+A fifth config, country-groups.json, holds ordered country groups (e.g. the
+"-stan" countries) for the group-sequence exercise. It has no CMS UI yet, so
+it's hand-edited, but export_country_groups()/save_country_groups_config()
+follow the same load/save/export shape and produce
+public/data/world-map/groups.json.
 """
 
 import json
@@ -44,6 +50,12 @@ class DistractorChoiceConfig(TypedDict):
     zoom: int
     distractors: list[str]
     reviewed: bool
+
+
+class GroupConfig(TypedDict):
+    name: str
+    countries: list[str]
+    enabled: bool
 
 
 def find_repo_root() -> Path:
@@ -82,8 +94,16 @@ def distractor_choice_config_path() -> Path:
     return cms_data_dir() / "distractor-choice-exercises.json"
 
 
+def country_groups_config_path() -> Path:
+    return cms_data_dir() / "country-groups.json"
+
+
 def countries_export_path() -> Path:
     return public_data_dir() / "countries.json"
+
+
+def groups_export_path() -> Path:
+    return public_data_dir() / "groups.json"
 
 
 def load_neighborhood_config() -> dict[str, NeighborhoodConfig]:
@@ -173,6 +193,50 @@ def load_distractor_choice_config() -> dict[str, DistractorChoiceConfig]:
 def save_distractor_choice_config(config: dict[str, DistractorChoiceConfig]) -> None:
     distractor_choice_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
     export_countries()
+
+
+def load_country_groups_config() -> dict[str, GroupConfig]:
+    path = country_groups_config_path()
+    if not path.exists():
+        return {}
+    raw: dict[str, dict] = json.loads(path.read_text())
+    return {
+        group_id: {
+            "name": entry["name"],
+            "countries": entry["countries"],
+            "enabled": entry["enabled"],
+        }
+        for group_id, entry in raw.items()
+    }
+
+
+def save_country_groups_config(config: dict[str, GroupConfig]) -> None:
+    country_groups_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+    export_country_groups()
+
+
+def export_country_groups() -> None:
+    """Rebuild public/data/world-map/groups.json from the country-groups CMS config.
+
+    Validates every country code against the Natural-Earth-derived country
+    list, so a typo'd code fails loudly here rather than silently breaking
+    the frontend group exercise.
+    """
+    valid_codes = {country.code for country in load_countries()}
+    groups = load_country_groups_config()
+
+    combined: dict[str, dict] = {}
+    for group_id, group in groups.items():
+        unknown = [code for code in group["countries"] if code not in valid_codes]
+        if unknown:
+            raise ValueError(f"group '{group_id}' references unknown country codes: {unknown}")
+        combined[group_id] = {
+            "name": group["name"],
+            "countries": group["countries"],
+            "enabled": group["enabled"],
+        }
+
+    groups_export_path().write_text(json.dumps(combined, indent=2, sort_keys=True))
 
 
 def export_countries() -> None:

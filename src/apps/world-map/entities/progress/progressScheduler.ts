@@ -4,10 +4,12 @@ import { getEnabledCountries as getEnabledNeighborhoodCountries } from '@/apps/w
 import { getEnabledCountries as getEnabledWorldMapCountries } from '@/apps/world-map/entities/world-map-content/worldMapContent'
 import { getEnabledCountries as getEnabledIdentifyCountries } from '@/apps/world-map/entities/identify-country-content/identifyCountryContent'
 import { getEnabledCountries as getEnabledDistractorChoiceCountries } from '@/apps/world-map/entities/distractor-choice-content/distractorChoiceContent'
+import { getEnabledGroups, type CountryGroup } from '@/apps/world-map/entities/country-group-content/countryGroupContent'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
 
 const PAN_INDEX_COUNT = 9
+const GROUP_TRIGGER_FRACTION = 0.5
 const scheduler = fsrs()
 
 export type NextExercise =
@@ -15,11 +17,13 @@ export type NextExercise =
   | { type: 'find-on-world-map'; country: string }
   | { type: 'identify-country'; country: string; distractor: string }
   | { type: 'distractor-choice'; country: string; zoom: number; panIndex: number; distractor: string }
+  | { type: 'group-sequence'; groupId: string; countries: string[] }
 
 export type SubmittedAnswer = {
   type: ExerciseType
   country: string
   panIndex?: number
+  groupId?: string
   numberOfClicksNeeded: number
   msToFirstClick: number
 }
@@ -85,6 +89,24 @@ async function getCandidateCountries(): Promise<CountryCandidate[]> {
     }
   }
   return Array.from(candidates.values())
+}
+
+async function findQualifyingGroup(now: Date): Promise<CountryGroup | undefined> {
+  const groups = await getEnabledGroups()
+  if (groups.length === 0) return undefined
+
+  const progressRows = await appDb.countryProgress.toArray()
+  const progressByCountry = new Map(progressRows.map((row) => [row.country, row]))
+
+  const qualifying = groups.filter((group) => {
+    const dueOrUnseenCount = group.countries.filter((code) => {
+      const progress = progressByCountry.get(code)
+      return !progress || isDue(progress, now)
+    }).length
+    return dueOrUnseenCount / group.countries.length >= GROUP_TRIGGER_FRACTION
+  })
+
+  return qualifying.length > 0 ? pickRandom(qualifying) : undefined
 }
 
 async function pickCountry(): Promise<CountryCandidate | undefined> {
@@ -169,6 +191,13 @@ function buildDistractorChoiceExercise(picked: CountryCandidate): NextExercise {
 }
 
 export async function loadNextExercise(): Promise<NextExercise | undefined> {
+  const qualifyingGroup = await findQualifyingGroup(new Date())
+  if (qualifyingGroup) {
+    const countries = Math.random() < 0.5 ? qualifyingGroup.countries : [...qualifyingGroup.countries].reverse()
+    lastCountry = countries[countries.length - 1]
+    return { type: 'group-sequence', groupId: qualifyingGroup.id, countries }
+  }
+
   const picked = await pickCountry()
   if (!picked) return undefined
 
@@ -204,7 +233,7 @@ export async function loadNextExercise(): Promise<NextExercise | undefined> {
 export async function submitAnswer(input: SubmittedAnswer): Promise<void> {
   const now = new Date()
   const rating = input.numberOfClicksNeeded === 1 ? Rating.Good : Rating.Again
-  const exerciseKey = makeExerciseKey(input.type, input.country, input.panIndex)
+  const exerciseKey = makeExerciseKey(input.type, input.country, input.panIndex, input.groupId)
 
   const [countryEntry, exerciseEntry] = await Promise.all([
     appDb.countryProgress.get(input.country),
@@ -219,7 +248,14 @@ export async function submitAnswer(input: SubmittedAnswer): Promise<void> {
 
   await Promise.all([
     appDb.countryProgress.put({ ...nextCountryCard, country: input.country }),
-    appDb.exerciseProgress.put({ ...nextExerciseCard, exerciseKey, exerciseType: input.type, country: input.country, panIndex: input.panIndex }),
+    appDb.exerciseProgress.put({
+      ...nextExerciseCard,
+      exerciseKey,
+      exerciseType: input.type,
+      country: input.country,
+      panIndex: input.panIndex,
+      groupId: input.groupId
+    }),
     appDb.learningEvents.put({
       id: crypto.randomUUID(),
       timestamp: now.toISOString(),

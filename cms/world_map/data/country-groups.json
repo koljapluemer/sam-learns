@@ -1,0 +1,7 @@
+{
+  "central-asia-stans": {
+    "name": "Central Asia (-stans)",
+    "countries": ["KAZ", "KGZ", "TJK", "AFG", "TKM", "UZB"],
+    "enabled": true
+  }
+}

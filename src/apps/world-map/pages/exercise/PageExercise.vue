@@ -8,6 +8,7 @@ import NeighborhoodExerciseView from './NeighborhoodExerciseView.vue'
 import WorldMapExerciseView from './WorldMapExerciseView.vue'
 import IdentifyCountryExerciseView from './IdentifyCountryExerciseView.vue'
 import DistractorChoiceExerciseView from './DistractorChoiceExerciseView.vue'
+import GroupSequenceExerciseView from './GroupSequenceExerciseView.vue'
 
 type PageState = { mode: 'loading' } | { mode: 'no-exercises' } | { mode: 'exercise'; exercise: NextExercise }
 
@@ -77,6 +78,15 @@ async function handleSubmitted(result: SubmittedAnswer) {
       :distractor="state.exercise.distractor"
       :zoom="state.exercise.zoom"
       :pan-index="state.exercise.panIndex"
+      @submitted="handleSubmitted"
+    />
+
+    <GroupSequenceExerciseView
+      v-else-if="state.exercise.type === 'group-sequence'"
+      :key="`group-${state.exercise.groupId}-${state.exercise.countries.join('-')}`"
+      :geo-data="geoData"
+      :group-id="state.exercise.groupId"
+      :countries="state.exercise.countries"
       @submitted="handleSubmitted"
     />
 

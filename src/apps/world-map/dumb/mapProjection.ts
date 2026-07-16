@@ -48,6 +48,22 @@ export function computeMarkerRadius(width: number, height: number): number {
   return Math.min(Math.max(MARKER_TARGET_RADIUS_PX, min), max)
 }
 
+export function computeGroupProjection(input: {
+  geoData: FeatureCollection
+  width: number
+  height: number
+  groupCountries: string[]
+}): GeoProjection {
+  const features = input.geoData.features.filter((feature) => {
+    const code = feature.properties?.code
+    return code && input.groupCountries.includes(code)
+  })
+  if (features.length === 0) return geoMercator().fitSize([input.width, input.height], input.geoData)
+
+  const collection: FeatureCollection = { type: 'FeatureCollection', features }
+  return geoMercator().fitSize([input.width, input.height], collection)
+}
+
 export function computeMapProjection(input: {
   geoData: FeatureCollection
   width: number

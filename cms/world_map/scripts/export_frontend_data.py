@@ -14,6 +14,8 @@ Writes:
 - public/data/world-map/countries.json: per-country exercise config, one
   combined file instead of one per exercise type, with no CMS-only fields
   (like `reviewed`)
+- public/data/world-map/groups.json: ordered country groups for the
+  group-sequence exercise (see data_io.export_country_groups)
 """
 
 import json
@@ -22,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from country_codes import GEO_SOURCE_PATH  # noqa: E402
-from data_io import export_countries, public_data_dir  # noqa: E402
+from data_io import export_countries, export_country_groups, public_data_dir  # noqa: E402
 
 
 def export_geo_data() -> None:
@@ -50,6 +52,8 @@ def main() -> None:
     export_geo_data()
     export_countries()
     print(f"wrote {public_data_dir() / 'countries.json'}")
+    export_country_groups()
+    print(f"wrote {public_data_dir() / 'groups.json'}")
 
 
 if __name__ == "__main__":

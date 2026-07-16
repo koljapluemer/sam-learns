@@ -2,13 +2,14 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { geoCentroid, geoPath, select, zoom as d3zoom, zoomIdentity } from 'd3'
 import type { FeatureCollection } from 'geojson'
-import { computeMapProjection, computeMarkerRadius, findCountryFeature } from './mapProjection'
+import { computeGroupProjection, computeMapProjection, computeMarkerRadius, findCountryFeature } from './mapProjection'
 
 const props = defineProps<{
   geoData: FeatureCollection
   targetCountry?: string
   zoom?: number
   panIndex?: number
+  groupCountries?: string[]
   highlightCountry?: string
   highlightColor?: string
   secondaryHighlightCountries?: string[]
@@ -41,14 +42,16 @@ function render() {
   const svg = select(container).append('svg').attr('width', width).attr('height', height)
   const g = svg.append('g')
 
-  const projection = computeMapProjection({
-    geoData: props.geoData,
-    width,
-    height,
-    targetCountry: props.targetCountry,
-    zoom: props.zoom,
-    panIndex: props.panIndex
-  })
+  const projection = props.groupCountries?.length
+    ? computeGroupProjection({ geoData: props.geoData, width, height, groupCountries: props.groupCountries })
+    : computeMapProjection({
+        geoData: props.geoData,
+        width,
+        height,
+        targetCountry: props.targetCountry,
+        zoom: props.zoom,
+        panIndex: props.panIndex
+      })
   const path = geoPath(projection)
   const secondaryHighlightSet = new Set(props.secondaryHighlightCountries ?? [])
 
@@ -112,6 +115,7 @@ watch(
     props.targetCountry,
     props.zoom,
     props.panIndex,
+    props.groupCountries,
     props.highlightCountry,
     props.highlightColor,
     props.secondaryHighlightCountries,
