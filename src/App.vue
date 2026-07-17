@@ -4,9 +4,11 @@ import { BarChart3, Home, Info, Settings } from 'lucide-vue-next'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import SettingsPanel from '@/shared/settings/SettingsPanel.vue'
 import InfoPanel from '@/shared/info/InfoPanel.vue'
+import AppStatsPanel from '@/shared/stats/AppStatsPanel.vue'
 
 const isSettingsOpen = ref(false)
 const isInfoOpen = ref(false)
+const isStatsOpen = ref(false)
 
 const appName = computed(() => (shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : ''))
 
@@ -34,6 +36,7 @@ const mainClass = computed(() =>
 
       <div class="flex items-center gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
         <router-link
+          v-if="!shellState.stats"
           :to="{ name: 'stats' }"
           class="btn btn-ghost btn-sm gap-2"
           aria-label="Stats"
@@ -44,6 +47,19 @@ const mainClass = computed(() =>
           />
           <span class="hidden sm:inline">Stats</span>
         </router-link>
+        <button
+          v-else
+          type="button"
+          class="btn btn-ghost btn-sm gap-2"
+          aria-label="Stats"
+          @click="isStatsOpen = true"
+        >
+          <BarChart3
+            :size="18"
+            aria-hidden="true"
+          />
+          <span class="hidden sm:inline">Stats</span>
+        </button>
         <button
           type="button"
           class="btn btn-ghost btn-sm gap-2"
@@ -82,6 +98,10 @@ const mainClass = computed(() =>
     <InfoPanel
       :is-open="isInfoOpen"
       @close="isInfoOpen = false"
+    />
+    <AppStatsPanel
+      :is-open="isStatsOpen"
+      @close="isStatsOpen = false"
     />
   </div>
 </template>

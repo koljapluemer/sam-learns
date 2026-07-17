@@ -47,6 +47,10 @@ function isDue(card: Card, now: Date): boolean {
   return card.due <= now
 }
 
+export function getRetrievability(card: Card, now: Date = new Date()): number {
+  return scheduler.get_retrievability(card, now, false)
+}
+
 function pickRandom<T>(items: T[]): T {
   return items[Math.floor(Math.random() * items.length)]
 }
