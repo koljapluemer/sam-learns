@@ -21,10 +21,10 @@ const mainClass = computed(() =>
 
 <template>
   <div class="min-h-screen w-full bg-base-100 text-base-content">
-    <div class="fixed inset-x-0 top-0 z-50 flex items-start justify-between gap-2 p-3">
+    <div class="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between gap-2 p-3">
       <router-link
         :to="{ name: 'home' }"
-        class="btn btn-ghost btn-sm gap-2 border border-base-300 bg-base-100/90 shadow-sm backdrop-blur"
+        class="btn btn-ghost btn-sm pointer-events-auto gap-2 border border-base-300 bg-base-100/90 shadow-sm backdrop-blur"
         aria-label="Sam Learns Things home"
       >
         <Home
@@ -34,7 +34,7 @@ const mainClass = computed(() =>
         <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
       </router-link>
 
-      <div class="flex items-center gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
+      <div class="pointer-events-auto flex items-center gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
         <router-link
           v-if="!shellState.stats"
           :to="{ name: 'stats' }"

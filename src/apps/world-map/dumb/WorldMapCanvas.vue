@@ -113,6 +113,10 @@ function updateWorldGeometry() {
         .attr('data-country', (feature) => feature.properties?.code ?? '')
         .attr('stroke', MAP_STROKE_COLOR)
         .attr('stroke-width', MAP_STROKE_WIDTH)
+        // Keeps border thickness constant in screen pixels regardless of zoom - without this, the
+        // zoom transform's scale() also scales the stroke, so borders get fatter the further in
+        // (or, for small countries with a high max zoom, absurdly fat) you zoom.
+        .attr('vector-effect', 'non-scaling-stroke')
         .style('cursor', 'pointer')
         .on('click', (_event, feature) => {
           const code = feature.properties?.code
@@ -298,3 +302,18 @@ watch(() => [props.markerCountry, props.markerColor], applyMarker)
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Paths are created imperatively by d3, not by the template, so Tailwind's hover: variant can't
+   reach them - :deep() targets them via the scoped root instead. Gated to real hover-capable
+   pointers so a tap doesn't leave a country stuck looking "hovered" on touch devices. */
+@media (hover: hover) and (pointer: fine) {
+  :deep(path[data-country]) {
+    transition: filter 0.1s ease;
+  }
+
+  :deep(path[data-country]:hover) {
+    filter: brightness(0.9);
+  }
+}
+</style>
