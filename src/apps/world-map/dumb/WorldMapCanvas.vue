@@ -3,6 +3,7 @@ import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { geoCentroid, geoPath, select, zoom as d3zoom, zoomIdentity } from 'd3'
 import type { FeatureCollection } from 'geojson'
 import { computeGroupProjection, computeMapProjection, computeMarkerRadius, findCountryFeature } from './mapProjection'
+import { COUNTRY_FILL_COLOR, HIGHLIGHT_COLOR, MAP_STROKE_COLOR, MAP_STROKE_WIDTH, MARKER_STROKE_WIDTH, WATER_COLOR, ZOOM_SCALE_EXTENT } from './mapStyle'
 
 const props = defineProps<{
   geoData: FeatureCollection
@@ -23,10 +24,6 @@ const emit = defineEmits<{
   countryClicked: [country: string]
 }>()
 
-const DEFAULT_FILL = '#cbd5e1'
-const DEFAULT_MARKER_COLOR = '#3b82f6'
-const ZOOM_SCALE_EXTENT: [number, number] = [1, 8]
-
 const containerRef = ref<HTMLDivElement | null>(null)
 let resizeObserver: ResizeObserver | null = null
 
@@ -40,6 +37,7 @@ function render() {
 
   container.querySelector('svg')?.remove()
   const svg = select(container).append('svg').attr('width', width).attr('height', height)
+  svg.append('rect').attr('width', width).attr('height', height).attr('fill', WATER_COLOR)
   const g = svg.append('g')
 
   const projection = props.groupCountries?.length
@@ -61,13 +59,13 @@ function render() {
     .append('path')
     .attr('d', (feature) => path(feature) ?? '')
     .attr('data-country', (feature) => feature.properties?.code ?? '')
-    .attr('stroke', '#f8fafc')
-    .attr('stroke-width', 0.5)
+    .attr('stroke', MAP_STROKE_COLOR)
+    .attr('stroke-width', MAP_STROKE_WIDTH)
     .attr('fill', (feature) => {
       const code = feature.properties?.code
-      if (code === props.highlightCountry) return props.highlightColor ?? DEFAULT_FILL
-      if (code && secondaryHighlightSet.has(code)) return props.secondaryHighlightColor ?? DEFAULT_FILL
-      return DEFAULT_FILL
+      if (code === props.highlightCountry) return props.highlightColor ?? HIGHLIGHT_COLOR
+      if (code && secondaryHighlightSet.has(code)) return props.secondaryHighlightColor ?? HIGHLIGHT_COLOR
+      return COUNTRY_FILL_COLOR
     })
     .style('cursor', 'pointer')
     .on('click', (_event, feature) => {
@@ -84,8 +82,8 @@ function render() {
       .attr('cy', cy)
       .attr('r', radius)
       .attr('fill', 'none')
-      .attr('stroke', props.markerColor ?? DEFAULT_MARKER_COLOR)
-      .attr('stroke-width', 2)
+      .attr('stroke', props.markerColor ?? HIGHLIGHT_COLOR)
+      .attr('stroke-width', MARKER_STROKE_WIDTH)
       .style('pointer-events', 'none')
   }
 

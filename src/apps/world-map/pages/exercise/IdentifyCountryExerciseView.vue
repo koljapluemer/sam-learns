@@ -18,7 +18,6 @@ const emit = defineEmits<{
 
 const { t } = useAppI18n()
 
-const MARKER_COLOR = '#3b82f6'
 const SUCCESS_DELAY_MS = 600
 
 const attempts = ref(0)
@@ -67,9 +66,7 @@ function handleSelect(option: string) {
       <WorldMapCanvas
         :geo-data="geoData"
         :highlight-country="country"
-        :highlight-color="MARKER_COLOR"
         :marker-country="country"
-        :marker-color="MARKER_COLOR"
       />
     </div>
     <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center px-3 pt-20 sm:pt-24">

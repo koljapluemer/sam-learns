@@ -20,7 +20,6 @@ const emit = defineEmits<{
 
 const { t } = useAppI18n()
 
-const HIGHLIGHT_COLOR = '#3b82f6'
 const SUCCESS_DELAY_MS = 600
 
 const attempts = ref(0)
@@ -72,7 +71,6 @@ function handleSelect(option: string) {
         :zoom="zoom"
         :pan-index="panIndex"
         :highlight-country="country"
-        :highlight-color="HIGHLIGHT_COLOR"
       />
     </div>
     <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center px-3 pt-20 sm:pt-24">

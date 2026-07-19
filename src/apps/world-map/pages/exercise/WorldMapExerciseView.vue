@@ -4,6 +4,7 @@ import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from '@/apps/world-map/app/i18n'
 import WorldMapCanvas from '@/apps/world-map/dumb/WorldMapCanvas.vue'
 import { getCountryDisplayName } from '@/apps/world-map/dumb/mapProjection'
+import { SUCCESS_COLOR } from '@/apps/world-map/dumb/mapStyle'
 import type { SubmittedAnswer } from '@/apps/world-map/entities/progress/progressScheduler'
 
 const props = defineProps<{
@@ -17,8 +18,6 @@ const emit = defineEmits<{
 
 const { t } = useAppI18n()
 
-const HINT_COLOR = '#3b82f6'
-const SUCCESS_COLOR = '#22c55e'
 const SUCCESS_DELAY_MS = 600
 
 const attempts = ref(0)
@@ -62,7 +61,6 @@ function handleClick(clickedCountry: string) {
   }
 
   highlightCountry.value = props.country
-  highlightColor.value = HINT_COLOR
 }
 </script>
 

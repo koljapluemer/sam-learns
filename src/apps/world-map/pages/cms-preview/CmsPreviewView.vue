@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { FeatureCollection } from 'geojson'
 import WorldMapCanvas from '@/apps/world-map/dumb/WorldMapCanvas.vue'
+import { CMS_DISTRACTOR_COLOR, CMS_HIGHLIGHT_COLOR } from '@/apps/world-map/dumb/mapStyle'
 
 defineProps<{
   geoData: FeatureCollection
@@ -11,9 +12,6 @@ defineProps<{
   marker: boolean
   distractors?: string[]
 }>()
-
-const CMS_HIGHLIGHT_COLOR = '#f59e0b'
-const CMS_DISTRACTOR_COLOR = '#a855f7'
 </script>
 
 <template>
