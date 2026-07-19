@@ -15,13 +15,23 @@ import {
 } from 'd3'
 import type { Feature, FeatureCollection } from 'geojson'
 import { Minus, Plus, RotateCcw } from 'lucide-vue-next'
-import { computeGroupProjection, computeMapProjection, computeMarkerRadius, findCountryFeature, interpolateScale, toZoomTransform } from './mapProjection'
+import {
+  computeCountryMaxDimension,
+  computeGroupProjection,
+  computeMapProjection,
+  computeMarkerRadius,
+  findCountryFeature,
+  interpolateScale,
+  toZoomTransform
+} from './mapProjection'
 import {
   COUNTRY_FILL_COLOR,
   HIGHLIGHT_COLOR,
   MAP_STROKE_COLOR,
   MAP_STROKE_WIDTH,
   MARKER_STROKE_WIDTH,
+  MARKER_VISIBILITY_HIDE_ABOVE_PX,
+  MARKER_VISIBILITY_SHOW_BELOW_PX,
   WATER_COLOR,
   ZOOM_BUTTON_FACTOR,
   ZOOM_CLICK_DISTANCE,
@@ -84,9 +94,32 @@ let worldProjection: GeoProjection | null = null
 let initialTransform: ZoomTransform = zoomIdentity
 let resizeObserver: ResizeObserver | null = null
 
+// The marker's bounding-box size at k=1 (see computeCountryMaxDimension), and whether it's currently
+// hidden for being large enough on screen to make out on its own. Both live outside the marker circle
+// itself so handleZoomEvent can cheaply re-derive visibility every frame without re-touching geometry.
+let markerBaseMaxDim = 0
+let markerHiddenBySize = false
+
 function handleZoomEvent(event: D3ZoomEvent<SVGSVGElement, unknown>) {
   transform.value = event.transform
   g?.attr('transform', event.transform.toString())
+  updateMarkerVisibility()
+}
+
+// See MARKER_VISIBILITY_SHOW_BELOW_PX/HIDE_ABOVE_PX in mapStyle.ts for why this uses two thresholds.
+function updateMarkerVisibility() {
+  if (!g) return
+  const circle = g.select<SVGCircleElement>('circle')
+  if (circle.empty()) return
+
+  const onScreenMaxDim = markerBaseMaxDim * transform.value.k
+  if (markerHiddenBySize && onScreenMaxDim < MARKER_VISIBILITY_SHOW_BELOW_PX) {
+    markerHiddenBySize = false
+  } else if (!markerHiddenBySize && onScreenMaxDim > MARKER_VISIBILITY_HIDE_ABOVE_PX) {
+    markerHiddenBySize = true
+  }
+
+  circle.style('display', markerHiddenBySize ? 'none' : null)
 }
 
 // Recomputes the world projection and redraws the (constant) map geometry for the current
@@ -186,6 +219,8 @@ function applyMarker() {
   const markerFeature = props.markerCountry ? findCountryFeature(props.geoData, props.markerCountry) : undefined
   if (!markerFeature) return
 
+  markerBaseMaxDim = computeCountryMaxDimension(worldProjection, markerFeature)
+
   const [cx, cy] = worldProjection(geoCentroid(markerFeature)) ?? [0, 0]
   const radius = computeMarkerRadius(containerRef.value.clientWidth, containerRef.value.clientHeight)
   g.append('circle')
@@ -196,6 +231,9 @@ function applyMarker() {
     .attr('stroke', props.markerColor ?? HIGHLIGHT_COLOR)
     .attr('stroke-width', MARKER_STROKE_WIDTH)
     .style('pointer-events', 'none')
+
+  markerHiddenBySize = false
+  updateMarkerVisibility()
 }
 
 function resetTransform(animate: boolean) {

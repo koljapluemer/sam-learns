@@ -1,4 +1,4 @@
-import { geoCentroid, geoMercator, type GeoProjection, ZoomTransform, zoomIdentity } from 'd3'
+import { geoCentroid, geoMercator, geoPath, type GeoProjection, ZoomTransform, zoomIdentity } from 'd3'
 import type { Feature, FeatureCollection } from 'geojson'
 
 export const PAN_GRID_SIZE = 3
@@ -46,6 +46,18 @@ export function computeMarkerRadius(width: number, height: number): number {
   const min = base * MARKER_MIN_FRACTION
   const max = base * MARKER_MAX_FRACTION
   return Math.min(Math.max(MARKER_TARGET_RADIUS_PX, min), max)
+}
+
+// Largest bounding-box dimension (width or height) of a feature as projected by `projection`, in
+// projection-space px - i.e. at zoom k=1. Multiplying this by the live d3-zoom `k` gives the
+// country's actual on-screen pixel size, since the zoom transform is a pure scale+translate applied
+// on top of the same projection. Used to decide whether a country's own shape is big enough on
+// screen to make out, or whether a marker circle is needed instead.
+export function computeCountryMaxDimension(projection: GeoProjection, feature: Feature): number {
+  const bounds = geoPath(projection).bounds(feature)
+  const width = bounds[1][0] - bounds[0][0]
+  const height = bounds[1][1] - bounds[0][1]
+  return Math.max(width, height)
 }
 
 export function computeGroupProjection(input: {
