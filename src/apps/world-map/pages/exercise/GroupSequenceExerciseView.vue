@@ -89,6 +89,7 @@ async function handleSelect(option: string) {
         :group-countries="countries"
         :highlight-country="currentCountry"
         :marker-country="currentCountry"
+        interactive
       />
     </div>
     <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center px-3 pt-20 sm:pt-24">

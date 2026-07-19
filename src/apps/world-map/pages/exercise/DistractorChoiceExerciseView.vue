@@ -71,6 +71,7 @@ function handleSelect(option: string) {
         :zoom="zoom"
         :pan-index="panIndex"
         :highlight-country="country"
+        interactive
       />
     </div>
     <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center px-3 pt-20 sm:pt-24">

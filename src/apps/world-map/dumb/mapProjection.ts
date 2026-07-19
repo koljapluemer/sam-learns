@@ -1,4 +1,4 @@
-import { geoCentroid, geoMercator, type GeoProjection } from 'd3'
+import { geoCentroid, geoMercator, type GeoProjection, ZoomTransform, zoomIdentity } from 'd3'
 import type { Feature, FeatureCollection } from 'geojson'
 
 export const PAN_GRID_SIZE = 3
@@ -62,6 +62,23 @@ export function computeGroupProjection(input: {
 
   const collection: FeatureCollection = { type: 'FeatureCollection', features }
   return geoMercator().fitSize([input.width, input.height], collection)
+}
+
+// Converts a "pre-cropped" projection (fitted to a country, a country group, or the whole world)
+// into the d3-zoom ZoomTransform that reproduces the same view when applied on top of `baseProjection`
+// (the world projection all map geometry is always drawn with). This is what lets the interactive
+// zoom/pan share one continuous coordinate system with the exercise's own designed starting view:
+// zooming out always bottoms out at the true world view (k=1), and panning works relative to it.
+// Mercator projections without rotation are affine in their raw (pre-scale/translate) space, so
+// matching scale plus a single reference point's mapping fully determines the transform.
+export function toZoomTransform(baseProjection: GeoProjection, targetProjection: GeoProjection): ZoomTransform {
+  const referencePoint: [number, number] = [0, 0]
+  const basePoint = baseProjection(referencePoint)
+  const targetPoint = targetProjection(referencePoint)
+  if (!basePoint || !targetPoint) return zoomIdentity
+
+  const k = targetProjection.scale() / baseProjection.scale()
+  return new ZoomTransform(k, targetPoint[0] - k * basePoint[0], targetPoint[1] - k * basePoint[1])
 }
 
 export function computeMapProjection(input: {
