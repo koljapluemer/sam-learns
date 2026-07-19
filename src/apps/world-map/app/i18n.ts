@@ -9,7 +9,8 @@ const messages = {
       instruction: 'Find {country} in its neighborhood',
       instructionWorldMap: 'Find {country} on the world map',
       instructionIdentify: 'Which country is this?',
-      instructionDistractorChoice: 'Which country is highlighted?'
+      instructionDistractorChoice: 'Which country is highlighted?',
+      giveUp: 'I have no idea'
     },
     loading: {
       label: 'Loading…'

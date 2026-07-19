@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import type { FeatureCollection } from 'geojson'
+import { HelpCircle } from 'lucide-vue-next'
 import { useAppI18n } from '@/apps/world-map/app/i18n'
 import WorldMapCanvas from '@/apps/world-map/dumb/WorldMapCanvas.vue'
 import { getCountryDisplayName } from '@/apps/world-map/dumb/mapProjection'
@@ -22,10 +23,12 @@ const { t } = useAppI18n()
 
 const SUCCESS_DELAY_MS = 600
 
+const mapRef = ref<InstanceType<typeof WorldMapCanvas> | null>(null)
 const attempts = ref(0)
 const highlightCountry = ref<string | undefined>(undefined)
 const highlightColor = ref<string | undefined>(undefined)
 const isCorrect = ref(false)
+const gaveUp = ref(false)
 
 let startTime = performance.now()
 let firstClickMs: number | null = null
@@ -35,6 +38,7 @@ function reset() {
   highlightCountry.value = undefined
   highlightColor.value = undefined
   isCorrect.value = false
+  gaveUp.value = false
   startTime = performance.now()
   firstClickMs = null
 }
@@ -65,12 +69,23 @@ function handleClick(clickedCountry: string) {
 
   highlightCountry.value = props.country
 }
+
+function handleGiveUp() {
+  if (isCorrect.value || gaveUp.value) return
+
+  gaveUp.value = true
+  attempts.value += 1
+  if (firstClickMs === null) firstClickMs = performance.now() - startTime
+  highlightCountry.value = props.country
+  mapRef.value?.revealCountry(props.country)
+}
 </script>
 
 <template>
   <div class="relative h-full w-full">
     <div class="absolute inset-0">
       <WorldMapCanvas
+        ref="mapRef"
         :geo-data="geoData"
         :target-country="country"
         :zoom="zoom"
@@ -90,6 +105,22 @@ function handleClick(clickedCountry: string) {
           {{ t('exercise.instruction', { country: getCountryDisplayName(geoData, country) }) }}
         </p>
       </div>
+    </div>
+    <div
+      v-if="!isCorrect && !gaveUp"
+      class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-3 sm:p-6"
+    >
+      <button
+        type="button"
+        class="btn btn-outline pointer-events-auto bg-base-100/90 shadow-sm backdrop-blur"
+        @click="handleGiveUp"
+      >
+        <HelpCircle
+          :size="18"
+          aria-hidden="true"
+        />
+        {{ t('exercise.giveUp') }}
+      </button>
     </div>
   </div>
 </template>

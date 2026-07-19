@@ -11,11 +11,11 @@ import {
   zoom as d3zoom,
   type ZoomBehavior,
   zoomIdentity,
-  type ZoomTransform
+  ZoomTransform
 } from 'd3'
 import type { Feature, FeatureCollection } from 'geojson'
 import { Minus, Plus, RotateCcw } from 'lucide-vue-next'
-import { computeGroupProjection, computeMapProjection, computeMarkerRadius, findCountryFeature, toZoomTransform } from './mapProjection'
+import { computeGroupProjection, computeMapProjection, computeMarkerRadius, findCountryFeature, interpolateScale, toZoomTransform } from './mapProjection'
 import {
   COUNTRY_FILL_COLOR,
   HIGHLIGHT_COLOR,
@@ -208,6 +208,33 @@ function zoomBy(factor: number) {
   if (!svg || !zoomBehavior) return
   svg.transition().duration(ZOOM_TRANSITION_MS).call(zoomBehavior.scaleBy, factor)
 }
+
+// Pans/zooms to a close-up of the given country, e.g. to reveal it after "I have no idea". Centers
+// on the country's centroid rather than reusing fitSize's own translate, and clamps to the app's
+// normal max zoom - fitting tight to a small country would zoom in past what its simplified,
+// low-vertex-count coastline geometry can render cleanly, turning it into a blurry, faceted mess.
+function revealCountry(code: string) {
+  const container = containerRef.value
+  if (!container || !svg || !zoomBehavior || !worldProjection) return
+
+  const width = container.clientWidth
+  const height = container.clientHeight
+  if (width === 0 || height === 0) return
+
+  const targetFeature = findCountryFeature(props.geoData, code)
+  if (!targetFeature) return
+
+  const worldScale = worldProjection.scale()
+  const countryScale = geoMercator().fitSize([width, height], targetFeature).scale()
+  const k = Math.min(Math.max(interpolateScale(worldScale, countryScale, 1) / worldScale, ZOOM_SCALE_EXTENT[0]), ZOOM_SCALE_EXTENT[1])
+
+  const [worldX, worldY] = worldProjection(geoCentroid(targetFeature)) ?? [width / 2, height / 2]
+  const revealTransform = new ZoomTransform(k, width / 2 - k * worldX, height / 2 - k * worldY)
+
+  svg.transition().duration(ZOOM_TRANSITION_MS).call(zoomBehavior.transform, revealTransform)
+}
+
+defineExpose({ revealCountry })
 
 onMounted(() => {
   const container = containerRef.value
