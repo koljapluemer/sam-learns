@@ -27,10 +27,13 @@ export type LearningEventRow = {
   msToFirstClick: number
 }
 
+export type PracticeTimeRow = { key: 'total'; totalMs: number }
+
 class WorldMapDb extends Dexie {
   countryProgress!: EntityTable<CountryProgressRow, 'country'>
   exerciseProgress!: EntityTable<ExerciseProgressRow, 'exerciseKey'>
   learningEvents!: EntityTable<LearningEventRow, 'id'>
+  practiceTime!: EntityTable<PracticeTimeRow, 'key'>
 
   constructor() {
     super('worldMapDb')
@@ -39,6 +42,13 @@ class WorldMapDb extends Dexie {
       countryProgress: 'country',
       exerciseProgress: 'exerciseKey, country',
       learningEvents: 'id, timestamp, country'
+    })
+
+    this.version(2).stores({
+      countryProgress: 'country',
+      exerciseProgress: 'exerciseKey, country',
+      learningEvents: 'id, timestamp, country',
+      practiceTime: 'key'
     })
   }
 }

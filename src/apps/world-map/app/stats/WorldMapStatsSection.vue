@@ -4,7 +4,9 @@ import { State } from 'ts-fsrs'
 import { appDb } from '@/apps/world-map/db/appDb'
 import { getRetrievability } from '@/apps/world-map/entities/progress/progressScheduler'
 import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
+import { getTotalPracticeMs } from '@/apps/world-map/entities/practice-time/practiceTime'
 import { getCountryDisplayName } from '@/apps/world-map/dumb/mapProjection'
+import { formatDuration } from '@/apps/world-map/dumb/formatDuration'
 import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 
@@ -34,10 +36,11 @@ const stats = ref<{ label: string; value: string | number }[]>([])
 const countryRows = ref<CountryRow[]>([])
 
 onMounted(async () => {
-  const [progressRows, events, geoData] = await Promise.all([
+  const [progressRows, events, geoData, totalPracticeMs] = await Promise.all([
     appDb.countryProgress.toArray(),
     appDb.learningEvents.toArray(),
-    getGeoData()
+    getGeoData(),
+    getTotalPracticeMs()
   ])
 
   const today = toLocalDayKey(new Date().toISOString())
@@ -46,7 +49,8 @@ onMounted(async () => {
   stats.value = [
     { label: 'Countries practiced', value: progressRows.length },
     { label: 'Attempts today', value: attemptsToday },
-    { label: 'Total attempts', value: events.length }
+    { label: 'Total attempts', value: events.length },
+    { label: 'Time practiced', value: formatDuration(totalPracticeMs) }
   ]
 
   const now = new Date()

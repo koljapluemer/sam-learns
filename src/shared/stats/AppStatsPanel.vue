@@ -10,7 +10,7 @@ const emit = defineEmits<{ close: [] }>()
     class="modal"
     :class="{ 'modal-open': isOpen }"
   >
-    <div class="modal-box">
+    <div class="modal-box sm:max-w-2xl">
       <h3 class="text-lg font-bold">
         Stats
       </h3>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import type { FeatureCollection } from 'geojson'
 import { useAppI18n } from '@/apps/world-map/app/i18n'
 import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 import { loadNextExercise, submitAnswer, type NextExercise, type SubmittedAnswer } from '@/apps/world-map/entities/progress/progressScheduler'
+import { startPracticeTimeTracking, stopPracticeTimeTracking } from '@/apps/world-map/entities/practice-time/practiceTime'
 import NeighborhoodExerciseView from './NeighborhoodExerciseView.vue'
 import WorldMapExerciseView from './WorldMapExerciseView.vue'
 import IdentifyCountryExerciseView from './IdentifyCountryExerciseView.vue'
@@ -18,8 +19,13 @@ const state = ref<PageState>({ mode: 'loading' })
 const geoData = ref<FeatureCollection | null>(null)
 
 onMounted(async () => {
+  startPracticeTimeTracking()
   geoData.value = await getGeoData()
   await loadNext()
+})
+
+onUnmounted(() => {
+  stopPracticeTimeTracking()
 })
 
 async function loadNext() {
