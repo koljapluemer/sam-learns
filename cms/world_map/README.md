@@ -22,6 +22,15 @@ country code (not name — see "Country codes" below):
 Each config also carries a `reviewed` flag used only by this CMS to track
 curation progress — never exported to the frontend.
 
+A fifth file, `world_map/data/learning-priority.json`, curates a
+`learningPriority` per country used by the frontend's country picker to bias
+which country comes up next. Unlike the other four, it's keyed by
+human-readable country name rather than code (matching `name_long`, e.g.
+"United States") and lists every country up front at the baseline priority
+2 — 1 boosts a country, 3 demotes it. It has no CMS UI — hand-edit it
+directly, then re-run the export script below (or save anything in the CMS,
+since every save re-exports `countries.json`).
+
 None of the above are fetched directly by the frontend. Every save
 re-exports `public/data/world-map/countries.json`, a single combined,
 per-country file holding only the fields the frontend actually needs (see

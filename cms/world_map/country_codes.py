@@ -38,5 +38,9 @@ def code_to_name() -> dict[str, str]:
     return {country.code: country.name for country in load_countries()}
 
 
+def name_to_code() -> dict[str, str]:
+    return {country.name: country.code for country in load_countries()}
+
+
 def short_name_to_code() -> dict[str, str]:
     return {country.short_name: country.code for country in load_countries()}

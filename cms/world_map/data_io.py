@@ -20,13 +20,24 @@ A fifth config, country-groups.json, holds ordered country groups (e.g. the
 it's hand-edited, but export_country_groups()/save_country_groups_config()
 follow the same load/save/export shape and produce
 public/data/world-map/groups.json.
+
+A sixth config, learning-priority.json, holds a curated learningPriority
+(1, 2, or 3) per country, used by the frontend's country picker to bias
+which country comes up next. It also has no CMS UI, so it's hand-edited,
+but unlike country-groups.json it folds into export_countries() itself (see
+priority_by_country()) rather than a separate public file, since priority is
+a property of the country, not a distinct exercise type. Unlike the other
+five configs it's keyed by human-readable country name rather than code
+(see country_codes.name_to_code) and lists every country up front at the
+baseline priority (2) rather than only the entries someone has curated, so
+it reads as a plain, scannable list to hand-edit directly.
 """
 
 import json
 from pathlib import Path
 from typing import TypedDict
 
-from country_codes import load_countries
+from country_codes import load_countries, name_to_code
 
 
 class NeighborhoodConfig(TypedDict):
@@ -56,6 +67,10 @@ class GroupConfig(TypedDict):
     name: str
     countries: list[str]
     enabled: bool
+
+
+# country name (see country_codes.name_to_code) -> priority (1, 2, or 3)
+LearningPriorityConfig = dict[str, int]
 
 
 def find_repo_root() -> Path:
@@ -96,6 +111,10 @@ def distractor_choice_config_path() -> Path:
 
 def country_groups_config_path() -> Path:
     return cms_data_dir() / "country-groups.json"
+
+
+def learning_priority_config_path() -> Path:
+    return cms_data_dir() / "learning-priority.json"
 
 
 def countries_export_path() -> Path:
@@ -215,6 +234,47 @@ def save_country_groups_config(config: dict[str, GroupConfig]) -> None:
     export_country_groups()
 
 
+def load_learning_priority_config() -> LearningPriorityConfig:
+    """Load the per-country priority map, keyed by human-readable country name.
+
+    Every country is listed at the baseline priority (2) up front, so this
+    is a plain, scannable file to hand-edit directly: find a name, change
+    its number to 1 (boost) or 3 (demote).
+    """
+    path = learning_priority_config_path()
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text())
+
+
+def save_learning_priority_config(config: LearningPriorityConfig) -> None:
+    learning_priority_config_path().write_text(json.dumps(config, indent=2, sort_keys=True))
+    export_countries()
+
+
+def priority_by_country() -> dict[str, int]:
+    """Resolve the curated priority map to a code -> priority (1/2/3) map.
+
+    Validates every name against the Natural-Earth-derived country list and
+    every value against {1, 2, 3}, so a typo'd name or a stray value fails
+    loudly here rather than silently mispicking at runtime. A country
+    missing from the file entirely (e.g. newly added to worldmap.geo.json)
+    defaults to the baseline priority (2).
+    """
+    valid_names = name_to_code()
+    config = load_learning_priority_config()
+
+    unknown = [name for name in config if name not in valid_names]
+    if unknown:
+        raise ValueError(f"learning-priority.json references unknown country names: {unknown}")
+
+    invalid = {name: value for name, value in config.items() if value not in (1, 2, 3)}
+    if invalid:
+        raise ValueError(f"learning-priority.json has priority values outside 1/2/3: {invalid}")
+
+    return {valid_names[name]: value for name, value in config.items()}
+
+
 def export_country_groups() -> None:
     """Rebuild public/data/world-map/groups.json from the country-groups CMS config.
 
@@ -240,17 +300,21 @@ def export_country_groups() -> None:
 
 
 def export_countries() -> None:
-    """Rebuild public/data/world-map/countries.json from the four CMS configs.
+    """Rebuild public/data/world-map/countries.json from the CMS configs.
 
     A single combined file, keyed by country code, holding only the fields
     the frontend actually needs (no `reviewed`). A country only gets a
     sub-key for an exercise type if it has a curation entry there at all.
+    Any country that ends up with at least one exercise entry also gets a
+    `learningPriority` (1, 2, or 3; 2 is the baseline for countries absent
+    from learning-priority.json), used by the frontend's country picker.
     """
     codes = {country.code for country in load_countries()}
     neighborhood = load_neighborhood_config()
     world_map = load_world_map_config()
     identify_country = load_identify_country_config()
     distractor_choice = load_distractor_choice_config()
+    priorities = priority_by_country()
 
     combined: dict[str, dict] = {}
     for code in codes:
@@ -268,6 +332,7 @@ def export_countries() -> None:
                 "distractors": distractor_choice[code]["distractors"],
             }
         if entry:
+            entry["learningPriority"] = priorities.get(code, 2)
             combined[code] = entry
 
     countries_export_path().write_text(json.dumps(combined, indent=2, sort_keys=True))

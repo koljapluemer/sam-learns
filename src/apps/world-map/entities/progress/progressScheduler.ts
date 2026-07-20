@@ -5,11 +5,16 @@ import { getEnabledCountries as getEnabledWorldMapCountries } from '@/apps/world
 import { getEnabledCountries as getEnabledIdentifyCountries } from '@/apps/world-map/entities/identify-country-content/identifyCountryContent'
 import { getEnabledCountries as getEnabledDistractorChoiceCountries } from '@/apps/world-map/entities/distractor-choice-content/distractorChoiceContent'
 import { getEnabledGroups, type CountryGroup } from '@/apps/world-map/entities/country-group-content/countryGroupContent'
+import { getPriorityByCountry, DEFAULT_PRIORITY } from '@/apps/world-map/entities/learning-priority-content/learningPriorityContent'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
 
 const PAN_INDEX_COUNT = 9
 const GROUP_TRIGGER_FRACTION = 0.5
+// cumulative odds for preferring a due/fresh country of a given learningPriority;
+// falls back to the full due/fresh pool when nothing of the preferred priority qualifies
+const PRIORITY_1_ODDS = 0.5
+const PRIORITY_2_ODDS = 0.8 // 0.5 + 0.3
 const scheduler = fsrs()
 
 export type NextExercise =
@@ -31,6 +36,7 @@ export type SubmittedAnswer = {
 type CountryCandidate = {
   country: string
   enabledTypes: ExerciseType[]
+  priority: number
   neighborhoodZoom?: number
   distractorChoiceZoom?: number
   distractorChoiceDistractors?: string[]
@@ -56,14 +62,15 @@ function pickRandom<T>(items: T[]): T {
 }
 
 async function getCandidateCountries(): Promise<CountryCandidate[]> {
-  const [neighborhoodCountries, worldMapCountries, identifyCountries, distractorChoiceCountries] = await Promise.all([
+  const [neighborhoodCountries, worldMapCountries, identifyCountries, distractorChoiceCountries, priorityByCountry] = await Promise.all([
     getEnabledNeighborhoodCountries(),
     getEnabledWorldMapCountries(),
     getEnabledIdentifyCountries(),
-    getEnabledDistractorChoiceCountries()
+    getEnabledDistractorChoiceCountries(),
+    getPriorityByCountry()
   ])
 
-  const candidates = new Map<string, CountryCandidate>()
+  const candidates = new Map<string, Omit<CountryCandidate, 'priority'>>()
   for (const entry of neighborhoodCountries) {
     candidates.set(entry.country, { country: entry.country, enabledTypes: ['find-in-neighborhood'], neighborhoodZoom: entry.zoom })
   }
@@ -92,7 +99,10 @@ async function getCandidateCountries(): Promise<CountryCandidate[]> {
       })
     }
   }
-  return Array.from(candidates.values())
+  return Array.from(candidates.values()).map((candidate) => ({
+    ...candidate,
+    priority: priorityByCountry.get(candidate.country) ?? DEFAULT_PRIORITY
+  }))
 }
 
 async function findQualifyingGroup(now: Date): Promise<CountryGroup | undefined> {
@@ -132,7 +142,19 @@ async function pickCountry(): Promise<CountryCandidate | undefined> {
   }
 
   const pool = due.length > 0 ? due : fresh.length > 0 ? fresh : candidates
-  return pickRandom(pool)
+  const preferredPriority = pickPreferredPriority()
+  const preferred = pool.filter((candidate) => candidate.priority === preferredPriority)
+  return pickRandom(preferred.length > 0 ? preferred : pool)
+}
+
+// 50% prefer priority 1, 30% prefer priority 2, 20% prefer priority 3; when
+// nothing due/fresh has the preferred priority, pickCountry falls back to the
+// whole due/fresh pool (covers "no priority-1 country is due or unlearned")
+function pickPreferredPriority(): number {
+  const roll = Math.random()
+  if (roll < PRIORITY_1_ODDS) return 1
+  if (roll < PRIORITY_2_ODDS) return 2
+  return 3
 }
 
 function buildInstanceCandidates(

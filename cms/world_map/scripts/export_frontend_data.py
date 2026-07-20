@@ -13,7 +13,8 @@ Writes:
   feature (code = adm0_a3, name = the un-abbreviated name_long)
 - public/data/world-map/countries.json: per-country exercise config, one
   combined file instead of one per exercise type, with no CMS-only fields
-  (like `reviewed`)
+  (like `reviewed`); also folds in each country's learningPriority (see
+  data_io.priority_by_country)
 - public/data/world-map/groups.json: ordered country groups for the
   group-sequence exercise (see data_io.export_country_groups)
 """
