@@ -31,6 +31,7 @@ export type SubmittedAnswer = {
   groupId?: string
   numberOfClicksNeeded: number
   msToFirstClick: number
+  gaveUp?: boolean
 }
 
 type CountryCandidate = {
@@ -258,7 +259,7 @@ export async function loadNextExercise(): Promise<NextExercise | undefined> {
 
 export async function submitAnswer(input: SubmittedAnswer): Promise<void> {
   const now = new Date()
-  const rating = input.numberOfClicksNeeded === 1 ? Rating.Good : Rating.Again
+  const rating = input.gaveUp || input.numberOfClicksNeeded !== 1 ? Rating.Again : Rating.Good
   const exerciseKey = makeExerciseKey(input.type, input.country, input.panIndex, input.groupId)
 
   const [countryEntry, exerciseEntry] = await Promise.all([

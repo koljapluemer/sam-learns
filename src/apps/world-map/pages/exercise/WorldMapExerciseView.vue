@@ -58,7 +58,8 @@ function handleClick(clickedCountry: string) {
         type: 'find-on-world-map',
         country: props.country,
         numberOfClicksNeeded: attempts.value,
-        msToFirstClick: firstClickMs ?? 0
+        msToFirstClick: firstClickMs ?? 0,
+        gaveUp: gaveUp.value
       })
     }, SUCCESS_DELAY_MS)
     return

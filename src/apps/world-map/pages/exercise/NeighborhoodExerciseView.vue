@@ -61,7 +61,8 @@ function handleClick(clickedCountry: string) {
         country: props.country,
         panIndex: props.panIndex,
         numberOfClicksNeeded: attempts.value,
-        msToFirstClick: firstClickMs ?? 0
+        msToFirstClick: firstClickMs ?? 0,
+        gaveUp: gaveUp.value
       })
     }, SUCCESS_DELAY_MS)
     return

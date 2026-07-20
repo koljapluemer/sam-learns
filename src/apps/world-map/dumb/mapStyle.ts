@@ -11,8 +11,8 @@ export const MARKER_STROKE_WIDTH = 2
 // to make out - below this size (px, largest bounding-box dimension) it shows; above it, it hides
 // so a country you can already see clearly isn't cluttered with a circle. Two thresholds (not one)
 // give hysteresis, so zooming right around the boundary doesn't flicker the circle on/off every frame.
-export const MARKER_VISIBILITY_SHOW_BELOW_PX = 28
-export const MARKER_VISIBILITY_HIDE_ABOVE_PX = 40
+export const MARKER_VISIBILITY_SHOW_BELOW_PX = 50
+export const MARKER_VISIBILITY_HIDE_ABOVE_PX = 70
 
 // k=1 is always the true world view (the floor - you can zoom out no further). The ceiling is
 // whichever is larger: this default, or enough headroom above the exercise's own starting zoom
