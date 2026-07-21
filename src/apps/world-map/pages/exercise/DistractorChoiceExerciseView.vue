@@ -84,7 +84,7 @@ function handleSelect(option: string) {
         </p>
       </div>
     </div>
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-3 sm:p-6">
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:p-6 sm:pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
       <div class="pointer-events-auto grid grid-cols-2 gap-3">
         <button
           v-for="option in options"

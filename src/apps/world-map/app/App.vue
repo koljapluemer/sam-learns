@@ -42,7 +42,7 @@ if (!isPreview.value) {
 <template>
   <div
     v-if="isPreview"
-    class="h-screen w-screen"
+    class="h-dvh w-screen"
   >
     <CmsPreviewView
       v-if="geoData"

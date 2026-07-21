@@ -104,7 +104,7 @@ function handleGiveUp() {
     </div>
     <div
       v-if="!isCorrect && !gaveUp"
-      class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-3 sm:p-6"
+      class="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:p-6 sm:pb-[calc(1.5rem+env(safe-area-inset-bottom))]"
     >
       <button
         type="button"

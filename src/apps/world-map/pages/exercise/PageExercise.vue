@@ -41,7 +41,7 @@ async function handleSubmitted(result: SubmittedAnswer) {
 </script>
 
 <template>
-  <section class="relative h-screen w-full overflow-hidden">
+  <section class="relative h-dvh w-full overflow-hidden">
     <div
       v-if="state.mode === 'loading' || !geoData"
       class="flex h-full items-center justify-center text-sm text-base-content/70"
