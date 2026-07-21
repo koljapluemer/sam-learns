@@ -34,6 +34,9 @@ const router = createRouter({
   )
 })
 
+const appSlugs = new Set(apps.map((app) => app.slug))
+const defaultFavicon = '/vite.svg'
+
 router.afterEach((to) => {
   const baseTitle = 'Sam Learns Things'
   const routeTitle = typeof to.meta.title === 'string' ? to.meta.title : ''
@@ -51,6 +54,18 @@ router.afterEach((to) => {
   }
 
   descriptionTag.setAttribute('content', description)
+
+  const slug = typeof to.name === 'string' ? to.name : ''
+  const faviconHref = appSlugs.has(slug) ? `/favicons/${slug}.ico` : defaultFavicon
+  let iconTag = document.querySelector('link[rel="icon"]')
+
+  if (!iconTag) {
+    iconTag = document.createElement('link')
+    iconTag.setAttribute('rel', 'icon')
+    document.head.appendChild(iconTag)
+  }
+
+  iconTag.setAttribute('href', faviconHref)
 })
 
 export default router
