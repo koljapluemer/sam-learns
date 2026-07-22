@@ -1,0 +1,709 @@
+[
+  {
+    "value": 0,
+    "numeral": "٠",
+    "script": "صفر",
+    "english": "Zero",
+    "transliteration": "sifr"
+  },
+  {
+    "value": 1,
+    "numeral": "١",
+    "script": "واحد",
+    "english": "One",
+    "transliteration": "wahed"
+  },
+  {
+    "value": 2,
+    "numeral": "٢",
+    "script": "اتنين",
+    "english": "Two",
+    "transliteration": "itneen"
+  },
+  {
+    "value": 3,
+    "numeral": "٣",
+    "script": "تلاتة",
+    "english": "Three",
+    "transliteration": "talata"
+  },
+  {
+    "value": 4,
+    "numeral": "٤",
+    "script": "أربعة",
+    "english": "Four",
+    "transliteration": "arba'a"
+  },
+  {
+    "value": 5,
+    "numeral": "٥",
+    "script": "خمسة",
+    "english": "Five",
+    "transliteration": "khamsa"
+  },
+  {
+    "value": 6,
+    "numeral": "٦",
+    "script": "ستة",
+    "english": "Six",
+    "transliteration": "sitta"
+  },
+  {
+    "value": 7,
+    "numeral": "٧",
+    "script": "سبعة",
+    "english": "Seven",
+    "transliteration": "saba'a"
+  },
+  {
+    "value": 8,
+    "numeral": "٨",
+    "script": "تمنية",
+    "english": "Eight",
+    "transliteration": "tamanya"
+  },
+  {
+    "value": 9,
+    "numeral": "٩",
+    "script": "تسعة",
+    "english": "Nine",
+    "transliteration": "tes'a"
+  },
+  {
+    "value": 10,
+    "numeral": "١٠",
+    "script": "عشرة",
+    "english": "Ten",
+    "transliteration": "ashara"
+  },
+  {
+    "value": 11,
+    "numeral": "١١",
+    "script": "أحد عشر",
+    "english": "Eleven",
+    "transliteration": "ahad 'ashar"
+  },
+  {
+    "value": 12,
+    "numeral": "١٢",
+    "script": "اتنا عشر",
+    "english": "Twelve",
+    "transliteration": "itna 'ashar"
+  },
+  {
+    "value": 13,
+    "numeral": "١٣",
+    "script": "تلاتا عشر",
+    "english": "Thirteen",
+    "transliteration": "talata 'ashar"
+  },
+  {
+    "value": 14,
+    "numeral": "١٤",
+    "script": "أربعة عشر",
+    "english": "Fourteen",
+    "transliteration": "arba'a 'ashar"
+  },
+  {
+    "value": 15,
+    "numeral": "١٥",
+    "script": "خمسة عشر",
+    "english": "Fifteen",
+    "transliteration": "khamsa 'ashar"
+  },
+  {
+    "value": 16,
+    "numeral": "١٦",
+    "script": "ستة عشر",
+    "english": "Sixteen",
+    "transliteration": "sitta 'ashar"
+  },
+  {
+    "value": 17,
+    "numeral": "١٧",
+    "script": "سبعة عشر",
+    "english": "Seventeen",
+    "transliteration": "saba'a 'ashar"
+  },
+  {
+    "value": 18,
+    "numeral": "١٨",
+    "script": "تمنية عشر",
+    "english": "Eighteen",
+    "transliteration": "tamanya 'ashar"
+  },
+  {
+    "value": 19,
+    "numeral": "١٩",
+    "script": "تسعة عشر",
+    "english": "Nineteen",
+    "transliteration": "tes'a 'ashar"
+  },
+  {
+    "value": 20,
+    "numeral": "٢٠",
+    "script": "عشرين",
+    "english": "Twenty",
+    "transliteration": "ishreen"
+  },
+  {
+    "value": 21,
+    "numeral": "٢١",
+    "script": "واحد وعشرين",
+    "english": "Twenty-One",
+    "transliteration": "wahed w'ishreen"
+  },
+  {
+    "value": 22,
+    "numeral": "٢٢",
+    "script": "اتنين وعشرين",
+    "english": "Twenty-Two",
+    "transliteration": "itneen w'ishreen"
+  },
+  {
+    "value": 23,
+    "numeral": "٢٣",
+    "script": "تلاتة وعشرين",
+    "english": "Twenty-Three",
+    "transliteration": "talata w'ishreen"
+  },
+  {
+    "value": 24,
+    "numeral": "٢٤",
+    "script": "أربعة وعشرين",
+    "english": "Twenty-Four",
+    "transliteration": "arba'a w'ishreen"
+  },
+  {
+    "value": 25,
+    "numeral": "٢٥",
+    "script": "خمسة وعشرين",
+    "english": "Twenty-Five",
+    "transliteration": "khamsa w'ishreen"
+  },
+  {
+    "value": 26,
+    "numeral": "٢٦",
+    "script": "ستة وعشرين",
+    "english": "Twenty-Six",
+    "transliteration": "sitta w'ishreen"
+  },
+  {
+    "value": 27,
+    "numeral": "٢٧",
+    "script": "سبعة وعشرين",
+    "english": "Twenty-Seven",
+    "transliteration": "saba'a w'ishreen"
+  },
+  {
+    "value": 28,
+    "numeral": "٢٨",
+    "script": "تمنية وعشرين",
+    "english": "Twenty-Eight",
+    "transliteration": "tamanya w'ishreen"
+  },
+  {
+    "value": 29,
+    "numeral": "٢٩",
+    "script": "تسعة وعشرين",
+    "english": "Twenty-Nine",
+    "transliteration": "tes'a w'ishreen"
+  },
+  {
+    "value": 30,
+    "numeral": "٣٠",
+    "script": "تلاتين",
+    "english": "Thirty",
+    "transliteration": "talateen"
+  },
+  {
+    "value": 31,
+    "numeral": "٣١",
+    "script": "واحد وتلاتين",
+    "english": "Thirty-One",
+    "transliteration": "wahed w'talateen"
+  },
+  {
+    "value": 32,
+    "numeral": "٣٢",
+    "script": "اتنين وتلاتين",
+    "english": "Thirty-Two",
+    "transliteration": "itneen w'talateen"
+  },
+  {
+    "value": 33,
+    "numeral": "٣٣",
+    "script": "تلاتة وتلاتين",
+    "english": "Thirty-Three",
+    "transliteration": "talata w'talateen"
+  },
+  {
+    "value": 34,
+    "numeral": "٣٤",
+    "script": "أربعة وتلاتين",
+    "english": "Thirty-Four",
+    "transliteration": "arba'a w'talateen"
+  },
+  {
+    "value": 35,
+    "numeral": "٣٥",
+    "script": "خمسة وتلاتين",
+    "english": "Thirty-Five",
+    "transliteration": "khamsa w'talateen"
+  },
+  {
+    "value": 36,
+    "numeral": "٣٦",
+    "script": "ستة وتلاتين",
+    "english": "Thirty-Six",
+    "transliteration": "sitta w'talateen"
+  },
+  {
+    "value": 37,
+    "numeral": "٣٧",
+    "script": "سبعة وتلاتين",
+    "english": "Thirty-Seven",
+    "transliteration": "saba'a w'talateen"
+  },
+  {
+    "value": 38,
+    "numeral": "٣٨",
+    "script": "تمنية وتلاتين",
+    "english": "Thirty-Eight",
+    "transliteration": "tamanya w'talateen"
+  },
+  {
+    "value": 39,
+    "numeral": "٣٩",
+    "script": "تسعة وتلاتين",
+    "english": "Thirty-Nine",
+    "transliteration": "tes'a w'talateen"
+  },
+  {
+    "value": 40,
+    "numeral": "٤٠",
+    "script": "أربعين",
+    "english": "Forty",
+    "transliteration": "arba'een"
+  },
+  {
+    "value": 41,
+    "numeral": "٤١",
+    "script": "واحد وأربعين",
+    "english": "Forty-One",
+    "transliteration": "wahed w'arba'een"
+  },
+  {
+    "value": 42,
+    "numeral": "٤٢",
+    "script": "اتنين وأربعين",
+    "english": "Forty-Two",
+    "transliteration": "itneen w'arba'een"
+  },
+  {
+    "value": 43,
+    "numeral": "٤٣",
+    "script": "تلاتة وأربعين",
+    "english": "Forty-Three",
+    "transliteration": "talata w'arba'een"
+  },
+  {
+    "value": 44,
+    "numeral": "٤٤",
+    "script": "أربعة وأربعين",
+    "english": "Forty-Four",
+    "transliteration": "arba'a w'arba'een"
+  },
+  {
+    "value": 45,
+    "numeral": "٤٥",
+    "script": "خمسة وأربعين",
+    "english": "Forty-Five",
+    "transliteration": "khamsa w'arba'een"
+  },
+  {
+    "value": 46,
+    "numeral": "٤٦",
+    "script": "ستة وأربعين",
+    "english": "Forty-Six",
+    "transliteration": "sitta w'arba'een"
+  },
+  {
+    "value": 47,
+    "numeral": "٤٧",
+    "script": "سبعة وأربعين",
+    "english": "Forty-Seven",
+    "transliteration": "saba'a w'arba'een"
+  },
+  {
+    "value": 48,
+    "numeral": "٤٨",
+    "script": "تمنية وأربعين",
+    "english": "Forty-Eight",
+    "transliteration": "tamanya w'arba'een"
+  },
+  {
+    "value": 49,
+    "numeral": "٤٩",
+    "script": "تسعة وأربعين",
+    "english": "Forty-Nine",
+    "transliteration": "tes'a w'arba'een"
+  },
+  {
+    "value": 50,
+    "numeral": "٥٠",
+    "script": "خمسين",
+    "english": "Fifty",
+    "transliteration": "khamsin"
+  },
+  {
+    "value": 51,
+    "numeral": "٥١",
+    "script": "واحد وخمسين",
+    "english": "Fifty-One",
+    "transliteration": "wahed w'khamsin"
+  },
+  {
+    "value": 52,
+    "numeral": "٥٢",
+    "script": "اتنين وخمسين",
+    "english": "Fifty-Two",
+    "transliteration": "itneen w'khamsin"
+  },
+  {
+    "value": 53,
+    "numeral": "٥٣",
+    "script": "تلاتة وخمسين",
+    "english": "Fifty-Three",
+    "transliteration": "talata w'khamsin"
+  },
+  {
+    "value": 54,
+    "numeral": "٥٤",
+    "script": "أربعة وخمسين",
+    "english": "Fifty-Four",
+    "transliteration": "arba'a w'khamsin"
+  },
+  {
+    "value": 55,
+    "numeral": "٥٥",
+    "script": "خمسة وخمسين",
+    "english": "Fifty-Five",
+    "transliteration": "khamsa w'khamsin"
+  },
+  {
+    "value": 56,
+    "numeral": "٥٦",
+    "script": "ستة وخمسين",
+    "english": "Fifty-Six",
+    "transliteration": "sitta w'khamsin"
+  },
+  {
+    "value": 57,
+    "numeral": "٥٧",
+    "script": "سبعة وخمسين",
+    "english": "Fifty-Seven",
+    "transliteration": "saba'a w'khamsin"
+  },
+  {
+    "value": 58,
+    "numeral": "٥٨",
+    "script": "تمنية وخمسين",
+    "english": "Fifty-Eight",
+    "transliteration": "tamanya w'khamsin"
+  },
+  {
+    "value": 59,
+    "numeral": "٥٩",
+    "script": "تسعة وخمسين",
+    "english": "Fifty-Nine",
+    "transliteration": "tes'a w'khamsin"
+  },
+  {
+    "value": 60,
+    "numeral": "٦٠",
+    "script": "ستين",
+    "english": "Sixty",
+    "transliteration": "sittin"
+  },
+  {
+    "value": 61,
+    "numeral": "٦١",
+    "script": "واحد وستين",
+    "english": "Sixty-One",
+    "transliteration": "wahed w'sittin"
+  },
+  {
+    "value": 62,
+    "numeral": "٦٢",
+    "script": "اتنين وستين",
+    "english": "Sixty-Two",
+    "transliteration": "itneen w'sittin"
+  },
+  {
+    "value": 63,
+    "numeral": "٦٣",
+    "script": "تلاتة وستين",
+    "english": "Sixty-Three",
+    "transliteration": "talata w'sittin"
+  },
+  {
+    "value": 64,
+    "numeral": "٦٤",
+    "script": "أربعة وستين",
+    "english": "Sixty-Four",
+    "transliteration": "arba'a w'sittin"
+  },
+  {
+    "value": 65,
+    "numeral": "٦٥",
+    "script": "خمسة وستين",
+    "english": "Sixty-Five",
+    "transliteration": "khamsa w'sittin"
+  },
+  {
+    "value": 66,
+    "numeral": "٦٦",
+    "script": "ستة وستين",
+    "english": "Sixty-Six",
+    "transliteration": "sitta w'sittin"
+  },
+  {
+    "value": 67,
+    "numeral": "٦٧",
+    "script": "سبعة وستين",
+    "english": "Sixty-Seven",
+    "transliteration": "saba'a w'sittin"
+  },
+  {
+    "value": 68,
+    "numeral": "٦٨",
+    "script": "تمنية وستين",
+    "english": "Sixty-Eight",
+    "transliteration": "tamanya w'sittin"
+  },
+  {
+    "value": 69,
+    "numeral": "٦٩",
+    "script": "تسعة وستين",
+    "english": "Sixty-Nine",
+    "transliteration": "tes'a w'sittin"
+  },
+  {
+    "value": 70,
+    "numeral": "٧٠",
+    "script": "سبعين",
+    "english": "Seventy",
+    "transliteration": "saba'een"
+  },
+  {
+    "value": 71,
+    "numeral": "٧١",
+    "script": "واحد وسبعين",
+    "english": "Seventy-One",
+    "transliteration": "wahed w'saba'een"
+  },
+  {
+    "value": 72,
+    "numeral": "٧٢",
+    "script": "اتنين وسبعين",
+    "english": "Seventy-Two",
+    "transliteration": "itneen w'saba'een"
+  },
+  {
+    "value": 73,
+    "numeral": "٧٣",
+    "script": "تلاتة وسبعين",
+    "english": "Seventy-Three",
+    "transliteration": "talata w'saba'een"
+  },
+  {
+    "value": 74,
+    "numeral": "٧٤",
+    "script": "أربعة وسبعين",
+    "english": "Seventy-Four",
+    "transliteration": "arba'a w'saba'een"
+  },
+  {
+    "value": 75,
+    "numeral": "٧٥",
+    "script": "خمسة وسبعين",
+    "english": "Seventy-Five",
+    "transliteration": "khamsa w'saba'een"
+  },
+  {
+    "value": 76,
+    "numeral": "٧٦",
+    "script": "ستة وسبعين",
+    "english": "Seventy-Six",
+    "transliteration": "sitta w'saba'een"
+  },
+  {
+    "value": 77,
+    "numeral": "٧٧",
+    "script": "سبعة وسبعين",
+    "english": "Seventy-Seven",
+    "transliteration": "saba'a w'saba'een"
+  },
+  {
+    "value": 78,
+    "numeral": "٧٨",
+    "script": "تمنية وسبعين",
+    "english": "Seventy-Eight",
+    "transliteration": "tamanya w'saba'een"
+  },
+  {
+    "value": 79,
+    "numeral": "٧٩",
+    "script": "تسعة وسبعين",
+    "english": "Seventy-Nine",
+    "transliteration": "tes'a w'saba'een"
+  },
+  {
+    "value": 80,
+    "numeral": "٨٠",
+    "script": "تمانين",
+    "english": "Eighty",
+    "transliteration": "tamaneen"
+  },
+  {
+    "value": 81,
+    "numeral": "٨١",
+    "script": "واحد وتمانين",
+    "english": "Eighty-One",
+    "transliteration": "wahed w'tamaneen"
+  },
+  {
+    "value": 82,
+    "numeral": "٨٢",
+    "script": "اتنين وتمانين",
+    "english": "Eighty-Two",
+    "transliteration": "itneen w'tamaneen"
+  },
+  {
+    "value": 83,
+    "numeral": "٨٣",
+    "script": "تلاتة وتمانين",
+    "english": "Eighty-Three",
+    "transliteration": "talata w'tamaneen"
+  },
+  {
+    "value": 84,
+    "numeral": "٨٤",
+    "script": "أربعة وتمانين",
+    "english": "Eighty-Four",
+    "transliteration": "arba'a w'tamaneen"
+  },
+  {
+    "value": 85,
+    "numeral": "٨٥",
+    "script": "خمسة وتمانين",
+    "english": "Eighty-Five",
+    "transliteration": "khamsa w'tamaneen"
+  },
+  {
+    "value": 86,
+    "numeral": "٨٦",
+    "script": "ستة وتمانين",
+    "english": "Eighty-Six",
+    "transliteration": "sitta w'tamaneen"
+  },
+  {
+    "value": 87,
+    "numeral": "٨٧",
+    "script": "سبعة وتمانين",
+    "english": "Eighty-Seven",
+    "transliteration": "saba'a w'tamaneen"
+  },
+  {
+    "value": 88,
+    "numeral": "٨٨",
+    "script": "تمنية وتمانين",
+    "english": "Eighty-Eight",
+    "transliteration": "tamanya w'tamaneen"
+  },
+  {
+    "value": 89,
+    "numeral": "٨٩",
+    "script": "تسعة وتمانين",
+    "english": "Eighty-Nine",
+    "transliteration": "tes'a w'tamaneen"
+  },
+  {
+    "value": 90,
+    "numeral": "٩٠",
+    "script": "تسعين",
+    "english": "Ninety",
+    "transliteration": "tes'een"
+  },
+  {
+    "value": 91,
+    "numeral": "٩١",
+    "script": "واحد وتسعين",
+    "english": "Ninety-One",
+    "transliteration": "wahed w'tes'een"
+  },
+  {
+    "value": 92,
+    "numeral": "٩٢",
+    "script": "اتنين وتسعين",
+    "english": "Ninety-Two",
+    "transliteration": "itneen w'tes'een"
+  },
+  {
+    "value": 93,
+    "numeral": "٩٣",
+    "script": "تلاتة وتسعين",
+    "english": "Ninety-Three",
+    "transliteration": "talata w'tes'een"
+  },
+  {
+    "value": 94,
+    "numeral": "٩٤",
+    "script": "أربعة وتسعين",
+    "english": "Ninety-Four",
+    "transliteration": "arba'a w'tes'een"
+  },
+  {
+    "value": 95,
+    "numeral": "٩٥",
+    "script": "خمسة وتسعين",
+    "english": "Ninety-Five",
+    "transliteration": "khamsa w'tes'een"
+  },
+  {
+    "value": 96,
+    "numeral": "٩٦",
+    "script": "ستة وتسعين",
+    "english": "Ninety-Six",
+    "transliteration": "sitta w'tes'een"
+  },
+  {
+    "value": 97,
+    "numeral": "٩٧",
+    "script": "سبعة وتسعين",
+    "english": "Ninety-Seven",
+    "transliteration": "saba'a w'tes'een"
+  },
+  {
+    "value": 98,
+    "numeral": "٩٨",
+    "script": "تمنية وتسعين",
+    "english": "Ninety-Eight",
+    "transliteration": "tamanya w'tes'een"
+  },
+  {
+    "value": 99,
+    "numeral": "٩٩",
+    "script": "تسعة وتسعين",
+    "english": "Ninety-Nine",
+    "transliteration": "tes'a w'tes'een"
+  },
+  {
+    "value": 100,
+    "numeral": "١٠٠",
+    "script": "مئة",
+    "english": "Hundred",
+    "transliteration": "mi'a"
+  }
+]

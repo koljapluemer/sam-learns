@@ -1,36 +1,64 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import Home from './Home.vue'
 import StatsPage from './StatsPage.vue'
+import AppRouteLayout from './shared/shell/AppRouteLayout.vue'
 import { apps } from './appRegistry'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        title: 'Sam Learns Things',
-        description: 'A meta-app for learning apps and interfaces.'
+  routes: (
+    [
+      {
+        path: '/',
+        name: 'home',
+        component: Home,
+        meta: {
+          title: 'Sam Learns Things',
+          description: 'A meta-app for learning apps and interfaces.'
+        }
+      },
+      {
+        path: '/stats',
+        name: 'stats',
+        component: StatsPage,
+        meta: {
+          title: 'Daily Usage',
+          description: 'Cross-app daily usage stats, stored locally on this device.'
+        }
       }
-    },
-    {
-      path: '/stats',
-      name: 'stats',
-      component: StatsPage,
-      meta: {
-        title: 'Daily Usage',
-        description: 'Cross-app daily usage stats, stored locally on this device.'
+    ] as RouteRecordRaw[]
+  ).concat(
+    apps.flatMap((app): RouteRecordRaw[] => {
+      // New shape: real per-app sub-routes, rendered under a shared subnav
+      // layout. `path: ''` is the home/index page, so it keeps resolving at
+      // `/${slug}` and keeps the route name `app.slug` - Home.vue's card
+      // links (`:to="{ name: app.slug }"`) don't need to change either way.
+      if (app.routes) {
+        const routes = app.routes
+        return [
+          {
+            path: `/${app.slug}`,
+            component: AppRouteLayout,
+            children: routes.map((route) => ({
+              path: route.path,
+              name: route.path === '' ? app.slug : `${app.slug}-${route.path}`,
+              component: route.component,
+              meta: { ...route.meta, appSlug: app.slug }
+            }))
+          }
+        ]
       }
-    }
-  ].concat(
-    apps.map((app) => ({
-      path: `/${app.slug}`,
-      name: app.slug,
-      component: app.component,
-      meta: app.meta
-    }))
+
+      // Legacy shape: one flat route, used by every pre-existing app.
+      return [
+        {
+          path: `/${app.slug}`,
+          name: app.slug,
+          component: app.component,
+          meta: { ...app.meta, appSlug: app.slug }
+        }
+      ]
+    })
   )
 })
 
@@ -55,7 +83,7 @@ router.afterEach((to) => {
 
   descriptionTag.setAttribute('content', description)
 
-  const slug = typeof to.name === 'string' ? to.name : ''
+  const slug = typeof to.meta.appSlug === 'string' ? to.meta.appSlug : ''
   const faviconHref = appSlugs.has(slug) ? `/favicons/${slug}.ico` : defaultFavicon
   let iconTag = document.querySelector('link[rel="icon"]')
 
