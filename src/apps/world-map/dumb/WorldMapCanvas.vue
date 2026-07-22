@@ -100,17 +100,25 @@ let resizeObserver: ResizeObserver | null = null
 let markerBaseMaxDim = 0
 let markerHiddenBySize = false
 
+// The circle's desired constant on-screen radius in px (see computeMarkerRadius). The circle itself
+// lives inside `g`, which carries the live zoom scale, so its `r` has to be divided by the current
+// `k` on every zoom event to actually render at this size - the SVG equivalent of how country
+// borders use vector-effect="non-scaling-stroke" to counteract the same scaling.
+let markerTargetRadius = 0
+
 function handleZoomEvent(event: D3ZoomEvent<SVGSVGElement, unknown>) {
   transform.value = event.transform
   g?.attr('transform', event.transform.toString())
-  updateMarkerVisibility()
+  updateMarkerOnZoom()
 }
 
 // See MARKER_VISIBILITY_SHOW_BELOW_PX/HIDE_ABOVE_PX in mapStyle.ts for why this uses two thresholds.
-function updateMarkerVisibility() {
+function updateMarkerOnZoom() {
   if (!g) return
   const circle = g.select<SVGCircleElement>('circle')
   if (circle.empty()) return
+
+  circle.attr('r', markerTargetRadius / transform.value.k)
 
   const onScreenMaxDim = markerBaseMaxDim * transform.value.k
   if (markerHiddenBySize && onScreenMaxDim < MARKER_VISIBILITY_SHOW_BELOW_PX) {
@@ -220,20 +228,24 @@ function applyMarker() {
   if (!markerFeature) return
 
   markerBaseMaxDim = computeCountryMaxDimension(worldProjection, markerFeature)
+  markerTargetRadius = computeMarkerRadius(containerRef.value.clientWidth, containerRef.value.clientHeight)
 
   const [cx, cy] = worldProjection(geoCentroid(markerFeature)) ?? [0, 0]
-  const radius = computeMarkerRadius(containerRef.value.clientWidth, containerRef.value.clientHeight)
   g.append('circle')
     .attr('cx', cx)
     .attr('cy', cy)
-    .attr('r', radius)
+    .attr('r', markerTargetRadius / transform.value.k)
     .attr('fill', 'none')
     .attr('stroke', props.markerColor ?? HIGHLIGHT_COLOR)
     .attr('stroke-width', MARKER_STROKE_WIDTH)
+    // Same reason as the country borders above: without this, the group's zoom scale multiplies
+    // stroke-width too, so at high k a thin ring becomes fat enough to fill in its own (now
+    // correctly constant-size) radius.
+    .attr('vector-effect', 'non-scaling-stroke')
     .style('pointer-events', 'none')
 
   markerHiddenBySize = false
-  updateMarkerVisibility()
+  updateMarkerOnZoom()
 }
 
 function resetTransform(animate: boolean) {

@@ -10,7 +10,7 @@
     "enabled": true
   },
   "balkans": {
-    "name": "Balkans",
+    "name": "Balkans/Southeast Europe",
     "countries": ["SVN", "HRV", "BIH", "SRB", "MNE", "KOS", "MKD", "ALB", "GRC", "BGR"],
     "enabled": true
   },
