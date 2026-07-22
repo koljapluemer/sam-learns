@@ -35,7 +35,7 @@ const router = createRouter({
 })
 
 const appSlugs = new Set(apps.map((app) => app.slug))
-const defaultFavicon = '/vite.svg'
+const defaultFavicon = '/favicons/base.ico'
 
 router.afterEach((to) => {
   const baseTitle = 'Sam Learns Things'
