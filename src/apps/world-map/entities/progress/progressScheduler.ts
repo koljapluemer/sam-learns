@@ -8,6 +8,7 @@ import { getEnabledGroups, type CountryGroup } from '@/apps/world-map/entities/c
 import { getPriorityByCountry, DEFAULT_PRIORITY } from '@/apps/world-map/entities/learning-priority-content/learningPriorityContent'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
+import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 
 const PAN_INDEX_COUNT = 9
 const GROUP_TRIGGER_FRACTION = 0.5
@@ -113,7 +114,14 @@ async function findQualifyingGroup(now: Date): Promise<CountryGroup | undefined>
   const progressRows = await appDb.countryProgress.toArray()
   const progressByCountry = new Map(progressRows.map((row) => [row.country, row]))
 
+  const today = toLocalDayKey(now.toISOString())
+  const exerciseRows = await appDb.exerciseProgress.toArray()
+  const shownTodayGroupIds = new Set(
+    exerciseRows.filter((row) => row.groupId && row.last_review && toLocalDayKey(row.last_review.toISOString()) === today).map((row) => row.groupId)
+  )
+
   const qualifying = groups.filter((group) => {
+    if (shownTodayGroupIds.has(group.id)) return false
     const dueOrUnseenCount = group.countries.filter((code) => {
       const progress = progressByCountry.get(code)
       return !progress || isDue(progress, now)
