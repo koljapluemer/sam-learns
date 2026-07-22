@@ -3,5 +3,30 @@
     "name": "Central Asia (-stans)",
     "countries": ["KAZ", "KGZ", "TJK", "AFG", "TKM", "UZB"],
     "enabled": true
+  },
+  "west-africa-coast": {
+    "name": "West Africa (Coast)",
+    "countries": ["MRT", "SEN", "GMB", "GNB", "GIN", "SLE", "LBR", "CIV", "GHA", "TGO", "BEN", "NGA"],
+    "enabled": true
+  },
+  "balkans": {
+    "name": "Balkans",
+    "countries": ["SVN", "HRV", "BIH", "SRB", "MNE", "KOS", "MKD", "ALB", "GRC", "BGR"],
+    "enabled": true
+  },
+  "caribbean-west": {
+    "name": "Caribbean (West)",
+    "countries": ["CUB", "JAM", "CYM", "HTI", "DOM", "PRI", "BHS", "TCA"],
+    "enabled": true
+  },
+  "caribbean-east": {
+    "name": "Caribbean (East)",
+    "countries": ["VIR", "VGB", "AIA", "MAF", "SXM", "BLM", "KNA", "ATG", "MSR", "DMA", "LCA", "VCT", "BRB", "GRD", "TTO", "CUW", "ABW"],
+    "enabled": true
+  },
+  "central-america": {
+    "name": "Central America",
+    "countries": ["GTM", "BLZ", "HND", "SLV", "NIC", "CRI", "PAN"],
+    "enabled": true
   }
 }
