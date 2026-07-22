@@ -12,6 +12,11 @@ import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 
 const PAN_INDEX_COUNT = 9
 const GROUP_TRIGGER_FRACTION = 0.5
+// Meeting GROUP_TRIGGER_FRACTION only makes group-sequence eligible for this round, not automatic:
+// it then competes at equal odds against the other 4 exercise types in NextExercise (1-in-5), rather
+// than pre-empting them whenever it qualifies.
+const NON_GROUP_EXERCISE_TYPE_COUNT = 4
+const GROUP_EXERCISE_ODDS = 1 / (NON_GROUP_EXERCISE_TYPE_COUNT + 1)
 // cumulative odds for preferring a due/fresh country of a given learningPriority;
 // falls back to the full due/fresh pool when nothing of the preferred priority qualifies
 const PRIORITY_1_ODDS = 0.5
@@ -227,7 +232,7 @@ function buildDistractorChoiceExercise(picked: CountryCandidate): NextExercise {
 
 export async function loadNextExercise(): Promise<NextExercise | undefined> {
   const qualifyingGroup = await findQualifyingGroup(new Date())
-  if (qualifyingGroup) {
+  if (qualifyingGroup && Math.random() < GROUP_EXERCISE_ODDS) {
     const countries = Math.random() < 0.5 ? qualifyingGroup.countries : [...qualifyingGroup.countries].reverse()
     lastCountry = countries[countries.length - 1]
     return { type: 'group-sequence', groupId: qualifyingGroup.id, countries }
