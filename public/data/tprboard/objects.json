@@ -1,0 +1,1691 @@
+[
+  {
+    "name": "apple",
+    "record": {
+      "model": "k-food/apple.glb",
+      "relationships": {
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "person-male",
+    "record": {
+      "model": "k-mini-characters/character-male-e.glb",
+      "hold": {
+        "anchor": [
+          0.02,
+          -0.52,
+          1.22
+        ],
+        "scale": 0.29
+      },
+      "relationships": {
+        "animal-cow": [
+          "pet",
+          "RETURN",
+          "WIGGLE"
+        ],
+        "stairs": [
+          "goes-onto",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "person-female",
+    "record": {
+      "model": "k-mini-characters/character-female-a.glb",
+      "hold": {
+        "anchor": [
+          0.15,
+          -0.59,
+          1.27
+        ],
+        "scale": 0.22
+      },
+      "relationships": {
+        "ambulance": [
+          "get-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "animal-bunny": [
+          "pet",
+          "RETURN",
+          "WIGGLE"
+        ],
+        "animal-cat": [
+          "pet",
+          "RETURN",
+          "WIGGLE"
+        ],
+        "apple": [
+          "eat",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "avocado": [
+          "eat",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "bed": [
+          "get-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "taxi": [
+          "get-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "tractor": [
+          "get-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "stairs": [
+          "goes-onto",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "banana",
+    "record": {
+      "model": "k-food/banana.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "animal-monkey": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "kitchen-knife",
+    "record": {
+      "model": "k-food/cooking-knife.glb",
+      "relationships": {
+        "apple": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "banana": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "broccoli": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "cheese": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "fish": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "leek": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "meat-raw": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "mushroom": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "tomato": [
+          "cut",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "box",
+    "record": {
+      "model": "k-car-kit/box.glb",
+      "relationships": {
+        "house": [
+          "move-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cone",
+    "record": {
+      "model": "k-car-kit/cone.glb",
+      "relationships": {
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "racecar",
+    "record": {
+      "model": "k-car-kit/race.glb"
+    }
+  },
+  {
+    "name": "taxi",
+    "record": {
+      "model": "k-car-kit/taxi.glb",
+      "relationships": {
+        "factory": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "firetruck",
+    "record": {
+      "model": "k-car-kit/firetruck.glb",
+      "relationships": {
+        "factory": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "garbage-truck",
+    "record": {
+      "model": "k-car-kit/garbage-truck.glb",
+      "relationships": {
+        "factory": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "house": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "car-police",
+    "record": {
+      "model": "k-car-kit/police.glb"
+    }
+  },
+  {
+    "name": "car",
+    "record": {
+      "model": "k-car-kit/sedan.glb",
+      "relationships": {
+        "house": [
+          "drives-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "palm": [
+          "parks-under",
+          "HELD",
+          "NOTHING"
+        ],
+        "tree": [
+          "parks-under",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "tractor",
+    "record": {
+      "model": "k-car-kit/tractor.glb"
+    }
+  },
+  {
+    "name": "car-pickup-truck",
+    "record": {
+      "model": "k-car-kit/truck.glb",
+      "hold": {
+        "anchor": [
+          0.02,
+          -0.19,
+          -0.57
+        ],
+        "scale": 0.26
+      },
+      "relationships": {
+        "tree": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "house": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "factory": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "car-van",
+    "record": {
+      "model": "k-car-kit/van.glb"
+    }
+  },
+  {
+    "name": "factory",
+    "record": {
+      "model": "k-city-industrial/building-l.glb",
+      "hold": {
+        "anchor": [
+          0.73,
+          -0.99,
+          1.21
+        ],
+        "scale": 0.26
+      }
+    }
+  },
+  {
+    "name": "house",
+    "record": {
+      "model": "k-city-suburban/building-type-b.glb"
+    }
+  },
+  {
+    "name": "tree",
+    "record": {
+      "model": "k-city-suburban/tree-small.glb",
+      "hold": {
+        "anchor": [
+          1.5,
+          -1.02,
+          1.5
+        ],
+        "scale": 0.37
+      }
+    }
+  },
+  {
+    "name": "animal-beaver",
+    "record": {
+      "model": "k-cube-pets/animal-beaver.glb",
+      "hold": {
+        "anchor": [
+          0.0,
+          -0.27,
+          1.33
+        ],
+        "scale": 0.72
+      },
+      "relationships": {
+        "house": [
+          "goes-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-bee",
+    "record": {
+      "model": "k-cube-pets/animal-bee.glb",
+      "relationships": {
+        "tree": [
+          "flies-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-bunny",
+    "record": {
+      "model": "k-cube-pets/animal-bunny.glb",
+      "relationships": {
+        "tree": [
+          "sits-under",
+          "HELD",
+          "NOTHING"
+        ],
+        "carrot": [
+          "eats",
+          "RETURN",
+          "DESTRUCT"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-cat",
+    "record": {
+      "model": "k-cube-pets/animal-cat.glb",
+      "hold": {
+        "anchor": [
+          0.03,
+          -0.36,
+          1.06
+        ],
+        "scale": 0.88
+      },
+      "relationships": {
+        "meat-raw": [
+          "eat",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "shopping-cart": [
+          "jumps-into",
+          "HELD",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-chicken",
+    "record": {
+      "model": "k-cube-pets/animal-chick.glb"
+    }
+  },
+  {
+    "name": "animal-cow",
+    "record": {
+      "model": "k-cube-pets/animal-cow.glb"
+    }
+  },
+  {
+    "name": "animal-deer",
+    "record": {
+      "model": "k-cube-pets/animal-deer.glb"
+    }
+  },
+  {
+    "name": "animal-dog",
+    "record": {
+      "model": "k-cube-pets/animal-dog.glb",
+      "relationships": {
+        "stairs": [
+          "is-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "shopping-cart": [
+          "jumps-into",
+          "HELD",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-elephant",
+    "record": {
+      "model": "k-cube-pets/animal-elephant.glb",
+      "relationships": {
+        "tree": [
+          "goes-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-fox",
+    "record": {
+      "model": "k-cube-pets/animal-fox.glb",
+      "relationships": {
+        "meat-raw": [
+          "eat",
+          "RETURN",
+          "DISAPPEAR"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-monkey",
+    "record": {
+      "model": "k-cube-pets/animal-monkey.glb",
+      "relationships": {
+        "banana": [
+          "eat",
+          "RETURN",
+          "DESTRUCT"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-lion",
+    "record": {
+      "model": "k-cube-pets/animal-lion.glb",
+      "relationships": {
+        "meat-raw": [
+          "eat",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "palm": [
+          "walks-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-parrot",
+    "record": {
+      "model": "k-cube-pets/animal-parrot.glb",
+      "relationships": {
+        "car": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-penguin",
+    "record": {
+      "model": "k-cube-pets/animal-penguin.glb"
+    }
+  },
+  {
+    "name": "animal-pig",
+    "record": {
+      "model": "k-cube-pets/animal-pig.glb",
+      "relationships": {
+        "carrot": [
+          "eats",
+          "RETURN",
+          "DESTRUCT"
+        ],
+        "car-pickup-truck": [
+          "put-into",
+          "HELD",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "animal-tiger",
+    "record": {
+      "model": "k-cube-pets/animal-tiger.glb"
+    }
+  },
+  {
+    "name": "avocado",
+    "record": {
+      "model": "k-food/avocado.glb",
+      "relationships": {
+        "shopping-cart": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "trashcan": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "bowl",
+    "record": {
+      "model": "k-food/bowl.glb",
+      "hold": {
+        "anchor": [
+          -0.08,
+          -0.02,
+          -0.02
+        ],
+        "scale": 0.44
+      },
+      "relationships": {
+        "microwave": [
+          "put-in",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "kitchen-sink": [
+          "put-in",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "broccoli",
+    "record": {
+      "model": "k-food/broccoli.glb",
+      "relationships": {
+        "pot": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "animal-bunny": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "burger",
+    "record": {
+      "model": "k-food/burger-cheese.glb",
+      "relationships": {
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cake",
+    "record": {
+      "model": "k-food/cake.glb",
+      "relationships": {
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "fridge": [
+          "put-in",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "can",
+    "record": {
+      "model": "k-food/can.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "carrot",
+    "record": {
+      "model": "k-food/carrot.glb",
+      "relationships": {
+        "animal-bunny": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "blender": [
+          "put-into",
+          "DESTRUCT",
+          "WIGGLE"
+        ],
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cauliflower",
+    "record": {
+      "model": "k-food/cauliflower.glb",
+      "relationships": {
+        "pot": [
+          "put-in",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cheese",
+    "record": {
+      "model": "k-food/cheese.glb"
+    }
+  },
+  {
+    "name": "cherries",
+    "record": {
+      "model": "k-food/cherries.glb",
+      "relationships": {
+        "blender": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "chocolate",
+    "record": {
+      "model": "k-food/chocolate.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "spatula",
+    "record": {
+      "model": "k-food/cooking-spatula.glb",
+      "relationships": {
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cup-coffee",
+    "record": {
+      "model": "k-food/cup-coffee.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cup-tea",
+    "record": {
+      "model": "k-food/cup-tea.glb",
+      "relationships": {
+        "desk": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cup",
+    "record": {
+      "model": "k-food/cup.glb",
+      "relationships": {
+        "bottle": [
+          "put-next-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "cupcake",
+    "record": {
+      "model": "k-food/cupcake.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "trashcan": [
+          "put-in",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "donut",
+    "record": {
+      "model": "k-food/donut-chocolate.glb",
+      "relationships": {
+        "trashcan": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "egg",
+    "record": {
+      "model": "k-food/egg.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "shopping-cart": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "eggplant",
+    "record": {
+      "model": "k-food/eggplant.glb"
+    }
+  },
+  {
+    "name": "fish",
+    "record": {
+      "model": "k-food/fish.glb"
+    }
+  },
+  {
+    "name": "glass",
+    "record": {
+      "model": "k-food/glass.glb",
+      "relationships": {
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "bottle": [
+          "put-next-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "grapes",
+    "record": {
+      "model": "k-food/grapes.glb"
+    }
+  },
+  {
+    "name": "ice-cream",
+    "record": {
+      "model": "k-food/ice-cream.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "leek",
+    "record": {
+      "model": "k-food/leek.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "lemon",
+    "record": {
+      "model": "k-food/lemon.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "bowl": [
+          "put-in",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "meat-raw",
+    "record": {
+      "model": "k-food/meat-raw.glb"
+    }
+  },
+  {
+    "name": "sausage",
+    "record": {
+      "model": "k-food/meat-sausage.glb",
+      "relationships": {
+        "bowl": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "mushroom",
+    "record": {
+      "model": "k-food/mushroom.glb",
+      "relationships": {
+        "pot": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "onion",
+    "record": {
+      "model": "k-food/onion.glb",
+      "relationships": {
+        "animal-dog": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "orange",
+    "record": {
+      "model": "k-food/orange.glb",
+      "relationships": {
+        "bowl": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "pineapple",
+    "record": {
+      "model": "k-food/pineapple.glb",
+      "relationships": {
+        "shopping-cart": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "pizza",
+    "record": {
+      "model": "k-food/pizza.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "car": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "plate",
+    "record": {
+      "model": "k-food/plate.glb",
+      "relationships": {
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "pot",
+    "record": {
+      "model": "k-food/pot.glb",
+      "relationships": {
+        "stove": [
+          "put-onto",
+          "HELD",
+          "NOTHING"
+        ],
+        "table": [
+          "put-onto",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "pumpkin",
+    "record": {
+      "model": "k-food/pumpkin.glb",
+      "relationships": {
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "sandwich",
+    "record": {
+      "model": "k-food/sandwich.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "tomato",
+    "record": {
+      "model": "k-food/tomato.glb",
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "bathtub",
+    "record": {
+      "model": "k-furniture/bathtub.glb",
+      "relationships": {
+        "house": [
+          "bring-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "bed",
+    "record": {
+      "model": "k-furniture/bedSingle.glb",
+      "hold": {
+        "anchor": [
+          -0.04,
+          0.73,
+          0.07
+        ],
+        "scale": 0.49
+      },
+      "relationships": {
+        "car-van": [
+          "load-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "house": [
+          "move-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "bench",
+    "record": {
+      "model": "k-furniture/bench.glb",
+      "hold": {
+        "anchor": [
+          0.0,
+          0.03,
+          0.28
+        ],
+        "scale": 0.25
+      },
+      "relationships": {
+        "car-van": [
+          "put-in",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "books",
+    "record": {
+      "model": "k-furniture/books.glb",
+      "hold": {
+        "anchor": [
+          -0.1,
+          1.03,
+          0.17
+        ],
+        "scale": 0.13
+      },
+      "relationships": {
+        "car-van": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "house": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "chair",
+    "record": {
+      "model": "k-furniture/chair.glb",
+      "relationships": {
+        "car-pickup-truck": [
+          "load-onto",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "desk",
+    "record": {
+      "model": "k-furniture/desk.glb",
+      "hold": {
+        "anchor": [
+          0.03,
+          1.09,
+          0.09
+        ],
+        "scale": 0.3
+      }
+    }
+  },
+  {
+    "name": "blender",
+    "record": {
+      "model": "k-furniture/kitchenBlender.glb",
+      "relationships": {
+        "kitchen-sink": [
+          "put-into",
+          "HELD",
+          "NOTHING"
+        ],
+        "box": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "fridge",
+    "record": {
+      "model": "k-furniture/kitchenFridge.glb",
+      "relationships": {
+        "house": [
+          "bring-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "microwave",
+    "record": {
+      "model": "k-furniture/kitchenMicrowave.glb",
+      "relationships": {
+        "car-van": [
+          "put-in",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "car": [
+          "put-in",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "kitchen-sink",
+    "record": {
+      "model": "k-furniture/kitchenSink.glb",
+      "hold": {
+        "anchor": [
+          -0.04,
+          0.32,
+          0.08
+        ],
+        "scale": 0.24
+      },
+      "relationships": {
+        "car-van": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "house": [
+          "put-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "stove",
+    "record": {
+      "model": "k-furniture/kitchenStove.glb",
+      "hold": {
+        "anchor": [
+          0.0,
+          0.92,
+          -0.03
+        ],
+        "scale": 0.35
+      },
+      "relationships": {
+        "car-van": [
+          "load-onto",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "car-pickup-truck": [
+          "load-onto",
+          "HELD",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "lamp",
+    "record": {
+      "model": "k-furniture/lampRoundTable.glb",
+      "relationships": {
+        "table": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "laptop",
+    "record": {
+      "model": "k-furniture/laptop.glb",
+      "relationships": {
+        "desk": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "couch",
+    "record": {
+      "model": "k-furniture/loungeSofa.glb",
+      "hold": {
+        "anchor": [
+          0.03,
+          -0.02,
+          0.43
+        ],
+        "scale": 0.13
+      },
+      "relationships": {
+        "car-van": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "house": [
+          "move-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "potted-plant",
+    "record": {
+      "model": "k-furniture/pottedPlant.glb",
+      "relationships": {
+        "house": [
+          "move-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ],
+        "animal-deer": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "radio",
+    "record": {
+      "model": "k-furniture/radio.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "speaker",
+    "record": {
+      "model": "k-furniture/speaker.glb",
+      "relationships": {
+        "house": [
+          "bring-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "stairs",
+    "record": {
+      "model": "k-furniture/stairs.glb",
+      "hold": {
+        "anchor": [
+          -0.21,
+          -0.05,
+          0.21
+        ],
+        "scale": 0.22
+      }
+    }
+  },
+  {
+    "name": "table",
+    "record": {
+      "model": "k-furniture/table.glb",
+      "hold": {
+        "anchor": [
+          0.05,
+          0.83,
+          0.1
+        ],
+        "scale": 0.29
+      },
+      "relationships": {
+        "car-van": [
+          "load-onto",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "tv",
+    "record": {
+      "model": "k-furniture/televisionModern.glb",
+      "relationships": {
+        "car-pickup-truck": [
+          "load-onto",
+          "HELD",
+          "NOTHING"
+        ],
+        "desk": [
+          "put-on",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "toilet",
+    "record": {
+      "model": "k-furniture/toilet.glb"
+    }
+  },
+  {
+    "name": "trashcan",
+    "record": {
+      "model": "k-furniture/trashcan.glb",
+      "relationships": {
+        "house": [
+          "bring-into",
+          "DISAPPEAR",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "shopping-cart",
+    "record": {
+      "model": "k-market/shopping-cart.glb",
+      "hold": {
+        "anchor": [
+          -0.04,
+          -0.04,
+          0.2
+        ],
+        "scale": 0.34
+      }
+    }
+  },
+  {
+    "name": "barrel",
+    "record": {
+      "model": "k-pirate-kit/barrel.glb",
+      "relationships": {
+        "ship": [
+          "bring-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "boat-row-small",
+    "record": {
+      "model": "k-pirate-kit/boat-row-small.glb"
+    }
+  },
+  {
+    "name": "bottle",
+    "record": {
+      "model": "k-pirate-kit/bottle.glb",
+      "hold": {
+        "anchor": [
+          1.29,
+          -1.04,
+          -1.5
+        ],
+        "scale": 0.44
+      },
+      "relationships": {
+        "fridge": [
+          "put-into",
+          "DISAPPEAR",
+          "WIGGLE"
+        ],
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ],
+        "person-male": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "chest",
+    "record": {
+      "model": "k-pirate-kit/chest.glb",
+      "relationships": {
+        "ship": [
+          "load-onto",
+          "DISAPPEAR",
+          "WIGGLE"
+        ]
+      }
+    }
+  },
+  {
+    "name": "flag",
+    "record": {
+      "model": "k-pirate-kit/flag.glb"
+    }
+  },
+  {
+    "name": "palm",
+    "record": {
+      "model": "k-pirate-kit/palm-bend.glb"
+    }
+  },
+  {
+    "name": "ship",
+    "record": {
+      "model": "k-pirate-kit/ship-medium.glb"
+    }
+  },
+  {
+    "name": "shovel",
+    "record": {
+      "model": "k-pirate-kit/tool-shovel.glb",
+      "relationships": {
+        "person-female": [
+          "give",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  },
+  {
+    "name": "ambulance",
+    "record": {
+      "model": "k-car-kit/ambulance.glb",
+      "relationships": {
+        "factory": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ],
+        "house": [
+          "drive-to",
+          "HELD",
+          "NOTHING"
+        ]
+      }
+    }
+  }
+]

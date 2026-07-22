@@ -1,0 +1,460 @@
+{
+  "ambulance_drive-to_factory": [
+    "Ambulans fabrikaya gider."
+  ],
+  "ambulance_drive-to_house": [
+    "Ambulans eve gider."
+  ],
+  "animal-beaver_goes-into_house": [
+    "Kunduz eve girer."
+  ],
+  "animal-bee_flies-to_tree": [
+    "Arı ağaca uçar."
+  ],
+  "animal-bunny_eats_carrot": [
+    "Tavşan havucu yer."
+  ],
+  "animal-bunny_sits-under_tree": [
+    "Tavşan ağacın altında oturuyor."
+  ],
+  "animal-cat_eat_meat-raw": [
+    "Kedi eti yemek istiyor.",
+    "Kedi eti yiyor."
+  ],
+  "animal-cat_jumps-into_shopping-cart": [
+    "Kedi alışveriş arabasının içine atlıyor."
+  ],
+  "animal-dog_is-on_stairs": [
+    "Köpek merdivenlerden yukarı yürüyor."
+  ],
+  "animal-dog_jumps-into_shopping-cart": [
+    "Köpek alışveriş arabasının içine atlıyor."
+  ],
+  "animal-elephant_goes-to_tree": [
+    "Fil ağaca gider."
+  ],
+  "animal-fox_eat_meat-raw": [
+    "Tilki eti yer."
+  ],
+  "animal-lion_eat_meat-raw": [
+    "Aslan eti yer."
+  ],
+  "animal-lion_walks-to_palm": [
+    "Aslan palmiye ağacına yürüyor."
+  ],
+  "animal-monkey_eat_banana": [
+    "Maymun muzu yer."
+  ],
+  "animal-parrot_put-into_car": [
+    "Papağanı arabaya koy!"
+  ],
+  "animal-pig_eats_carrot": [
+    "Domuz havucu yer."
+  ],
+  "animal-pig_put-into_car-pickup-truck": [
+    "Domuzu kamyonete koy!"
+  ],
+  "apple_give_person-male": [
+    "Elmayı adama ver!"
+  ],
+  "avocado_put-into_shopping-cart": [
+    "Avokadoyu alışveriş sepetine koy!"
+  ],
+  "avocado_put-into_trashcan": [
+    "Avokadoyu çöpe at!"
+  ],
+  "banana_give_animal-monkey": [
+    "Maymuna muzu ver!"
+  ],
+  "banana_put-into_fridge": [
+    "Muzu buzdolabına koy!"
+  ],
+  "barrel_bring-into_ship": [
+    "Varili gemiye yükle!",
+    "Varili gemiye getir!"
+  ],
+  "bathtub_bring-into_house": [
+    "Küveti eve getir!"
+  ],
+  "bed_load-into_car-van": [
+    "Yatağı minibüse yükle!"
+  ],
+  "bed_move-into_house": [
+    "Yatağı eve taşı!"
+  ],
+  "bench_put-in_car-van": [
+    "Bankı minibüse yükle!"
+  ],
+  "blender_put-into_box": [
+    "Blenderi kutuya koy!"
+  ],
+  "blender_put-into_kitchen-sink": [
+    "Blenderı lavaboya koy!"
+  ],
+  "books_put-into_car-van": [
+    "Kitapları minibüse koy!"
+  ],
+  "books_put-into_house": [
+    "Kitapları eve koy!"
+  ],
+  "bottle_give_person-female": [
+    "Şişeyi kadına ver!"
+  ],
+  "bottle_give_person-male": [
+    "Şişeyi adama ver!"
+  ],
+  "bottle_put-into_fridge": [
+    "Şişeyi buzdolabına koy!"
+  ],
+  "bowl_put-in_kitchen-sink": [
+    "Kaseyi lavaboya koy!"
+  ],
+  "bowl_put-in_microwave": [
+    "Kaseyi mikrodalga fırına koy!"
+  ],
+  "box_move-into_house": [
+    "Kutuyu evin içine taşı!"
+  ],
+  "broccoli_give_animal-bunny": [
+    "Brokoliyi tavşana ver!"
+  ],
+  "broccoli_put-into_pot": [
+    "Brokoliyi tencereye koy ve haşla!"
+  ],
+  "burger_give_person-male": [
+    "Hamburgeri adama ver!"
+  ],
+  "burger_put-into_fridge": [
+    "Burgeri buzdolabına koy!"
+  ],
+  "cake_put-in_fridge": [
+    "Keki buzdolabına koy!"
+  ],
+  "cake_put-on_table": [
+    "Keki masanın üstüne koy!"
+  ],
+  "can_give_person-female": [
+    "Konserveyi kadına ver!"
+  ],
+  "can_give_person-male": [
+    "Konserve kutusunu adama ver!"
+  ],
+  "can_put-into_kitchen-sink": [
+    "Konserve kutusunu lavaboya koy!"
+  ],
+  "car-pickup-truck_drive-to_factory": [
+    "Kamyonet fabrikaya gider."
+  ],
+  "car-pickup-truck_drive-to_house": [
+    "Kamyonet eve gider."
+  ],
+  "car-pickup-truck_drive-to_tree": [
+    "Kamyonet ağacın yanında park ediyor."
+  ],
+  "car_drives-to_house": [
+    "Araba eve gider."
+  ],
+  "car_parks-under_palm": [
+    "Araba palmiye ağacının altında park eder."
+  ],
+  "car_parks-under_tree": [
+    "Araba ağacın altında park eder."
+  ],
+  "carrot_give_animal-bunny": [
+    "Havucu tavşana ver!"
+  ],
+  "carrot_put-into_blender": [
+    "Havucu blendere koy!"
+  ],
+  "carrot_put-into_fridge": [
+    "Havucu buzdolabına koy!"
+  ],
+  "cauliflower_put-in_pot": [
+    "Karnabaharı tencerede haşla!",
+    "Karnabaharı tencereye koy!"
+  ],
+  "chair_load-onto_car-pickup-truck": [
+    "Sandalyeyi kamyonetin üstüne koy!"
+  ],
+  "cherries_put-into_blender": [
+    "Kirazları blendere koy!"
+  ],
+  "chest_load-onto_ship": [
+    "Sandığı gemiye yükle!"
+  ],
+  "chocolate_give_person-female": [
+    "Çikolatayı kadına ver!"
+  ],
+  "chocolate_put-into_fridge": [
+    "Çikolatayı buzdolabına koy!"
+  ],
+  "cone_give_person-male": [
+    "Trafik konisini adama ver!"
+  ],
+  "couch_move-into_house": [
+    "Kanepeyi eve taşı!"
+  ],
+  "couch_put-into_car-van": [
+    "Kanepeyi minibüse yükle!"
+  ],
+  "cup-coffee_give_person-female": [
+    "Kahveyi kadına ver!"
+  ],
+  "cup-coffee_give_person-male": [
+    "Kahveyi adama ver!"
+  ],
+  "cup-tea_put-on_desk": [
+    "Çay fincanını masanın üzerine koy!"
+  ],
+  "cup-tea_put-on_table": [
+    "Çay fincanını masanın üzerine koy!"
+  ],
+  "cup_give_person-male": [
+    "Bardağı adama ver!"
+  ],
+  "cup_put-next-to_bottle": [
+    "Bardağı şişenin yanına koy!"
+  ],
+  "cupcake_give_person-female": [
+    "Kadına cupcakeyi ver!"
+  ],
+  "cupcake_give_person-male": [
+    "Kapkeki adama ver!"
+  ],
+  "cupcake_put-in_trashcan": [
+    "Cupcake'i çöpe at!"
+  ],
+  "cupcake_put-on_table": [
+    "Cupcake'i masanın üzerine koy!"
+  ],
+  "donut_put-into_trashcan": [
+    "Donutu çöpe at!"
+  ],
+  "egg_put-into_fridge": [
+    "Yumurtayı buzdolabına koy!"
+  ],
+  "egg_put-into_shopping-cart": [
+    "Yumurtayı alışveriş sepetine koy!"
+  ],
+  "firetruck_drive-to_factory": [
+    "İtfaiye arabası fabrikaya gider."
+  ],
+  "fridge_bring-into_house": [
+    "Buzdolabını eve getir!"
+  ],
+  "garbage-truck_drive-to_factory": [
+    "Çöp kamyonu fabrikaya gider."
+  ],
+  "garbage-truck_drive-to_house": [
+    "Çöp kamyonu eve gider."
+  ],
+  "glass_put-into_kitchen-sink": [
+    "Bardağı lavaboya koy!"
+  ],
+  "glass_put-next-to_bottle": [
+    "Bardağı şişenin yanına koy!"
+  ],
+  "ice-cream_give_person-female": [
+    "Dondurmayı kadına ver!"
+  ],
+  "ice-cream_give_person-male": [
+    "Dondurmayı adama ver!"
+  ],
+  "kitchen-knife_cut_apple": [
+    "Elmayı bıçakla kes!"
+  ],
+  "kitchen-knife_cut_banana": [
+    "Muzı bıçakla kes!"
+  ],
+  "kitchen-knife_cut_broccoli": [
+    "Bıçağı kullanarak brokoliyi kes!"
+  ],
+  "kitchen-knife_cut_cheese": [
+    "Peyniri bıçakla kes!"
+  ],
+  "kitchen-knife_cut_fish": [
+    "Balığı bıçakla kes!"
+  ],
+  "kitchen-knife_cut_leek": [
+    "Pırasayı bıçakla kes!"
+  ],
+  "kitchen-knife_cut_meat-raw": [
+    "Eti bıçakla kes!"
+  ],
+  "kitchen-knife_cut_mushroom": [
+    "Mantarları bıçakla kes!"
+  ],
+  "kitchen-knife_cut_tomato": [
+    "Domatesi bıçakla kes!"
+  ],
+  "kitchen-knife_put-into_kitchen-sink": [
+    "Bıçağı lavaboya koy!"
+  ],
+  "kitchen-sink_put-into_car-van": [
+    "Mutfak lavabosunu minibüse yükle!"
+  ],
+  "kitchen-sink_put-into_house": [
+    "Mutfak lavabosunu eve tak!"
+  ],
+  "lamp_put-on_table": [
+    "Lambayı masanın üstüne koy!"
+  ],
+  "laptop_give_person-female": [
+    "Dizüstü bilgisayarı kadına ver!"
+  ],
+  "laptop_put-on_desk": [
+    "Dizüstü bilgisayarı masanın üzerine koy!"
+  ],
+  "leek_give_person-male": [
+    "Pırasayı adama ver!"
+  ],
+  "leek_put-into_fridge": [
+    "Pırasayı buzdolabına koy!"
+  ],
+  "lemon_give_person-female": [
+    "Limonu kadına ver!"
+  ],
+  "lemon_put-in_bowl": [
+    "Limonu kaseye koy!"
+  ],
+  "microwave_put-in_car": [
+    "Mikrodalga fırını arabaya koy!"
+  ],
+  "microwave_put-in_car-van": [
+    "Mikrodalga fırını minibüse koy!"
+  ],
+  "mushroom_put-into_kitchen-sink": [
+    "Mantarları lavaboda yıka!"
+  ],
+  "mushroom_put-into_pot": [
+    "Mantarı tencereye koy!"
+  ],
+  "onion_give_animal-dog": [
+    "Soğanı köpeğe ver!",
+    "Soğanı köpeğe ver!"
+  ],
+  "orange_put-into_bowl": [
+    "Portakalı kaseye koy!"
+  ],
+  "person-female_eat_apple": [
+    "Kadın elmayı yer."
+  ],
+  "person-female_eat_avocado": [
+    "Kadın avokadoyu yer."
+  ],
+  "person-female_get-into_ambulance": [
+    "Kadının bir ambulansa ihtiyacı var."
+  ],
+  "person-female_get-into_bed": [
+    "Kadın uyumaya gidiyor."
+  ],
+  "person-female_get-into_taxi": [
+    "Kadın taksiye biner."
+  ],
+  "person-female_get-into_tractor": [
+    "Kadın traktöre biniyor."
+  ],
+  "person-female_goes-onto_stairs": [
+    "Kadın merdivenlere çıkar."
+  ],
+  "person-female_pet_animal-bunny": [
+    "Kadın tavşanı sever."
+  ],
+  "person-female_pet_animal-cat": [
+    "Kadın kediyi sever."
+  ],
+  "person-male_goes-onto_stairs": [
+    "Adam merdivenlere çıkar."
+  ],
+  "person-male_pet_animal-cow": [
+    "Kadın ineği sever."
+  ],
+  "pineapple_put-into_shopping-cart": [
+    "Ananası alışveriş sepetine koy!"
+  ],
+  "pineapple_put-on_table": [
+    "Ananası masanın üzerine koy!"
+  ],
+  "pizza_put-into_car": [
+    "Pizzayı arabaya koy!"
+  ],
+  "pizza_put-into_fridge": [
+    "Pizzayı buzdolabına koy!"
+  ],
+  "plate_give_person-female": [
+    "Tabağı kadına ver!"
+  ],
+  "plate_put-into_kitchen-sink": [
+    "Tabağı lavaboya koy!"
+  ],
+  "pot_put-onto_stove": [
+    "Tencereyi ocağa koy!",
+    "Tencereyi ocağa yerleştir!"
+  ],
+  "pot_put-onto_table": [
+    "Tencereyi masanın üstüne koy!"
+  ],
+  "potted-plant_give_animal-deer": [
+    "Saksıdaki bitkiyi geyiğe ver!"
+  ],
+  "potted-plant_move-into_house": [
+    "Saksı bitkisini eve taşı!"
+  ],
+  "pumpkin_put-on_table": [
+    "Balkabağını masanın üstüne koy!"
+  ],
+  "radio_give_person-female": [
+    "Radyoyu kadına ver!"
+  ],
+  "radio_give_person-male": [
+    "Radyoyu adama ver!"
+  ],
+  "sandwich_give_person-female": [
+    "Sandviçi kadına ver!"
+  ],
+  "sausage_put-into_bowl": [
+    "Sucuğu kaseye koy!"
+  ],
+  "sausage_put-into_fridge": [
+    "Sucuğu buzdolabına koy!"
+  ],
+  "shovel_give_person-female": [
+    "Küreği kadına ver!"
+  ],
+  "spatula_give_person-male": [
+    "Spatulayı adama ver!"
+  ],
+  "spatula_put-into_kitchen-sink": [
+    "Spatulayı lavaboya koy!"
+  ],
+  "speaker_bring-into_house": [
+    "Hoparlörü eve getir!"
+  ],
+  "stove_load-onto_car-pickup-truck": [
+    "Ocağı pikap kamyonete yükle!"
+  ],
+  "stove_load-onto_car-van": [
+    "Ocağı minibüse yükle!"
+  ],
+  "table_load-onto_car-van": [
+    "Masayı minibüse koy!"
+  ],
+  "taxi_drive-to_factory": [
+    "Taksi fabrikaya gider."
+  ],
+  "tomato_put-into_fridge": [
+    "Domatesi buzdolabına koy!"
+  ],
+  "trashcan_bring-into_house": [
+    "Çöp kutusunu eve getir!"
+  ],
+  "tv_give-to_person-male": [
+    "Televizyonu adama ver!"
+  ],
+  "tv_load-onto_car-pickup-truck": [
+    "Televizyonu pikap kamyonete yükle!"
+  ],
+  "tv_put-on_desk": [
+    "Televizyonu sıranın üstüne koy!"
+  ]
+}

@@ -3,6 +3,7 @@ import Home from './Home.vue'
 import StatsPage from './StatsPage.vue'
 import AppRouteLayout from './shared/shell/AppRouteLayout.vue'
 import { apps } from './appRegistry'
+import { routeNameForPath } from './shared/shell/appRoutePath'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -41,7 +42,7 @@ const router = createRouter({
             component: AppRouteLayout,
             children: routes.map((route) => ({
               path: route.path,
-              name: route.path === '' ? app.slug : `${app.slug}-${route.path}`,
+              name: routeNameForPath(app.slug, route.path),
               component: route.component,
               meta: { ...route.meta, appSlug: app.slug }
             }))

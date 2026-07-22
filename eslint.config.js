@@ -14,6 +14,7 @@ export default [
       'src/apps/**/doc/**',
       'src/apps/**/spec.md',
       'src/apps/**/exercise-list.md',
+      'src/apps/**/vendor/**',
       '**/*.md'
     ]
   },

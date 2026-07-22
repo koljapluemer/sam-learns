@@ -1,0 +1,239 @@
+[
+  {
+    "code": "ara",
+    "displayName": "Arabic",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "ber",
+    "displayName": "Berber languages",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "bul",
+    "displayName": "Bulgarian",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "ces",
+    "displayName": "Czech",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "dan",
+    "displayName": "Danish",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "nld",
+    "displayName": "Dutch",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "eng",
+    "displayName": "English",
+    "symbols": [
+      "🇺🇸",
+      "🇬🇧"
+    ],
+    "isNative": true
+  },
+  {
+    "code": "epo",
+    "displayName": "Esperanto",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "fin",
+    "displayName": "Finnish (Suomi)",
+    "symbols": [
+      "🇫🇮"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "fra",
+    "displayName": "French",
+    "symbols": [
+      "🇫🇷",
+      "🇹🇬",
+      "🇨🇩"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "deu",
+    "displayName": "German",
+    "symbols": [
+      "🇩🇪",
+      "🇦🇹",
+      "ä"
+    ],
+    "isNative": true
+  },
+  {
+    "code": "ell",
+    "displayName": "Greek",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "gos",
+    "displayName": "Gronings",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "heb",
+    "displayName": "Hebrew",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "hun",
+    "displayName": "Hungarian",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "ind",
+    "displayName": "Indonesian",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "ita",
+    "displayName": "Italian",
+    "symbols": [
+      "🇮🇹"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "jpn",
+    "displayName": "Japanese",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "kab",
+    "displayName": "Kabyle",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "kor",
+    "displayName": "Korean",
+    "symbols": [],
+    "isNative": true
+  },
+  {
+    "code": "lat",
+    "displayName": "Latin",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "jbo",
+    "displayName": "Lojban",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "cmn",
+    "displayName": "Mandarin Chinese",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "nob",
+    "displayName": "Norwegian Bokmål",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "pol",
+    "displayName": "Polish",
+    "symbols": [
+      "🇵🇱"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "por",
+    "displayName": "Portugese",
+    "symbols": [
+      "🇧🇷"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "rus",
+    "displayName": "Russian",
+    "symbols": [
+      "🇷🇺"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "spa",
+    "displayName": "Spanish",
+    "symbols": [
+      "🇲🇽",
+      "ñ",
+      "🇪🇸"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "swe",
+    "displayName": "Swedish",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "tha",
+    "displayName": "Thai",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "tok",
+    "displayName": "Toki Pona",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "tur",
+    "displayName": "Turkish",
+    "symbols": [
+      "🇹🇷"
+    ],
+    "isNative": false
+  },
+  {
+    "code": "ukr",
+    "displayName": "Ukrainian",
+    "symbols": [],
+    "isNative": true
+  },
+  {
+    "code": "uig",
+    "displayName": "Uyghur",
+    "symbols": [],
+    "isNative": false
+  },
+  {
+    "code": "vie",
+    "displayName": "Vietnamese",
+    "symbols": [],
+    "isNative": false
+  }
+]

@@ -9,7 +9,11 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag === 'math-field'
+          // math-field: MathLive's web component (simplify-expressions).
+          // a-*: A-Frame's custom elements (prepositions3d) - a-scene,
+          // a-entity, a-assets, a-camera, etc. are all dynamically created
+          // by A-Frame itself, not a fixed list, hence the prefix match.
+          isCustomElement: (tag) => tag === 'math-field' || tag.startsWith('a-')
         }
       }
     }),
@@ -39,6 +43,14 @@ export default defineConfig({
 
             if (id.includes('mermaid')) {
               return 'erd-mermaid'
+            }
+
+            if (id.includes('/three/') || id.includes('\\three\\')) {
+              return 'tprboard-three'
+            }
+
+            if (id.includes('aframe')) {
+              return 'prepositions3d-aframe'
             }
           }
         }

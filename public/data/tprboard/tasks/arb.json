@@ -1,0 +1,460 @@
+{
+  "ambulance_drive-to_factory": [
+    "تسير سيارة الإسعاف إلى المصنع."
+  ],
+  "ambulance_drive-to_house": [
+    "تسير سيارة الإسعاف إلى المنزل."
+  ],
+  "animal-beaver_goes-into_house": [
+    "يدخل القندس إلى البيت."
+  ],
+  "animal-bee_flies-to_tree": [
+    "تطير النحلة إلى الشجرة."
+  ],
+  "animal-bunny_eats_carrot": [
+    "الأرنب يأكل الجزرة."
+  ],
+  "animal-bunny_sits-under_tree": [
+    "الأرنب يجلس تحت الشجرة."
+  ],
+  "animal-cat_eat_meat-raw": [
+    "القطة تريد أن تأكل اللحم.",
+    "القطة تأكل اللحم."
+  ],
+  "animal-cat_jumps-into_shopping-cart": [
+    "القطة تقفز إلى عربة التسوق."
+  ],
+  "animal-dog_is-on_stairs": [
+    "يصعد الكلب الدرج."
+  ],
+  "animal-dog_jumps-into_shopping-cart": [
+    "يقفز الكلب إلى عربة التسوق."
+  ],
+  "animal-elephant_goes-to_tree": [
+    "يذهب الفيل إلى الشجرة."
+  ],
+  "animal-fox_eat_meat-raw": [
+    "الثعلب يأكل اللحم."
+  ],
+  "animal-lion_eat_meat-raw": [
+    "يأكل الأسد اللحم."
+  ],
+  "animal-lion_walks-to_palm": [
+    "يمشي الأسد إلى شجرة النخيل."
+  ],
+  "animal-monkey_eat_banana": [
+    "القرد يأكل الموزة."
+  ],
+  "animal-parrot_put-into_car": [
+    "ضع الببغاء في السيارة!"
+  ],
+  "animal-pig_eats_carrot": [
+    "الخنزير يأكل الجَزَرَة."
+  ],
+  "animal-pig_put-into_car-pickup-truck": [
+    "ضع الخنزير في شاحنة النقل!"
+  ],
+  "apple_give_person-male": [
+    "أعطِ التفاحة للرجل!"
+  ],
+  "avocado_put-into_shopping-cart": [
+    "ضع الأفوكادو في عربة التسوق!"
+  ],
+  "avocado_put-into_trashcan": [
+    "ارمِ الأفوكادو في سلة المهملات!"
+  ],
+  "banana_give_animal-monkey": [
+    "أعطِ الموزة للقرد!"
+  ],
+  "banana_put-into_fridge": [
+    "ضع الموزة في الثلاجة!"
+  ],
+  "barrel_bring-into_ship": [
+    "حمّل البرميل على السفينة!",
+    "أحضر البرميل إلى داخل السفينة!"
+  ],
+  "bathtub_bring-into_house": [
+    "أحضر حوض الاستحمام إلى داخل المنزل!"
+  ],
+  "bed_load-into_car-van": [
+    "حمّل السرير في الشاحنة!"
+  ],
+  "bed_move-into_house": [
+    "انقل السرير إلى داخل البيت!"
+  ],
+  "bench_put-in_car-van": [
+    "ضع المقعد في الشاحنة!"
+  ],
+  "blender_put-into_box": [
+    "ضع الخلاط في الصندوق!"
+  ],
+  "blender_put-into_kitchen-sink": [
+    "ضع الخلاط في الحوض!"
+  ],
+  "books_put-into_car-van": [
+    "ضع الكتب في الشاحنة!"
+  ],
+  "books_put-into_house": [
+    "أدخل الكتب إلى البيت!"
+  ],
+  "bottle_give_person-female": [
+    "أعطِ الزجاجة للمرأة!"
+  ],
+  "bottle_give_person-male": [
+    "أعطِ الزجاجة للرجل!"
+  ],
+  "bottle_put-into_fridge": [
+    "ضع الزجاجة في الثلاجة!"
+  ],
+  "bowl_put-in_kitchen-sink": [
+    "ضع الوعاء في الحوض!"
+  ],
+  "bowl_put-in_microwave": [
+    "ضع الوعاء في الميكروويف!"
+  ],
+  "box_move-into_house": [
+    "انقل الصندوق إلى داخل البيت!"
+  ],
+  "broccoli_give_animal-bunny": [
+    "أعطِ البروكلي للأرنب!"
+  ],
+  "broccoli_put-into_pot": [
+    "اسلق البروكلي في القدر!"
+  ],
+  "burger_give_person-male": [
+    "أعطِ البرغر للرجل!"
+  ],
+  "burger_put-into_fridge": [
+    "ضع البرجر في الثلاجة!"
+  ],
+  "cake_put-in_fridge": [
+    "ضع الكعكة في الثلاجة!"
+  ],
+  "cake_put-on_table": [
+    "ضع الكعكة على الطاولة!"
+  ],
+  "can_give_person-female": [
+    "أعطِ العلبة للمرأة!"
+  ],
+  "can_give_person-male": [
+    "أعطِ العلبة للرجل!"
+  ],
+  "can_put-into_kitchen-sink": [
+    "ضع العلبة في الحوض!"
+  ],
+  "car-pickup-truck_drive-to_factory": [
+    "تسير الشاحنة الصغيرة إلى المصنع."
+  ],
+  "car-pickup-truck_drive-to_house": [
+    "تسير الشاحنة الصغيرة إلى المنزل."
+  ],
+  "car-pickup-truck_drive-to_tree": [
+    "تتوقف الشاحنة الصغيرة بجانب الشجرة."
+  ],
+  "car_drives-to_house": [
+    "تسير السيارة إلى البيت."
+  ],
+  "car_parks-under_palm": [
+    "توقف السيارة تحت شجرة النخيل."
+  ],
+  "car_parks-under_tree": [
+    "توقف السيارة تحت الشجرة."
+  ],
+  "carrot_give_animal-bunny": [
+    "أعطِ الجزرة للأرنب!"
+  ],
+  "carrot_put-into_blender": [
+    "ضع الجزر في الخلاط!"
+  ],
+  "carrot_put-into_fridge": [
+    "ضع الجزر في الثلاجة!"
+  ],
+  "cauliflower_put-in_pot": [
+    "اسلق القرنبيط في القدر!",
+    "ضع القرنبيط في القدر!"
+  ],
+  "chair_load-onto_car-pickup-truck": [
+    "ضع الكرسي على شاحنة النقل!"
+  ],
+  "cherries_put-into_blender": [
+    "ضع الكرز في الخلاط!"
+  ],
+  "chest_load-onto_ship": [
+    "حمّل الصندوق على السفينة!"
+  ],
+  "chocolate_give_person-female": [
+    "أعطِ الشوكولاتة للمرأة!"
+  ],
+  "chocolate_put-into_fridge": [
+    "ضع الشوكولاتة في الثلاجة!"
+  ],
+  "cone_give_person-male": [
+    "أعطِ المخروط المروري للرجل!"
+  ],
+  "couch_move-into_house": [
+    "انقل الأريكة إلى داخل البيت!"
+  ],
+  "couch_put-into_car-van": [
+    "حمّل الأريكة في الشاحنة!"
+  ],
+  "cup-coffee_give_person-female": [
+    "أعطِ القهوة للمرأة!"
+  ],
+  "cup-coffee_give_person-male": [
+    "أعطِ القهوة للرجل!"
+  ],
+  "cup-tea_put-on_desk": [
+    "ضع فنجان الشاي على المكتب!"
+  ],
+  "cup-tea_put-on_table": [
+    "ضع فنجان الشاي على الطاولة!"
+  ],
+  "cup_give_person-male": [
+    "أعطِ الكوب للرجل!"
+  ],
+  "cup_put-next-to_bottle": [
+    "ضع الكوب بجانب الزجاجة!"
+  ],
+  "cupcake_give_person-female": [
+    "أعطِ المرأة الكعكة!"
+  ],
+  "cupcake_give_person-male": [
+    "أعطِ الكعكة للرجل!"
+  ],
+  "cupcake_put-in_trashcan": [
+    "ارمِ الكعكة في سلة المهملات!"
+  ],
+  "cupcake_put-on_table": [
+    "ضع الكعكة على الطاولة!"
+  ],
+  "donut_put-into_trashcan": [
+    "ارمِ الدونات في سلة المهملات!"
+  ],
+  "egg_put-into_fridge": [
+    "ضع البيضة في الثلاجة!"
+  ],
+  "egg_put-into_shopping-cart": [
+    "ضع البيضة في عربة التسوق!"
+  ],
+  "firetruck_drive-to_factory": [
+    "تسير سيارة الإطفاء إلى المصنع."
+  ],
+  "fridge_bring-into_house": [
+    "أدخل الثلاجة إلى البيت!"
+  ],
+  "garbage-truck_drive-to_factory": [
+    "شاحنة القمامة تقود إلى المصنع."
+  ],
+  "garbage-truck_drive-to_house": [
+    "شاحنة القمامة تقود إلى المنزل."
+  ],
+  "glass_put-into_kitchen-sink": [
+    "ضع الكأس في الحوض!"
+  ],
+  "glass_put-next-to_bottle": [
+    "ضع الكأس بجانب الزجاجة!"
+  ],
+  "ice-cream_give_person-female": [
+    "أعطِ البوظة للمرأة!"
+  ],
+  "ice-cream_give_person-male": [
+    "أعطِ البوظة للرجل!"
+  ],
+  "kitchen-knife_cut_apple": [
+    "اقطع التفاحة بالسكين!"
+  ],
+  "kitchen-knife_cut_banana": [
+    "اقطع الموزة بالسكين!"
+  ],
+  "kitchen-knife_cut_broccoli": [
+    "اقطع البروكلي بالسكين!"
+  ],
+  "kitchen-knife_cut_cheese": [
+    "اقطع الجبن بالسكين!"
+  ],
+  "kitchen-knife_cut_fish": [
+    "اقطع السمكة بالسكين!"
+  ],
+  "kitchen-knife_cut_leek": [
+    "اقطع الكراث بالسكين!"
+  ],
+  "kitchen-knife_cut_meat-raw": [
+    "اقطع اللحم بالسكين!"
+  ],
+  "kitchen-knife_cut_mushroom": [
+    "اقطع الفطر بالسكين!"
+  ],
+  "kitchen-knife_cut_tomato": [
+    "اقطع الطماطم بالسكين!"
+  ],
+  "kitchen-knife_put-into_kitchen-sink": [
+    "ضع السكين في الحوض!"
+  ],
+  "kitchen-sink_put-into_car-van": [
+    "ضع حوض المطبخ في الشاحنة!"
+  ],
+  "kitchen-sink_put-into_house": [
+    "ركب حوض المطبخ في البيت!"
+  ],
+  "lamp_put-on_table": [
+    "ضع المصباح على الطاولة!"
+  ],
+  "laptop_give_person-female": [
+    "أعطِ الحاسوب المحمول للمرأة!"
+  ],
+  "laptop_put-on_desk": [
+    "ضع الحاسوب المحمول على المكتب!"
+  ],
+  "leek_give_person-male": [
+    "أعطِ الكراث للرجل!"
+  ],
+  "leek_put-into_fridge": [
+    "ضع الكراث في الثلاجة!"
+  ],
+  "lemon_give_person-female": [
+    "أعطِ الليمونة للمرأة!"
+  ],
+  "lemon_put-in_bowl": [
+    "ضع الليمونة في الوعاء!"
+  ],
+  "microwave_put-in_car": [
+    "ضع الميكروويف في السيارة!"
+  ],
+  "microwave_put-in_car-van": [
+    "ضع الميكروويف في الشاحنة!"
+  ],
+  "mushroom_put-into_kitchen-sink": [
+    "اغسل الفطر في الحوض!"
+  ],
+  "mushroom_put-into_pot": [
+    "ضع الفطر في القدر!"
+  ],
+  "onion_give_animal-dog": [
+    "أعطِ الكلب البصلة!",
+    "أعطِ البصلة للكلب!"
+  ],
+  "orange_put-into_bowl": [
+    "ضع البرتقالة في الوعاء!"
+  ],
+  "person-female_eat_apple": [
+    "المرأة تأكل التفاحة."
+  ],
+  "person-female_eat_avocado": [
+    "المرأة تأكل الأفوكادو."
+  ],
+  "person-female_get-into_ambulance": [
+    "المرأة تحتاج إلى سيارة إسعاف."
+  ],
+  "person-female_get-into_bed": [
+    "تذهب المرأة إلى النوم."
+  ],
+  "person-female_get-into_taxi": [
+    "تدخل المرأة سيارة الأجرة."
+  ],
+  "person-female_get-into_tractor": [
+    "المرأة تقود الجرار."
+  ],
+  "person-female_goes-onto_stairs": [
+    "تصعد المرأة الدرج."
+  ],
+  "person-female_pet_animal-bunny": [
+    "المرأة تداعب الأرنب."
+  ],
+  "person-female_pet_animal-cat": [
+    "المرأة تداعب القطة."
+  ],
+  "person-male_goes-onto_stairs": [
+    "الرجل يصعد الدرج."
+  ],
+  "person-male_pet_animal-cow": [
+    "المرأة تداعب البقرة."
+  ],
+  "pineapple_put-into_shopping-cart": [
+    "ضع الأناناس في عربة التسوق!"
+  ],
+  "pineapple_put-on_table": [
+    "ضع الأناناس على الطاولة!"
+  ],
+  "pizza_put-into_car": [
+    "ضع البيتزا في السيارة!"
+  ],
+  "pizza_put-into_fridge": [
+    "ضع البيتزا في الثلاجة!"
+  ],
+  "plate_give_person-female": [
+    "أعطِ الصحن للمرأة!"
+  ],
+  "plate_put-into_kitchen-sink": [
+    "ضع الصحن في الحوض!"
+  ],
+  "pot_put-onto_stove": [
+    "ضع القدر على الموقد!",
+    "ضع القدر على الموقد!"
+  ],
+  "pot_put-onto_table": [
+    "ضع القدر على الطاولة!"
+  ],
+  "potted-plant_give_animal-deer": [
+    "أعطِ النبتة المزروعة في الأصيص إلى الغزال!"
+  ],
+  "potted-plant_move-into_house": [
+    "انقل النبتة المزروعة في الأصيص إلى داخل المنزل!"
+  ],
+  "pumpkin_put-on_table": [
+    "ضع اليقطينة على الطاولة!"
+  ],
+  "radio_give_person-female": [
+    "أعطِ الراديو للمرأة!"
+  ],
+  "radio_give_person-male": [
+    "أعطِ الراديو للرجل!"
+  ],
+  "sandwich_give_person-female": [
+    "أعطِ الشطيرة للمرأة!"
+  ],
+  "sausage_put-into_bowl": [
+    "ضع النقانق في الوعاء!"
+  ],
+  "sausage_put-into_fridge": [
+    "ضع النقانق في الثلاجة!"
+  ],
+  "shovel_give_person-female": [
+    "أعطِ المجرفة للمرأة!"
+  ],
+  "spatula_give_person-male": [
+    "أعطِ الملعقة للرجل!"
+  ],
+  "spatula_put-into_kitchen-sink": [
+    "ضع الملعقة المسطحة في الحوض!"
+  ],
+  "speaker_bring-into_house": [
+    "أحضر السماعة إلى داخل البيت!"
+  ],
+  "stove_load-onto_car-pickup-truck": [
+    "حمّل الموقد على شاحنة النقل الصغيرة!"
+  ],
+  "stove_load-onto_car-van": [
+    "حمّل الموقد في الشاحنة!"
+  ],
+  "table_load-onto_car-van": [
+    "ضع الطاولة في الشاحنة!"
+  ],
+  "taxi_drive-to_factory": [
+    "تذهب سيارة الأجرة إلى المصنع."
+  ],
+  "tomato_put-into_fridge": [
+    "ضع الطماطم في الثلاجة!"
+  ],
+  "trashcan_bring-into_house": [
+    "أحضر سلة المهملات إلى داخل البيت!"
+  ],
+  "tv_give-to_person-male": [
+    "أعطِ التلفاز للرجل!"
+  ],
+  "tv_load-onto_car-pickup-truck": [
+    "حمّل التلفاز على شاحنة النقل الصغيرة!"
+  ],
+  "tv_put-on_desk": [
+    "ضع التلفاز على المكتب!"
+  ]
+}

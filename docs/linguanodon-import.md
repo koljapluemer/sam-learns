@@ -147,28 +147,19 @@ alias; that will silently break `npm run typecheck` again.
 |---|---|---|---|---|
 | `arabicnumbers` | `arabicnumbers` | Yes (1 table, 101 rows) | home, practice | SM-2-ish custom scheduler, kept as-is |
 | `typingpractice` | `typingpractice` | No (`data/vie.json`) | home, practice, settings | TELEX/VNI keystroke decomposition ported as pure functions; settings moved onto `useLocalSetting` instead of a bespoke localStorage key |
+| `saetze` | `saetze` | Yes (lessons+exercises) | home, `practice/:lessonKey` | No Dexie db - pure random-exercise drilling, no spaced repetition, matching the original. First real use of a dynamic path-param route. |
+| `egyptiansentences` | `egyptiansentences` | Yes (1 table) | home, practice | Timed cloze-word quiz; has a `credits` footer string (Tatoeba-style attribution). |
+| `boringwords` | `boringwords` | Yes + photos | home, `practice/:language` | FSRS via real `ts-fsrs` package (not linguanodon's vendored `fsrs.js`); two languages (`vie`, `arz`) each with their own deck. |
+| `comprehensible-input` | `comprehensible_input` | No (`data/videos.json`) | home, videos, `watch/:videoId`, stats | "Infinite watch" random-video loop plus a browse-by-language page - the `videos` custom path exercises the non-standard-route support. |
+| `hebrewscript` | `hebrewscript` | Yes (2252 audio clips) | home, practice, stats | Ear-training script-recognition; confusion-matrix stats page with a pair-history modal and JSON import/export. |
+| `viettonepractice` | `viettonepractice` | Yes (1000 audio clips) | home, practice, stats | Tone-recognition by ear; same stats-page shape as hebrewscript (recency-weighted accuracy, Wilson-interval daily accuracy). |
+| `prepositions3d` | `prepositions3d` | Yes (7 languages, 15 gloss tasks) | home, practice | A-Frame 3D scene, ported imperatively (raw `document.createElement`/attribute-setting, matching the original's own programmatic scene construction) rather than declarative `<a-scene>` templates. Not visually verified (no dev server) - verified via lint/typecheck/build + careful reading only. |
+| `tprboard` | `tprboard` | Yes (112 GLTF models, 949 audio clips, 19MB assets) | home, practice, stats, settings | Raw Three.js (not A-Frame) 3D board with drag/drop and toon shading; ebisu-based spaced repetition (vendored `.mjs`, like the original) rather than this repo's usual `ts-fsrs` - a different scheduler on purpose, matching upstream. Needed `@types/three` added as a devDependency (three ships no bundled types). Not visually verified. |
+| `infinitesentences` | `infinitesentences` | Yes (35 languages, 44 pairs, 7609 sentences, 55848 parts, 22MB sqlite) | home, select-native-language, `select-target-language/:nativeIso`, `practice/:nativeIso/:targetIso`, stats, settings | The biggest app - 4 task types (Memorize/Recall/Understand/Challenge) cycling per sentence. Static export split per-language-pair (`sentences/<native>-<target>.json`) instead of one giant blob. |
 
-## Remaining linguanodon apps (not yet imported)
+All 9 linguanodon apps identified for this migration are now imported.
 
-`boringwords`, `comprehensible_input`, `egyptiansentences`, `hebrewscript`,
-`prepositions3d`, `saetze`, `tprboard`, `viettonepractice`, `infinitesentences`.
-
-Rough complexity notes for whoever picks these up next:
-
-- **saetze, egyptiansentences** - similar shape to arabicnumbers (DB-backed,
-  no stats/settings pages), likely the next easiest.
-- **hebrewscript, viettonepractice** - have a `stats` page (good next
-  practice for the stats-route piece of `routes`) but ship a lot of audio
-  (opus files) - fine per the "assets in `public/` " decision, just note
-  the added repo weight.
-- **boringwords** - DB-backed with real photos, `practice_url_name` is
-  `None` in linguanodon's registry (worth checking why before assuming a
-  standard practice page).
-- **comprehensible_input** - video browsing, has an `extra_nav` page
-  (beyond home/practice/stats/settings) - a good test of the "custom path"
-  support in `routes`.
-- **tprboard, prepositions3d** - explicitly deferred (3D rendering, Ebisu
-  scheduling, large audio/model assets) - expect more effort than the rest.
-- **infinitesentences** - explicitly deferred - has the most pages (native/
-  target language selection + practice + stats + settings) and the largest
-  sqlite3 (22MB), plus its own `queueEvent`/`queueState` sync usage to strip.
+Dynamic path-param routes (e.g. `practice/:lessonKey`) are fully supported
+by the shared router/subnav piping - see `src/shared/shell/appRoutePath.ts`.
+`saetze` originally used a `?lesson=` query-param workaround before this was
+wired up; it's since been reconciled to a real `:lessonKey` path param.

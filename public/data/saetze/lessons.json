@@ -1,0 +1,57 @@
+[
+  {
+    "key": "jeder-alle-ganz",
+    "name": "jeder, alle, ganz",
+    "order": 0
+  },
+  {
+    "key": "irgend",
+    "name": "irgend- prefix",
+    "order": 1
+  },
+  {
+    "key": "hin-her",
+    "name": "hin & her",
+    "order": 2
+  },
+  {
+    "key": "-setzen",
+    "name": "-setzen and its prefixes",
+    "order": 3
+  },
+  {
+    "key": "-gehen",
+    "name": "-gehen and its prefixes",
+    "order": 4
+  },
+  {
+    "key": "suchen-versuchen",
+    "name": "suchen vs. versuchen",
+    "order": 5
+  },
+  {
+    "key": "fahren-erfahren",
+    "name": "fahren vs. erfahren",
+    "order": 6
+  },
+  {
+    "key": "-stehen",
+    "name": "-stehen and its prefixes",
+    "order": 7
+  },
+  {
+    "key": "-ein-verbs",
+    "name": "einstellen, einlegen, einsetzen",
+    "order": 8
+  },
+  {
+    "key": "-fragen",
+    "name": "anfragen, nachfragen, befragen",
+    "order": 9
+  },
+  {
+    "key": "-lassen",
+    "name": "-lassen and its prefixes",
+    "order": 10
+  }
+]

@@ -1,0 +1,460 @@
+{
+  "ambulance_drive-to_factory": [
+    "Xe cứu thương lái đến nhà máy."
+  ],
+  "ambulance_drive-to_house": [
+    "Xe cứu thương lái đến nhà."
+  ],
+  "animal-beaver_goes-into_house": [
+    "Con hải ly đi vào nhà."
+  ],
+  "animal-bee_flies-to_tree": [
+    "Con ong bay đến cái cây."
+  ],
+  "animal-bunny_eats_carrot": [
+    "Con thỏ ăn cà rốt."
+  ],
+  "animal-bunny_sits-under_tree": [
+    "Con thỏ ngồi dưới gốc cây."
+  ],
+  "animal-cat_eat_meat-raw": [
+    "Con mèo muốn ăn thịt.",
+    "Con mèo ăn thịt."
+  ],
+  "animal-cat_jumps-into_shopping-cart": [
+    "Con mèo nhảy vào xe đẩy hàng."
+  ],
+  "animal-dog_is-on_stairs": [
+    "Con chó đi lên cầu thang."
+  ],
+  "animal-dog_jumps-into_shopping-cart": [
+    "Con chó nhảy vào xe đẩy hàng."
+  ],
+  "animal-elephant_goes-to_tree": [
+    "Con voi đi đến cái cây."
+  ],
+  "animal-fox_eat_meat-raw": [
+    "Con cáo ăn thịt."
+  ],
+  "animal-lion_eat_meat-raw": [
+    "Con sư tử ăn thịt."
+  ],
+  "animal-lion_walks-to_palm": [
+    "Con sư tử đi đến cây cọ."
+  ],
+  "animal-monkey_eat_banana": [
+    "Con khỉ ăn quả chuối."
+  ],
+  "animal-parrot_put-into_car": [
+    "Bỏ con vẹt vào trong xe!"
+  ],
+  "animal-pig_eats_carrot": [
+    "Con lợn ăn cà rốt."
+  ],
+  "animal-pig_put-into_car-pickup-truck": [
+    "Bỏ con heo vào xe bán tải!"
+  ],
+  "apple_give_person-male": [
+    "Đưa quả táo cho người đàn ông!"
+  ],
+  "avocado_put-into_shopping-cart": [
+    "Bỏ quả bơ vào xe đẩy!"
+  ],
+  "avocado_put-into_trashcan": [
+    "Vứt quả bơ vào thùng rác!"
+  ],
+  "banana_give_animal-monkey": [
+    "Đưa quả chuối cho con khỉ!"
+  ],
+  "banana_put-into_fridge": [
+    "Bỏ quả chuối vào tủ lạnh!"
+  ],
+  "barrel_bring-into_ship": [
+    "Chất thùng lên tàu!",
+    "Mang thùng vào trong tàu!"
+  ],
+  "bathtub_bring-into_house": [
+    "Mang bồn tắm vào nhà!"
+  ],
+  "bed_load-into_car-van": [
+    "Bỏ cái giường lên xe tải!"
+  ],
+  "bed_move-into_house": [
+    "Di chuyển cái giường vào trong nhà!"
+  ],
+  "bench_put-in_car-van": [
+    "Bỏ cái ghế dài vào xe tải!"
+  ],
+  "blender_put-into_box": [
+    "Bỏ máy xay vào trong hộp!"
+  ],
+  "blender_put-into_kitchen-sink": [
+    "Đặt máy xay vào bồn rửa!"
+  ],
+  "books_put-into_car-van": [
+    "Bỏ những quyển sách vào xe tải!"
+  ],
+  "books_put-into_house": [
+    "Đem những quyển sách vào trong nhà!"
+  ],
+  "bottle_give_person-female": [
+    "Đưa chai cho người phụ nữ!"
+  ],
+  "bottle_give_person-male": [
+    "Đưa chai cho người đàn ông!"
+  ],
+  "bottle_put-into_fridge": [
+    "Bỏ chai vào tủ lạnh!"
+  ],
+  "bowl_put-in_kitchen-sink": [
+    "Bỏ cái tô vào bồn rửa!"
+  ],
+  "bowl_put-in_microwave": [
+    "Bỏ cái tô vào lò vi sóng!"
+  ],
+  "box_move-into_house": [
+    "Di chuyển cái hộp vào trong nhà!"
+  ],
+  "broccoli_give_animal-bunny": [
+    "Đưa bông cải xanh cho con thỏ!"
+  ],
+  "broccoli_put-into_pot": [
+    "Luộc bông cải xanh trong nồi!"
+  ],
+  "burger_give_person-male": [
+    "Đưa cái bánh mì kẹp cho người đàn ông!"
+  ],
+  "burger_put-into_fridge": [
+    "Bỏ cái bánh burger vào tủ lạnh!"
+  ],
+  "cake_put-in_fridge": [
+    "Bỏ bánh vào tủ lạnh!"
+  ],
+  "cake_put-on_table": [
+    "Đặt cái bánh lên bàn!"
+  ],
+  "can_give_person-female": [
+    "Đưa cái lon cho người phụ nữ!"
+  ],
+  "can_give_person-male": [
+    "Đưa cái lon cho người đàn ông!"
+  ],
+  "can_put-into_kitchen-sink": [
+    "Bỏ cái lon vào bồn rửa!"
+  ],
+  "car-pickup-truck_drive-to_factory": [
+    "Xe bán tải lái đến nhà máy."
+  ],
+  "car-pickup-truck_drive-to_house": [
+    "Chiếc xe bán tải lái đến ngôi nhà."
+  ],
+  "car-pickup-truck_drive-to_tree": [
+    "Chiếc xe bán tải đỗ cạnh cái cây."
+  ],
+  "car_drives-to_house": [
+    "Chiếc ô tô chạy đến ngôi nhà."
+  ],
+  "car_parks-under_palm": [
+    "Chiếc ô tô đỗ dưới cây cọ."
+  ],
+  "car_parks-under_tree": [
+    "Chiếc ô tô đỗ dưới gốc cây."
+  ],
+  "carrot_give_animal-bunny": [
+    "Đưa củ cà rốt cho con thỏ!"
+  ],
+  "carrot_put-into_blender": [
+    "Bỏ cà rốt vào máy xay!"
+  ],
+  "carrot_put-into_fridge": [
+    "Bỏ cà rốt vào tủ lạnh!"
+  ],
+  "cauliflower_put-in_pot": [
+    "Luộc súp lơ trong nồi!",
+    "Bỏ súp lơ vào nồi!"
+  ],
+  "chair_load-onto_car-pickup-truck": [
+    "Đặt cái ghế lên xe bán tải!"
+  ],
+  "cherries_put-into_blender": [
+    "Bỏ những quả anh đào vào máy xay!"
+  ],
+  "chest_load-onto_ship": [
+    "Hãy chất rương lên tàu!"
+  ],
+  "chocolate_give_person-female": [
+    "Đưa sô cô la cho người phụ nữ!"
+  ],
+  "chocolate_put-into_fridge": [
+    "Bỏ sôcôla vào tủ lạnh!"
+  ],
+  "cone_give_person-male": [
+    "Đưa cái nón giao thông cho người đàn ông!"
+  ],
+  "couch_move-into_house": [
+    "Di chuyển ghế sofa vào trong nhà!"
+  ],
+  "couch_put-into_car-van": [
+    "Bỏ cái ghế dài vào xe tải!"
+  ],
+  "cup-coffee_give_person-female": [
+    "Đưa cà phê cho người phụ nữ!"
+  ],
+  "cup-coffee_give_person-male": [
+    "Đưa cà phê cho người đàn ông!"
+  ],
+  "cup-tea_put-on_desk": [
+    "Đặt cái tách trà lên bàn!"
+  ],
+  "cup-tea_put-on_table": [
+    "Đặt cái tách trà lên bàn!"
+  ],
+  "cup_give_person-male": [
+    "Đưa cái cốc cho người đàn ông!"
+  ],
+  "cup_put-next-to_bottle": [
+    "Đặt cái cốc bên cạnh cái chai!"
+  ],
+  "cupcake_give_person-female": [
+    "Đưa cái bánh cupcake cho người phụ nữ!"
+  ],
+  "cupcake_give_person-male": [
+    "Đưa cái bánh cupcake cho người đàn ông!"
+  ],
+  "cupcake_put-in_trashcan": [
+    "Vứt cái bánh cupcake vào thùng rác!"
+  ],
+  "cupcake_put-on_table": [
+    "Đặt cái bánh cupcake lên bàn!"
+  ],
+  "donut_put-into_trashcan": [
+    "Ném cái bánh donut vào thùng rác!"
+  ],
+  "egg_put-into_fridge": [
+    "Bỏ quả trứng vào tủ lạnh!"
+  ],
+  "egg_put-into_shopping-cart": [
+    "Bỏ quả trứng vào xe đẩy hàng!"
+  ],
+  "firetruck_drive-to_factory": [
+    "Xe cứu hỏa chạy đến nhà máy."
+  ],
+  "fridge_bring-into_house": [
+    "Mang cái tủ lạnh vào nhà!"
+  ],
+  "garbage-truck_drive-to_factory": [
+    "Xe rác chạy đến nhà máy."
+  ],
+  "garbage-truck_drive-to_house": [
+    "Xe rác chạy đến nhà."
+  ],
+  "glass_put-into_kitchen-sink": [
+    "Bỏ cái ly vào bồn rửa chén!"
+  ],
+  "glass_put-next-to_bottle": [
+    "Đặt cái ly bên cạnh cái chai!"
+  ],
+  "ice-cream_give_person-female": [
+    "Đưa kem cho người phụ nữ!"
+  ],
+  "ice-cream_give_person-male": [
+    "Đưa cây kem cho người đàn ông!"
+  ],
+  "kitchen-knife_cut_apple": [
+    "Cắt quả táo bằng dao!"
+  ],
+  "kitchen-knife_cut_banana": [
+    "Cắt quả chuối bằng dao!"
+  ],
+  "kitchen-knife_cut_broccoli": [
+    "Cắt bông cải xanh bằng dao!"
+  ],
+  "kitchen-knife_cut_cheese": [
+    "Cắt phô mai bằng dao!"
+  ],
+  "kitchen-knife_cut_fish": [
+    "Cắt cá bằng dao!"
+  ],
+  "kitchen-knife_cut_leek": [
+    "Cắt cây tỏi tây bằng dao!"
+  ],
+  "kitchen-knife_cut_meat-raw": [
+    "Cắt thịt bằng dao!"
+  ],
+  "kitchen-knife_cut_mushroom": [
+    "Cắt nấm bằng dao!"
+  ],
+  "kitchen-knife_cut_tomato": [
+    "Cắt cà chua bằng dao!"
+  ],
+  "kitchen-knife_put-into_kitchen-sink": [
+    "Bỏ con dao vào bồn rửa!"
+  ],
+  "kitchen-sink_put-into_car-van": [
+    "Bỏ bồn rửa chén vào xe tải!"
+  ],
+  "kitchen-sink_put-into_house": [
+    "Lắp bồn rửa bát trong nhà!"
+  ],
+  "lamp_put-on_table": [
+    "Đặt cái đèn lên bàn!"
+  ],
+  "laptop_give_person-female": [
+    "Đưa máy tính xách tay cho người phụ nữ!"
+  ],
+  "laptop_put-on_desk": [
+    "Đặt máy tính xách tay lên bàn!"
+  ],
+  "leek_give_person-male": [
+    "Đưa cây tỏi tây cho người đàn ông!"
+  ],
+  "leek_put-into_fridge": [
+    "Bỏ cây tỏi tây vào tủ lạnh!"
+  ],
+  "lemon_give_person-female": [
+    "Đưa quả chanh cho người phụ nữ!"
+  ],
+  "lemon_put-in_bowl": [
+    "Bỏ quả chanh vào trong bát!"
+  ],
+  "microwave_put-in_car": [
+    "Bỏ lò vi sóng vào trong xe!"
+  ],
+  "microwave_put-in_car-van": [
+    "Bỏ lò vi sóng vào xe tải!"
+  ],
+  "mushroom_put-into_kitchen-sink": [
+    "Rửa nấm trong bồn rửa!"
+  ],
+  "mushroom_put-into_pot": [
+    "Bỏ cây nấm vào nồi!"
+  ],
+  "onion_give_animal-dog": [
+    "Đưa củ hành cho con chó!",
+    "Đưa củ hành cho con chó!"
+  ],
+  "orange_put-into_bowl": [
+    "Bỏ quả cam vào trong tô!"
+  ],
+  "person-female_eat_apple": [
+    "Người phụ nữ ăn táo."
+  ],
+  "person-female_eat_avocado": [
+    "Người phụ nữ ăn quả bơ."
+  ],
+  "person-female_get-into_ambulance": [
+    "Người phụ nữ cần xe cứu thương."
+  ],
+  "person-female_get-into_bed": [
+    "Người phụ nữ đi ngủ."
+  ],
+  "person-female_get-into_taxi": [
+    "Người phụ nữ lên taxi."
+  ],
+  "person-female_get-into_tractor": [
+    "Người phụ nữ lái máy kéo."
+  ],
+  "person-female_goes-onto_stairs": [
+    "Người phụ nữ đi lên cầu thang."
+  ],
+  "person-female_pet_animal-bunny": [
+    "Người phụ nữ vuốt ve con thỏ."
+  ],
+  "person-female_pet_animal-cat": [
+    "Người phụ nữ vuốt ve con mèo."
+  ],
+  "person-male_goes-onto_stairs": [
+    "Người đàn ông đi lên cầu thang."
+  ],
+  "person-male_pet_animal-cow": [
+    "Người phụ nữ vuốt ve con bò."
+  ],
+  "pineapple_put-into_shopping-cart": [
+    "Bỏ quả dứa vào xe đẩy hàng!"
+  ],
+  "pineapple_put-on_table": [
+    "Đặt quả dứa lên bàn!"
+  ],
+  "pizza_put-into_car": [
+    "Bỏ bánh pizza vào trong xe!"
+  ],
+  "pizza_put-into_fridge": [
+    "Bỏ bánh pizza vào tủ lạnh!"
+  ],
+  "plate_give_person-female": [
+    "Đưa cái đĩa cho người phụ nữ!"
+  ],
+  "plate_put-into_kitchen-sink": [
+    "Bỏ cái đĩa vào bồn rửa!"
+  ],
+  "pot_put-onto_stove": [
+    "Đặt nồi lên bếp!",
+    "Bỏ nồi lên bếp!"
+  ],
+  "pot_put-onto_table": [
+    "Đặt cái nồi lên bàn!"
+  ],
+  "potted-plant_give_animal-deer": [
+    "Đưa chậu cây cho con nai!"
+  ],
+  "potted-plant_move-into_house": [
+    "Di chuyển chậu cây vào trong nhà!"
+  ],
+  "pumpkin_put-on_table": [
+    "Đặt quả bí ngô lên bàn!"
+  ],
+  "radio_give_person-female": [
+    "Đưa cái radio cho người phụ nữ!"
+  ],
+  "radio_give_person-male": [
+    "Đưa cái radio cho người đàn ông!"
+  ],
+  "sandwich_give_person-female": [
+    "Đưa bánh sandwich cho người phụ nữ!"
+  ],
+  "sausage_put-into_bowl": [
+    "Bỏ xúc xích vào tô!"
+  ],
+  "sausage_put-into_fridge": [
+    "Bỏ xúc xích vào tủ lạnh!"
+  ],
+  "shovel_give_person-female": [
+    "Đưa cái xẻng cho người phụ nữ!"
+  ],
+  "spatula_give_person-male": [
+    "Đưa cái xẻng cho người đàn ông!"
+  ],
+  "spatula_put-into_kitchen-sink": [
+    "Bỏ cái xẻng vào bồn rửa!"
+  ],
+  "speaker_bring-into_house": [
+    "Mang loa vào nhà!"
+  ],
+  "stove_load-onto_car-pickup-truck": [
+    "Chất bếp lên xe bán tải!"
+  ],
+  "stove_load-onto_car-van": [
+    "Bỏ cái bếp lên xe tải!"
+  ],
+  "table_load-onto_car-van": [
+    "Đặt cái bàn vào trong xe tải!"
+  ],
+  "taxi_drive-to_factory": [
+    "Xe taxi đi đến nhà máy."
+  ],
+  "tomato_put-into_fridge": [
+    "Bỏ cà chua vào tủ lạnh!"
+  ],
+  "trashcan_bring-into_house": [
+    "Mang thùng rác vào nhà!"
+  ],
+  "tv_give-to_person-male": [
+    "Đưa cái tivi cho người đàn ông!"
+  ],
+  "tv_load-onto_car-pickup-truck": [
+    "Hãy chất cái tivi lên xe bán tải!"
+  ],
+  "tv_put-on_desk": [
+    "Đặt cái tivi lên bàn!"
+  ]
+}

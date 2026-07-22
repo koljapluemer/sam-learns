@@ -1,0 +1,1507 @@
+[
+  {
+    "id": 225,
+    "language": "arz",
+    "front": "قبْل",
+    "back": "before",
+    "credit": ""
+  },
+  {
+    "id": 226,
+    "language": "arz",
+    "front": "بعْد",
+    "back": "after",
+    "credit": ""
+  },
+  {
+    "id": 227,
+    "language": "arz",
+    "front": "حتَّى لَوْ",
+    "back": "even if",
+    "credit": ""
+  },
+  {
+    "id": 228,
+    "language": "arz",
+    "front": "لَوْ",
+    "back": "if",
+    "credit": ""
+  },
+  {
+    "id": 229,
+    "language": "arz",
+    "front": "لِحدّ لمّا",
+    "back": "until",
+    "credit": ""
+  },
+  {
+    "id": 230,
+    "language": "arz",
+    "front": "اِذا",
+    "back": "if",
+    "credit": ""
+  },
+  {
+    "id": 231,
+    "language": "arz",
+    "front": "لِحدّ ما",
+    "back": "until",
+    "credit": ""
+  },
+  {
+    "id": 232,
+    "language": "arz",
+    "front": "اِلّا لَوْ",
+    "back": "unless",
+    "credit": ""
+  },
+  {
+    "id": 233,
+    "language": "arz",
+    "front": "لمّا",
+    "back": "when",
+    "credit": ""
+  },
+  {
+    "id": 234,
+    "language": "arz",
+    "front": "عشان",
+    "back": "because/for",
+    "credit": ""
+  },
+  {
+    "id": 235,
+    "language": "arz",
+    "front": "علَى قدّ ما",
+    "back": "as much as",
+    "credit": ""
+  },
+  {
+    "id": 21,
+    "language": "vie",
+    "front": "và",
+    "back": "and",
+    "credit": ""
+  },
+  {
+    "id": 22,
+    "language": "vie",
+    "front": "của",
+    "back": "of",
+    "credit": ""
+  },
+  {
+    "id": 23,
+    "language": "vie",
+    "front": "các",
+    "back": "*plural marker*",
+    "credit": ""
+  },
+  {
+    "id": 24,
+    "language": "vie",
+    "front": "là",
+    "back": "is/are",
+    "credit": ""
+  },
+  {
+    "id": 25,
+    "language": "vie",
+    "front": "có",
+    "back": "have/has",
+    "credit": ""
+  },
+  {
+    "id": 26,
+    "language": "vie",
+    "front": "trong",
+    "back": "in/inside",
+    "credit": ""
+  },
+  {
+    "id": 27,
+    "language": "vie",
+    "front": "được",
+    "back": "*passive marker*",
+    "credit": ""
+  },
+  {
+    "id": 28,
+    "language": "vie",
+    "front": "cho",
+    "back": "for/give",
+    "credit": ""
+  },
+  {
+    "id": 29,
+    "language": "vie",
+    "front": "đã",
+    "back": "already *(passive marker)*",
+    "credit": ""
+  },
+  {
+    "id": 30,
+    "language": "vie",
+    "front": "hoặc",
+    "back": "or",
+    "credit": ""
+  },
+  {
+    "id": 31,
+    "language": "vie",
+    "front": "nhưng",
+    "back": "but",
+    "credit": ""
+  },
+  {
+    "id": 32,
+    "language": "vie",
+    "front": "mà",
+    "back": "but; that; which; contrastive linker",
+    "credit": ""
+  },
+  {
+    "id": 33,
+    "language": "vie",
+    "front": "nên",
+    "back": "should; therefore",
+    "credit": ""
+  },
+  {
+    "id": 34,
+    "language": "vie",
+    "front": "vì",
+    "back": "because; for",
+    "credit": ""
+  },
+  {
+    "id": 35,
+    "language": "vie",
+    "front": "bởi vì",
+    "back": "because",
+    "credit": ""
+  },
+  {
+    "id": 36,
+    "language": "vie",
+    "front": "do",
+    "back": "because of; due to",
+    "credit": ""
+  },
+  {
+    "id": 37,
+    "language": "vie",
+    "front": "nếu",
+    "back": "if",
+    "credit": ""
+  },
+  {
+    "id": 38,
+    "language": "vie",
+    "front": "thì",
+    "back": "then; topic-comment marker",
+    "credit": ""
+  },
+  {
+    "id": 39,
+    "language": "vie",
+    "front": "dù",
+    "back": "although; even if",
+    "credit": ""
+  },
+  {
+    "id": 40,
+    "language": "vie",
+    "front": "mặc dù",
+    "back": "although",
+    "credit": ""
+  },
+  {
+    "id": 41,
+    "language": "vie",
+    "front": "tuy",
+    "back": "although; admittedly",
+    "credit": ""
+  },
+  {
+    "id": 42,
+    "language": "vie",
+    "front": "tuy nhiên",
+    "back": "however",
+    "credit": ""
+  },
+  {
+    "id": 43,
+    "language": "vie",
+    "front": "còn",
+    "back": "still; remaining; whereas",
+    "credit": ""
+  },
+  {
+    "id": 44,
+    "language": "vie",
+    "front": "chứ",
+    "back": "rather; of course; emphatic correction",
+    "credit": ""
+  },
+  {
+    "id": 45,
+    "language": "vie",
+    "front": "hay",
+    "back": "or; often; good",
+    "credit": ""
+  },
+  {
+    "id": 46,
+    "language": "vie",
+    "front": "với",
+    "back": "with; and",
+    "credit": ""
+  },
+  {
+    "id": 47,
+    "language": "vie",
+    "front": "để",
+    "back": "in order to; so that",
+    "credit": ""
+  },
+  {
+    "id": 48,
+    "language": "vie",
+    "front": "khi",
+    "back": "when",
+    "credit": ""
+  },
+  {
+    "id": 49,
+    "language": "vie",
+    "front": "trong khi",
+    "back": "while; whereas",
+    "credit": ""
+  },
+  {
+    "id": 50,
+    "language": "vie",
+    "front": "trước khi",
+    "back": "before",
+    "credit": ""
+  },
+  {
+    "id": 51,
+    "language": "vie",
+    "front": "sau khi",
+    "back": "after",
+    "credit": ""
+  },
+  {
+    "id": 52,
+    "language": "vie",
+    "front": "cho đến khi",
+    "back": "until",
+    "credit": ""
+  },
+  {
+    "id": 53,
+    "language": "vie",
+    "front": "miễn là",
+    "back": "provided that",
+    "credit": ""
+  },
+  {
+    "id": 54,
+    "language": "vie",
+    "front": "trừ khi",
+    "back": "unless",
+    "credit": ""
+  },
+  {
+    "id": 55,
+    "language": "vie",
+    "front": "nhờ",
+    "back": "thanks to; by means of",
+    "credit": ""
+  },
+  {
+    "id": 56,
+    "language": "vie",
+    "front": "theo",
+    "back": "according to; following",
+    "credit": ""
+  },
+  {
+    "id": 57,
+    "language": "vie",
+    "front": "về",
+    "back": "about; regarding",
+    "credit": ""
+  },
+  {
+    "id": 58,
+    "language": "vie",
+    "front": "đối với",
+    "back": "with regard to; toward",
+    "credit": ""
+  },
+  {
+    "id": 59,
+    "language": "vie",
+    "front": "ngoài ra",
+    "back": "besides; moreover",
+    "credit": ""
+  },
+  {
+    "id": 60,
+    "language": "vie",
+    "front": "thay vì",
+    "back": "instead of",
+    "credit": ""
+  },
+  {
+    "id": 61,
+    "language": "vie",
+    "front": "bằng",
+    "back": "by; with; equal to",
+    "credit": ""
+  },
+  {
+    "id": 62,
+    "language": "vie",
+    "front": "từ",
+    "back": "from; since",
+    "credit": ""
+  },
+  {
+    "id": 63,
+    "language": "vie",
+    "front": "đến",
+    "back": "to; until",
+    "credit": ""
+  },
+  {
+    "id": 64,
+    "language": "vie",
+    "front": "theo như",
+    "back": "according to; as stated by",
+    "credit": ""
+  },
+  {
+    "id": 65,
+    "language": "vie",
+    "front": "so với",
+    "back": "compared with",
+    "credit": ""
+  },
+  {
+    "id": 66,
+    "language": "vie",
+    "front": "liên quan đến",
+    "back": "related to; concerning",
+    "credit": ""
+  },
+  {
+    "id": 67,
+    "language": "vie",
+    "front": "đang",
+    "back": "progressive aspect marker",
+    "credit": ""
+  },
+  {
+    "id": 68,
+    "language": "vie",
+    "front": "sẽ",
+    "back": "future marker; will",
+    "credit": ""
+  },
+  {
+    "id": 69,
+    "language": "vie",
+    "front": "từng",
+    "back": "once; ever; used to",
+    "credit": ""
+  },
+  {
+    "id": 70,
+    "language": "vie",
+    "front": "vừa",
+    "back": "just; both",
+    "credit": ""
+  },
+  {
+    "id": 71,
+    "language": "vie",
+    "front": "mới",
+    "back": "just; only then; newly",
+    "credit": ""
+  },
+  {
+    "id": 72,
+    "language": "vie",
+    "front": "sắp",
+    "back": "about to; soon",
+    "credit": ""
+  },
+  {
+    "id": 73,
+    "language": "vie",
+    "front": "chưa",
+    "back": "not yet; ever in questions",
+    "credit": ""
+  },
+  {
+    "id": 74,
+    "language": "vie",
+    "front": "rồi",
+    "back": "already; then; completed",
+    "credit": ""
+  },
+  {
+    "id": 75,
+    "language": "vie",
+    "front": "vẫn",
+    "back": "still; nevertheless",
+    "credit": ""
+  },
+  {
+    "id": 76,
+    "language": "vie",
+    "front": "cứ",
+    "back": "keep; just go on; every",
+    "credit": ""
+  },
+  {
+    "id": 77,
+    "language": "vie",
+    "front": "lại",
+    "back": "again; back; unexpectedly",
+    "credit": ""
+  },
+  {
+    "id": 78,
+    "language": "vie",
+    "front": "đều",
+    "back": "all; each equally",
+    "credit": ""
+  },
+  {
+    "id": 79,
+    "language": "vie",
+    "front": "cũng",
+    "back": "also; too; even",
+    "credit": ""
+  },
+  {
+    "id": 80,
+    "language": "vie",
+    "front": "chỉ",
+    "back": "only; merely",
+    "credit": ""
+  },
+  {
+    "id": 81,
+    "language": "vie",
+    "front": "chính",
+    "back": "exactly; precisely; main",
+    "credit": ""
+  },
+  {
+    "id": 82,
+    "language": "vie",
+    "front": "ngay",
+    "back": "immediately; right; even",
+    "credit": ""
+  },
+  {
+    "id": 83,
+    "language": "vie",
+    "front": "cả",
+    "back": "all; even",
+    "credit": ""
+  },
+  {
+    "id": 84,
+    "language": "vie",
+    "front": "tận",
+    "back": "as far as; all the way; as late as",
+    "credit": ""
+  },
+  {
+    "id": 85,
+    "language": "vie",
+    "front": "hầu như",
+    "back": "almost; virtually",
+    "credit": ""
+  },
+  {
+    "id": 86,
+    "language": "vie",
+    "front": "gần như",
+    "back": "almost; nearly",
+    "credit": ""
+  },
+  {
+    "id": 87,
+    "language": "vie",
+    "front": "hoàn toàn",
+    "back": "completely",
+    "credit": ""
+  },
+  {
+    "id": 88,
+    "language": "vie",
+    "front": "phần lớn",
+    "back": "mostly; for the most part",
+    "credit": ""
+  },
+  {
+    "id": 89,
+    "language": "vie",
+    "front": "chủ yếu",
+    "back": "mainly; primarily",
+    "credit": ""
+  },
+  {
+    "id": 90,
+    "language": "vie",
+    "front": "đặc biệt",
+    "back": "especially; particular",
+    "credit": ""
+  },
+  {
+    "id": 91,
+    "language": "vie",
+    "front": "ít nhất",
+    "back": "at least",
+    "credit": ""
+  },
+  {
+    "id": 92,
+    "language": "vie",
+    "front": "nhiều nhất",
+    "back": "at most; the most",
+    "credit": ""
+  },
+  {
+    "id": 93,
+    "language": "vie",
+    "front": "càng",
+    "back": "increasingly; the more",
+    "credit": ""
+  },
+  {
+    "id": 94,
+    "language": "vie",
+    "front": "càng ngày càng",
+    "back": "more and more",
+    "credit": ""
+  },
+  {
+    "id": 95,
+    "language": "vie",
+    "front": "khá",
+    "back": "rather; fairly",
+    "credit": ""
+  },
+  {
+    "id": 96,
+    "language": "vie",
+    "front": "hơi",
+    "back": "slightly; somewhat",
+    "credit": ""
+  },
+  {
+    "id": 97,
+    "language": "vie",
+    "front": "quá",
+    "back": "too; excessively; very",
+    "credit": ""
+  },
+  {
+    "id": 98,
+    "language": "vie",
+    "front": "lắm",
+    "back": "very; a lot",
+    "credit": ""
+  },
+  {
+    "id": 99,
+    "language": "vie",
+    "front": "thật",
+    "back": "really; truly",
+    "credit": ""
+  },
+  {
+    "id": 100,
+    "language": "vie",
+    "front": "thực sự",
+    "back": "actually; truly",
+    "credit": ""
+  },
+  {
+    "id": 101,
+    "language": "vie",
+    "front": "đúng là",
+    "back": "indeed; it really is",
+    "credit": ""
+  },
+  {
+    "id": 102,
+    "language": "vie",
+    "front": "có lẽ",
+    "back": "perhaps; probably",
+    "credit": ""
+  },
+  {
+    "id": 103,
+    "language": "vie",
+    "front": "chắc",
+    "back": "probably; surely",
+    "credit": ""
+  },
+  {
+    "id": 104,
+    "language": "vie",
+    "front": "chắc chắn",
+    "back": "certainly; definitely",
+    "credit": ""
+  },
+  {
+    "id": 105,
+    "language": "vie",
+    "front": "dường như",
+    "back": "seemingly; apparently",
+    "credit": ""
+  },
+  {
+    "id": 106,
+    "language": "vie",
+    "front": "hình như",
+    "back": "apparently; it seems",
+    "credit": ""
+  },
+  {
+    "id": 107,
+    "language": "vie",
+    "front": "có thể",
+    "back": "can; may; possibly",
+    "credit": ""
+  },
+  {
+    "id": 108,
+    "language": "vie",
+    "front": "không thể",
+    "back": "cannot; impossible",
+    "credit": ""
+  },
+  {
+    "id": 109,
+    "language": "vie",
+    "front": "phải",
+    "back": "must; have to; correct",
+    "credit": ""
+  },
+  {
+    "id": 110,
+    "language": "vie",
+    "front": "bị",
+    "back": "be subjected to; adverse passive marker",
+    "credit": ""
+  },
+  {
+    "id": 111,
+    "language": "vie",
+    "front": "hãy",
+    "back": "please; imperative marker",
+    "credit": ""
+  },
+  {
+    "id": 112,
+    "language": "vie",
+    "front": "đừng",
+    "back": "do not; negative imperative",
+    "credit": ""
+  },
+  {
+    "id": 113,
+    "language": "vie",
+    "front": "chớ",
+    "back": "do not; lest",
+    "credit": ""
+  },
+  {
+    "id": 114,
+    "language": "vie",
+    "front": "không",
+    "back": "not; no; question marker",
+    "credit": ""
+  },
+  {
+    "id": 115,
+    "language": "vie",
+    "front": "chẳng",
+    "back": "not; by no means",
+    "credit": ""
+  },
+  {
+    "id": 116,
+    "language": "vie",
+    "front": "chả",
+    "back": "not; colloquial negative",
+    "credit": ""
+  },
+  {
+    "id": 117,
+    "language": "vie",
+    "front": "đâu",
+    "back": "where; not at all in negatives",
+    "credit": ""
+  },
+  {
+    "id": 118,
+    "language": "vie",
+    "front": "gì",
+    "back": "what; anything",
+    "credit": ""
+  },
+  {
+    "id": 119,
+    "language": "vie",
+    "front": "nào",
+    "back": "which; any; imperative softener",
+    "credit": ""
+  },
+  {
+    "id": 120,
+    "language": "vie",
+    "front": "sao",
+    "back": "why; how; what",
+    "credit": ""
+  },
+  {
+    "id": 121,
+    "language": "vie",
+    "front": "thế nào",
+    "back": "how; what ... like",
+    "credit": ""
+  },
+  {
+    "id": 122,
+    "language": "vie",
+    "front": "bao giờ",
+    "back": "when; ever",
+    "credit": ""
+  },
+  {
+    "id": 123,
+    "language": "vie",
+    "front": "bao nhiêu",
+    "back": "how much; how many",
+    "credit": ""
+  },
+  {
+    "id": 124,
+    "language": "vie",
+    "front": "bao lâu",
+    "back": "how long",
+    "credit": ""
+  },
+  {
+    "id": 125,
+    "language": "vie",
+    "front": "mỗi",
+    "back": "each; every",
+    "credit": ""
+  },
+  {
+    "id": 126,
+    "language": "vie",
+    "front": "mọi",
+    "back": "every; all",
+    "credit": ""
+  },
+  {
+    "id": 127,
+    "language": "vie",
+    "front": "tất cả",
+    "back": "all; everything",
+    "credit": ""
+  },
+  {
+    "id": 128,
+    "language": "vie",
+    "front": "bất kỳ",
+    "back": "any; whichever",
+    "credit": ""
+  },
+  {
+    "id": 129,
+    "language": "vie",
+    "front": "bất cứ",
+    "back": "any; no matter which",
+    "credit": ""
+  },
+  {
+    "id": 130,
+    "language": "vie",
+    "front": "một vài",
+    "back": "a few; several",
+    "credit": ""
+  },
+  {
+    "id": 131,
+    "language": "vie",
+    "front": "một số",
+    "back": "some; a number of",
+    "credit": ""
+  },
+  {
+    "id": 132,
+    "language": "vie",
+    "front": "nhiều",
+    "back": "many; much",
+    "credit": ""
+  },
+  {
+    "id": 133,
+    "language": "vie",
+    "front": "ít",
+    "back": "few; little",
+    "credit": ""
+  },
+  {
+    "id": 134,
+    "language": "vie",
+    "front": "đủ",
+    "back": "enough",
+    "credit": ""
+  },
+  {
+    "id": 135,
+    "language": "vie",
+    "front": "thiếu",
+    "back": "lacking; insufficient",
+    "credit": ""
+  },
+  {
+    "id": 136,
+    "language": "vie",
+    "front": "khác",
+    "back": "different; other",
+    "credit": ""
+  },
+  {
+    "id": 137,
+    "language": "vie",
+    "front": "khác nhau",
+    "back": "different from one another",
+    "credit": ""
+  },
+  {
+    "id": 138,
+    "language": "vie",
+    "front": "nhau",
+    "back": "each other; one another",
+    "credit": ""
+  },
+  {
+    "id": 139,
+    "language": "vie",
+    "front": "tự",
+    "back": "self; by oneself",
+    "credit": ""
+  },
+  {
+    "id": 140,
+    "language": "vie",
+    "front": "lẫn nhau",
+    "back": "mutually; each other",
+    "credit": ""
+  },
+  {
+    "id": 141,
+    "language": "vie",
+    "front": "vậy",
+    "back": "so; thus; like that",
+    "credit": ""
+  },
+  {
+    "id": 142,
+    "language": "vie",
+    "front": "thế",
+    "back": "so; like that; then",
+    "credit": ""
+  },
+  {
+    "id": 143,
+    "language": "vie",
+    "front": "như",
+    "back": "like; as",
+    "credit": ""
+  },
+  {
+    "id": 144,
+    "language": "vie",
+    "front": "à",
+    "back": "question or realization particle",
+    "credit": ""
+  },
+  {
+    "id": 145,
+    "language": "vie",
+    "front": "ạ",
+    "back": "polite sentence-final particle",
+    "credit": ""
+  },
+  {
+    "id": 146,
+    "language": "vie",
+    "front": "nhé",
+    "back": "soft request or friendly confirmation particle",
+    "credit": ""
+  },
+  {
+    "id": 147,
+    "language": "vie",
+    "front": "nhỉ",
+    "back": "seeking agreement or shared reflection",
+    "credit": ""
+  },
+  {
+    "id": 148,
+    "language": "vie",
+    "front": "cơ",
+    "back": "emphatic or corrective sentence-final particle",
+    "credit": ""
+  },
+  {
+    "id": 149,
+    "language": "vie",
+    "front": "thôi",
+    "back": "only; just; stop; sentence-final softener",
+    "credit": ""
+  },
+  {
+    "id": 150,
+    "language": "vie",
+    "front": "như vậy",
+    "back": "thus; like that",
+    "credit": ""
+  },
+  {
+    "id": 151,
+    "language": "vie",
+    "front": "vì vậy",
+    "back": "therefore",
+    "credit": ""
+  },
+  {
+    "id": 152,
+    "language": "vie",
+    "front": "do đó",
+    "back": "therefore; consequently",
+    "credit": ""
+  },
+  {
+    "id": 153,
+    "language": "vie",
+    "front": "thế nên",
+    "back": "so; therefore",
+    "credit": ""
+  },
+  {
+    "id": 154,
+    "language": "vie",
+    "front": "dù vậy",
+    "back": "even so; nevertheless",
+    "credit": ""
+  },
+  {
+    "id": 155,
+    "language": "vie",
+    "front": "ngược lại",
+    "back": "conversely; on the contrary",
+    "credit": ""
+  },
+  {
+    "id": 156,
+    "language": "vie",
+    "front": "mặt khác",
+    "back": "on the other hand",
+    "credit": ""
+  },
+  {
+    "id": 157,
+    "language": "vie",
+    "front": "thậm chí",
+    "back": "even; indeed",
+    "credit": ""
+  },
+  {
+    "id": 158,
+    "language": "vie",
+    "front": "chẳng hạn",
+    "back": "for example",
+    "credit": ""
+  },
+  {
+    "id": 159,
+    "language": "vie",
+    "front": "nói chung",
+    "back": "generally speaking",
+    "credit": ""
+  },
+  {
+    "id": 160,
+    "language": "vie",
+    "front": "nói cách khác",
+    "back": "in other words",
+    "credit": ""
+  },
+  {
+    "id": 161,
+    "language": "vie",
+    "front": "cuối cùng",
+    "back": "finally; eventually",
+    "credit": ""
+  },
+  {
+    "id": 162,
+    "language": "vie",
+    "front": "trước hết",
+    "back": "first of all",
+    "credit": ""
+  },
+  {
+    "id": 163,
+    "language": "vie",
+    "front": "sau đó",
+    "back": "after that; then",
+    "credit": ""
+  },
+  {
+    "id": 164,
+    "language": "vie",
+    "front": "đồng thời",
+    "back": "at the same time",
+    "credit": ""
+  },
+  {
+    "id": 165,
+    "language": "vie",
+    "front": "hiện nay",
+    "back": "currently; nowadays",
+    "credit": ""
+  },
+  {
+    "id": 166,
+    "language": "vie",
+    "front": "hiện tại",
+    "back": "at present",
+    "credit": ""
+  },
+  {
+    "id": 167,
+    "language": "vie",
+    "front": "trước đây",
+    "back": "previously",
+    "credit": ""
+  },
+  {
+    "id": 168,
+    "language": "vie",
+    "front": "từ trước đến nay",
+    "back": "up to now; historically",
+    "credit": ""
+  },
+  {
+    "id": 169,
+    "language": "vie",
+    "front": "đôi khi",
+    "back": "sometimes",
+    "credit": ""
+  },
+  {
+    "id": 170,
+    "language": "vie",
+    "front": "thỉnh thoảng",
+    "back": "occasionally",
+    "credit": ""
+  },
+  {
+    "id": 171,
+    "language": "vie",
+    "front": "thường",
+    "back": "usually; often",
+    "credit": ""
+  },
+  {
+    "id": 172,
+    "language": "vie",
+    "front": "thường xuyên",
+    "back": "frequently; regularly",
+    "credit": ""
+  },
+  {
+    "id": 173,
+    "language": "vie",
+    "front": "luôn",
+    "back": "always",
+    "credit": ""
+  },
+  {
+    "id": 174,
+    "language": "vie",
+    "front": "hiếm khi",
+    "back": "rarely",
+    "credit": ""
+  },
+  {
+    "id": 175,
+    "language": "vie",
+    "front": "không bao giờ",
+    "back": "never",
+    "credit": ""
+  },
+  {
+    "id": 176,
+    "language": "vie",
+    "front": "dần dần",
+    "back": "gradually",
+    "credit": ""
+  },
+  {
+    "id": 177,
+    "language": "vie",
+    "front": "tạm thời",
+    "back": "temporarily",
+    "credit": ""
+  },
+  {
+    "id": 178,
+    "language": "vie",
+    "front": "lâu dài",
+    "back": "long-term",
+    "credit": ""
+  },
+  {
+    "id": 179,
+    "language": "vie",
+    "front": "về cơ bản",
+    "back": "basically; fundamentally",
+    "credit": ""
+  },
+  {
+    "id": 180,
+    "language": "vie",
+    "front": "trên thực tế",
+    "back": "in fact; in practice",
+    "credit": ""
+  },
+  {
+    "id": 181,
+    "language": "vie",
+    "front": "theo lý thuyết",
+    "back": "in theory",
+    "credit": ""
+  },
+  {
+    "id": 182,
+    "language": "vie",
+    "front": "ít nhiều",
+    "back": "more or less; to some extent",
+    "credit": ""
+  },
+  {
+    "id": 183,
+    "language": "vie",
+    "front": "phần nào",
+    "back": "partly; somewhat",
+    "credit": ""
+  },
+  {
+    "id": 184,
+    "language": "vie",
+    "front": "đáng lẽ",
+    "back": "should have; ought to have",
+    "credit": ""
+  },
+  {
+    "id": 185,
+    "language": "vie",
+    "front": "cho rằng",
+    "back": "think; hold the view that",
+    "credit": ""
+  },
+  {
+    "id": 186,
+    "language": "vie",
+    "front": "nghĩ rằng",
+    "back": "think that",
+    "credit": ""
+  },
+  {
+    "id": 187,
+    "language": "vie",
+    "front": "tin rằng",
+    "back": "believe that",
+    "credit": ""
+  },
+  {
+    "id": 188,
+    "language": "vie",
+    "front": "nhận ra",
+    "back": "realize; recognize",
+    "credit": ""
+  },
+  {
+    "id": 189,
+    "language": "vie",
+    "front": "hiểu",
+    "back": "understand",
+    "credit": ""
+  },
+  {
+    "id": 190,
+    "language": "vie",
+    "front": "biết",
+    "back": "know",
+    "credit": ""
+  },
+  {
+    "id": 191,
+    "language": "vie",
+    "front": "nhớ",
+    "back": "remember; miss",
+    "credit": ""
+  },
+  {
+    "id": 192,
+    "language": "vie",
+    "front": "quên",
+    "back": "forget",
+    "credit": ""
+  },
+  {
+    "id": 193,
+    "language": "vie",
+    "front": "mong",
+    "back": "hope; wish",
+    "credit": ""
+  },
+  {
+    "id": 194,
+    "language": "vie",
+    "front": "hy vọng",
+    "back": "hope",
+    "credit": ""
+  },
+  {
+    "id": 195,
+    "language": "vie",
+    "front": "muốn",
+    "back": "want",
+    "credit": ""
+  },
+  {
+    "id": 196,
+    "language": "vie",
+    "front": "định",
+    "back": "intend; plan to",
+    "credit": ""
+  },
+  {
+    "id": 197,
+    "language": "vie",
+    "front": "dự định",
+    "back": "intend; plan",
+    "credit": ""
+  },
+  {
+    "id": 198,
+    "language": "vie",
+    "front": "đồng ý",
+    "back": "agree",
+    "credit": ""
+  },
+  {
+    "id": 199,
+    "language": "vie",
+    "front": "phản đối",
+    "back": "oppose; object",
+    "credit": ""
+  },
+  {
+    "id": 200,
+    "language": "vie",
+    "front": "chấp nhận",
+    "back": "accept",
+    "credit": ""
+  },
+  {
+    "id": 201,
+    "language": "vie",
+    "front": "từ chối",
+    "back": "refuse; reject",
+    "credit": ""
+  },
+  {
+    "id": 202,
+    "language": "vie",
+    "front": "cho phép",
+    "back": "allow; permit",
+    "credit": ""
+  },
+  {
+    "id": 203,
+    "language": "vie",
+    "front": "yêu cầu",
+    "back": "require; request",
+    "credit": ""
+  },
+  {
+    "id": 204,
+    "language": "vie",
+    "front": "đề nghị",
+    "back": "propose; request",
+    "credit": ""
+  },
+  {
+    "id": 205,
+    "language": "vie",
+    "front": "mong đợi",
+    "back": "expect",
+    "credit": ""
+  },
+  {
+    "id": 206,
+    "language": "vie",
+    "front": "phụ thuộc",
+    "back": "depend",
+    "credit": ""
+  },
+  {
+    "id": 207,
+    "language": "vie",
+    "front": "liên quan",
+    "back": "relate; be relevant",
+    "credit": ""
+  },
+  {
+    "id": 208,
+    "language": "vie",
+    "front": "bao gồm",
+    "back": "include; consist of",
+    "credit": ""
+  },
+  {
+    "id": 209,
+    "language": "vie",
+    "front": "dẫn đến",
+    "back": "lead to; result in",
+    "credit": ""
+  },
+  {
+    "id": 210,
+    "language": "vie",
+    "front": "có nghĩa là",
+    "back": "mean; signify",
+    "credit": ""
+  },
+  {
+    "id": 211,
+    "language": "vie",
+    "front": "được coi là",
+    "back": "be considered",
+    "credit": ""
+  },
+  {
+    "id": 212,
+    "language": "vie",
+    "front": "dựa vào",
+    "back": "rely on; be based on",
+    "credit": ""
+  },
+  {
+    "id": 213,
+    "language": "vie",
+    "front": "giả sử",
+    "back": "suppose; assume",
+    "credit": ""
+  },
+  {
+    "id": 214,
+    "language": "vie",
+    "front": "thừa nhận",
+    "back": "admit; acknowledge",
+    "credit": ""
+  },
+  {
+    "id": 215,
+    "language": "vie",
+    "front": "phân biệt",
+    "back": "distinguish",
+    "credit": ""
+  },
+  {
+    "id": 216,
+    "language": "vie",
+    "front": "đánh giá",
+    "back": "evaluate; assess",
+    "credit": ""
+  },
+  {
+    "id": 217,
+    "language": "vie",
+    "front": "quan trọng",
+    "back": "important",
+    "credit": ""
+  },
+  {
+    "id": 218,
+    "language": "vie",
+    "front": "cần thiết",
+    "back": "necessary",
+    "credit": ""
+  },
+  {
+    "id": 219,
+    "language": "vie",
+    "front": "khả thi",
+    "back": "feasible",
+    "credit": ""
+  },
+  {
+    "id": 220,
+    "language": "vie",
+    "front": "hợp lý",
+    "back": "reasonable; logical",
+    "credit": ""
+  },
+  {
+    "id": 221,
+    "language": "vie",
+    "front": "rõ ràng",
+    "back": "clear; evident",
+    "credit": ""
+  },
+  {
+    "id": 222,
+    "language": "vie",
+    "front": "chính xác",
+    "back": "accurate; exact",
+    "credit": ""
+  },
+  {
+    "id": 223,
+    "language": "vie",
+    "front": "đáng kể",
+    "back": "significant; considerable",
+    "credit": ""
+  },
+  {
+    "id": 224,
+    "language": "vie",
+    "front": "đáng tin cậy",
+    "back": "reliable; trustworthy",
+    "credit": ""
+  }
+]

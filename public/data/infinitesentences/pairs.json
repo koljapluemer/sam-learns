@@ -1,0 +1,222 @@
+[
+  {
+    "native": "deu",
+    "target": "dan",
+    "sentenceCount": 100
+  },
+  {
+    "native": "deu",
+    "target": "fra",
+    "sentenceCount": 100
+  },
+  {
+    "native": "deu",
+    "target": "spa",
+    "sentenceCount": 100
+  },
+  {
+    "native": "deu",
+    "target": "tha",
+    "sentenceCount": 100
+  },
+  {
+    "native": "deu",
+    "target": "tur",
+    "sentenceCount": 100
+  },
+  {
+    "native": "deu",
+    "target": "ukr",
+    "sentenceCount": 100
+  },
+  {
+    "native": "eng",
+    "target": "ara",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "ber",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "bul",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "ces",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "cmn",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "dan",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "deu",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "ell",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "epo",
+    "sentenceCount": 182
+  },
+  {
+    "native": "eng",
+    "target": "fin",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "fra",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "gos",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "heb",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "hun",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "ind",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "ita",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "jbo",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "jpn",
+    "sentenceCount": 199
+  },
+  {
+    "native": "eng",
+    "target": "kab",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "lat",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "nld",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "nob",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "pol",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "por",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "rus",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "spa",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "swe",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "tha",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "tok",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "tur",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "uig",
+    "sentenceCount": 128
+  },
+  {
+    "native": "eng",
+    "target": "ukr",
+    "sentenceCount": 200
+  },
+  {
+    "native": "eng",
+    "target": "vie",
+    "sentenceCount": 200
+  },
+  {
+    "native": "kor",
+    "target": "deu",
+    "sentenceCount": 100
+  },
+  {
+    "native": "kor",
+    "target": "eng",
+    "sentenceCount": 100
+  },
+  {
+    "native": "ukr",
+    "target": "deu",
+    "sentenceCount": 100
+  },
+  {
+    "native": "ukr",
+    "target": "eng",
+    "sentenceCount": 100
+  },
+  {
+    "native": "ukr",
+    "target": "spa",
+    "sentenceCount": 100
+  }
+]

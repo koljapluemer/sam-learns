@@ -1,0 +1,272 @@
+{
+  "chair-behind": {
+    "arb": "حط الكوب ورا الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-behind.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-behind.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-behind.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-behind.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-behind.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-behind.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-behind.mp3"
+    },
+    "deu": "Stell die Tasse hinter den Stuhl.",
+    "eng": "Place the mug behind the chair.",
+    "fra": "Mets la tasse derrière la chaise.",
+    "ita": "Metti la tazza dietro la sedia.",
+    "tha": "วางแก้วไว้หลังเก้าอี้",
+    "vie": "Đặt cái cốc ở phía sau ghế."
+  },
+  "chair-below": {
+    "arb": "حط الكوب تحت الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-below.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-below.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-below.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-below.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-below.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-below.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-below.mp3"
+    },
+    "deu": "Stell die Tasse unter den Stuhl.",
+    "eng": "Place the mug under the chair.",
+    "fra": "Mets la tasse sous la chaise.",
+    "ita": "Metti la tazza sotto la sedia.",
+    "tha": "วางแก้วไว้ใต้เก้าอี้",
+    "vie": "Đặt cái cốc dưới ghế."
+  },
+  "chair-in-front-of": {
+    "arb": "حط الكوب قدام الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-in-front-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-in-front-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-in-front-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-in-front-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-in-front-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-in-front-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-in-front-of.mp3"
+    },
+    "deu": "Stell die Tasse vor den Stuhl.",
+    "eng": "Place the mug in front of the chair.",
+    "fra": "Mets la tasse devant la chaise.",
+    "ita": "Metti la tazza davanti alla sedia.",
+    "tha": "วางแก้วไว้ข้างหน้าของเก้าอี้",
+    "vie": "Đặt cái cốc trước ghế."
+  },
+  "chair-left-of": {
+    "arb": "حط الكوب على يسار الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-left-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-left-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-left-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-left-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-left-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-left-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-left-of.mp3"
+    },
+    "deu": "Stell die Tasse links von dem Stuhl.",
+    "eng": "Place the mug to the left of the chair.",
+    "fra": "Mets la tasse à gauche de la chaise.",
+    "ita": "Metti la tazza a sinistra della sedia.",
+    "tha": "วางแก้วไว้ทางซ้ายของเก้าอี้",
+    "vie": "Đặt cái cốc bên trái ghế."
+  },
+  "chair-next-to": {
+    "arb": "حط الكوب جنب الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-next-to.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-next-to.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-next-to.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-next-to.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-next-to.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-next-to.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-next-to.mp3"
+    },
+    "deu": "Stell die Tasse neben den Stuhl.",
+    "eng": "Place the mug next to the chair.",
+    "fra": "Mets la tasse à côté de la chaise.",
+    "ita": "Metti la tazza accanto alla sedia.",
+    "tha": "วางแก้วข้างเก้าอี้",
+    "vie": "Đặt cái cốc bên cạnh ghế."
+  },
+  "chair-on": {
+    "arb": "حط الكوب على الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-on.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-on.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-on.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-on.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-on.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-on.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-on.mp3"
+    },
+    "deu": "Stell die Tasse auf den Stuhl.",
+    "eng": "Place the mug on the chair.",
+    "fra": "Pose la tasse sur la chaise.",
+    "ita": "Metti la tazza sulla sedia.",
+    "tha": "วางแก้วบนเก้าอี้",
+    "vie": "Đặt cốc lên ghế."
+  },
+  "chair-right-of": {
+    "arb": "حط الكوب على يمين الكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/chair-right-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/chair-right-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/chair-right-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/chair-right-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/chair-right-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/chair-right-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/chair-right-of.mp3"
+    },
+    "deu": "Stell die Tasse rechts neben den Stuhl.",
+    "eng": "Place the mug to the right of the chair.",
+    "fra": "Mets la tasse à droite de la chaise.",
+    "ita": "Metti la tazza a destra della sedia.",
+    "tha": "วางแก้วไว้ข้างขวาของเก้าอี้",
+    "vie": "Đặt cái cốc bên phải ghế."
+  },
+  "table-behind": {
+    "arb": "حط الكوب ورا الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-behind.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-behind.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-behind.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-behind.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-behind.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-behind.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-behind.mp3"
+    },
+    "deu": "Stell die Tasse hinter den Tisch.",
+    "eng": "Place the mug behind the table.",
+    "fra": "Mets la tasse derrière la table.",
+    "ita": "Metti la tazza dietro il tavolo.",
+    "tha": "วางแก้วไว้หลังโต๊ะ",
+    "vie": "Đặt cái cốc ở phía sau bàn."
+  },
+  "table-below": {
+    "arb": "حط الكوب تحت الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-below.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-below.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-below.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-below.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-below.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-below.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-below.mp3"
+    },
+    "deu": "Stell die Tasse unter den Tisch.",
+    "eng": "Place the mug under the table.",
+    "fra": "Mets la tasse sous la table.",
+    "ita": "Metti la tazza sotto il tavolo.",
+    "tha": "วางแก้วใต้โต๊ะ",
+    "vie": "Đặt cái cốc dưới bàn."
+  },
+  "table-chair-between": {
+    "arb": "حط الكوب بين الطاولة والكرسي.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-chair-between.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-chair-between.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-chair-between.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-chair-between.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-chair-between.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-chair-between.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-chair-between.mp3"
+    },
+    "deu": "Stell die Tasse zwischen den Tisch und den Stuhl.",
+    "eng": "Place the mug between the table and the chair.",
+    "fra": "Mets la tasse entre la table et la chaise.",
+    "ita": "Metti la tazza tra il tavolo e la sedia.",
+    "tha": "วางแก้วระหว่างโต๊ะกับเก้าอี้",
+    "vie": "Đặt cái cốc giữa bàn và ghế."
+  },
+  "table-in-front-of": {
+    "arb": "حط الكوب قدام الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-in-front-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-in-front-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-in-front-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-in-front-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-in-front-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-in-front-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-in-front-of.mp3"
+    },
+    "deu": "Stell die Tasse vor den Tisch.",
+    "eng": "Place the mug in front of the table.",
+    "fra": "Mets la tasse devant la table.",
+    "ita": "Metti la tazza davanti al tavolo.",
+    "tha": "วางแก้วไว้ข้างหน้าตาราง",
+    "vie": "Đặt cái cốc trước bàn."
+  },
+  "table-left-of": {
+    "arb": "حط الكوب على يسار الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-left-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-left-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-left-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-left-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-left-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-left-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-left-of.mp3"
+    },
+    "deu": "Stell die Tasse links vom Tisch.",
+    "eng": "Place the mug to the left of the table.",
+    "fra": "Mets la tasse à gauche de la table.",
+    "ita": "Metti la tazza a sinistra del tavolo.",
+    "tha": "วางแก้วไว้ทางซ้ายของโต๊ะ",
+    "vie": "Đặt cái cốc bên trái bàn."
+  },
+  "table-next-to": {
+    "arb": "حط الكوب جنب الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-next-to.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-next-to.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-next-to.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-next-to.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-next-to.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-next-to.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-next-to.mp3"
+    },
+    "deu": "Stell die Tasse neben den Tisch.",
+    "eng": "Place the mug next to the table.",
+    "fra": "Mets la tasse à côté de la table.",
+    "ita": "Metti la tazza accanto al tavolo.",
+    "tha": "วางแก้วข้างโต๊ะ",
+    "vie": "Đặt cái cốc bên cạnh bàn."
+  },
+  "table-on": {
+    "arb": "حط الكوب على الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-on.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-on.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-on.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-on.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-on.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-on.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-on.mp3"
+    },
+    "deu": "Stell die Tasse auf den Tisch.",
+    "eng": "Place the mug on the table.",
+    "fra": "Mets la tasse sur la table.",
+    "ita": "Metti la tazza sul tavolo.",
+    "tha": "วางแก้วบนโต๊ะ",
+    "vie": "Đặt cốc lên bàn."
+  },
+  "table-right-of": {
+    "arb": "حط الكوب على يمين الطاولة.",
+    "audio": {
+      "arb": "/data/prepositions3d/audio/arb/table-right-of.mp3",
+      "deu": "/data/prepositions3d/audio/deu/table-right-of.mp3",
+      "eng": "/data/prepositions3d/audio/eng/table-right-of.mp3",
+      "fra": "/data/prepositions3d/audio/fra/table-right-of.mp3",
+      "ita": "/data/prepositions3d/audio/ita/table-right-of.mp3",
+      "tha": "/data/prepositions3d/audio/tha/table-right-of.mp3",
+      "vie": "/data/prepositions3d/audio/vie/table-right-of.mp3"
+    },
+    "deu": "Stell die Tasse rechts vom Tisch.",
+    "eng": "Place the mug to the right of the table.",
+    "fra": "Mets la tasse à droite de la table.",
+    "ita": "Metti la tazza a destra del tavolo.",
+    "tha": "วางแก้วไว้ขวามือของโต๊ะ",
+    "vie": "Đặt cái cốc bên phải bàn."
+  }
+}
