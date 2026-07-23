@@ -1,8 +1,10 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-// A single child page within an app that uses the `routes` shape below.
-// `path: ''` is the app's home/index page - conventionally followed by
-// 'practice', 'stats', 'settings', but any custom path is fine too.
+// A single child page within an app. `path: ''` is the app's home/index page
+// - conventionally followed by 'stats', 'settings', then any custom paths
+// (e.g. 'practice', 'videos') the app needs. Every app has exactly one of
+// each of 'home'/'stats'/'settings'; App.vue's top nav bar pulls those three
+// to the front regardless of declaration order here, then appends the rest.
 export type AppRouteDefinition = {
   path: string
   component: NonNullable<RouteRecordRaw['component']>
@@ -10,6 +12,9 @@ export type AppRouteDefinition = {
   meta?: {
     title?: string
     description?: string
+    // 'contained' (centered, max-width, padded) unless set to 'full-bleed'
+    // (fills the viewport - used by immersive/game-like exercises).
+    layout?: 'contained' | 'full-bleed'
   }
 }
 
@@ -20,17 +25,8 @@ export type AppDefinition = {
   // Trusted HTML, rendered as-is in the app's footer (attribution/credits
   // for imported content, e.g. Tatoeba sentence pairs).
   credits?: string
-  meta?: {
-    title?: string
-    description?: string
-  }
-} & (
-  // Legacy shape: one flat route at `/${slug}`, used by every existing app.
-  | { component: NonNullable<RouteRecordRaw['component']>; routes?: never }
-  // New shape: real per-app sub-routes (home/practice/stats/settings/custom),
-  // rendered inside AppRouteLayout with an AppSubnav tab bar.
-  | { routes: AppRouteDefinition[]; component?: never }
-)
+  routes: AppRouteDefinition[]
+}
 
 export const apps: AppDefinition[] = [
   {
@@ -52,6 +48,22 @@ export const apps: AppDefinition[] = [
         meta: {
           title: 'Practice | Arabic Numbers',
           description: 'Practice reading Arabic numbers with spaced repetition.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/arabicnumbers/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Arabic Numbers',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/arabicnumbers/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Arabic Numbers',
+          description: 'App settings.'
         }
       }
     ]
@@ -75,6 +87,22 @@ export const apps: AppDefinition[] = [
         meta: {
           title: 'Practice | Sätze',
           description: 'Fill in the blank in German cloze sentences.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/saetze/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Sätze',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/saetze/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Sätze',
+          description: 'App settings.'
         }
       }
     ]
@@ -100,6 +128,22 @@ export const apps: AppDefinition[] = [
           title: 'Practice | Egyptian Sentences',
           description: 'Timed cloze-word quiz for Egyptian Arabic sentences.'
         }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/egyptiansentences/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Egyptian Sentences',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/egyptiansentences/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Egyptian Sentences',
+          description: 'App settings.'
+        }
       }
     ]
   },
@@ -122,6 +166,22 @@ export const apps: AppDefinition[] = [
         meta: {
           title: 'Practice | Boring Words',
           description: 'FSRS flashcard practice for function words in your chosen language.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/boringwords/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Boring Words',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/boringwords/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Boring Words',
+          description: 'App settings.'
         }
       }
     ]
@@ -163,6 +223,14 @@ export const apps: AppDefinition[] = [
           title: 'Stats | Comprehensible Input',
           description: 'Watch-time totals by language.'
         }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/comprehensible-input/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Comprehensible Input',
+          description: 'Choose your video language.'
+        }
       }
     ]
   },
@@ -193,6 +261,14 @@ export const apps: AppDefinition[] = [
         meta: {
           title: 'Stats | Vietnamese Tone Practice',
           description: 'Accuracy and listening-time stats for Vietnamese tone practice.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/viettonepractice/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Vietnamese Tone Practice',
+          description: 'App settings.'
         }
       }
     ]
@@ -225,6 +301,14 @@ export const apps: AppDefinition[] = [
           title: 'Stats | Script Practice',
           description: 'Confusion-matrix and accuracy stats for your practice history.'
         }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/hebrewscript/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Script Practice',
+          description: 'App settings.'
+        }
       }
     ]
   },
@@ -248,6 +332,22 @@ export const apps: AppDefinition[] = [
           title: 'Practice | Prepositions 3D',
           description: 'Drag the mug to the place that matches the spoken preposition.'
         }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/prepositions3d/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Prepositions 3D',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/prepositions3d/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Prepositions 3D',
+          description: 'App settings.'
+        }
       }
     ]
   },
@@ -267,6 +367,7 @@ export const apps: AppDefinition[] = [
       {
         path: 'select-native-language',
         component: () => import('./apps/infinitesentences/pages/select-native-language/PageSelectNativeLanguage.vue'),
+        label: 'Change Languages',
         meta: {
           title: 'Select Native Language | Infinite Sentences',
           description: 'Choose your native language.'
@@ -349,51 +450,158 @@ export const apps: AppDefinition[] = [
     slug: 'learn-flags',
     name: 'Learn Flags',
     description: 'Guess the country from its flag.',
-    component: () => import('./apps/learn-flags/LearnFlags.vue'),
-    meta: {
-      title: 'Learn Flags',
-      description: 'Practice recognizing countries by their flags.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/learn-flags/LearnFlags.vue'),
+        meta: {
+          title: 'Learn Flags',
+          description: 'Practice recognizing countries by their flags.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/learn-flags/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Learn Flags',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/learn-flags/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Learn Flags',
+          description: 'App settings.'
+        }
+      }
+    ]
   },
   {
     slug: 'currency-conversion-practice',
     name: 'Currency Conversion Practice',
     description: 'Practice quick mental exchange-rate conversions.',
-    component: () => import('./apps/currency-conversion-practice/CurrencyConversionPractice.vue'),
-    meta: {
-      title: 'Currency Conversion Practice',
-      description: 'Practice converting currencies in your head.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/currency-conversion-practice/CurrencyConversionPractice.vue'),
+        meta: {
+          title: 'Currency Conversion Practice',
+          description: 'Practice converting currencies in your head.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/currency-conversion-practice/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Currency Conversion Practice',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/currency-conversion-practice/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Currency Conversion Practice',
+          description: 'App settings.'
+        }
+      }
+    ]
   },
   {
     slug: 'simplify-expressions',
     name: 'Simplify Expressions',
     description: 'Practice simplifying algebraic expressions.',
-    component: () => import('./apps/simplify-expressions/app/App.vue'),
-    meta: {
-      title: 'Simplify Expressions',
-      description: 'Practice simplifying algebraic expressions.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/simplify-expressions/app/App.vue'),
+        meta: {
+          title: 'Simplify Expressions',
+          description: 'Practice simplifying algebraic expressions.',
+          layout: 'full-bleed'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/simplify-expressions/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Simplify Expressions',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/simplify-expressions/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Simplify Expressions',
+          description: 'Language and app settings.'
+        }
+      }
+    ]
   },
   {
     slug: 'triangle-congruence',
     name: 'Triangle Congruence',
     description: 'Practice identifying triangle congruence theorems (SSS, SAS, ASA, SSA).',
-    component: () => import('./apps/triangle-congruence/app/App.vue'),
-    meta: {
-      title: 'Triangle Congruence',
-      description: 'Practice recognizing SSS, SAS, ASA and SSA triangle congruence theorems, in German.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/triangle-congruence/app/App.vue'),
+        meta: {
+          title: 'Triangle Congruence',
+          description: 'Practice recognizing SSS, SAS, ASA and SSA triangle congruence theorems, in German.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/triangle-congruence/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Triangle Congruence',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/triangle-congruence/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Triangle Congruence',
+          description: 'Language and app settings.'
+        }
+      }
+    ]
   },
   {
     slug: 'world-map',
     name: 'World Map',
     description: 'Find countries in their neighborhood on the world map.',
-    component: () => import('./apps/world-map/app/App.vue'),
-    meta: {
-      title: 'World Map',
-      description: 'Practice locating countries on the world map.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/world-map/app/App.vue'),
+        meta: {
+          title: 'World Map',
+          description: 'Practice locating countries on the world map.',
+          layout: 'full-bleed'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/world-map/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | World Map',
+          description: 'Per-country progress and daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/world-map/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | World Map',
+          description: 'Language and app settings.'
+        }
+      }
+    ]
   },
   {
     slug: 'typingpractice',
@@ -417,6 +625,14 @@ export const apps: AppDefinition[] = [
         }
       },
       {
+        path: 'stats',
+        component: () => import('./apps/typingpractice/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Vietnamese Typing',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
         path: 'settings',
         component: () => import('./apps/typingpractice/pages/settings/PageSettings.vue'),
         meta: {
@@ -430,10 +646,31 @@ export const apps: AppDefinition[] = [
     slug: 'entity-relation-intuition',
     name: 'ER Diagram Intuition',
     description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',
-    component: () => import('./apps/entity-relation-intuition/app/App.vue'),
-    meta: {
-      title: 'ER Diagram Intuition',
-      description: 'Build intuition for basic ER modeling by comparing your sketch to example solutions.'
-    }
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/entity-relation-intuition/app/App.vue'),
+        meta: {
+          title: 'ER Diagram Intuition',
+          description: 'Build intuition for basic ER modeling by comparing your sketch to example solutions.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/entity-relation-intuition/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | ER Diagram Intuition',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/entity-relation-intuition/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | ER Diagram Intuition',
+          description: 'Language and app settings.'
+        }
+      }
+    ]
   }
 ]

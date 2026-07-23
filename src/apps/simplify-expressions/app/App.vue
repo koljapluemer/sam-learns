@@ -10,7 +10,7 @@ const AppFeedbackModal = defineAsyncComponent(() => import('./feedback/AppFeedba
 const { t } = useAppI18n()
 const isFeedbackModalOpen = ref(false)
 
-useAppShell(() => ({ title: t('app.title'), icon: Calculator, layout: 'full-bleed', locales }))
+useAppShell(() => ({ title: t('app.title'), icon: Calculator, locales }))
 
 function openFeedbackModal() {
   isFeedbackModalOpen.value = true

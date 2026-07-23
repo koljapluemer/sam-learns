@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { activityDb, type ActivityEventRow } from '@/shared/activity/activityDb'
 import { toLocalDayKey } from '@/shared/activity/dayBoundary'
-import { apps } from './appRegistry'
+import { apps } from '@/appRegistry'
 
 const DAYS_TO_SHOW = 30
 

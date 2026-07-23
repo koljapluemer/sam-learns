@@ -5,6 +5,7 @@
 import { onMounted, ref } from 'vue'
 import { loadLanguageOptions } from '../../app/data'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import GeneralSettingsSection from '@/shared/settings/GeneralSettingsSection.vue'
 import type { LanguageOption } from '../../app/types'
 
 const selectedLanguageCode = useLocalSetting<string | null>('tprboard-language-code', null)
@@ -74,4 +75,5 @@ function selectLanguage(code: string): void {
       </div>
     </div>
   </section>
+  <GeneralSettingsSection />
 </template>

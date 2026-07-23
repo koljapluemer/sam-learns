@@ -1,22 +1,49 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { BarChart3, Home, Info, Settings } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { BarChart3, Home, Settings } from 'lucide-vue-next'
+import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
-import SettingsPanel from '@/shared/settings/SettingsPanel.vue'
-import InfoPanel from '@/shared/info/InfoPanel.vue'
-import AppStatsPanel from '@/shared/stats/AppStatsPanel.vue'
+import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
 
-const isSettingsOpen = ref(false)
-const isInfoOpen = ref(false)
-const isStatsOpen = ref(false)
+const route = useRoute()
+
+const appSlug = computed(() => (typeof route.meta.appSlug === 'string' ? route.meta.appSlug : ''))
+const app = computed(() => apps.find((candidate) => candidate.slug === appSlug.value))
 
 const appName = computed(() => (shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : ''))
 
 const mainClass = computed(() =>
-  shellState.layout === 'full-bleed'
+  route.meta.layout === 'full-bleed'
     ? 'w-full min-h-screen'
     : 'flex w-full min-h-screen justify-center bg-base-200/40 px-4 pb-8 pt-20'
 )
+
+type NavTab = { routeName: string; label: string; icon?: typeof Home }
+
+const tabs = computed<NavTab[]>(() => {
+  if (!app.value) {
+    return [
+      { routeName: 'stats', label: 'Stats', icon: BarChart3 },
+      { routeName: 'settings', label: 'Settings', icon: Settings }
+    ]
+  }
+
+  const slug = app.value.slug
+  const staticRoutes = app.value.routes.filter((r) => !isDynamicRoutePath(r.path))
+  const byPath = (path: string) => staticRoutes.find((r) => r.path === path)
+  const rest = staticRoutes.filter((r) => r.path !== '' && r.path !== 'stats' && r.path !== 'settings')
+
+  const ordered = [byPath(''), byPath('stats'), byPath('settings'), ...rest].filter(
+    (r): r is AppRouteDefinition => r !== undefined
+  )
+
+  return ordered.map((r) => ({
+    routeName: routeNameForPath(slug, r.path),
+    label: r.label ?? (r.path === '' ? 'Home' : r.path.charAt(0).toUpperCase() + r.path.slice(1)),
+    icon: r.path === '' ? Home : r.path === 'stats' ? BarChart3 : r.path === 'settings' ? Settings : undefined
+  }))
+})
 </script>
 
 <template>
@@ -34,74 +61,27 @@ const mainClass = computed(() =>
         <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
       </router-link>
 
-      <div class="pointer-events-auto flex items-center gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
+      <nav class="pointer-events-auto flex max-w-[70vw] flex-wrap items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
         <router-link
-          v-if="!shellState.stats"
-          :to="{ name: 'stats' }"
+          v-for="tab in tabs"
+          :key="tab.routeName"
+          :to="{ name: tab.routeName }"
           class="btn btn-ghost btn-sm gap-2"
-          aria-label="Stats"
+          :class="{ 'btn-active': route.name === tab.routeName }"
         >
-          <BarChart3
+          <component
+            :is="tab.icon"
+            v-if="tab.icon"
             :size="18"
             aria-hidden="true"
           />
-          <span class="hidden sm:inline">Stats</span>
+          <span class="hidden sm:inline">{{ tab.label }}</span>
         </router-link>
-        <button
-          v-else
-          type="button"
-          class="btn btn-ghost btn-sm gap-2"
-          aria-label="Stats"
-          @click="isStatsOpen = true"
-        >
-          <BarChart3
-            :size="18"
-            aria-hidden="true"
-          />
-          <span class="hidden sm:inline">Stats</span>
-        </button>
-        <button
-          type="button"
-          class="btn btn-ghost btn-sm gap-2"
-          aria-label="Settings"
-          @click="isSettingsOpen = true"
-        >
-          <Settings
-            :size="18"
-            aria-hidden="true"
-          />
-          <span class="hidden sm:inline">Settings</span>
-        </button>
-        <button
-          type="button"
-          class="btn btn-ghost btn-sm gap-2"
-          aria-label="Info"
-          @click="isInfoOpen = true"
-        >
-          <Info
-            :size="18"
-            aria-hidden="true"
-          />
-          <span class="hidden sm:inline">Info</span>
-        </button>
-      </div>
+      </nav>
     </div>
 
     <main :class="mainClass">
       <RouterView />
     </main>
-
-    <SettingsPanel
-      :is-open="isSettingsOpen"
-      @close="isSettingsOpen = false"
-    />
-    <InfoPanel
-      :is-open="isInfoOpen"
-      @close="isInfoOpen = false"
-    />
-    <AppStatsPanel
-      :is-open="isStatsOpen"
-      @close="isStatsOpen = false"
-    />
   </div>
 </template>

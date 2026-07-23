@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import Home from './Home.vue'
-import StatsPage from './StatsPage.vue'
 import AppRouteLayout from './shared/shell/AppRouteLayout.vue'
 import { apps } from './appRegistry'
 import { routeNameForPath } from './shared/shell/appRoutePath'
@@ -21,45 +20,35 @@ const router = createRouter({
       {
         path: '/stats',
         name: 'stats',
-        component: StatsPage,
+        component: () => import('./shared/stats/GeneralStatsSection.vue'),
         meta: {
           title: 'Daily Usage',
           description: 'Cross-app daily usage stats, stored locally on this device.'
         }
+      },
+      {
+        path: '/settings',
+        name: 'settings',
+        component: () => import('./shared/settings/GeneralSettingsSection.vue'),
+        meta: {
+          title: 'Settings',
+          description: 'Theme and general settings.'
+        }
       }
     ] as RouteRecordRaw[]
   ).concat(
-    apps.flatMap((app): RouteRecordRaw[] => {
-      // New shape: real per-app sub-routes, rendered under a shared subnav
-      // layout. `path: ''` is the home/index page, so it keeps resolving at
-      // `/${slug}` and keeps the route name `app.slug` - Home.vue's card
-      // links (`:to="{ name: app.slug }"`) don't need to change either way.
-      if (app.routes) {
-        const routes = app.routes
-        return [
-          {
-            path: `/${app.slug}`,
-            component: AppRouteLayout,
-            children: routes.map((route) => ({
-              path: route.path,
-              name: routeNameForPath(app.slug, route.path),
-              component: route.component,
-              meta: { ...route.meta, appSlug: app.slug }
-            }))
-          }
-        ]
+    apps.flatMap((app): RouteRecordRaw[] => [
+      {
+        path: `/${app.slug}`,
+        component: AppRouteLayout,
+        children: app.routes.map((route) => ({
+          path: route.path,
+          name: routeNameForPath(app.slug, route.path),
+          component: route.component,
+          meta: { ...route.meta, appSlug: app.slug }
+        }))
       }
-
-      // Legacy shape: one flat route, used by every pre-existing app.
-      return [
-        {
-          path: `/${app.slug}`,
-          name: app.slug,
-          component: app.component,
-          meta: { ...app.meta, appSlug: app.slug }
-        }
-      ]
-    })
+    ])
   )
 })
 

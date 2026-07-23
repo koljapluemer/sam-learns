@@ -5,6 +5,7 @@ import { Circle, Flame } from 'lucide-vue-next'
 import { createPracticeStore, createUserSettingsStore } from '../../app/store'
 import { loadLanguages } from '../../app/api'
 import { createSentencesChart } from '../../app/statsChart'
+import GeneralStatsSection from '@/shared/stats/GeneralStatsSection.vue'
 import type { ChartItem } from 'chart.js'
 
 function formatDateLabel(dateStr: string): string {
@@ -94,4 +95,5 @@ onMounted(async () => {
       </div>
     </div>
   </div>
+  <GeneralStatsSection />
 </template>

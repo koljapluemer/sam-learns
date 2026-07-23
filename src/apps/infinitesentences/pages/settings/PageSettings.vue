@@ -4,6 +4,7 @@ import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { createLanguagePreferencesStore, createUserSettingsStore } from '../../app/store'
 import { loadLanguages } from '../../app/api'
+import GeneralSettingsSection from '@/shared/settings/GeneralSettingsSection.vue'
 
 const router = useRouter()
 const userSettingsStore = createUserSettingsStore()
@@ -94,4 +95,5 @@ function changeTargetLanguage(): void {
       </div>
     </div>
   </div>
+  <GeneralSettingsSection />
 </template>

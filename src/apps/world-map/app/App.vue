@@ -9,7 +9,6 @@ import { getGeoData } from '@/apps/world-map/entities/map-geo-data/mapGeoData'
 
 const ExercisePage = defineAsyncComponent(() => import('../pages/exercise/PageExercise.vue'))
 const CmsPreviewView = defineAsyncComponent(() => import('../pages/cms-preview/CmsPreviewView.vue'))
-const WorldMapStatsSection = defineAsyncComponent(() => import('./stats/WorldMapStatsSection.vue'))
 
 const { t } = useAppI18n()
 const route = useRoute()
@@ -35,7 +34,7 @@ onMounted(async () => {
 })
 
 if (!isPreview.value) {
-  useAppShell(() => ({ title: t('app.title'), icon: Globe, layout: 'full-bleed', locales, stats: WorldMapStatsSection }))
+  useAppShell(() => ({ title: t('app.title'), icon: Globe, locales }))
 }
 </script>
 

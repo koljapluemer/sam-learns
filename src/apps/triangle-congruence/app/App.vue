@@ -8,7 +8,7 @@ const ExercisePage = defineAsyncComponent(() => import('../pages/exercise/PageEx
 
 const { t } = useAppI18n()
 
-useAppShell(() => ({ title: t('app.title'), icon: Triangle, layout: 'contained', locales }))
+useAppShell(() => ({ title: t('app.title'), icon: Triangle, locales }))
 </script>
 
 <template>
