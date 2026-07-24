@@ -51,17 +51,18 @@ const tabs = computed<NavTab[]>(() => {
 <template>
   <div class="min-h-screen w-full text-base-content">
     <div class="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between gap-2 p-3">
-      <router-link :to="{ name: 'home' }"
-        class="btn btn-ghost btn-sm pointer-events-auto gap-2 border border-base-300 bg-base-100/90 shadow-sm backdrop-blur"
-        aria-label="Sam Learns Things home">
-        <Home :size="18" aria-hidden="true" />
-        <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
-      </router-link>
+      <div
+        class="pointer-events-auto flex items-center justify-start gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
+        <router-link :to="{ name: 'home' }" class="btn btn-sm gap-2" aria-label="Sam Learns Things home">
+          <Home :size="18" aria-hidden="true" />
+          <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
+        </router-link>
+      </div>
 
       <nav
         class="pointer-events-auto flex max-w-[70vw] flex-wrap items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
         <router-link v-for="tab in tabs" :key="tab.routeName" :to="{ name: tab.routeName }"
-          class="btn btn-ghost btn-sm gap-2" :class="{ 'btn-active': route.name === tab.routeName }">
+          class="btn btn-sm gap-2" :class="{ 'btn-active': route.name === tab.routeName }">
           <component :is="tab.icon" v-if="tab.icon" :size="18" aria-hidden="true" />
           <span class="hidden sm:inline">{{ tab.label }}</span>
         </router-link>
@@ -104,17 +105,13 @@ const tabs = computed<NavTab[]>(() => {
       </div>
 
       <div v-else
-        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"">
-      
-      <button  @click=" isFooterExpanded = true" aria-label="Show footer" type="button" class="btn btn-sm">
-
-        <Info class="" :size="18" aria-hidden="true" />
-
+        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
+        <button @click="isFooterExpanded = true" aria-label="Show footer" type="button" class="btn btn-sm">
+          <Info :size="18" aria-hidden="true" />
         </button>
         <a class="btn btn-sm" href="https://ko-fi.com/S6S81CWUVD" target="_blank" rel="noopener">
           Support My Work (ko-fi)
         </a>
-
       </div>
 
     </footer>
