@@ -104,7 +104,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative h-screen w-full overflow-hidden bg-base-300 pt-20">
+  <div class="relative isolate h-screen w-full overflow-hidden bg-base-300 pt-20">
     <div
       v-if="currentVideo"
       class="absolute inset-0 -z-10 bg-cover bg-center scale-110 blur-2xl opacity-50"
@@ -112,7 +112,7 @@ onUnmounted(() => {
     />
 
     <div class="flex h-full flex-col md:flex-row">
-      <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden md:min-w-0">
+      <div class="flex min-h-0 items-center justify-center overflow-hidden md:min-w-0 md:flex-1">
         <div
           v-if="currentVideo"
           :key="currentVideo.videoId"
@@ -131,7 +131,7 @@ onUnmounted(() => {
         </p>
       </div>
 
-      <div class="shrink-0 w-full border-t border-base-300 bg-base-100 md:w-80 md:overflow-y-auto md:border-t-0 md:border-l lg:w-96">
+      <div class="shrink-0 w-full flex-1 border-t border-base-300 bg-base-100 md:w-80 md:flex-none md:overflow-y-auto md:border-t-0 md:border-l lg:w-96">
         <form
           class="flex h-full flex-col justify-center gap-2 p-3 md:justify-start md:gap-6 md:p-6"
           @submit.prevent="submitSurvey"
