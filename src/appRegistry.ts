@@ -645,6 +645,45 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
+    slug: '20-words',
+    name: '20 Words',
+    description: 'Add 20 vocab words a day, gate them through a memorize board, then practice with FSRS flashcards.',
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/20-words/pages/home/PageHome.vue'),
+        meta: {
+          title: '20 Words',
+          description: 'Add 20 vocab words a day and practice them in a dedicated flow.'
+        }
+      },
+      {
+        path: 'main',
+        component: () => import('./apps/20-words/pages/main/PageMain.vue'),
+        meta: {
+          title: 'Main | 20 Words',
+          description: 'Add, memorize, and practice today\'s vocab.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/20-words/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | 20 Words',
+          description: 'Daily added, memorized, and practiced word counts.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/20-words/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | 20 Words',
+          description: 'App settings.'
+        }
+      }
+    ]
+  },
+  {
     slug: 'entity-relation-intuition',
     name: 'ER Diagram Intuition',
     description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',
