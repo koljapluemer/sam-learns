@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import Home from './Home.vue'
-import AppRouteLayout from './shared/shell/AppRouteLayout.vue'
 import { apps } from './appRegistry'
 import { routeNameForPath } from './shared/shell/appRoutePath'
 
@@ -37,18 +36,14 @@ const router = createRouter({
       }
     ] as RouteRecordRaw[]
   ).concat(
-    apps.flatMap((app): RouteRecordRaw[] => [
-      {
-        path: `/${app.slug}`,
-        component: AppRouteLayout,
-        children: app.routes.map((route) => ({
-          path: route.path,
-          name: routeNameForPath(app.slug, route.path),
-          component: route.component,
-          meta: { ...route.meta, appSlug: app.slug }
-        }))
-      }
-    ])
+    apps.flatMap((app): RouteRecordRaw[] =>
+      app.routes.map((route) => ({
+        path: route.path === '' ? `/${app.slug}` : `/${app.slug}/${route.path}`,
+        name: routeNameForPath(app.slug, route.path),
+        component: route.component,
+        meta: { ...route.meta, appSlug: app.slug }
+      }))
+    )
   )
 })
 
