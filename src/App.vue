@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { BarChart3, Home, Settings } from 'lucide-vue-next'
+import { BarChart3, Home, Info, Settings, X } from 'lucide-vue-next'
 import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
 
 const route = useRoute()
+
+const isFooterExpanded = ref(true)
 
 const appSlug = computed(() => (typeof route.meta.appSlug === 'string' ? route.meta.appSlug : ''))
 const app = computed(() => apps.find((candidate) => candidate.slug === appSlug.value))
@@ -70,9 +72,9 @@ const tabs = computed<NavTab[]>(() => {
       <RouterView />
     </main>
 
-    <footer class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex items-center justify-center p-3 w-full">
-
-      <div class="rounded-box border border-base-300 bg-base-100/90 p-2 shadow-sm backdrop-blur text-xs">
+    <footer class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex items-center justify-start p-3 w-full">
+      <div v-if="isFooterExpanded"
+        class="pointer-events-auto relative rounded-box border border-base-300 bg-base-100/90 p-2 pr-8 shadow-sm backdrop-blur text-xs gap-2 flex flex-col">
         <p>
           Made with ♥ by <a href="https://koljasam.com" target="_blank" rel="noopener noreferrer" class="link">Kolja
             Sam</a>.
@@ -93,7 +95,28 @@ const tabs = computed<NavTab[]>(() => {
             class="link">open source</a>.
         </p>
         <p v-if="app?.credits" v-html="app.credits"></p>
+        <p>
+          <button type="button" @click="isFooterExpanded = false" class="btn btn-xs" aria-label="Hide footer">
+            <span class="">Hide</span>
+            <X :size="14" aria-hidden="true" />
+          </button>
+        </p>
       </div>
+
+      <div v-else
+        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"">
+      
+      <button  @click=" isFooterExpanded = true" aria-label="Show footer" type="button" class="btn btn-sm">
+
+        <Info class="" :size="18" aria-hidden="true" />
+
+        </button>
+        <a class="btn btn-sm" href="https://ko-fi.com/S6S81CWUVD" target="_blank" rel="noopener">
+          Support My Work (ko-fi)
+        </a>
+
+      </div>
+
     </footer>
 
   </div>
