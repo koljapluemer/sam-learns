@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { BarChart3, Home, Info, Settings, X } from 'lucide-vue-next'
+import { BarChart3, HelpCircle, Home, Info, Play, Settings, X } from 'lucide-vue-next'
 import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
@@ -34,16 +34,38 @@ const tabs = computed<NavTab[]>(() => {
   const slug = app.value.slug
   const staticRoutes = app.value.routes.filter((r) => !isDynamicRoutePath(r.path))
   const byPath = (path: string) => staticRoutes.find((r) => r.path === path)
-  const rest = staticRoutes.filter((r) => r.path !== '' && r.path !== 'stats' && r.path !== 'settings')
-
-  const ordered = [byPath(''), byPath('stats'), byPath('settings'), ...rest].filter(
-    (r): r is AppRouteDefinition => r !== undefined
+  // Apps with a 'play' route treat it as the primary interaction (Home's
+  // usual front-of-nav slot); the '' route becomes a secondary info/tutorial
+  // page and moves to the very back with a question-mark icon instead.
+  const playRoute = byPath('play')
+  const homeRoute = byPath('')
+  const rest = staticRoutes.filter(
+    (r) => r.path !== '' && r.path !== 'play' && r.path !== 'stats' && r.path !== 'settings'
   )
+
+  const ordered = (
+    playRoute
+      ? [playRoute, byPath('stats'), byPath('settings'), ...rest, homeRoute]
+      : [homeRoute, byPath('stats'), byPath('settings'), ...rest]
+  ).filter((r): r is AppRouteDefinition => r !== undefined)
 
   return ordered.map((r) => ({
     routeName: routeNameForPath(slug, r.path),
-    label: r.label ?? (r.path === '' ? 'Home' : r.path.charAt(0).toUpperCase() + r.path.slice(1)),
-    icon: r.path === '' ? Home : r.path === 'stats' ? BarChart3 : r.path === 'settings' ? Settings : undefined
+    label:
+      r.label ??
+      (r.path === '' ? (playRoute ? 'Info' : 'Home') : r.path.charAt(0).toUpperCase() + r.path.slice(1)),
+    icon:
+      r.path === 'play'
+        ? Play
+        : r.path === ''
+          ? playRoute
+            ? HelpCircle
+            : Home
+          : r.path === 'stats'
+            ? BarChart3
+            : r.path === 'settings'
+              ? Settings
+              : undefined
   }))
 })
 </script>

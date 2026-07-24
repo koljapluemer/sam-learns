@@ -196,26 +196,16 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/comprehensible-input/pages/home/PageHome.vue'),
         meta: {
           title: 'Comprehensible Input',
+          description: 'An endless stream of easy foreign-language videos.'
+        }
+      },
+      {
+        path: 'play',
+        component: () => import('./apps/comprehensible-input/pages/play/PagePlay.vue'),
+        meta: {
+          title: 'Comprehensible Input',
           description: 'An endless stream of easy foreign-language videos.',
           layout: 'full-bleed'
-
-        }
-      },
-      {
-        path: 'videos',
-        component: () => import('./apps/comprehensible-input/pages/videos/PageVideos.vue'),
-        label: 'Videos',
-        meta: {
-          title: 'Videos | Comprehensible Input',
-          description: 'Browse comprehensible-input videos by language.'
-        }
-      },
-      {
-        path: 'watch/:videoId',
-        component: () => import('./apps/comprehensible-input/pages/watch/PageWatch.vue'),
-        meta: {
-          title: 'Watch | Comprehensible Input',
-          description: 'Watch a single comprehensible-input video.'
         }
       },
       {
