@@ -104,19 +104,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="relative min-h-0 flex-1 overflow-hidden bg-base-300 flex flex-col md:flex-row" style="min-height: 60vh">
-    <div class="relative min-h-0 flex-1 overflow-hidden md:min-w-0">
-      <div
-        v-if="currentVideo"
-        class="absolute inset-0 bg-cover bg-center scale-110 blur-2xl opacity-50"
-        :style="{ backgroundImage: `url(${currentVideo.thumbnailUrlLarge})` }"
-      />
+  <div class="relative h-screen w-full overflow-hidden bg-base-300 pt-20">
+    <div
+      v-if="currentVideo"
+      class="absolute inset-0 -z-10 bg-cover bg-center scale-110 blur-2xl opacity-50"
+      :style="{ backgroundImage: `url(${currentVideo.thumbnailUrlLarge})` }"
+    />
 
-      <div class="absolute inset-0 flex items-center justify-center">
+    <div class="flex h-full flex-col md:flex-row">
+      <div class="flex min-h-0 flex-1 items-center justify-center overflow-hidden md:min-w-0">
         <div
           v-if="currentVideo"
           :key="currentVideo.videoId"
-          class="aspect-video w-full max-w-3xl mx-4"
+          class="aspect-video w-full max-h-full"
         >
           <div
             id="player"
@@ -130,97 +130,97 @@ onUnmounted(() => {
           Loading video…
         </p>
       </div>
-    </div>
 
-    <div class="shrink-0 w-full border-t border-base-300 bg-base-100 md:w-80 md:overflow-y-auto md:border-t-0 md:border-l lg:w-96">
-      <form
-        class="flex h-full flex-col justify-center gap-2 p-3 md:justify-start md:gap-6 md:p-6"
-        @submit.prevent="submitSurvey"
-      >
-        <fieldset class="fieldset py-0.5 md:py-1">
-          <legend class="fieldset-legend text-xs md:text-sm">
-            I understood what was going on
-          </legend>
-          <div class="join w-full">
-            <input
-              v-for="n in 5"
-              :key="n"
-              type="radio"
-              name="comprehension"
-              class="btn join-item btn-xs flex-1 md:btn-sm"
-              :aria-label="String(n)"
-              :checked="comprehension === n"
-              @change="comprehension = n"
-            >
-          </div>
-          <div class="mt-0.5 flex justify-between text-[10px] opacity-60 md:text-xs">
-            <span>Strongly disagree</span>
-            <span>Strongly agree</span>
-          </div>
-        </fieldset>
-
-        <fieldset class="fieldset py-0.5 md:py-1">
-          <legend class="fieldset-legend text-xs md:text-sm">
-            I understood the spoken language intuitively
-          </legend>
-          <div class="join w-full">
-            <input
-              v-for="n in 5"
-              :key="n"
-              type="radio"
-              name="listening"
-              class="btn join-item btn-xs flex-1 md:btn-sm"
-              :aria-label="String(n)"
-              :checked="listening === n"
-              @change="listening = n"
-            >
-          </div>
-          <div class="mt-0.5 flex justify-between text-[10px] opacity-60 md:text-xs">
-            <span>Strongly disagree</span>
-            <span>Strongly agree</span>
-          </div>
-        </fieldset>
-
-        <fieldset class="fieldset py-0.5 md:py-1">
-          <legend class="fieldset-legend text-xs md:text-sm">
-            I want to watch this video further/again
-          </legend>
-          <div class="join w-full">
-            <input
-              type="radio"
-              name="rewatch"
-              class="btn join-item btn-xs flex-1 md:btn-sm"
-              aria-label="No"
-              :checked="rewatch === 'no'"
-              @change="rewatch = 'no'"
-            >
-            <input
-              type="radio"
-              name="rewatch"
-              class="btn join-item btn-xs flex-1 md:btn-sm"
-              aria-label="Yes"
-              :checked="rewatch === 'yes'"
-              @change="rewatch = 'yes'"
-            >
-            <input
-              type="radio"
-              name="rewatch"
-              class="btn join-item btn-xs flex-1 md:btn-sm"
-              aria-label="Certainly!"
-              :checked="rewatch === 'certainly'"
-              @change="rewatch = 'certainly'"
-            >
-          </div>
-        </fieldset>
-
-        <button
-          type="submit"
-          class="btn btn-primary btn-sm md:btn-md"
-          :disabled="!comprehension || !listening || !rewatch"
+      <div class="shrink-0 w-full border-t border-base-300 bg-base-100 md:w-80 md:overflow-y-auto md:border-t-0 md:border-l lg:w-96">
+        <form
+          class="flex h-full flex-col justify-center gap-2 p-3 md:justify-start md:gap-6 md:p-6"
+          @submit.prevent="submitSurvey"
         >
-          Submit &amp; next video
-        </button>
-      </form>
+          <fieldset class="fieldset py-0.5 md:py-1">
+            <legend class="fieldset-legend text-xs md:text-sm">
+              I understood what was going on
+            </legend>
+            <div class="join w-full">
+              <input
+                v-for="n in 5"
+                :key="n"
+                type="radio"
+                name="comprehension"
+                class="btn join-item btn-xs flex-1 md:btn-sm"
+                :aria-label="String(n)"
+                :checked="comprehension === n"
+                @change="comprehension = n"
+              >
+            </div>
+            <div class="mt-0.5 flex justify-between text-[10px] opacity-60 md:text-xs">
+              <span>Strongly disagree</span>
+              <span>Strongly agree</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset py-0.5 md:py-1">
+            <legend class="fieldset-legend text-xs md:text-sm">
+              I understood the spoken language intuitively
+            </legend>
+            <div class="join w-full">
+              <input
+                v-for="n in 5"
+                :key="n"
+                type="radio"
+                name="listening"
+                class="btn join-item btn-xs flex-1 md:btn-sm"
+                :aria-label="String(n)"
+                :checked="listening === n"
+                @change="listening = n"
+              >
+            </div>
+            <div class="mt-0.5 flex justify-between text-[10px] opacity-60 md:text-xs">
+              <span>Strongly disagree</span>
+              <span>Strongly agree</span>
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset py-0.5 md:py-1">
+            <legend class="fieldset-legend text-xs md:text-sm">
+              I want to watch this video further/again
+            </legend>
+            <div class="join w-full">
+              <input
+                type="radio"
+                name="rewatch"
+                class="btn join-item btn-xs flex-1 md:btn-sm"
+                aria-label="No"
+                :checked="rewatch === 'no'"
+                @change="rewatch = 'no'"
+              >
+              <input
+                type="radio"
+                name="rewatch"
+                class="btn join-item btn-xs flex-1 md:btn-sm"
+                aria-label="Yes"
+                :checked="rewatch === 'yes'"
+                @change="rewatch = 'yes'"
+              >
+              <input
+                type="radio"
+                name="rewatch"
+                class="btn join-item btn-xs flex-1 md:btn-sm"
+                aria-label="Certainly!"
+                :checked="rewatch === 'certainly'"
+                @change="rewatch = 'certainly'"
+              >
+            </div>
+          </fieldset>
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm md:btn-md"
+            :disabled="!comprehension || !listening || !rewatch"
+          >
+            Submit &amp; next video
+          </button>
+        </form>
+      </div>
     </div>
 
     <dialog

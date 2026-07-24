@@ -196,7 +196,9 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/comprehensible-input/pages/home/PageHome.vue'),
         meta: {
           title: 'Comprehensible Input',
-          description: 'An endless stream of easy foreign-language videos.'
+          description: 'An endless stream of easy foreign-language videos.',
+          layout: 'full-bleed'
+
         }
       },
       {
