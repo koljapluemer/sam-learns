@@ -74,18 +74,37 @@ const tabs = computed<NavTab[]>(() => {
   <div class="min-h-screen w-full text-base-content">
     <div class="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-start justify-between gap-2 p-3">
       <div
-        class="pointer-events-auto flex items-center justify-start gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
-        <router-link :to="{ name: 'home' }" class="btn btn-sm gap-2" aria-label="Sam Learns Things home">
-          <Home :size="18" aria-hidden="true" />
+        class="pointer-events-auto flex items-center justify-start gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"
+      >
+        <router-link
+          :to="{ name: 'home' }"
+          class="btn btn-sm gap-2"
+          aria-label="Sam Learns Things home"
+        >
+          <Home
+            :size="18"
+            aria-hidden="true"
+          />
           <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
         </router-link>
       </div>
 
       <nav
-        class="pointer-events-auto flex max-w-[70vw] flex-wrap items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
-        <router-link v-for="tab in tabs" :key="tab.routeName" :to="{ name: tab.routeName }"
-          class="btn btn-sm gap-2" :class="{ 'btn-active': route.name === tab.routeName }">
-          <component :is="tab.icon" v-if="tab.icon" :size="18" aria-hidden="true" />
+        class="pointer-events-auto flex max-w-[70vw] flex-wrap items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"
+      >
+        <router-link
+          v-for="tab in tabs"
+          :key="tab.routeName"
+          :to="{ name: tab.routeName }"
+          class="btn btn-sm gap-2"
+          :class="{ 'btn-active': route.name === tab.routeName }"
+        >
+          <component
+            :is="tab.icon"
+            v-if="tab.icon"
+            :size="18"
+            aria-hidden="true"
+          />
           <span class="hidden sm:inline">{{ tab.label }}</span>
         </router-link>
       </nav>
@@ -96,47 +115,91 @@ const tabs = computed<NavTab[]>(() => {
     </main>
 
     <footer class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex items-center justify-start p-3 w-full">
-      <div v-if="isFooterExpanded"
-        class="pointer-events-auto relative rounded-box border border-base-300 bg-base-100/90 p-2 pr-8 shadow-sm backdrop-blur text-xs gap-2 flex flex-col">
+      <div
+        v-if="isFooterExpanded"
+        class="pointer-events-auto relative rounded-box border border-base-300 bg-base-100/90 p-2 pr-8 shadow-sm backdrop-blur text-xs gap-2 flex flex-col"
+      >
         <p>
-          Made with ♥ by <a href="https://koljasam.com" target="_blank" rel="noopener noreferrer" class="link">Kolja
+          Made with ♥ by <a
+            href="https://koljasam.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >Kolja
             Sam</a>.
         </p>
         <p>
           If you want to support me building more apps like this in the future,
-          <a href="https://ko-fi.com/S6S81CWUVD" target="_blank" rel="noopener" class="link">
+          <a
+            href="https://ko-fi.com/S6S81CWUVD"
+            target="_blank"
+            rel="noopener"
+            class="link"
+          >
             support my work on ko-fi
           </a>.
         </p>
 
         <p>
-          I'm using the privacy-friendly <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer"
-            class="link">Goatcounter</a> to track page views and I store some pseudonymous learning data. No
+          I'm using the privacy-friendly <a
+            href="https://www.goatcounter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >Goatcounter</a> to track page views and I store some pseudonymous learning data. No
           personal data is collected, and cookies are used solely for tracking your learning progress on your
           device. This app is
-          <a href="https://github.com/koljapluemer/sam-learns-things" target="_blank" rel="noopener noreferrer"
-            class="link">open source</a>.
+          <a
+            href="https://github.com/koljapluemer/sam-learns-things"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >open source</a>.
         </p>
-        <p v-if="app?.credits" v-html="app.credits"></p>
+        <p
+          v-if="app?.credits"
+          v-html="app.credits"
+        />
         <p>
-          <button type="button" @click="isFooterExpanded = false" class="btn btn-xs" aria-label="Hide footer">
+          <button
+            type="button"
+            class="btn btn-xs"
+            aria-label="Hide footer"
+            @click="isFooterExpanded = false"
+          >
             <span class="">Hide</span>
-            <X :size="14" aria-hidden="true" />
+            <X
+              :size="14"
+              aria-hidden="true"
+            />
           </button>
         </p>
       </div>
 
-      <div v-else
-        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur">
-        <button @click="isFooterExpanded = true" aria-label="Show footer" type="button" class="btn btn-sm">
-          <Info :size="18" aria-hidden="true" />
+      <div
+        v-else
+        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"
+      >
+        <button
+          aria-label="Show footer"
+          type="button"
+          class="btn btn-sm"
+          @click="isFooterExpanded = true"
+        >
+          <Info
+            :size="18"
+            aria-hidden="true"
+          />
         </button>
-        <a class="btn btn-sm" href="https://ko-fi.com/S6S81CWUVD" target="_blank" rel="noopener">
+        <a
+          class="btn btn-sm"
+          href="https://ko-fi.com/S6S81CWUVD"
+          target="_blank"
+          rel="noopener"
+        >
           Support My Work (ko-fi)
         </a>
       </div>
-
     </footer>
-
   </div>
 </template>

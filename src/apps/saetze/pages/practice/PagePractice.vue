@@ -74,7 +74,9 @@ function sentenceParts() {
             <span class="rounded-box bg-warning px-1 text-warning-content">{{ session.revealedAnswer.value }}</span>
             {{ sentenceParts().after }}
           </template>
-          <template v-else>{{ session.exercise.value.cloze }}</template>
+          <template v-else>
+            {{ session.exercise.value.cloze }}
+          </template>
         </p>
         <p class="text-sm opacity-70">
           Source:

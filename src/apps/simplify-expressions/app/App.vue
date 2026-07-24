@@ -12,10 +12,6 @@ const isFeedbackModalOpen = ref(false)
 
 useAppShell(() => ({ title: t('app.title'), icon: Calculator, locales }))
 
-function openFeedbackModal() {
-  isFeedbackModalOpen.value = true
-}
-
 function closeFeedbackModal() {
   isFeedbackModalOpen.value = false
 }
