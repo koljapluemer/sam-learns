@@ -12,9 +12,6 @@ const stats = readPlayerStats()
     <h1 class="text-2xl font-semibold">
       Stats
     </h1>
-    <p class="text-sm opacity-70">
-      Stored locally on this device.
-    </p>
     <div class="stats stats-vertical w-full border border-base-300 bg-base-100 shadow-sm">
       <div class="stat">
         <div class="stat-title">

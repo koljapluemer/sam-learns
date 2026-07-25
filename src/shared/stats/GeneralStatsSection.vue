@@ -52,10 +52,6 @@ const dailyUsage = computed<DayRow[]>(() => {
       <h1 class="text-3xl font-semibold">
         Daily Usage
       </h1>
-      <p class="max-w-2xl text-sm text-base-content/70">
-        Counts are stored only on this device/browser — there's no account, so this won't match
-        across devices.
-      </p>
     </header>
 
     <div

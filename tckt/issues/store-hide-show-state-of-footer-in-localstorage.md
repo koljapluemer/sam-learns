@@ -1,0 +1,1 @@
+store hide/show state of footer in localstorage
