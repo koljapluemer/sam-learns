@@ -1,0 +1,1 @@
+# the state of the three buttons in typingpractice settings for which help to show is not visible (at least in dark mode)
