@@ -10,12 +10,12 @@
 import { ref } from 'vue'
 import { appDb } from '../db/appDb'
 import { logActivity } from '@/shared/activity/useLearningEvent'
-import type { AnswerValue, ApiNumber, Exercise, ExerciseType, Missions, NumberEntry } from './types'
+import type { AnswerValue, ApiNumber, Exercise, ExerciseType, NumberEntry } from './types'
 
-// exercise.value/missions.value are Vue reactive Proxies once assigned - and
-// IndexedDB's structured clone algorithm (which Dexie sits on top of) can't
-// clone a Proxy. Plain JSON round-tripping is the simplest way to get a
-// cloneable copy of these small, purely-JSON-shaped records before persisting.
+// exercise.value is a Vue reactive Proxy once assigned - and IndexedDB's
+// structured clone algorithm (which Dexie sits on top of) can't clone a
+// Proxy. Plain JSON round-tripping is the simplest way to get a cloneable
+// copy of these small, purely-JSON-shaped records before persisting.
 function toPlain<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
 }
@@ -67,13 +67,6 @@ function createExercises(bank: NumberEntry[]): Exercise[] {
   return created
 }
 
-function defaultMissions(): Missions {
-  return {
-    'Exercises Done': { goals: [0, 10, 50, 100, 200, 500, 1000, 10000], progress: 0, currentGoal: 1 },
-    Streak: { goals: [0, 3, 5, 10, 20, 50, 100, 200], progress: 0, currentGoal: 1 }
-  }
-}
-
 export function usePracticeSession() {
   const loading = ref(true)
   const loadError = ref('')
@@ -88,7 +81,6 @@ export function usePracticeSession() {
   const exercise = ref<Exercise | null>(null)
   const streak = ref(0)
   const guessMade = ref(false)
-  const missions = ref<Missions>(defaultMissions())
 
   let exercisesDoneThisSession = 0
   let numberBank: NumberEntry[] = []
@@ -199,14 +191,6 @@ export function usePracticeSession() {
     const currentExercise = exercise.value
     if (!currentExercise) return
 
-    missions.value['Exercises Done'].progress++
-    if (
-      missions.value['Exercises Done'].progress >=
-      missions.value['Exercises Done'].goals[missions.value['Exercises Done'].currentGoal]
-    ) {
-      missions.value['Exercises Done'].currentGoal++
-    }
-
     exercisesDoneThisSession++
     const guessWasCorrect = answer === correctAnswer.value
     guessMade.value = true
@@ -218,10 +202,6 @@ export function usePracticeSession() {
     // if answer correct, double interval; if incorrect, halve it (minimum 10)
     if (guessWasCorrect) {
       streak.value++
-      missions.value.Streak.progress++
-      if (missions.value.Streak.progress >= missions.value.Streak.goals[missions.value.Streak.currentGoal]) {
-        missions.value.Streak.currentGoal++
-      }
       currentExercise.sr.repetitions++
       // max level is 10
       parentNumber.level = Math.min(parentNumber.level + 1, 10)
@@ -236,7 +216,6 @@ export function usePracticeSession() {
       parentNumber.sr.interval = parentNumber.sr.interval * 2
     } else {
       streak.value = 0
-      missions.value.Streak.progress = 0
       currentExercise.sr.repetitions = 0
       // divide level by 2 and round down
       parentNumber.level = Math.floor(parentNumber.level / 2)
@@ -261,7 +240,6 @@ export function usePracticeSession() {
 
     void appDb.numberState.put(plainNumberState)
     void appDb.exercises.put(plainExercise)
-    void appDb.missions.put({ id: 'missions', value: toPlain(missions.value) })
 
     void logActivity('arabicnumbers')
   }
@@ -304,11 +282,6 @@ export function usePracticeSession() {
         }
       }
 
-      const storedMissions = await appDb.missions.get('missions')
-      if (storedMissions) {
-        missions.value = storedMissions.value
-      }
-
       getNextExercise()
     } catch (error) {
       loadError.value = error instanceof Error ? error.message : String(error)
@@ -332,7 +305,6 @@ export function usePracticeSession() {
     exercise,
     streak,
     guessMade,
-    missions,
     getNumberBank: () => numberBank,
     getExercisesDoneThisSession: () => exercisesDoneThisSession,
     getNextExercise,

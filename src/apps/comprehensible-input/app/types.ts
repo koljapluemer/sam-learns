@@ -31,6 +31,16 @@ export type WatchRecord = WatchMeta & {
   segments: WatchSegment[]
 }
 
+// One row per local day per language - lets the stats page chart watch time
+// per day per language, which the per-video WatchRecord (cumulative,
+// no day granularity) can't do on its own.
+export type DailyWatchTimeRow = {
+  id: string
+  dayKey: string
+  languageName: string
+  seconds: number
+}
+
 export type SurveyResponse = WatchMeta & {
   timestamp: number
   comprehension: number

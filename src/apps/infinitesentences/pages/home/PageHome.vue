@@ -22,7 +22,6 @@ import { RouterLink } from 'vue-router'
       >
         Start learning
       </RouterLink>
-      <small>Free, no sign-up.</small>
     </section>
 
     <section class="flex flex-col gap-4">

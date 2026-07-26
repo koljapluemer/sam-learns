@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTypingSession } from '../../app/useTypingSession'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 
+useActiveTime('typingpractice')
 const session = useTypingSession()
 
 function onInput(event: Event) {

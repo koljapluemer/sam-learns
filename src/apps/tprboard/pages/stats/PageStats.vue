@@ -2,7 +2,7 @@
 // Port of linguanodon's tprboard stats-page.js - a read-only view of the
 // localStorage-backed player stats from app/stats.ts.
 import { formatPlayedTime, readPlayerStats } from '../../app/stats'
-import GeneralStatsSection from '@/shared/stats/GeneralStatsSection.vue'
+import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
 
 const stats = readPlayerStats()
 </script>
@@ -38,6 +38,7 @@ const stats = readPlayerStats()
         </div>
       </div>
     </div>
+
+    <GlobalStatsSection />
   </section>
-  <GeneralStatsSection />
 </template>

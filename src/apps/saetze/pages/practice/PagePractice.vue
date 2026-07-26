@@ -6,10 +6,12 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePracticeSession } from '../../app/usePracticeSession'
 import { tokenizeCredit } from '../../app/credit'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 
 const route = useRoute()
 const lessonKey = computed(() => (typeof route.params.lessonKey === 'string' ? route.params.lessonKey : ''))
 const session = usePracticeSession(lessonKey)
+useActiveTime('saetze')
 
 function sentenceParts() {
   const currentExercise = session.exercise.value

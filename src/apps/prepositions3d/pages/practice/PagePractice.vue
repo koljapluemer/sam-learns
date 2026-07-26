@@ -5,6 +5,7 @@
 // including dynamically-generated drop zones. No accounts/sync: pullState/
 // mergeRemoteLearningEvents and trackActiveTime are dropped (see app/game/game.ts).
 import { onMounted, onUnmounted, ref } from 'vue'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import { registerDraggable } from '../../app/components/draggable'
 import { registerDropZone } from '../../app/components/drop-zone'
 import { registerGameTicker, setGameTickerGame } from '../../app/components/game-ticker'
@@ -20,6 +21,8 @@ const MODELS_BASE_URL = '/data/prepositions3d/models/'
 const SOUND_BASE_URL = '/data/prepositions3d/sound/'
 const API_LANGUAGES_URL = '/data/prepositions3d/languages.json'
 const API_GLOSSARY_URL = '/data/prepositions3d/glossary.json'
+
+useActiveTime('prepositions3d')
 
 const container = ref<HTMLElement | null>(null)
 const loadError = ref('')

@@ -1,6 +1,9 @@
 // Port of linguanodon's tprboard app/stats.js - a local-only streak/played-
 // time tracker backed by localStorage. No server component in the original
-// either, so this ports verbatim.
+// either, so this ports verbatim, plus reporting each played-time delta into
+// the shared cross-app activity log (logActiveTimeMs) so it surfaces in the
+// global stats time-per-day chart too.
+import { logActiveTimeMs } from '@/shared/activity/useLearningEvent'
 
 export type PlayerStats = {
   bestStreak: number
@@ -76,6 +79,7 @@ export function createStatsTracker(): StatsTracker {
       timePlayedMs: stats.timePlayedMs + trackedElapsed
     }
     commit()
+    void logActiveTimeMs('tprboard', trackedElapsed)
   }
 
   const markActivity = () => {

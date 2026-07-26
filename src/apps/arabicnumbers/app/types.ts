@@ -48,17 +48,6 @@ export interface Exercise {
   number: NumberEntry
 }
 
-export interface MissionProgress {
-  goals: number[]
-  progress: number
-  currentGoal: number
-}
-
-export interface Missions {
-  'Exercises Done': MissionProgress
-  Streak: MissionProgress
-}
-
 export interface StoredNumberState {
   val: number
   level: number

@@ -7,6 +7,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { addSurveyResponse, createWatchTracker } from '../../app/useWatchTracker'
 import { createPlayer } from '../../app/youtube'
+import { logActivity } from '@/shared/activity/useLearningEvent'
 import type { Video } from '../../app/types'
 
 const STORAGE_KEY = 'comprehensible-input.language-code'
@@ -75,6 +76,7 @@ async function submitSurvey() {
     rewatch: rewatch.value,
     segments: tracker?.getSessionSegments() ?? []
   })
+  void logActivity('comprehensible-input')
 
   if (chosenLanguageCode.value) {
     const next = pickRandomVideo(chosenLanguageCode.value)

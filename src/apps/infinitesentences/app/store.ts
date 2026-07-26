@@ -182,30 +182,6 @@ export function createPracticeStore() {
         if (lang) languages.add(lang)
       }
       return Array.from(languages).sort()
-    },
-
-    getCurrentStreak(): number {
-      const today = new Date()
-      let currentStreak = 0
-      let missedOne = false
-
-      for (let i = 0; i < 365 * 10; i++) {
-        const date = new Date(today)
-        date.setDate(today.getDate() - i)
-        const dateStr = formatDay(date)
-        const practiced = (state.value.dailySentenceCounts[dateStr] || 0) > 0
-
-        if (practiced) {
-          currentStreak++
-          missedOne = false
-        } else if (missedOne) {
-          break
-        } else {
-          missedOne = true
-        }
-      }
-
-      return currentStreak
     }
   }
 }

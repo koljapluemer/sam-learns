@@ -4,12 +4,14 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePracticeSession } from '../../app/usePracticeSession'
 import { tokenizeMarkdown } from '../../app/markdown'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import type { Background, BoringWordsLanguage } from '../../app/types'
 
 const route = useRoute()
 const language = route.params.language as BoringWordsLanguage
 
 const session = usePracticeSession(language)
+useActiveTime('boringwords')
 
 // Two stacked backdrop layers, cross-faded via opacity whenever the
 // background changes - background-image itself can't be CSS-transitioned,

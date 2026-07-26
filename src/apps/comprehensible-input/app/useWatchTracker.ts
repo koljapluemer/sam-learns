@@ -6,13 +6,12 @@
 // stays reasonably robust to skipping/pausing without polling any faster.
 //
 // Unlike the original, there's no server sync (queueEvent/queueState) - the
-// Dexie record is the only copy. `logActivity` fires once per video start
-// instead of the original's per-tick queueEvent, matching how every other
-// app in this repo logs one event per meaningful action rather than every
-// few seconds.
+// Dexie record is the only copy. The trial (one "submit & next video" click)
+// is logged from PagePlay.vue's submitSurvey, not here.
 
 import { appDb } from '../db/appDb'
-import { logActivity } from '@/shared/activity/useLearningEvent'
+import { logActiveTimeMs } from '@/shared/activity/useLearningEvent'
+import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 import type { WatchMeta, WatchSegment, YTPlayer } from './types'
 
 const TICK_MS = 5000
@@ -59,12 +58,18 @@ async function recordWatchProgress(
   await appDb.watchTime.put(record)
 }
 
+async function recordDailyWatchProgress(languageName: string, secondsDelta: number): Promise<void> {
+  const dayKey = toLocalDayKey(new Date().toISOString())
+  const id = `${dayKey}_${languageName}`
+  const existing = await appDb.dailyWatchTime.get(id)
+  await appDb.dailyWatchTime.put({ id, dayKey, languageName, seconds: (existing?.seconds ?? 0) + secondsDelta })
+}
+
 export function createWatchTracker(meta: WatchMeta) {
   let isPlaying = false
   let player: YTPlayer | null = null
   let openSegment: WatchSegment | null = null
   let sessionSegments: WatchSegment[] = []
-  let loggedThisVideo = false
 
   function closeOpenSegment(): void {
     if (!openSegment) return
@@ -84,16 +89,14 @@ export function createWatchTracker(meta: WatchMeta) {
     }
 
     void recordWatchProgress(meta.videoId, meta, { secondsDelta: TICK_SECONDS, segment: openSegment })
+    void recordDailyWatchProgress(meta.languageName, TICK_SECONDS)
+    void logActiveTimeMs('comprehensible-input', TICK_MS)
   }
 
   const intervalId = window.setInterval(tick, TICK_MS)
 
   return {
     setPlaying(playing: boolean) {
-      if (playing && !loggedThisVideo) {
-        loggedThisVideo = true
-        void logActivity('comprehensible-input')
-      }
       if (!playing) closeOpenSegment()
       isPlaying = playing
     },
@@ -124,4 +127,8 @@ export async function addSurveyResponse(response: {
 
 export async function getAllWatchRecords() {
   return appDb.watchTime.toArray()
+}
+
+export async function getDailyWatchTime() {
+  return appDb.dailyWatchTime.toArray()
 }

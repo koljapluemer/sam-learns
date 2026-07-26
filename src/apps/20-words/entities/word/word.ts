@@ -1,5 +1,6 @@
 import { appDb, type ExampleRow, type NoteRow, type WordRow } from '../../db/appDb'
 import { toDayKey } from '../../dumb/dayBoundary'
+import { logActivity } from '@/shared/activity/useLearningEvent'
 
 export type NewWordInput = {
   word: string
@@ -47,9 +48,16 @@ export async function assignToRow(id: string, memorizeRow: number, memorizeSeq: 
   await appDb.words.update(id, { memorizeRow, memorizeSeq })
 }
 
+// A trial is a word added and memorized on the same day (practice reviews
+// don't count) - so this is the only place logActivity fires for this app.
 export async function graduateWordRow(id: string): Promise<void> {
   const now = new Date().toISOString()
+  const word = await appDb.words.get(id)
   await appDb.words.update(id, { memorized: true, memorizedAt: now, memorizeRow: null, memorizeSeq: null })
+
+  if (word && word.dayKey === toDayKey(now)) {
+    void logActivity('20-words')
+  }
 }
 
 export async function allWords(): Promise<WordRow[]> {

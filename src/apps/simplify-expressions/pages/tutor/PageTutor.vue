@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { CheckCircle2, CircleAlert, Lightbulb, RefreshCw } from 'lucide-vue-next'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import { useAppI18n } from '@/apps/simplify-expressions/app/i18n'
 import MathInput from '@/apps/simplify-expressions/dumb/MathInput.vue'
 import RenderedMath from '@/apps/simplify-expressions/dumb/RenderedMath.vue'
@@ -17,6 +18,7 @@ import type {
 } from '@/apps/simplify-expressions/entities/expression-exercise/exerciseTypes'
 
 const { t } = useAppI18n()
+useActiveTime('simplify-expressions')
 
 const exercise = ref<ExpressionExercise | null>(null)
 const answer = ref('')

@@ -1,25 +1,33 @@
-<script setup>
+<script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { logActivity } from '@/shared/activity/useLearningEvent'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
+import { getAllTrials, recordTrial, RECENT_TRIAL_COUNT } from './entities/trial/trialRepository'
+import PointCloudChart from './dumb/PointCloudChart.vue'
+import type { TrialRow } from './db/appDb'
+
+useActiveTime('currency-conversion-practice')
 
 const dividend = ref(0)
 const divisor = ref(1.2)
-const guess = ref(null)
-const results = ref([])
+const guess = ref<number | null>(null)
+const results = ref<TrialRow[]>([])
 
 const homeCurrency = ref('EUR')
 const foreignCurrency = ref('USD')
 
 const isRevealed = ref(false)
-const guessInput = ref(null)
+const guessInput = ref<HTMLInputElement | null>(null)
 
-function handleGlobalKeydown(event) {
+function handleGlobalKeydown(event: KeyboardEvent) {
   if (event.key === 'Enter' && isRevealed.value) {
     evaluateScore()
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   window.addEventListener('keydown', handleGlobalKeydown)
+  results.value = await getAllTrials()
 })
 
 onUnmounted(() => {
@@ -36,23 +44,23 @@ function generateRandomExercise() {
 }
 
 function evaluateScore() {
-  results.value.push({
+  if (guess.value == null) return
+
+  const correct = dividend.value / divisor.value
+  const trial: Omit<TrialRow, 'id'> = {
     date: new Date().toISOString(),
     dividend: dividend.value,
     divisor: divisor.value,
     guess: guess.value,
-    correct: dividend.value / divisor.value,
-    missedByPercent:
-      ((guess.value - dividend.value / divisor.value) /
-        (dividend.value / divisor.value)) *
-      100
-  })
+    correct,
+    missedByPercent: ((guess.value - correct) / correct) * 100
+  }
+
+  results.value.push({ id: crypto.randomUUID(), ...trial })
+  void recordTrial(trial)
+  void logActivity('currency-conversion-practice')
   generateRandomExercise()
 }
-
-const width = 400
-const height = 200
-const margin = 24
 
 const currentError = computed(() => {
   if (guess.value == null || !isRevealed.value) return null
@@ -60,37 +68,7 @@ const currentError = computed(() => {
   return ((guess.value - correct) / correct) * 100
 })
 
-const errorValues = computed(() => {
-  const values = results.value.map((point) => point.missedByPercent)
-
-  if (currentError.value != null) {
-    values.push(currentError.value)
-  }
-
-  return values.length ? values : [-10, 10]
-})
-
-const maxX = computed(() => Math.max(20, results.value.length))
-const maxY = computed(() => {
-  const max = Math.max(...errorValues.value)
-  return Math.ceil(max / 10) * 10
-})
-
-const minY = computed(() => {
-  const min = Math.min(...errorValues.value)
-  return Math.floor(min / 10) * 10
-})
-
-const scaleX = computed(() => {
-  const xRange = maxX.value
-  return (x) => (x / xRange) * (width - 2 * margin) + margin
-})
-
-const scaleY = computed(() => {
-  const yRange = maxY.value - minY.value || 1
-  return (y) =>
-    height - ((y - minY.value) / yRange) * (height - 2 * margin) - margin
-})
+const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map((point) => point.missedByPercent))
 </script>
 
 <template>
@@ -195,35 +173,10 @@ const scaleY = computed(() => {
       class="card border border-base-300 bg-base-100 shadow-sm"
     >
       <div class="card-body p-4">
-        <svg
-          :viewBox="`0 0 ${width} ${height}`"
-          class="h-auto w-full"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <line
-            :x1="margin"
-            :y1="scaleY(0)"
-            :x2="width - margin"
-            :y2="scaleY(0)"
-            class="stroke-base-content/20"
-            stroke-width="1"
-          />
-          <circle
-            v-for="(point, index) in results.slice(-20)"
-            :key="point.date"
-            :cx="scaleX(index)"
-            :cy="scaleY(point.missedByPercent)"
-            r="4"
-            class="fill-primary"
-          />
-          <circle
-            v-if="isRevealed && currentError != null"
-            :cx="scaleX(results.length)"
-            :cy="scaleY(currentError)"
-            r="5"
-            fill="white"
-          />
-        </svg>
+        <PointCloudChart
+          :values="recentValues"
+          :highlight-value="isRevealed ? currentError : null"
+        />
       </div>
     </div>
   </section>

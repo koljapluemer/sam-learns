@@ -1,4 +1,5 @@
 import { appDb } from '@/apps/world-map/db/appDb'
+import { logActiveTimeMs } from '@/shared/activity/useLearningEvent'
 
 const TICK_MS = 1000
 const FLUSH_AFTER_SECONDS = 5
@@ -17,6 +18,7 @@ async function flushPending(): Promise<void> {
 
   const existing = await appDb.practiceTime.get('total')
   await appDb.practiceTime.put({ key: 'total', totalMs: (existing?.totalMs ?? 0) + ms })
+  void logActiveTimeMs('world-map', ms)
 }
 
 function handleVisibilityChange(): void {

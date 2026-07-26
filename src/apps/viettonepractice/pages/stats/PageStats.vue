@@ -6,7 +6,7 @@
 // (createDailyVolumeChart/createDailyAccuracyChart/renderMatrix/
 // createPairHistoryModal), called from onMounted, same shape as the
 // original; the surrounding page chrome is real Vue template/reactivity.
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 import {
   importPracticeExportSnapshot,
   listPracticeEvents,
@@ -17,7 +17,8 @@ import { createAccuracyTrendChart, createDailyAccuracyChart, createDailyVolumeCh
 import { getChartMinWidth } from '../../app/dailyChart'
 import { renderMatrix } from '../../app/matrixRenderer'
 import { createPairHistoryModal } from '../../app/pairHistoryModal'
-import type { PracticeEvent, PracticeStatsSnapshot } from '../../app/types'
+import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import type { PracticeEvent } from '../../app/types'
 
 const TONE_LABELS: Record<string, string> = {
   ngang: 'ngang | -',
@@ -43,7 +44,7 @@ function formatDuration(durationMs: number): string {
 
 const loading = ref(true)
 const loadFailed = ref(false)
-const snapshot = ref<PracticeStatsSnapshot | null>(null)
+const events = ref<PracticeEvent[]>([])
 const dailyVolumeSummary = ref('')
 const dailyAccuracySummary = ref('')
 const accuracyTrendSummary = ref('')
@@ -53,7 +54,6 @@ const dailyAccuracyMinWidth = ref('320px')
 const syncNotice = ref<{ tone: 'success' | 'error'; text: string } | null>(null)
 const importing = ref(false)
 
-let latestEvents: PracticeEvent[] = []
 let trendChart: ReturnType<typeof createAccuracyTrendChart> | null = null
 let pairHistoryModal: ReturnType<typeof createPairHistoryModal> | null = null
 
@@ -64,54 +64,20 @@ const matrixSection = useTemplateRef<HTMLDivElement>('matrixSection')
 const modalContainer = useTemplateRef<HTMLDivElement>('modalContainer')
 const importInput = useTemplateRef<HTMLInputElement>('importInput')
 
+// `computed` so the canvas-dependent render below only fires once Vue has
+// actually applied the DOM update that puts the <canvas> elements (gated by
+// `snapshot`/`loading` in the template) into the document - `flush: 'post'`
+// on the watcher is what guarantees that ordering. Calling chart creation
+// synchronously right after mutating a ref (the previous approach) races the
+// DOM update and silently renders nothing, since the template refs are still
+// null at that point.
+const snapshot = computed(() => (events.value.length ? getPracticeStatsSnapshot(events.value) : null))
+
 function updateAccuracyTrendSummary() {
   if (!trendChart) return
-  const trials = getAccuracyTrialSeries(latestEvents)
+  const trials = getAccuracyTrialSeries(events.value)
   accuracyTrendSummary.value =
     trendChart.getRange() === 'recent' ? `Last ${Math.min(trials.length, 100)} trials` : `${trials.length} total trials`
-}
-
-function renderStats() {
-  if (!modalContainer.value) return
-
-  const currentSnapshot = getPracticeStatsSnapshot(latestEvents)
-  snapshot.value = currentSnapshot
-
-  if (currentSnapshot.overview.totalExercises === 0) return
-
-  if (!pairHistoryModal) {
-    pairHistoryModal = createPairHistoryModal(modalContainer.value, {
-      getTrials: (pairTarget) => getPairAccuracyTrialSeries(latestEvents, pairTarget),
-      formatKey: formatToneKey
-    })
-  }
-
-  if (dailyVolumeCanvas.value) {
-    const { completeDays: volumeDays } = createDailyVolumeChart(dailyVolumeCanvas.value, currentSnapshot.dailyExercises)
-    dailyVolumeMinWidth.value = getChartMinWidth(volumeDays.length)
-    dailyVolumeSummary.value = `${currentSnapshot.dailyExercises.length} active day${currentSnapshot.dailyExercises.length === 1 ? '' : 's'} over ${volumeDays.length} day${volumeDays.length === 1 ? '' : 's'}`
-  }
-
-  if (dailyAccuracyCanvas.value) {
-    const { completeDays: accuracyDays } = createDailyAccuracyChart(dailyAccuracyCanvas.value, currentSnapshot.dailyAccuracy)
-    dailyAccuracyMinWidth.value = getChartMinWidth(accuracyDays.length)
-    dailyAccuracySummary.value = `${currentSnapshot.dailyAccuracy.length} active day${currentSnapshot.dailyAccuracy.length === 1 ? '' : 's'} over ${accuracyDays.length} day${accuracyDays.length === 1 ? '' : 's'} · 95% Wilson CI`
-  }
-
-  if (accuracyTrendCanvas.value) {
-    const accuracyTrials = getAccuracyTrialSeries(latestEvents)
-    trendChart = createAccuracyTrendChart(accuracyTrendCanvas.value, accuracyTrials)
-    updateAccuracyTrendSummary()
-  }
-
-  if (matrixSection.value && currentSnapshot.tone.attempts > 0) {
-    renderMatrix(matrixSection.value, {
-      title: 'Tone confusions',
-      summary: currentSnapshot.tone,
-      formatKey: formatToneKey,
-      onSelectPair: (pairTarget) => pairHistoryModal?.open(pairTarget)
-    })
-  }
 }
 
 function setAccuracyRange(range: 'recent' | 'all') {
@@ -124,15 +90,56 @@ async function loadStats() {
   loading.value = true
   loadFailed.value = false
   try {
-    latestEvents = await listPracticeEvents()
-    loading.value = false
-    await nextTick()
-    renderStats()
+    events.value = await listPracticeEvents()
   } catch {
-    loading.value = false
     loadFailed.value = true
+  } finally {
+    loading.value = false
   }
 }
+
+watch(
+  snapshot,
+  (currentSnapshot) => {
+    if (!currentSnapshot || currentSnapshot.overview.totalExercises === 0) return
+
+    if (!pairHistoryModal && modalContainer.value) {
+      pairHistoryModal = createPairHistoryModal(modalContainer.value, {
+        getTrials: (pairTarget) => getPairAccuracyTrialSeries(events.value, pairTarget),
+        formatKey: formatToneKey
+      })
+    }
+
+    if (dailyVolumeCanvas.value) {
+      const { completeDays: volumeDays } = createDailyVolumeChart(dailyVolumeCanvas.value, currentSnapshot.dailyExercises)
+      dailyVolumeMinWidth.value = getChartMinWidth(volumeDays.length)
+      dailyVolumeSummary.value = `${currentSnapshot.dailyExercises.length} active day${currentSnapshot.dailyExercises.length === 1 ? '' : 's'} over ${volumeDays.length} day${volumeDays.length === 1 ? '' : 's'}`
+    }
+
+    if (dailyAccuracyCanvas.value) {
+      const { completeDays: accuracyDays } = createDailyAccuracyChart(dailyAccuracyCanvas.value, currentSnapshot.dailyAccuracy)
+      dailyAccuracyMinWidth.value = getChartMinWidth(accuracyDays.length)
+      dailyAccuracySummary.value = `${currentSnapshot.dailyAccuracy.length} active day${currentSnapshot.dailyAccuracy.length === 1 ? '' : 's'} over ${accuracyDays.length} day${accuracyDays.length === 1 ? '' : 's'} · 95% Wilson CI`
+    }
+
+    if (accuracyTrendCanvas.value) {
+      const accuracyTrials = getAccuracyTrialSeries(events.value)
+      accuracyRange.value = 'recent'
+      trendChart = createAccuracyTrendChart(accuracyTrendCanvas.value, accuracyTrials)
+      updateAccuracyTrendSummary()
+    }
+
+    if (matrixSection.value && currentSnapshot.tone.attempts > 0) {
+      renderMatrix(matrixSection.value, {
+        title: 'Tone confusions',
+        summary: currentSnapshot.tone,
+        formatKey: formatToneKey,
+        onSelectPair: (pairTarget) => pairHistoryModal?.open(pairTarget)
+      })
+    }
+  },
+  { flush: 'post' }
+)
 
 async function handleExport() {
   const payload = await readPracticeExportSnapshot()
@@ -355,5 +362,7 @@ onMounted(() => {
 
       <div ref="modalContainer" />
     </section>
+
+    <GlobalStatsSection />
   </div>
 </template>

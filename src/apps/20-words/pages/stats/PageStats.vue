@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import type { ChartItem } from 'chart.js'
 import { appDb } from '../../db/appDb'
 import { toDayKey } from '../../dumb/dayBoundary'
 import { createDailyStatsChart } from './statsChart'
 import { fillDailyRange, shortDateFormatter } from './dailyChart'
-import GeneralStatsSection from '@/shared/stats/GeneralStatsSection.vue'
+import { getTotalActiveTimeMs, getTotalTrialCount } from '@/shared/activity/activityQueries'
+import { formatDuration } from '@/shared/stats/formatDuration'
+import StatsPanel from '@/shared/stats/StatsPanel.vue'
+import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
 
 const chartCanvas = ref<HTMLCanvasElement | null>(null)
 const hasData = ref(false)
+const stats = ref<{ label: string; value: string | number }[]>([])
 
 function countByDay(days: string[]): Record<string, number> {
   const counts: Record<string, number> = {}
@@ -19,7 +23,17 @@ function countByDay(days: string[]): Record<string, number> {
 }
 
 onMounted(async () => {
-  const [words, reviewEvents] = await Promise.all([appDb.words.toArray(), appDb.reviewEvents.toArray()])
+  const [words, reviewEvents, timeMs, trials] = await Promise.all([
+    appDb.words.toArray(),
+    appDb.reviewEvents.toArray(),
+    getTotalActiveTimeMs('20-words'),
+    getTotalTrialCount('20-words')
+  ])
+
+  stats.value = [
+    { label: 'Time spent', value: formatDuration(timeMs) },
+    { label: 'Words added + memorized same-day', value: trials }
+  ]
 
   const addedByDay = countByDay(words.map((word) => word.dayKey))
   const memorizedByDay = countByDay(
@@ -30,6 +44,10 @@ onMounted(async () => {
   const allDays = new Set([...Object.keys(addedByDay), ...Object.keys(memorizedByDay), ...Object.keys(practicedByDay)])
   if (allDays.size === 0) return
   hasData.value = true
+  // hasData just flipped the v-else branch on - the <canvas> doesn't exist in
+  // the DOM until Vue flushes that change, so the ref below would be null
+  // without waiting a tick first.
+  await nextTick()
 
   const points = fillDailyRange(
     Array.from(allDays, (day) => ({ day })),
@@ -47,10 +65,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto w-full p-4">
-    <h1 class="text-xl font-semibold mb-4">
+  <div class="max-w-2xl mx-auto w-full p-4 flex flex-col gap-6">
+    <h1 class="text-xl font-semibold">
       Daily Progress
     </h1>
+
+    <StatsPanel :stats="stats" />
 
     <div
       v-if="!hasData"
@@ -65,6 +85,7 @@ onMounted(async () => {
     >
       <canvas ref="chartCanvas" />
     </div>
+
+    <GlobalStatsSection />
   </div>
-  <GeneralStatsSection />
 </template>

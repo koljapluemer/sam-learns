@@ -25,6 +25,9 @@ export type AppDefinition = {
   // Trusted HTML, rendered as-is in the app's footer (attribution/credits
   // for imported content, e.g. Tatoeba sentence pairs).
   credits?: string
+  // Human-readable description of what counts as one "trial" for this app -
+  // shown in the global stats trials-per-day chart legend, see @agents.md.
+  stats: { trialLabel: string }
   routes: AppRouteDefinition[]
 }
 
@@ -33,6 +36,7 @@ export const apps: AppDefinition[] = [
     slug: 'arabicnumbers',
     name: 'Arabic Numbers Practice',
     description: 'Learn to read the Arabic numbers from 0 to 100.',
+    stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
@@ -72,6 +76,7 @@ export const apps: AppDefinition[] = [
     slug: 'saetze',
     name: 'Sätze',
     description: 'German cloze-sentence drills for confusable word families like "jeder/alle/ganz".',
+    stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
@@ -112,6 +117,7 @@ export const apps: AppDefinition[] = [
     name: 'Basic Egyptian Sentences',
     description: 'Timed cloze-word quiz for Egyptian Arabic sentences.',
     credits: 'Sentence data from <a href="https://lisaanmasry.org" class="link" rel="noreferrer noopener">lisaanmasry.org</a>, used under Mike Green\'s non-commercial license.',
+    stats: { trialLabel: 'games played' },
     routes: [
       {
         path: '',
@@ -151,6 +157,7 @@ export const apps: AppDefinition[] = [
     slug: 'boringwords',
     name: 'Boring Words',
     description: 'FSRS flashcards for the small, unglamorous function words that hold the language together.',
+    stats: { trialLabel: 'cards flipped' },
     routes: [
       {
         path: '',
@@ -190,6 +197,7 @@ export const apps: AppDefinition[] = [
     slug: 'comprehensible-input',
     name: 'Comprehensible Input',
     description: 'An endless stream of easy foreign-language videos, with light comprehension surveys.',
+    stats: { trialLabel: 'videos submitted (submit & next video)' },
     routes: [
       {
         path: '',
@@ -230,6 +238,7 @@ export const apps: AppDefinition[] = [
     slug: 'viettonepractice',
     name: 'Vietnamese Tone Practice',
     description: "Listen to a short audio clip and identify which of Vietnamese's six tones you heard.",
+    stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
@@ -269,6 +278,7 @@ export const apps: AppDefinition[] = [
     slug: 'hebrewscript',
     name: 'Script Practice',
     description: 'Acquire a foreign script without declarative learning by matching sounds to writing.',
+    stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
@@ -308,6 +318,7 @@ export const apps: AppDefinition[] = [
     slug: 'prepositions3d',
     name: 'Prepositions 3D',
     description: 'A 3D scene where you act out spatial prepositions with objects to learn them in context.',
+    stats: { trialLabel: 'cups placed correctly' },
     routes: [
       {
         path: '',
@@ -347,6 +358,7 @@ export const apps: AppDefinition[] = [
     slug: 'infinitesentences',
     name: 'Infinite Sentences',
     description: 'Learn a language word by word and sentence by sentence.',
+    stats: { trialLabel: 'sentences done' },
     routes: [
       {
         path: '',
@@ -403,6 +415,7 @@ export const apps: AppDefinition[] = [
     slug: 'tprboard',
     name: 'TPR Board',
     description: 'A 3D interactive board for Total Physical Response language learning.',
+    stats: { trialLabel: 'tasks completed' },
     routes: [
       {
         path: '',
@@ -442,6 +455,7 @@ export const apps: AppDefinition[] = [
     slug: 'learn-flags',
     name: 'Learn Flags',
     description: 'Guess the country from its flag.',
+    stats: { trialLabel: 'exercises done' },
     routes: [
       {
         path: '',
@@ -473,6 +487,7 @@ export const apps: AppDefinition[] = [
     slug: 'currency-conversion-practice',
     name: 'Currency Conversion Practice',
     description: 'Practice quick mental exchange-rate conversions.',
+    stats: { trialLabel: 'estimation exercises done' },
     routes: [
       {
         path: '',
@@ -504,6 +519,7 @@ export const apps: AppDefinition[] = [
     slug: 'simplify-expressions',
     name: 'Simplify Expressions',
     description: 'Practice simplifying algebraic expressions.',
+    stats: { trialLabel: 'exercises done (giving up counts as done)' },
     routes: [
       {
         path: '',
@@ -536,6 +552,7 @@ export const apps: AppDefinition[] = [
     slug: 'triangle-congruence',
     name: 'Triangle Congruence',
     description: 'Practice identifying triangle congruence theorems (SSS, SAS, ASA, SSA).',
+    stats: { trialLabel: 'exercises done' },
     routes: [
       {
         path: '',
@@ -567,6 +584,7 @@ export const apps: AppDefinition[] = [
     slug: 'world-map',
     name: 'World Map',
     description: 'Find countries in their neighborhood on the world map.',
+    stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
@@ -599,6 +617,7 @@ export const apps: AppDefinition[] = [
     slug: 'typingpractice',
     name: 'Vietnamese Typing Practice',
     description: 'Practice Vietnamese TELEX/VNI keyboard input.',
+    stats: { trialLabel: 'typing sessions' },
     routes: [
       {
         path: '',
@@ -638,6 +657,7 @@ export const apps: AppDefinition[] = [
     slug: '20-words',
     name: '20 Words',
     description: 'Add 20 vocab words a day, gate them through a memorize board, then practice with FSRS flashcards.',
+    stats: { trialLabel: 'words added and memorized same-day' },
     routes: [
       {
         path: '',
@@ -677,6 +697,7 @@ export const apps: AppDefinition[] = [
     slug: 'entity-relation-intuition',
     name: 'ER Diagram Intuition',
     description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',
+    stats: { trialLabel: 'exercises done' },
     routes: [
       {
         path: '',

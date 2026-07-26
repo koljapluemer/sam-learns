@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import type { Rating } from 'ts-fsrs'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import { useAppI18n } from '@/apps/entity-relation-intuition/app/i18n'
 import { loadNextScenario, submitRating } from '@/apps/entity-relation-intuition/entities/progress/progressScheduler'
 import type { Scenario } from '@/apps/entity-relation-intuition/entities/scenario-content/scenarioContent'
@@ -9,6 +10,7 @@ import ScenarioExerciseView from './ScenarioExerciseView.vue'
 type PageState = { mode: 'loading' } | { mode: 'no-scenarios' } | { mode: 'exercise'; scenario: Scenario }
 
 const { t } = useAppI18n()
+useActiveTime('entity-relation-intuition')
 
 const state = ref<PageState>({ mode: 'loading' })
 

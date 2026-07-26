@@ -19,7 +19,7 @@ const router = createRouter({
       {
         path: '/stats',
         name: 'stats',
-        component: () => import('./shared/stats/GeneralStatsSection.vue'),
+        component: () => import('./shared/stats/GlobalStatsSection.vue'),
         meta: {
           title: 'Daily Usage',
           description: 'Cross-app daily usage stats, stored locally on this device.'

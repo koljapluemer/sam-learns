@@ -26,10 +26,14 @@
 
 <script>
 import { ref, onMounted, computed } from 'vue'
+import { logActivity } from '@/shared/activity/useLearningEvent'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 
 export default {
   name: 'LearnFlags',
   setup() {
+    useActiveTime('learn-flags')
+
     const countries = ref([])
     const currentCountry = ref('')
     const options = ref([])
@@ -101,9 +105,10 @@ export default {
 
     const checkAnswer = (selectedCountry) => {
       if (!currentCountry.value) return
-      
+
       lastClicked.value = selectedCountry.code
-      
+      void logActivity('learn-flags')
+
       if (selectedCountry.code === currentCountry.value) {
         showCorrect.value = true
         setTimeout(() => {

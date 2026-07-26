@@ -4,7 +4,7 @@
 // pair-practice page. queueEvent(...) is replaced with logActivity(...);
 // there is no queueState/server sync.
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
-import { logActivity } from '@/shared/activity/useLearningEvent'
+import { logActiveTimeMs, logActivity } from '@/shared/activity/useLearningEvent'
 import { buildPracticeCatalog, toClips } from './catalog'
 import { appendPracticeEvent, listPracticeEvents, toStoredClip, toPracticeEventAnalytics } from './practiceEvents'
 import {
@@ -316,6 +316,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
 
     await appendPracticeEvent(audioListenedEvent)
     practiceEvents.value.push(audioListenedEvent)
+    void logActiveTimeMs('viettonepractice', listenedDurationMs)
   }
 
   const handleAudioPause = () => {

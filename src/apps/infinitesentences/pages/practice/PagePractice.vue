@@ -6,6 +6,7 @@ import { usePracticeSession } from '../../app/usePracticeSession'
 import { createLanguagePreferencesStore } from '../../app/store'
 import { loadLanguages } from '../../app/api'
 import { logActivity } from '@/shared/activity/useLearningEvent'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import MemorizeTask from '../../app/tasks/MemorizeTask.vue'
 import RecallTask from '../../app/tasks/RecallTask.vue'
 import UnderstandTask from '../../app/tasks/UnderstandTask.vue'
@@ -17,6 +18,7 @@ const nativeIso = computed(() => (typeof route.params.nativeIso === 'string' ? r
 const targetIso = computed(() => (typeof route.params.targetIso === 'string' ? route.params.targetIso : ''))
 
 const session = usePracticeSession(nativeIso.value, targetIso.value)
+useActiveTime('infinitesentences')
 
 const nativeLabel = ref(nativeIso.value)
 const targetLabel = ref(targetIso.value)

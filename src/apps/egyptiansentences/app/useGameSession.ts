@@ -6,7 +6,7 @@
 // rather than computing distractors live in the browser.
 
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { logActivity } from '@/shared/activity/useLearningEvent'
+import { logActivity, logActiveTimeMs } from '@/shared/activity/useLearningEvent'
 import { showToast } from './toast'
 import type { ClozeWord, GameMode, Highscore, IndexCardRow, Sentence } from './types'
 
@@ -22,7 +22,7 @@ function randomIndex(length: number): number {
   return Math.floor(Math.random() * length)
 }
 
-function loadHighscores(): Highscore[] {
+export function loadHighscores(): Highscore[] {
   const raw = window.localStorage.getItem(HIGHSCORES_STORAGE_KEY)
   return raw ? (JSON.parse(raw) as Highscore[]) : []
 }
@@ -54,6 +54,13 @@ export function useGameSession() {
 
   let timerIntervalId: ReturnType<typeof setInterval> | null = null
   let advanceTimeoutId: ReturnType<typeof setTimeout> | null = null
+  let gameStartedAt: number | null = null
+
+  function flushActiveGameTime(): void {
+    if (gameStartedAt === null) return
+    void logActiveTimeMs('egyptiansentences', Date.now() - gameStartedAt)
+    gameStartedAt = null
+  }
 
   const remainingTime = computed(() => totalTime.value - currentTime.value)
   const progressPercent = computed(() => (1 - currentTime.value / totalTime.value) * 100)
@@ -146,8 +153,6 @@ export function useGameSession() {
     timerRunning.value = false
     isRevealed.value = true
 
-    void logActivity('egyptiansentences')
-
     clearAdvanceTimeout()
     advanceTimeoutId = setTimeout(moveToNextExercise, ADVANCE_DELAY_MS)
 
@@ -182,12 +187,15 @@ export function useGameSession() {
       streak.value = 0
       correctAnswerCount.value = 0
       incorrectAnswerCount.value = 0
+      gameStartedAt = Date.now()
       startTimer()
       getNextExercise()
       return
     }
 
     if (mode === 'game-ended') {
+      flushActiveGameTime()
+      void logActivity('egyptiansentences')
       lastScore.value = score.value
 
       const bestScore = highscores.value.length ? Math.max(...highscores.value.map((entry) => entry.score)) : null
@@ -247,6 +255,7 @@ export function useGameSession() {
     window.removeEventListener('keydown', handleKeydown)
     clearTimerInterval()
     clearAdvanceTimeout()
+    flushActiveGameTime()
   })
 
   return {

@@ -3,7 +3,6 @@ import type { Card, Grade } from 'ts-fsrs'
 import { Rating } from 'ts-fsrs'
 import { getDueWordCards, rateWordCard } from '../../entities/word-card/wordCard'
 import { getWordsByIds } from '../../entities/word/word'
-import { logActivity } from '@/shared/activity/useLearningEvent'
 import type { WordRow } from '../../db/appDb'
 
 type DueEntry = { wordId: string; card: Card; word: WordRow }
@@ -41,7 +40,6 @@ export function usePracticeQueue() {
     if (!entry) return
 
     await rateWordCard(entry.wordId, entry.card, rating)
-    void logActivity('20-words')
 
     queue.value.shift()
     revealed.value = false

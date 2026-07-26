@@ -18,6 +18,7 @@ import {
   getChartMinWidth
 } from '../../app/charts'
 import { formatEffectiveAttempts, formatPercent, getCellStyle, getTooltip } from '../../app/matrixDisplay'
+import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
 import type { PracticeEvent, PracticePairTarget } from '../../app/types'
 
 const loading = ref(true)
@@ -569,5 +570,7 @@ async function handleImportChange(event: Event): Promise<void> {
         <button>close</button>
       </form>
     </dialog>
+
+    <GlobalStatsSection />
   </section>
 </template>

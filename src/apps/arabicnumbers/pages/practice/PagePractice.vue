@@ -2,13 +2,11 @@
 // Ported from linguanodon's arabicnumbers app/practiceApp.js - the template
 // is already Vue-flavored markup, so this is close to a direct copy.
 import { usePracticeSession } from '../../app/usePracticeSession'
-import { calculateColor, convertNumberToArabicScript } from '../../app/helpers'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 
 const session = usePracticeSession()
 
-function sortedNumberBank() {
-  return session.getNumberBank().slice().sort((a, b) => a.val - b.val)
-}
+useActiveTime('arabicnumbers')
 </script>
 
 <template>
@@ -73,54 +71,6 @@ function sortedNumberBank() {
             >
               Next
             </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="card shadow-md w-full">
-        <div class="card-body flex flex-col items-center">
-          <h2 class="text-xl font-bold m-2">
-            Missions
-          </h2>
-          <div
-            v-for="(mission, name) in session.missions.value"
-            :key="name"
-            class="m-2 flex flex-col max-w-md w-full"
-          >
-            {{ name }}
-            <progress
-              class="w-full progress"
-              :value="mission.progress"
-              :max="mission.goals[mission.currentGoal]"
-            />
-            <div>
-              {{ convertNumberToArabicScript(mission.progress) }} /
-              {{ convertNumberToArabicScript(mission.goals[mission.currentGoal]) }}
-            </div>
-          </div>
-
-          <h2 class="text-xl font-bold m-2">
-            Statistics
-          </h2>
-
-          <div
-            class="grid gap-2"
-            style="grid-template-columns: repeat(10, 1rem)"
-          >
-            <div
-              v-for="(number, index) in sortedNumberBank()"
-              :key="index"
-              class="w-4 h-4 flex items-center justify-center shadow-xs relative border border-gray-400 rounded"
-            >
-              <div
-                class="absolute inset-0 bottom-0 rounded"
-                :style="{
-                  height: number.level * 10 + '%',
-                  backgroundColor: calculateColor(number.level),
-                  transition: 'height 0.5s ease'
-                }"
-              />
-            </div>
           </div>
         </div>
       </div>

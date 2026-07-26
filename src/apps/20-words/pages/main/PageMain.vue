@@ -4,7 +4,9 @@ import MainDock, { type MainView } from './MainDock.vue'
 import MainAddView from './MainAddView.vue'
 import MainMemorizeView from './MainMemorizeView.vue'
 import MainPracticeView from './MainPracticeView.vue'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 
+useActiveTime('20-words')
 const view = ref<MainView>('add')
 </script>
 

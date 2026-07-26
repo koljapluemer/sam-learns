@@ -4,7 +4,7 @@
 // logActivity('hebrewscript') (see docs/linguanodon-import.md).
 
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
-import { logActivity } from '@/shared/activity/useLearningEvent'
+import { logActiveTimeMs, logActivity } from '@/shared/activity/useLearningEvent'
 import { toClips, buildPracticeCatalog } from './catalog'
 import { appendPracticeEvent, listPracticeEvents, toPracticeEventAnalytics, toStoredClip } from './practiceEvents'
 import {
@@ -304,6 +304,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
 
     await appendPracticeEvent(audioListenedEvent)
     practiceEvents.value.push(audioListenedEvent)
+    void logActiveTimeMs('hebrewscript', listenedDurationMs)
   }
 
   const handleAudioPause = () => {

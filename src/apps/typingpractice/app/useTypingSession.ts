@@ -7,12 +7,16 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { logActivity } from '@/shared/activity/useLearningEvent'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import { appDb } from '../db/appDb'
 import { wordToKeystrokes, type KeystrokeMethod } from './keystrokes'
 
 export type WordPair = [string, string]
 
 const WORDS_PER_LINE = 3
 const IDLE_TIMEOUT_MS = 10000
+// A trial is one typing session: starts on the first keystroke, ends after
+// this much inactivity (or immediately if the tab/route is left).
+const SESSION_IDLE_TIMEOUT_MS = 30000
 
 function chunk<T>(arr: T[], size: number): T[][] {
   const chunks: T[][] = []
@@ -90,6 +94,26 @@ export function useTypingSession() {
   let elapsedMs = 0
   let runStart: number | null = null
   let lastKeyTime = 0
+  let lastLineElapsedMs = 0
+
+  // Trial (= one typing session) tracking, independent of the WPM timer
+  // above: starts on the first keystroke, ends on 30s of inactivity or on
+  // leaving the tab/route.
+  let sessionActive = false
+  let sessionIdleTimer: ReturnType<typeof setTimeout> | undefined
+
+  function endSession(): void {
+    if (!sessionActive) return
+    sessionActive = false
+    if (sessionIdleTimer) clearTimeout(sessionIdleTimer)
+    void logActivity('typingpractice')
+  }
+
+  function touchSession(): void {
+    sessionActive = true
+    if (sessionIdleTimer) clearTimeout(sessionIdleTimer)
+    sessionIdleTimer = setTimeout(endSession, SESSION_IDLE_TIMEOUT_MS)
+  }
 
   function resumeTimer(): void {
     if (runStart === null && !document.hidden) {
@@ -149,8 +173,18 @@ export function useTypingSession() {
   }
 
   function advanceLine(value: string): void {
-    scoreLine(value)
-    void logActivity('typingpractice')
+    const lineMistakes = scoreLine(value)
+    const nowElapsedMs = currentElapsedMs()
+    void appDb.lineAttempts.add({
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(),
+      words: currentLine.length,
+      chars: target.length,
+      mistakes: lineMistakes,
+      ms: Math.max(0, nowElapsedMs - lastLineElapsedMs)
+    })
+    lastLineElapsedMs = nowElapsedMs
+
     completedWords += currentLine.length
     currentLine = nextLine
     nextLine = nextChunk()
@@ -165,6 +199,7 @@ export function useTypingSession() {
     // the physical keys involved while an IME is composing.
     lastKeyTime = Date.now()
     resumeTimer()
+    touchSession()
 
     inputValue.value = value
     renderLines()
@@ -173,7 +208,10 @@ export function useTypingSession() {
   }
 
   function handleVisibilityChange(): void {
-    if (document.hidden) pauseTimer()
+    if (document.hidden) {
+      pauseTimer()
+      endSession()
+    }
   }
 
   let tickInterval: ReturnType<typeof setInterval> | undefined
@@ -204,6 +242,7 @@ export function useTypingSession() {
   onUnmounted(() => {
     if (tickInterval) clearInterval(tickInterval)
     document.removeEventListener('visibilitychange', handleVisibilityChange)
+    endSession()
   })
 
   return {

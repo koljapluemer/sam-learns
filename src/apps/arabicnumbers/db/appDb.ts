@@ -1,12 +1,9 @@
 import Dexie, { type EntityTable } from 'dexie'
-import type { Missions, StoredExerciseState, StoredNumberState } from '../app/types'
-
-type MissionsRow = { id: 'missions'; value: Missions }
+import type { StoredExerciseState, StoredNumberState } from '../app/types'
 
 class ArabicNumbersDb extends Dexie {
   numberState!: EntityTable<StoredNumberState, 'val'>
   exercises!: EntityTable<StoredExerciseState, 'key'>
-  missions!: EntityTable<MissionsRow, 'id'>
 
   constructor() {
     super('arabicnumbersDb')
@@ -15,6 +12,13 @@ class ArabicNumbersDb extends Dexie {
       numberState: 'val',
       exercises: 'key',
       missions: 'id'
+    })
+
+    // Missions feature removed - drop the now-unused table.
+    this.version(2).stores({
+      numberState: 'val',
+      exercises: 'key',
+      missions: null
     })
   }
 }

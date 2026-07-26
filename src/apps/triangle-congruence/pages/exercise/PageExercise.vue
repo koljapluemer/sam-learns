@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useActiveTime } from '@/shared/activity/useActiveTime'
 import { useAppI18n } from '@/apps/triangle-congruence/app/i18n'
 import {
   loadNextExercise,
@@ -14,6 +15,7 @@ import ClozeExerciseView from './ClozeExerciseView.vue'
 import AllLearnedView from './AllLearnedView.vue'
 
 const { t } = useAppI18n()
+useActiveTime('triangle-congruence')
 
 type PageState = { mode: 'loading' } | ({ mode: 'exercise' } & NextExerciseState)
 
