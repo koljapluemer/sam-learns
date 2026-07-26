@@ -694,6 +694,47 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
+    slug: 'the-little-prince',
+    name: 'The Little Prince',
+    description: 'Listen to segments of "The Little Prince" audiobooks, practice the segment\'s vocab, then rewatch.',
+    stats: { trialLabel: 'segments watched' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/the-little-prince/pages/home/PageHome.vue'),
+        meta: {
+          title: 'The Little Prince',
+          description: 'Choose a language to start listening to "The Little Prince".'
+        }
+      },
+      {
+        path: 'play',
+        component: () => import('./apps/the-little-prince/pages/play/PagePlay.vue'),
+        meta: {
+          title: 'The Little Prince',
+          description: 'Listen to a segment, practice its vocab, then rewatch.',
+          layout: 'full-bleed'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/the-little-prince/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | The Little Prince',
+          description: 'Segments watched and time spent.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/the-little-prince/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | The Little Prince',
+          description: 'Choose your listening language.'
+        }
+      }
+    ]
+  },
+  {
     slug: 'entity-relation-intuition',
     name: 'ER Diagram Intuition',
     description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',

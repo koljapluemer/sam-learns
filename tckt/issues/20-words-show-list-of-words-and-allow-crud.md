@@ -1,0 +1,3 @@
+# 20 words: show list of words and allow CRUD
+
+- needed for: typos, words not to learn after all, adding notes...
