@@ -58,6 +58,13 @@ onMounted(async () => {
               {{ currentEntry.word.meaning }}
             </p>
 
+            <img
+              v-if="currentEntry.word.doodle"
+              :src="currentEntry.word.doodle!"
+              alt="Doodle"
+              class="max-h-24 rounded border border-base-300"
+            >
+
             <ul
               v-if="currentEntry.word.examples.length > 0"
               class="text-sm opacity-80 flex flex-col gap-1"

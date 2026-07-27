@@ -3,6 +3,7 @@
 // intentional exception to agents.md's general blur-autosave guidance.
 import { X } from 'lucide-vue-next'
 import { DAILY_GOAL, useAddForm } from './useAddForm'
+import DoodleCanvas from '../../dumb/DoodleCanvas.vue'
 import type { MainView } from './MainDock.vue'
 
 const emit = defineEmits<{ 'switch-view': [view: MainView] }>()
@@ -118,6 +119,11 @@ const form = useAddForm()
             <X class="w-4 h-4" />
           </button>
         </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <span class="text-sm font-medium">Doodle (optional)</span>
+        <DoodleCanvas v-model="form.doodle.value" />
       </div>
 
       <button

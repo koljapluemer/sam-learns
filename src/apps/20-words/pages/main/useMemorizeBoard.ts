@@ -19,20 +19,26 @@ export function useMemorizeBoard() {
 
   let nextSeq = 1
 
-  async function persistAssignment(row: WordRow, memorizeRow: MemorizeRow): Promise<void> {
+  // Mutates the in-memory row/seq synchronously so board array updates (and
+  // the resulting `remaining` count) never flash between an old and new
+  // value while the matching Dexie write is in flight.
+  function assignRowSync(row: WordRow, memorizeRow: MemorizeRow): number {
     const seq = nextSeq++
     row.memorizeRow = memorizeRow
     row.memorizeSeq = seq
-    await assignToRow(row.id, memorizeRow, seq)
+    return seq
   }
 
   async function refillBottomRow(): Promise<void> {
+    const persisted: Promise<void>[] = []
     while (board.value[1].length < ROW_SIZE && pool.value.length > 0) {
       const word = popRandom(pool.value)
       if (!word) break
-      await persistAssignment(word, 1)
+      const seq = assignRowSync(word, 1)
       board.value[1].push(word)
+      persisted.push(assignToRow(word.id, 1, seq))
     }
+    await Promise.all(persisted)
   }
 
   async function load(): Promise<void> {
@@ -68,6 +74,7 @@ export function useMemorizeBoard() {
   }
 
   async function score(row: MemorizeRow, correct: boolean): Promise<void> {
+    if (row !== dueRow.value) return
     const word = board.value[row][0]
     if (!word) return
 
@@ -75,21 +82,24 @@ export function useMemorizeBoard() {
     revealed.value[row] = false
 
     if (!correct) {
-      await persistAssignment(word, 1)
+      const seq = assignRowSync(word, 1)
       board.value[1].push(word)
+      await assignToRow(word.id, 1, seq)
     } else if (row === 4) {
       await graduateWordRow(word.id)
       await graduateWord(word.id)
     } else {
       const nextRow = (row + 1) as MemorizeRow
-      await persistAssignment(word, nextRow)
+      const seq = assignRowSync(word, nextRow)
       board.value[nextRow].push(word)
+      await assignToRow(word.id, nextRow, seq)
     }
 
     await refillBottomRow()
   }
 
   function reveal(row: MemorizeRow): void {
+    if (row !== dueRow.value) return
     revealed.value[row] = true
   }
 
@@ -98,7 +108,33 @@ export function useMemorizeBoard() {
   )
   const clearedCount = computed(() => totalNonMemorizedAtStart.value - remaining.value)
 
+  // Only the stack whose top card has been waiting the longest (lowest
+  // memorizeSeq among top cards) unlocks, so the learner never has to choose
+  // which stack to work on.
+  const dueRow = computed<MemorizeRow | null>(() => {
+    let due: MemorizeRow | null = null
+    for (const row of ROWS) {
+      const top = board.value[row][0]
+      if (!top) continue
+      if (due === null || (top.memorizeSeq ?? 0) < (board.value[due][0].memorizeSeq ?? 0)) {
+        due = row
+      }
+    }
+    return due
+  })
+
   onMounted(load)
 
-  return { loading, board, revealed, reveal, score, remaining, clearedCount, totalNonMemorizedAtStart, todayGoalMet }
+  return {
+    loading,
+    board,
+    revealed,
+    reveal,
+    score,
+    remaining,
+    clearedCount,
+    totalNonMemorizedAtStart,
+    todayGoalMet,
+    dueRow
+  }
 }

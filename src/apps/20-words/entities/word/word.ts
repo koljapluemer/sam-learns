@@ -8,6 +8,7 @@ export type NewWordInput = {
   language: string
   examples: ExampleRow[]
   notes: NoteRow[]
+  doodle: string | null
 }
 
 export async function addWord(input: NewWordInput): Promise<void> {
@@ -19,6 +20,7 @@ export async function addWord(input: NewWordInput): Promise<void> {
     meaning: input.meaning,
     examples: input.examples,
     notes: input.notes,
+    doodle: input.doodle,
     createdAt: now,
     dayKey: toDayKey(now),
     memorizeRow: null,
@@ -62,6 +64,22 @@ export async function graduateWordRow(id: string): Promise<void> {
 
 export async function allWords(): Promise<WordRow[]> {
   return appDb.words.toArray()
+}
+
+export type WordEdit = {
+  word: string
+  meaning: string
+  examples: ExampleRow[]
+  notes: NoteRow[]
+}
+
+export async function updateWord(id: string, edit: WordEdit): Promise<void> {
+  await appDb.words.update(id, edit)
+}
+
+export async function deleteWord(id: string): Promise<void> {
+  await appDb.words.delete(id)
+  await appDb.wordCards.delete(id)
 }
 
 export async function getWordsByIds(ids: string[]): Promise<Map<string, WordRow>> {

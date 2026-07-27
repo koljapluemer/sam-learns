@@ -1,13 +1,23 @@
 <script setup lang="ts">
-import { Check, Eye, X } from 'lucide-vue-next'
+import { Check, Eye, Lock, X } from 'lucide-vue-next'
 import { useMemorizeBoard, type MemorizeRow } from './useMemorizeBoard'
 import { isTouchDevice } from '../../dumb/isTouchDevice'
 import type { MainView } from './MainDock.vue'
 
 const emit = defineEmits<{ 'switch-view': [view: MainView] }>()
 
-const { loading, board, revealed, reveal, score, remaining, clearedCount, totalNonMemorizedAtStart, todayGoalMet } =
-  useMemorizeBoard()
+const {
+  loading,
+  board,
+  revealed,
+  reveal,
+  score,
+  remaining,
+  clearedCount,
+  totalNonMemorizedAtStart,
+  todayGoalMet,
+  dueRow
+} = useMemorizeBoard()
 
 const DISPLAY_ROWS: MemorizeRow[] = [4, 3, 2, 1]
 const touch = isTouchDevice()
@@ -83,14 +93,22 @@ function placeholderStyle(index: number): { transform: string } {
               :style="placeholderStyle(index)"
             />
 
-            <div class="card bg-base-100 border border-base-300 shadow-md relative">
+            <div
+              class="card bg-base-100 border border-base-300 shadow-md relative"
+              :class="{ 'opacity-50': row !== dueRow }"
+            >
               <div class="card-body items-center gap-3 text-center p-5">
                 <p class="text-3xl font-semibold">
                   {{ board[row][0].word }}
                 </p>
 
+                <Lock
+                  v-if="row !== dueRow"
+                  class="w-4 h-4 opacity-50"
+                  aria-label="Locked"
+                />
                 <button
-                  v-if="!revealed[row] && !touch"
+                  v-else-if="!revealed[row] && !touch"
                   type="button"
                   class="btn btn-circle btn-outline btn-sm"
                   aria-label="Reveal"
@@ -111,6 +129,13 @@ function placeholderStyle(index: number): { transform: string } {
                   <p class="text-xl">
                     {{ board[row][0].meaning }}
                   </p>
+
+                  <img
+                    v-if="board[row][0].doodle"
+                    :src="board[row][0].doodle!"
+                    alt="Doodle"
+                    class="max-h-24 rounded border border-base-300"
+                  >
 
                   <ul
                     v-if="board[row][0].examples.length > 0"

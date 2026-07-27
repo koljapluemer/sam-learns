@@ -11,6 +11,7 @@ export type WordRow = {
   meaning: string
   examples: ExampleRow[]
   notes: NoteRow[]
+  doodle: string | null
   createdAt: string
   dayKey: string
   memorizeRow: number | null

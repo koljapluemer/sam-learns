@@ -10,6 +10,7 @@ export function useAddForm() {
   const language = useLocalSetting<string>('20-words-language', '')
   const word = ref('')
   const meaning = ref('')
+  const doodle = ref<string | null>(null)
   const todayCount = ref(0)
   const saving = ref(false)
 
@@ -36,11 +37,13 @@ export function useAddForm() {
         meaning: meaning.value.trim(),
         language: language.value,
         examples: examples.value.filter((row) => row.sentence.trim() !== '' || row.translation.trim() !== ''),
-        notes: notes.value.filter((row) => row.text.trim() !== '')
+        notes: notes.value.filter((row) => row.text.trim() !== ''),
+        doodle: doodle.value
       })
 
       word.value = ''
       meaning.value = ''
+      doodle.value = null
       resetExamples()
       resetNotes()
       await refreshTodayCount()
@@ -51,5 +54,5 @@ export function useAddForm() {
 
   onMounted(refreshTodayCount)
 
-  return { word, meaning, examples, removeExample, notes, removeNote, todayCount, saving, save }
+  return { word, meaning, doodle, examples, removeExample, notes, removeNote, todayCount, saving, save }
 }

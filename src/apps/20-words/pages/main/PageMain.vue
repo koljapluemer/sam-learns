@@ -4,6 +4,7 @@ import MainDock, { type MainView } from './MainDock.vue'
 import MainAddView from './MainAddView.vue'
 import MainMemorizeView from './MainMemorizeView.vue'
 import MainPracticeView from './MainPracticeView.vue'
+import MainManageView from './MainManageView.vue'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
 
 useActiveTime('20-words')
@@ -21,9 +22,10 @@ const view = ref<MainView>('add')
       @switch-view="view = $event"
     />
     <MainPracticeView
-      v-else
+      v-else-if="view === 'practice'"
       @switch-view="view = $event"
     />
+    <MainManageView v-else />
 
     <MainDock v-model="view" />
   </div>
