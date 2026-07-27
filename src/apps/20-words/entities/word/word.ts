@@ -2,6 +2,12 @@ import { appDb, type ExampleRow, type NoteRow, type WordRow } from '../../db/app
 import { toDayKey } from '../../dumb/dayBoundary'
 import { logActivity } from '@/shared/activity/useLearningEvent'
 
+// Form rows come from reactive Vue refs; IndexedDB's structured clone can't
+// serialize the reactive Proxy, so strip it down to plain data before writing.
+function toPlainRows<T>(rows: T[]): T[] {
+  return JSON.parse(JSON.stringify(rows)) as T[]
+}
+
 export type NewWordInput = {
   word: string
   meaning: string
@@ -18,8 +24,8 @@ export async function addWord(input: NewWordInput): Promise<void> {
     language: input.language,
     word: input.word,
     meaning: input.meaning,
-    examples: input.examples,
-    notes: input.notes,
+    examples: toPlainRows(input.examples),
+    notes: toPlainRows(input.notes),
     doodle: input.doodle,
     createdAt: now,
     dayKey: toDayKey(now),
@@ -74,7 +80,12 @@ export type WordEdit = {
 }
 
 export async function updateWord(id: string, edit: WordEdit): Promise<void> {
-  await appDb.words.update(id, edit)
+  await appDb.words.update(id, {
+    word: edit.word,
+    meaning: edit.meaning,
+    examples: toPlainRows(edit.examples),
+    notes: toPlainRows(edit.notes)
+  })
 }
 
 export async function deleteWord(id: string): Promise<void> {
