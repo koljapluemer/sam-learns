@@ -765,5 +765,45 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'sentence-net',
+    name: 'Sentence Net',
+    description: 'Acquire target-language vocab in context: add example sentences, tag their words, and practice both with FSRS flashcards.',
+    stats: { trialLabel: 'tasks done' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/sentence-net/pages/home/PageHome.vue'),
+        meta: {
+          title: 'Sentence Net',
+          description: 'Acquire target-language vocab in context.'
+        }
+      },
+      {
+        path: 'play',
+        component: () => import('./apps/sentence-net/pages/play/PagePlay.vue'),
+        meta: {
+          title: 'Sentence Net',
+          description: 'Add sentences, tag vocab, and practice with FSRS flashcards.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/sentence-net/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Sentence Net',
+          description: 'Time spent and tasks done.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/sentence-net/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Sentence Net',
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]
