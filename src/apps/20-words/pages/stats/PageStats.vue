@@ -65,7 +65,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto w-full p-4 flex flex-col gap-6">
+  <div class="mx-auto w-full p-4 flex flex-col gap-6">
     <h1 class="text-xl font-semibold">
       Daily Progress
     </h1>

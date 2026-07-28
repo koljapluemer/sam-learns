@@ -6,7 +6,7 @@ const language = useLocalSetting<string>('20-words-language', '')
 </script>
 
 <template>
-  <section class="mx-auto flex w-full max-w-md flex-col gap-4 px-4 py-8">
+  <section class="mx-auto flex w-full flex-col gap-4 px-4 py-8">
     <h1 class="text-2xl font-semibold">
       Settings
     </h1>

@@ -9,10 +9,8 @@ This app is part of a collection repo of learning apps. Please check out convent
 
 ## Architecture
 
-Do NOT!! adhere to the classic folder-by-type architecture Vue comes with.
-Instead, use the following folder structure (inspired by Feature-Sliced Design)
+Each applet is a sort of mini vue app, with a layered architecture w/ the following folders:
 
-- `app`: Stuff that MUST be global, e.g. the vue boilerplate holding the router view. Can import from anywhere, if it must. Should contain little logic.
 - `db`: Holding dexie infrastructure and DB types. Necessary evil. Should be as small as possible
 - `dumb`: collection of simple, reusable stuff. no business logic. may not import from ANY other high-level folder. may cross-import within the folder. put assets here (if needed)
 - `entities`: models/entities. One folder per user-space entity such as "flashcard". May import from `db`, but nothing else.
@@ -34,3 +32,6 @@ Do not use `index.ts` file reexporting components, simply export directly.
 - KEEP. IT. SIMPLE.
 - always run `npm run build` and `npm run lint:fix` to ensure everything is well done. Fix problems by writing clean code, not by disabling the linter.
 
+## How To
+
+If adding a new mini app, see `@add-a-new-app.md`
