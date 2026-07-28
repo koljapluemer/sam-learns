@@ -12,8 +12,7 @@ export function routeNameForPath(slug: string, path: string): string {
 
 // A route with a required param (e.g. `practice/:lessonKey`) has no single
 // destination, so it can't be a generic subnav tab - same reasoning as
-// linguanodon's AppInfo.practice_url_name being None for apps like saetze/
-// boringwords where practice takes a required argument.
+// linguanodon's AppInfo.practice_url_name being None for apps like saetze/ where practice takes a required argument.
 export function isDynamicRoutePath(path: string): boolean {
   return path.split('/').some((segment) => segment.startsWith(':'))
 }

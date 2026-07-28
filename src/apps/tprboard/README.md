@@ -23,7 +23,7 @@ script by hand if the upstream content changes - there's no ongoing sync.
   loose), this port uses real `three` npm types throughout.
 - **Ebisu** (Bayesian memory model, `app/ebisu.ts`) for per-object and
   per-sentence recall prediction - a different scheduling algorithm from the
-  `ts-fsrs` used elsewhere in this repo (e.g. `world-map`, `boringwords`).
+  `ts-fsrs` used elsewhere in this repo (e.g. `world-map`).
   linguanodon vendors a minified build rather than an npm package
   (`vendor/ebisu.min.mjs` + a hand-written `.d.ts`), so this port does too.
 - **lucide-vue-next** replaces the original's CDN-loaded `window.lucide`

@@ -154,46 +154,6 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'boringwords',
-    name: 'Boring Words',
-    description: 'FSRS flashcards for the small, unglamorous function words that hold the language together.',
-    stats: { trialLabel: 'cards flipped' },
-    routes: [
-      {
-        path: '',
-        component: () => import('./apps/boringwords/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Boring Words',
-          description: 'FSRS flashcards for small, unglamorous function words.'
-        }
-      },
-      {
-        path: 'practice/:language',
-        component: () => import('./apps/boringwords/pages/practice/PagePractice.vue'),
-        meta: {
-          title: 'Practice | Boring Words',
-          description: 'FSRS flashcard practice for function words in your chosen language.'
-        }
-      },
-      {
-        path: 'stats',
-        component: () => import('./apps/boringwords/pages/stats/PageStats.vue'),
-        meta: {
-          title: 'Stats | Boring Words',
-          description: 'Cross-app daily usage stats.'
-        }
-      },
-      {
-        path: 'settings',
-        component: () => import('./apps/boringwords/pages/settings/PageSettings.vue'),
-        meta: {
-          title: 'Settings | Boring Words',
-          description: 'App settings.'
-        }
-      }
-    ]
-  },
-  {
     slug: 'comprehensible-input',
     name: 'Comprehensible Input',
     description: 'An endless stream of easy foreign-language videos, with light comprehension surveys.',
