@@ -7,6 +7,7 @@ import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
 import { getAllTrials, RECENT_TRIAL_COUNT } from '../../entities/trial/trialRepository'
 import PointCloudChart from '../../dumb/PointCloudChart.vue'
 import type { TrialRow } from '../../db/appDb'
+import PageShell from '@/shared/shell/PageShell.vue'
 
 const stats = ref<{ label: string; value: string | number }[]>([])
 const trials = ref<TrialRow[]>([])
@@ -33,7 +34,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-8">
+  <PageShell title="Stats">
     <StatsPanel :stats="stats" />
 
     <div
@@ -69,5 +70,5 @@ onMounted(async () => {
     </div>
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>

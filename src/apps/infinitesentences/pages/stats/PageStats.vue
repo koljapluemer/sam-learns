@@ -8,6 +8,7 @@ import { getTotalActiveTimeMs, getTotalTrialCount } from '@/shared/activity/acti
 import { formatDuration } from '@/shared/stats/formatDuration'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 import type { ChartItem } from 'chart.js'
 
 function formatDateLabel(dateStr: string): string {
@@ -56,13 +57,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto w-full p-4">
-    <div class="mb-6">
-      <StatsPanel :stats="stats" />
-    </div>
+  <PageShell title="Stats">
+    <StatsPanel :stats="stats" />
 
-    <div class="mb-6">
-      <div class="flex items-center justify-between mb-4">
+    <div>
+      <div class="mb-4 flex items-center justify-between">
         <h2 class="text-xl font-semibold">
           Sentences Done
         </h2>
@@ -77,5 +76,5 @@ onMounted(async () => {
     </div>
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>

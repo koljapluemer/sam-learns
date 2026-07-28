@@ -6,6 +6,7 @@ import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 import { formatDuration } from '@/shared/stats/formatDuration'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 
 const stats = ref<{ label: string; value: string | number }[]>([])
 const dailyRows = ref<{ day: string; wpm: number; accuracy: number }[]>([])
@@ -45,10 +46,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-2xl flex-col gap-6 p-4">
-    <h1 class="text-2xl font-semibold">
-      Stats
-    </h1>
+  <PageShell title="Stats">
     <StatsPanel :stats="stats" />
 
     <div
@@ -88,5 +86,5 @@ onMounted(async () => {
     </div>
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>

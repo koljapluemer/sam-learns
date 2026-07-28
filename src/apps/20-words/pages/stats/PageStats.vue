@@ -9,6 +9,7 @@ import { getTotalActiveTimeMs, getTotalTrialCount } from '@/shared/activity/acti
 import { formatDuration } from '@/shared/stats/formatDuration'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 
 const chartCanvas = ref<HTMLCanvasElement | null>(null)
 const hasData = ref(false)
@@ -65,27 +66,29 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mx-auto w-full p-4 flex flex-col gap-6">
-    <h1 class="text-xl font-semibold">
-      Daily Progress
-    </h1>
-
+  <PageShell title="Stats">
     <StatsPanel :stats="stats" />
 
-    <div
-      v-if="!hasData"
-      class="text-sm opacity-70"
-    >
-      No activity yet. Add and practice some words to see stats here.
-    </div>
-    <div
-      v-else
-      class="w-full"
-      style="height: 320px"
-    >
-      <canvas ref="chartCanvas" />
+    <div>
+      <h2 class="mb-2 text-lg font-semibold">
+        Daily Progress
+      </h2>
+
+      <div
+        v-if="!hasData"
+        class="text-sm opacity-70"
+      >
+        No activity yet. Add and practice some words to see stats here.
+      </div>
+      <div
+        v-else
+        class="w-full"
+        style="height: 320px"
+      >
+        <canvas ref="chartCanvas" />
+      </div>
     </div>
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>

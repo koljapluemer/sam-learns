@@ -19,6 +19,7 @@ import {
 } from '../../app/charts'
 import { formatEffectiveAttempts, formatPercent, getCellStyle, getTooltip } from '../../app/matrixDisplay'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 import type { PracticeEvent, PracticePairTarget } from '../../app/types'
 
 const loading = ref(true)
@@ -211,34 +212,29 @@ async function handleImportChange(event: Event): Promise<void> {
 </script>
 
 <template>
-  <section class="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4">
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-      <h1 class="text-2xl font-semibold">
-        Stats
-      </h1>
-      <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
-        <input
-          ref="importInputRef"
-          type="file"
-          accept="application/json,.json"
-          class="hidden"
-          @change="handleImportChange"
-        >
-        <button
-          class="btn btn-outline btn-sm w-full sm:w-auto"
-          :disabled="importBusy"
-          @click="triggerImport"
-        >
-          Import tracked data JSON
-        </button>
-        <button
-          class="btn btn-outline btn-sm w-full sm:w-auto"
-          :disabled="importBusy"
-          @click="handleExport"
-        >
-          Export tracked data JSON
-        </button>
-      </div>
+  <PageShell title="Stats">
+    <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:self-end">
+      <input
+        ref="importInputRef"
+        type="file"
+        accept="application/json,.json"
+        class="hidden"
+        @change="handleImportChange"
+      >
+      <button
+        class="btn btn-outline btn-sm w-full sm:w-auto"
+        :disabled="importBusy"
+        @click="triggerImport"
+      >
+        Import tracked data JSON
+      </button>
+      <button
+        class="btn btn-outline btn-sm w-full sm:w-auto"
+        :disabled="importBusy"
+        @click="handleExport"
+      >
+        Export tracked data JSON
+      </button>
     </div>
 
     <div
@@ -572,5 +568,5 @@ async function handleImportChange(event: Event): Promise<void> {
     </dialog>
 
     <GlobalStatsSection />
-  </section>
+  </PageShell>
 </template>

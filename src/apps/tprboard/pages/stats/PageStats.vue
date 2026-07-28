@@ -3,15 +3,13 @@
 // localStorage-backed player stats from app/stats.ts.
 import { formatPlayedTime, readPlayerStats } from '../../app/stats'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 
 const stats = readPlayerStats()
 </script>
 
 <template>
-  <section class="mx-auto flex w-full max-w-md flex-col gap-4 py-8 px-4">
-    <h1 class="text-2xl font-semibold">
-      Stats
-    </h1>
+  <PageShell title="Stats">
     <div class="stats stats-vertical w-full border border-base-300 bg-base-100 shadow-sm">
       <div class="stat">
         <div class="stat-title">
@@ -40,5 +38,5 @@ const stats = readPlayerStats()
     </div>
 
     <GlobalStatsSection />
-  </section>
+  </PageShell>
 </template>

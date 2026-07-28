@@ -9,6 +9,7 @@ import { toLocalDayKey } from '@/shared/activity/dayBoundary'
 import { getTotalTrialCount } from '@/shared/activity/activityQueries'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 import type { DailyWatchTimeRow } from '../../app/types'
 
 const DAYS_TO_SHOW = 14
@@ -89,11 +90,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-4xl flex-col gap-6 p-4">
-    <h1 class="text-2xl font-bold">
-      Stats
-    </h1>
-
+  <PageShell title="Stats">
     <StatsPanel :stats="stats" />
 
     <div
@@ -134,5 +131,5 @@ onMounted(async () => {
     </template>
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Ported from linguanodon's saetze app/practiceApp.js - the lesson is
-// selected via a `:lessonKey` dynamic path segment (see PageHome.vue's link),
+// selected via a `:lessonKey` dynamic path segment (see PageInfo.vue's link),
 // mirroring linguanodon's own per-lesson practice URL.
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'

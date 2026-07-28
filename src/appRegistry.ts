@@ -40,7 +40,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/arabicnumbers/pages/home/PageHome.vue'),
+        component: () => import('./apps/arabicnumbers/pages/info/PageInfo.vue'),
         meta: {
           title: 'Arabic Numbers Practice',
           description: 'Learn to read the Arabic numbers from 0 to 100.'
@@ -80,7 +80,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/saetze/pages/home/PageHome.vue'),
+        component: () => import('./apps/saetze/pages/info/PageInfo.vue'),
         meta: {
           title: 'Sätze',
           description: 'German cloze-sentence drills for confusable word families.'
@@ -121,7 +121,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/egyptiansentences/pages/home/PageHome.vue'),
+        component: () => import('./apps/egyptiansentences/pages/info/PageInfo.vue'),
         meta: {
           title: 'Basic Egyptian Sentences',
           description: 'Timed cloze-word quiz for Egyptian Arabic sentences.'
@@ -161,7 +161,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/boringwords/pages/home/PageHome.vue'),
+        component: () => import('./apps/boringwords/pages/info/PageInfo.vue'),
         meta: {
           title: 'Boring Words',
           description: 'FSRS flashcards for small, unglamorous function words.'
@@ -201,7 +201,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/comprehensible-input/pages/home/PageHome.vue'),
+        component: () => import('./apps/comprehensible-input/pages/info/PageInfo.vue'),
         meta: {
           title: 'Comprehensible Input',
           description: 'An endless stream of easy foreign-language videos.'
@@ -242,7 +242,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/viettonepractice/pages/home/PageHome.vue'),
+        component: () => import('./apps/viettonepractice/pages/info/PageInfo.vue'),
         meta: {
           title: 'Vietnamese Tone Practice',
           description: "Listen to a short audio clip and identify which of Vietnamese's six tones you heard."
@@ -282,7 +282,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/hebrewscript/pages/home/PageHome.vue'),
+        component: () => import('./apps/hebrewscript/pages/info/PageInfo.vue'),
         meta: {
           title: 'Script Practice',
           description: 'Listen to a clip and pick the Hebrew script that matches what you heard.'
@@ -322,7 +322,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/prepositions3d/pages/home/PageHome.vue'),
+        component: () => import('./apps/prepositions3d/pages/info/PageInfo.vue'),
         meta: {
           title: 'Prepositions 3D',
           description: 'A 3D scene where you act out spatial prepositions with objects.'
@@ -362,7 +362,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/infinitesentences/pages/home/PageHome.vue'),
+        component: () => import('./apps/infinitesentences/pages/info/PageInfo.vue'),
         meta: {
           title: 'Infinite Sentences',
           description: 'Learn a language word by word and sentence by sentence.'
@@ -419,7 +419,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/tprboard/pages/home/PageHome.vue'),
+        component: () => import('./apps/tprboard/pages/info/PageInfo.vue'),
         meta: {
           title: 'TPR Board',
           description: 'Listen to a spoken instruction, then drag objects on a 3D board to act it out.'
@@ -621,7 +621,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/typingpractice/pages/home/PageHome.vue'),
+        component: () => import('./apps/typingpractice/pages/info/PageInfo.vue'),
         meta: {
           title: 'Vietnamese Typing Practice',
           description: 'Practice Vietnamese TELEX/VNI keyboard input.'
@@ -661,7 +661,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/20-words/pages/home/PageHome.vue'),
+        component: () => import('./apps/20-words/pages/info/PageInfo.vue'),
         meta: {
           title: '20 Words',
           description: 'Add 20 vocab words a day and practice them in a dedicated flow.'
@@ -701,7 +701,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/the-little-prince/pages/home/PageHome.vue'),
+        component: () => import('./apps/the-little-prince/pages/info/PageInfo.vue'),
         meta: {
           title: 'The Little Prince',
           description: 'Choose a language to start listening to "The Little Prince".'
@@ -774,7 +774,7 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/sentence-net/pages/home/PageHome.vue'),
+        component: () => import('./apps/sentence-net/pages/info/PageInfo.vue'),
         meta: {
           title: 'Sentence Net',
           description: 'Acquire target-language vocab in context.'

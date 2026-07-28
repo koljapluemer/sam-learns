@@ -4,6 +4,7 @@ import { getTotalActiveTimeMs, getTotalTrialCount } from '@/shared/activity/acti
 import { formatDuration } from '@/shared/stats/formatDuration'
 import StatsPanel from '@/shared/stats/StatsPanel.vue'
 import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import PageShell from '@/shared/shell/PageShell.vue'
 
 const stats = ref<{ label: string; value: string | number }[]>([])
 
@@ -20,9 +21,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-8">
+  <PageShell title="Stats">
     <StatsPanel :stats="stats" />
 
     <GlobalStatsSection />
-  </div>
+  </PageShell>
 </template>
