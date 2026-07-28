@@ -656,7 +656,7 @@ export const apps: AppDefinition[] = [
   {
     slug: '20-words',
     name: '20 Words',
-    description: 'Add 20 vocab words a day, gate them through a memorize board, then practice with FSRS flashcards.',
+    description: "Add 20 vocab words a day, memorize them via Leitner's Learning Patience, then practice with FSRS flashcards.",
     stats: { trialLabel: 'words added and memorized same-day' },
     routes: [
       {
