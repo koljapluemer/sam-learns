@@ -1,19 +1,20 @@
 <script setup lang="ts">
 defineProps<{
   modelValue: string
-  candidates: { id: string; label: string }[]
+  candidates: { id: string; text: string; translation: string }[]
   fieldLabel: string
   placeholder?: string
 }>()
 
 const emit = defineEmits<{
   'update:modelValue': [value: string]
-  'select-existing': [id: string, label: string]
+  'select-existing': [id: string]
+  blur: []
 }>()
 
-function pick(candidate: { id: string; label: string }): void {
-  emit('update:modelValue', candidate.label)
-  emit('select-existing', candidate.id, candidate.label)
+function pick(candidate: { id: string; text: string }): void {
+  emit('update:modelValue', candidate.text)
+  emit('select-existing', candidate.id)
 }
 </script>
 
@@ -27,6 +28,7 @@ function pick(candidate: { id: string; label: string }): void {
         :placeholder="placeholder"
         class="grow font-bold"
         @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+        @blur="emit('blur')"
       >
     </label>
     <ul
@@ -41,7 +43,8 @@ function pick(candidate: { id: string; label: string }): void {
           type="button"
           @mousedown.prevent="pick(candidate)"
         >
-          {{ candidate.label }}
+          <span>{{ candidate.text }}</span>
+          <span class="opacity-60">{{ candidate.translation }}</span>
         </button>
       </li>
     </ul>

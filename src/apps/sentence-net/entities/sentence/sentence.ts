@@ -57,6 +57,13 @@ export async function getSentence(id: string): Promise<SentenceRow | undefined> 
   return appDb.sentences.get(id)
 }
 
+// Sentences are unique by target-language text: this is how the UI decides
+// whether typing/pasting a sentence should update an existing entry instead
+// of creating a duplicate.
+export async function findSentenceByText(text: string): Promise<SentenceRow | undefined> {
+  return appDb.sentences.where('text').equals(text).first()
+}
+
 export async function listSentences(): Promise<SentenceRow[]> {
   return appDb.sentences.toArray()
 }

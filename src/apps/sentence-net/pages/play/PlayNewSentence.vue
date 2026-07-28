@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { addSentence } from '../../entities/sentence/sentence'
+import { addSentence, findSentenceByText, updateSentenceNote, updateSentenceText } from '../../entities/sentence/sentence'
 import { createSentenceCard } from '../../entities/sentence-card/sentenceCard'
+import { mergeField } from '../../dumb/mergeField'
 import type { TouchedEntities } from './useQueueSelection'
 
 const emit = defineEmits<{ done: [touched: TouchedEntities] }>()
@@ -15,8 +16,22 @@ async function save(): Promise<void> {
   if (!text.value.trim() || !translation.value.trim()) return
 
   saving.value = true
-  const id = await addSentence(text.value.trim(), translation.value.trim(), note.value.trim())
-  await createSentenceCard(id)
+  const trimmedText = text.value.trim()
+  const trimmedTranslation = translation.value.trim()
+  const trimmedNote = note.value.trim()
+
+  // Sentences are unique by text: typing one that already exists updates it
+  // (merging translation/note on collision) instead of creating a duplicate.
+  const existing = await findSentenceByText(trimmedText)
+  let id: string
+  if (existing) {
+    id = existing.id
+    await updateSentenceText(id, trimmedText, mergeField(existing.translation, trimmedTranslation))
+    await updateSentenceNote(id, mergeField(existing.note, trimmedNote))
+  } else {
+    id = await addSentence(trimmedText, trimmedTranslation, trimmedNote)
+    await createSentenceCard(id)
+  }
   saving.value = false
 
   emit('done', { sentenceIds: [id], wordIds: [] })

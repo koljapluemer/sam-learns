@@ -1,16 +1,25 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { Check, ClipboardPaste, Copy, Pencil, X } from 'lucide-vue-next'
-import { getWord, setExamplesOptOut, updateWord, updateWordNote, countExampleSentences } from '../../entities/word/word'
+import {
+  deleteWord,
+  getWord,
+  setExamplesOptOut,
+  updateWord,
+  updateWordNote,
+  countExampleSentences
+} from '../../entities/word/word'
 import {
   addSentence,
   addWordToSentence,
+  findSentenceByText,
   listSentences,
   removeWordFromSentence,
   updateSentenceNote,
   updateSentenceText
 } from '../../entities/sentence/sentence'
 import { createSentenceCard } from '../../entities/sentence-card/sentenceCard'
+import { deleteWordCard } from '../../entities/word-card/wordCard'
 import { useEntityRowsForm, type EntityCandidate, type EntityFormRow } from './useEntityRowsForm'
 import SimilarEntitySelect from '../../dumb/SimilarEntitySelect.vue'
 import { buildExampleSentencesPrompt, parseExampleSentencesPaste } from './exampleSentencePrompt'
@@ -29,9 +38,10 @@ const draftText = ref('')
 const draftTranslation = ref('')
 const draftNote = ref('')
 const saving = ref(false)
+const confirmingDelete = ref(false)
 
 const sentenceCandidates = ref<EntityCandidate[]>([])
-const { rows, removeRow, updatePrimary, selectExisting, candidatesFor, mergeParsed, nonEmptyRows } =
+const { rows, removeRow, updatePrimary, selectExisting, checkBlurMatch, candidatesFor, mergeParsed, nonEmptyRows } =
   useEntityRowsForm(sentenceCandidates)
 
 // Sentences already attached when this screen opened, so removing one of the
@@ -46,7 +56,12 @@ onMounted(async () => {
   ])
   word.value = row ?? null
   exampleCount.value = count
-  sentenceCandidates.value = sentences.map((sentence) => ({ id: sentence.id, label: sentence.text }))
+  sentenceCandidates.value = sentences.map((sentence) => ({
+    id: sentence.id,
+    text: sentence.text,
+    translation: sentence.translation,
+    note: sentence.note
+  }))
 
   const attachedSentences = sentences.filter((sentence) => sentence.wordIds.includes(props.wordId))
   if (attachedSentences.length > 0) {
@@ -123,14 +138,23 @@ async function pasteAnswer(): Promise<void> {
 async function resolveSentenceIds(): Promise<string[]> {
   const ids: string[] = []
   for (const row of nonEmptyRows.value) {
-    if (row.existingId) {
-      await updateSentenceText(row.existingId, row.primary.trim(), row.secondary.trim())
-      if (row.note.trim()) await updateSentenceNote(row.existingId, row.note.trim())
-      await addWordToSentence(row.existingId, props.wordId)
-      ids.push(row.existingId)
+    const text = row.primary.trim()
+    const translation = row.secondary.trim()
+    const note = row.note.trim()
+
+    // Sentences are unique by text: a row not already linked in the UI
+    // (e.g. a pasted row that never got checked) can still turn out to
+    // match an existing sentence at save time - update it (latest write
+    // wins) rather than creating a duplicate.
+    const existingId = row.existingId ?? (await findSentenceByText(text))?.id ?? null
+    if (existingId) {
+      await updateSentenceText(existingId, text, translation)
+      await updateSentenceNote(existingId, note)
+      await addWordToSentence(existingId, props.wordId)
+      ids.push(existingId)
       continue
     }
-    const id = await addSentence(row.primary.trim(), row.secondary.trim(), row.note.trim())
+    const id = await addSentence(text, translation, note)
     await createSentenceCard(id)
     await addWordToSentence(id, props.wordId)
     ids.push(id)
@@ -149,6 +173,13 @@ async function finish(optOut: boolean): Promise<void> {
   saving.value = false
 
   emit('done', { wordIds: [props.wordId], sentenceIds })
+}
+
+async function confirmDelete(): Promise<void> {
+  await deleteWord(props.wordId)
+  await deleteWordCard(props.wordId)
+  confirmingDelete.value = false
+  emit('done', { wordIds: [props.wordId], sentenceIds: [] })
 }
 </script>
 
@@ -287,6 +318,7 @@ async function finish(optOut: boolean): Promise<void> {
         v-for="(row, index) in rows"
         :key="index"
         class="border-base-300 bg-base-200/40 flex items-center gap-2 rounded-box border p-2"
+        :class="{ 'border-info bg-info/10': row.existingId }"
       >
         <div class="flex flex-1 flex-col gap-2">
           <SimilarEntitySelect
@@ -294,7 +326,8 @@ async function finish(optOut: boolean): Promise<void> {
             :candidates="candidatesFor(row)"
             field-label="Sentence"
             @update:model-value="updatePrimary(index, $event)"
-            @select-existing="(id, label) => selectExisting(index, id, label)"
+            @select-existing="(id) => selectExisting(index, id)"
+            @blur="checkBlurMatch(index)"
           />
           <label class="input input-sm w-full">
             <span class="label w-20 text-xs">Translation</span>
@@ -340,6 +373,54 @@ async function finish(optOut: boolean): Promise<void> {
       >
         I don't want to add more examples
       </button>
+      <button
+        type="button"
+        class="btn btn-ghost text-error"
+        @click="confirmingDelete = true"
+      >
+        Delete word
+      </button>
     </div>
+
+    <dialog
+      class="modal"
+      :class="{ 'modal-open': confirmingDelete }"
+    >
+      <div class="modal-box">
+        <h3 class="text-lg font-semibold">
+          Delete this word?
+        </h3>
+        <p class="py-2 opacity-70">
+          Its example sentence links will be discarded without saving.
+        </p>
+        <div class="modal-action">
+          <button
+            type="button"
+            class="btn"
+            @click="confirmingDelete = false"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="btn btn-error"
+            @click="confirmDelete"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+      <form
+        method="dialog"
+        class="modal-backdrop"
+      >
+        <button
+          type="button"
+          @click="confirmingDelete = false"
+        >
+          close
+        </button>
+      </form>
+    </dialog>
   </div>
 </template>

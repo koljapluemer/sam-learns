@@ -33,8 +33,8 @@ class SentenceNetDb extends Dexie {
     super('sentenceNetDb')
 
     this.version(1).stores({
-      sentences: 'id, *wordIds',
-      words: 'id',
+      sentences: 'id, text, *wordIds',
+      words: 'id, text',
       sentenceCards: 'sentenceId',
       wordCards: 'wordId'
     })

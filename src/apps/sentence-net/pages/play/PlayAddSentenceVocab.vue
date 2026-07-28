@@ -10,7 +10,7 @@ import {
   updateSentenceText
 } from '../../entities/sentence/sentence'
 import { deleteSentenceCard } from '../../entities/sentence-card/sentenceCard'
-import { addWord, listWords, updateWord, updateWordNote } from '../../entities/word/word'
+import { addWord, findWordByText, listWords, updateWord, updateWordNote } from '../../entities/word/word'
 import { createWordCard } from '../../entities/word-card/wordCard'
 import { useEntityRowsForm, type EntityCandidate, type EntityFormRow } from './useEntityRowsForm'
 import SimilarEntitySelect from '../../dumb/SimilarEntitySelect.vue'
@@ -32,13 +32,13 @@ const confirmingDelete = ref(false)
 const saving = ref(false)
 
 const wordCandidates = ref<EntityCandidate[]>([])
-const { rows, removeRow, updatePrimary, selectExisting, candidatesFor, mergeParsed, nonEmptyRows } =
+const { rows, removeRow, updatePrimary, selectExisting, checkBlurMatch, candidatesFor, mergeParsed, nonEmptyRows } =
   useEntityRowsForm(wordCandidates)
 
 onMounted(async () => {
   const [row, words] = await Promise.all([getSentence(props.sentenceId), listWords()])
   sentence.value = row ?? null
-  wordCandidates.value = words.map((word) => ({ id: word.id, label: `${word.text} — ${word.translation}` }))
+  wordCandidates.value = words.map((word) => ({ id: word.id, text: word.text, translation: word.translation, note: word.note }))
 
   if (row && row.wordIds.length > 0) {
     const wordById = new Map(words.map((word) => [word.id, word]))
@@ -111,13 +111,22 @@ async function pasteAnswer(): Promise<void> {
 async function resolveWordIds(): Promise<string[]> {
   const ids: string[] = []
   for (const row of nonEmptyRows.value) {
-    if (row.existingId) {
-      await updateWord(row.existingId, row.primary.trim(), row.secondary.trim())
-      if (row.note.trim()) await updateWordNote(row.existingId, row.note.trim())
-      ids.push(row.existingId)
+    const text = row.primary.trim()
+    const translation = row.secondary.trim()
+    const note = row.note.trim()
+
+    // Words are unique by text: a row not already linked in the UI (e.g. a
+    // pasted row that never got checked) can still turn out to match an
+    // existing word at save time - update it (latest write wins) rather
+    // than creating a duplicate.
+    const existingId = row.existingId ?? (await findWordByText(text))?.id ?? null
+    if (existingId) {
+      await updateWord(existingId, text, translation)
+      await updateWordNote(existingId, note)
+      ids.push(existingId)
       continue
     }
-    const id = await addWord(row.primary.trim(), row.secondary.trim(), row.note.trim())
+    const id = await addWord(text, translation, note)
     await createWordCard(id)
     ids.push(id)
   }
@@ -274,6 +283,7 @@ async function confirmDelete(): Promise<void> {
         v-for="(row, index) in rows"
         :key="index"
         class="border-base-300 bg-base-200/40 flex items-center gap-2 rounded-box border p-2"
+        :class="{ 'border-info bg-info/10': row.existingId }"
       >
         <div class="flex flex-1 flex-col gap-2">
           <SimilarEntitySelect
@@ -281,7 +291,8 @@ async function confirmDelete(): Promise<void> {
             :candidates="candidatesFor(row)"
             field-label="Word"
             @update:model-value="updatePrimary(index, $event)"
-            @select-existing="(id, label) => selectExisting(index, id, label)"
+            @select-existing="(id) => selectExisting(index, id)"
+            @blur="checkBlurMatch(index)"
           />
           <label class="input input-sm w-full">
             <span class="label w-20 text-xs">Translation</span>

@@ -22,6 +22,25 @@ const NEW_SENTENCE_SENTENCES_DUE_MAX = 10
 const NEW_SENTENCE_WORDS_EXAMPLES_MAX = 10
 const NEW_SENTENCE_SENTENCES_VOCAB_MAX = 5
 
+// Practice should outweigh adding new words/sentences: as long as practice
+// screens haven't come up at least 3 more times than the other three
+// screens combined this session, restrict selection to practice screens
+// (when eligible). Session-only counters - reset on page reload.
+const PRACTICE_ADVANTAGE_THRESHOLD = 3
+const PRACTICE_SCREEN_TYPES = new Set<ScreenState['type']>(['practice-sentence', 'practice-vocab'])
+
+let practiceScreenCount = 0
+let otherScreenCount = 0
+
+function isPracticeScreen(screen: ScreenState): boolean {
+  return PRACTICE_SCREEN_TYPES.has(screen.type)
+}
+
+function recordScreenShown(screen: ScreenState): void {
+  if (isPracticeScreen(screen)) practiceScreenCount++
+  else otherScreenCount++
+}
+
 const NO_EXCLUSION: TouchedEntities = { sentenceIds: [], wordIds: [] }
 
 // Two-stage random pick: for each of the 5 screens, first check eligibility
@@ -59,5 +78,11 @@ export async function pickNextScreen(exclude: TouchedEntities = NO_EXCLUSION): P
   const practiceWord = pickRandom(dueWords.filter((w) => !excludedWordIds.has(w.wordId)))
   if (practiceWord) eligible.push({ type: 'practice-vocab', wordId: practiceWord.wordId })
 
-  return pickRandom(eligible) ?? { type: 'new-example-sentence' }
+  const practiceEligible = eligible.filter(isPracticeScreen)
+  const preferPractice = practiceScreenCount < otherScreenCount + PRACTICE_ADVANTAGE_THRESHOLD
+  const pool = preferPractice && practiceEligible.length > 0 ? practiceEligible : eligible
+
+  const picked = pickRandom(pool) ?? { type: 'new-example-sentence' as const }
+  recordScreenShown(picked)
+  return picked
 }

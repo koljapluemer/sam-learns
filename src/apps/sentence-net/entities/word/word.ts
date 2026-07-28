@@ -40,6 +40,13 @@ export async function getWord(id: string): Promise<WordRow | undefined> {
   return appDb.words.get(id)
 }
 
+// Words are unique by target-language text: this is how the UI decides
+// whether typing/pasting a word should update an existing entry instead of
+// creating a duplicate.
+export async function findWordByText(text: string): Promise<WordRow | undefined> {
+  return appDb.words.where('text').equals(text).first()
+}
+
 export async function listWords(): Promise<WordRow[]> {
   return appDb.words.toArray()
 }

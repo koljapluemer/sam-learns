@@ -1,9 +1,10 @@
 import { computed, type Ref } from 'vue'
 import { useAutoGrowRows } from '../../dumb/useAutoGrowRows'
 import { mergeParsedRows } from '../../dumb/mergeRows'
+import { mergeField } from '../../dumb/mergeField'
 
 export type EntityFormRow = { primary: string; secondary: string; note: string; existingId: string | null }
-export type EntityCandidate = { id: string; label: string }
+export type EntityCandidate = { id: string; text: string; translation: string; note: string }
 
 function isRowEmpty(row: EntityFormRow): boolean {
   return row.primary.trim() === '' && row.secondary.trim() === ''
@@ -20,34 +21,77 @@ export function useEntityRowsForm(allCandidates: Ref<EntityCandidate[]>) {
     isRowEmpty
   )
 
-  // Once a row is linked to an existing entity (via selectExisting, or
-  // because it was pre-populated from already-attached data), further edits
-  // update that same entity rather than detaching it - only removing the row
-  // clears the link. Only an unlinked row's typing is treated as a live
-  // search query.
+  // Once a row is linked to an existing entity (via selectExisting, a blur
+  // match, or because it was pre-populated from already-attached data),
+  // further edits update that same entity rather than detaching it - only
+  // removing the row clears the link. Only an unlinked row's typing is
+  // treated as a live search query.
   function updatePrimary(index: number, value: string): void {
-    rows.value[index] = { ...rows.value[index], primary: value }
+    rows.value[index] = { ...rows.value[index], primary: value, existingId: null }
   }
 
-  function selectExisting(index: number, id: string, label: string): void {
-    rows.value[index] = { ...rows.value[index], primary: label, existingId: id }
+  // Links a row to an existing entity, filling blank translation/note from
+  // it or merging on collision (see mergeField).
+  function applyMatch(index: number, matched: EntityCandidate): void {
+    const row = rows.value[index]
+    rows.value[index] = {
+      primary: matched.text,
+      secondary: mergeField(matched.translation, row.secondary),
+      note: mergeField(matched.note, row.note),
+      existingId: matched.id
+    }
+  }
+
+  function selectExisting(index: number, id: string): void {
+    const matched = allCandidates.value.find((candidate) => candidate.id === id)
+    if (matched) applyMatch(index, matched)
+  }
+
+  // Exact-match check run on blur: if the typed text matches an existing
+  // entity's text, link to it (see applyMatch) instead of leaving the row to
+  // create a duplicate on save.
+  function checkBlurMatch(index: number): void {
+    const row = rows.value[index]
+    if (row.existingId) return
+    const text = row.primary.trim()
+    if (!text) return
+    const matched = allCandidates.value.find((candidate) => candidate.text === text)
+    if (matched) applyMatch(index, matched)
   }
 
   function candidatesFor(row: EntityFormRow): EntityCandidate[] {
     const query = row.primary.trim().toLowerCase()
     if (row.existingId || !query) return []
-    return allCandidates.value.filter((candidate) => candidate.label.toLowerCase().includes(query)).slice(0, 5)
+    return allCandidates.value.filter((candidate) => candidate.text.toLowerCase().includes(query)).slice(0, 5)
   }
 
   function mergeParsed(parsed: { primary: string; secondary: string; note?: string }[]): void {
-    rows.value = mergeParsedRows(
-      rows.value,
-      parsed.map((row) => ({ ...row, note: row.note ?? '', existingId: null })),
-      isRowEmpty
-    )
+    const resolved: EntityFormRow[] = parsed.map((row) => {
+      const matched = allCandidates.value.find((candidate) => candidate.text === row.primary.trim())
+      if (matched) {
+        return {
+          primary: matched.text,
+          secondary: mergeField(matched.translation, row.secondary),
+          note: mergeField(matched.note, row.note ?? ''),
+          existingId: matched.id
+        }
+      }
+      return { primary: row.primary, secondary: row.secondary, note: row.note ?? '', existingId: null }
+    })
+    rows.value = mergeParsedRows(rows.value, resolved, isRowEmpty)
   }
 
   const nonEmptyRows = computed(() => rows.value.filter((row) => row.primary.trim() !== ''))
 
-  return { rows, removeRow, reset, updatePrimary, selectExisting, candidatesFor, mergeParsed, nonEmptyRows }
+  return {
+    rows,
+    removeRow,
+    reset,
+    updatePrimary,
+    selectExisting,
+    checkBlurMatch,
+    candidatesFor,
+    mergeParsed,
+    nonEmptyRows
+  }
 }
