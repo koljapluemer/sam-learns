@@ -188,6 +188,7 @@ export function usePracticeSession() {
   }
 
   function handleAnswer(answer: AnswerValue): void {
+    if (guessMade.value) return
     const currentExercise = exercise.value
     if (!currentExercise) return
 

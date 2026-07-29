@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import { usePracticeQueue } from './usePracticeQueue'
 import { countWordsAddedToday, countUnmemorizedWords } from '../../entities/word/word'
 import { DAILY_GOAL } from './useAddForm'
-import type { MainView } from './MainDock.vue'
+import type { MainView } from './PageMain.vue'
 
 const emit = defineEmits<{ 'switch-view': [view: MainView] }>()
 

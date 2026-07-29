@@ -26,7 +26,7 @@ const methods: { value: KeystrokeMethod; label: string }[] = [
           :key="option.value"
           type="button"
           class="btn join-item"
-          :class="{ 'btn-active': method === option.value }"
+          :class="method === option.value ? 'btn-primary' : ''"
           @click="method = option.value"
         >
           {{ option.label }}

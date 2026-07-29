@@ -4,7 +4,7 @@
 import { X } from 'lucide-vue-next'
 import { DAILY_GOAL, useAddForm } from './useAddForm'
 import DoodleCanvas from '../../dumb/DoodleCanvas.vue'
-import type { MainView } from './MainDock.vue'
+import type { MainView } from './PageMain.vue'
 
 const emit = defineEmits<{ 'switch-view': [view: MainView] }>()
 

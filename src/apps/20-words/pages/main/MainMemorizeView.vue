@@ -2,7 +2,7 @@
 import { Check, Eye, Lock, X } from 'lucide-vue-next'
 import { useMemorizeBoard, type MemorizeRow } from './useMemorizeBoard'
 import { isTouchDevice } from '../../dumb/isTouchDevice'
-import type { MainView } from './MainDock.vue'
+import type { MainView } from './PageMain.vue'
 
 const emit = defineEmits<{ 'switch-view': [view: MainView] }>()
 

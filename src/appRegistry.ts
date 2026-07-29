@@ -15,6 +15,9 @@ export type AppRouteDefinition = {
     // 'contained' (centered, max-width, padded) unless set to 'full-bleed'
     // (fills the viewport - used by immersive/game-like exercises).
     layout?: 'contained' | 'full-bleed'
+    // Set when the page renders its own fixed BottomDock, so App.vue's
+    // global footer can lift itself above it instead of overlapping it.
+    hasBottomDock?: boolean
   }
 }
 
@@ -632,7 +635,8 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/20-words/pages/main/PageMain.vue'),
         meta: {
           title: 'Main | 20 Words',
-          description: 'Add, memorize, and practice today\'s vocab.'
+          description: 'Add, memorize, and practice today\'s vocab.',
+          hasBottomDock: true
         }
       },
       {
@@ -745,7 +749,8 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/sentence-net/pages/play/PagePlay.vue'),
         meta: {
           title: 'Sentence Net',
-          description: 'Add sentences, tag vocab, and practice with FSRS flashcards.'
+          description: 'Add sentences, tag vocab, and practice with FSRS flashcards.',
+          hasBottomDock: true
         }
       },
       {

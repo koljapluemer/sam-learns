@@ -56,9 +56,9 @@ useActiveTime('arabicnumbers')
                 'btn-error': session.guessMade.value && index == session.indexOfAnswerClicked.value && session.givenAnswer.value !== session.correctAnswer.value,
                 'btn-info': session.guessMade.value && index != session.indexOfAnswerClicked.value && answer === session.correctAnswer.value && session.givenAnswer.value !== session.correctAnswer.value,
                 'text-3xl': session.fieldUsedAsAnswer.value === 'ar',
-                'shine-button wiggle-button': answer === session.correctAnswer.value && session.streak.value < 3 && !session.guessMade.value && !session.userSawExerciseBefore()
+                'shine-button wiggle-button': answer === session.correctAnswer.value && session.streak.value < 3 && !session.guessMade.value && !session.userSawExerciseBefore(),
+                'pointer-events-none': session.guessMade.value
               }"
-              :disabled="session.guessMade.value"
               @click="session.handleAnswer(answer)"
             >
               {{ answer }}

@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import MainDock, { type MainView } from './MainDock.vue'
+import { Brain, Layers, List, PlusCircle } from 'lucide-vue-next'
+import BottomDock, { type DockItem } from '@/shared/shell/BottomDock.vue'
 import MainAddView from './MainAddView.vue'
 import MainMemorizeView from './MainMemorizeView.vue'
 import MainPracticeView from './MainPracticeView.vue'
 import MainManageView from './MainManageView.vue'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
 
+export type MainView = 'add' | 'memorize' | 'practice' | 'manage'
+
 useActiveTime('20-words')
 const view = ref<MainView>('add')
+
+const items: DockItem[] = [
+  { key: 'add', icon: PlusCircle, label: 'Add' },
+  { key: 'memorize', icon: Layers, label: 'Memorize' },
+  { key: 'practice', icon: Brain, label: 'Practice' },
+  { key: 'manage', icon: List, label: 'Manage words' }
+]
 </script>
 
 <template>
@@ -27,6 +37,10 @@ const view = ref<MainView>('add')
     />
     <MainManageView v-else />
 
-    <MainDock v-model="view" />
+    <BottomDock
+      :model-value="view"
+      :items="items"
+      @update:model-value="view = $event as MainView"
+    />
   </div>
 </template>

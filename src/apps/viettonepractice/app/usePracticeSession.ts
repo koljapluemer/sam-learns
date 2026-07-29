@@ -78,6 +78,9 @@ export function usePracticeSession(config: PracticeSessionConfig) {
   const loadError = ref('')
   const hiddenClipFilenames = ref<Set<string>>(new Set())
   let clipCatalog: PracticeCatalogEntry[] = []
+  // Words already shown as a wrong-answer distractor this session - excluded
+  // from being picked as a distractor again so the same word isn't repeated.
+  const usedDistractorLabels = new Set<string>()
 
   const answerOptions = computed(() => round.value?.options ?? [])
   const changedCharacterIndex = computed(() => round.value?.candidate.changedIndex ?? -1)
@@ -208,7 +211,10 @@ export function usePracticeSession(config: PracticeSessionConfig) {
     const selectedDirectionKey = chooseDirectionKey(directionalExercises, directionalHistory)
     if (!selectedDirectionKey) return null
 
-    return pickRandom(directionalExercises.get(selectedDirectionKey) ?? [])
+    const candidates = directionalExercises.get(selectedDirectionKey) ?? []
+    const unusedCandidates = candidates.filter((exercise) => !usedDistractorLabels.has(exercise.candidate.label))
+
+    return pickRandom(unusedCandidates.length ? unusedCandidates : candidates)
   }
 
   const generateNextRound = (): Round | null => {
@@ -230,7 +236,10 @@ export function usePracticeSession(config: PracticeSessionConfig) {
         : chooseStrategyAExercise(pairExercises, pairHistory)
       const selectedExercise = selectedPairKey ? chooseExerciseForPair(selectedPairKey, allPairExercises, directionalHistory) : null
 
-      if (selectedExercise) return createRound(selectedExercise, selectionMode)
+      if (selectedExercise) {
+        usedDistractorLabels.add(selectedExercise.candidate.label)
+        return createRound(selectedExercise, selectionMode)
+      }
     }
 
     return null

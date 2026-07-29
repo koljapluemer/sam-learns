@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { BarChart3, Home, Info, Play, Settings, X } from 'lucide-vue-next'
 import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 
 const route = useRoute()
 
-const isFooterExpanded = ref(true)
+const isFooterExpanded = useLocalSetting('footer-expanded', true)
 
 const appSlug = computed(() => (typeof route.meta.appSlug === 'string' ? route.meta.appSlug : ''))
 const app = computed(() => apps.find((candidate) => candidate.slug === appSlug.value))
+const hasBottomDock = computed(() => route.meta.hasBottomDock === true)
 
 const appName = computed(() => (shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : ''))
 
@@ -116,7 +118,10 @@ const tabs = computed<NavTab[]>(() => {
       <RouterView />
     </main>
 
-    <footer class="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex items-center justify-start p-3 w-full">
+    <footer
+      class="pointer-events-none fixed inset-x-0 z-50 flex items-center justify-start p-3 w-full"
+      :class="hasBottomDock ? 'bottom-20 sm:bottom-24' : 'bottom-0'"
+    >
       <div
         v-if="isFooterExpanded"
         class="pointer-events-auto relative rounded-box border border-base-300 bg-base-100/90 p-2 pr-8 shadow-sm backdrop-blur text-xs gap-2 flex flex-col"

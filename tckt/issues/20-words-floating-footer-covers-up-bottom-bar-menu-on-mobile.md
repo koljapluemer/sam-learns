@@ -1,1 +1,0 @@
-20 words: floating footer covers up bottom bar menu on mobile
