@@ -2,11 +2,21 @@
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { logActivity } from '@/shared/activity/useLearningEvent'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 import { getAllTrials, recordTrial, RECENT_TRIAL_COUNT } from './entities/trial/trialRepository'
 import PointCloudChart from './dumb/PointCloudChart.vue'
 import type { TrialRow } from './db/appDb'
 
 useActiveTime('currency-conversion-practice')
+
+const MAGNITUDES = [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000, 1000000]
+
+function formatMagnitude(magnitude: number): string {
+  return magnitude >= 1 ? magnitude.toLocaleString('en-US') : magnitude.toString()
+}
+
+const minMagnitude = useLocalSetting('currency-conversion-practice-min-magnitude', 1)
+const maxMagnitude = useLocalSetting('currency-conversion-practice-max-magnitude', 1000)
 
 const dividend = ref(0)
 const divisor = ref(1.2)
@@ -37,10 +47,24 @@ onUnmounted(() => {
 generateRandomExercise()
 
 function generateRandomExercise() {
-  dividend.value = Math.floor(Math.random() * (800 - 5 + 1) + 5)
+  dividend.value = randomExerciseValue()
   guess.value = null
   isRevealed.value = false
   nextTick(() => guessInput.value?.focus())
+}
+
+function randomExerciseValue(): number {
+  const minIndex = MAGNITUDES.indexOf(minMagnitude.value)
+  const maxIndex = MAGNITUDES.indexOf(maxMagnitude.value)
+  const lowIndex = Math.min(minIndex, maxIndex)
+  const highIndex = Math.max(minIndex, maxIndex)
+  const magnitude = MAGNITUDES[lowIndex + Math.floor(Math.random() * (highIndex - lowIndex + 1))]
+
+  const firstDigit = Math.floor(Math.random() * 9) + 1
+  const secondDigit = Math.floor(Math.random() * 10)
+  const mantissa = firstDigit * 10 + secondDigit
+
+  return Number(((mantissa * magnitude) / 10).toPrecision(2))
 }
 
 function evaluateScore() {
@@ -111,6 +135,38 @@ const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map
           placeholder="Rate"
           step="0.01"
         >
+        <div class="flex gap-2">
+          <label class="flex flex-1 flex-col gap-1">
+            <span class="text-xs opacity-70">Min magnitude</span>
+            <select
+              v-model="minMagnitude"
+              class="select select-sm"
+            >
+              <option
+                v-for="magnitude in MAGNITUDES"
+                :key="magnitude"
+                :value="magnitude"
+              >
+                {{ formatMagnitude(magnitude) }}
+              </option>
+            </select>
+          </label>
+          <label class="flex flex-1 flex-col gap-1">
+            <span class="text-xs opacity-70">Max magnitude</span>
+            <select
+              v-model="maxMagnitude"
+              class="select select-sm"
+            >
+              <option
+                v-for="magnitude in MAGNITUDES"
+                :key="magnitude"
+                :value="magnitude"
+              >
+                {{ formatMagnitude(magnitude) }}
+              </option>
+            </select>
+          </label>
+        </div>
       </div>
     </details>
 
