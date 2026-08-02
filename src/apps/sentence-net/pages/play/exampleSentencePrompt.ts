@@ -1,9 +1,10 @@
 export type SentencePasteRow = { sentence: string; translation: string; note: string }
 
-export function buildExampleSentencesPrompt(word: string, translation: string): string {
+export function buildExampleSentencesPrompt(word: string, translation: string, language = ''): string {
   return [
     `Word: ${word}`,
     `Translation: ${translation}`,
+    ...(language.trim() ? [`Language: ${language.trim()}`] : []),
     '',
     "Give 3 example sentences in the word's language that use this word, each with its translation.",
     "Keep \"sentence\" and \"translation\" to the plain text - don't add parenthetical",

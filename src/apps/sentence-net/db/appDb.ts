@@ -6,6 +6,7 @@ export type SentenceRow = {
   text: string
   translation: string
   note: string
+  language: string
   wordIds: string[]
   vocabDone: boolean
   createdAt: string
@@ -16,6 +17,7 @@ export type WordRow = {
   text: string
   translation: string
   note: string
+  language: string
   examplesOptOut: boolean
   createdAt: string
 }

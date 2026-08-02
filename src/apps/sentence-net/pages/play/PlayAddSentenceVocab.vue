@@ -4,13 +4,23 @@ import { Check, ClipboardPaste, Copy, Pencil, X } from 'lucide-vue-next'
 import {
   deleteSentence,
   getSentence,
+  listSentenceLanguages,
   markVocabDone,
   setSentenceWords,
+  updateSentenceLanguage,
   updateSentenceNote,
   updateSentenceText
 } from '../../entities/sentence/sentence'
 import { deleteSentenceCard } from '../../entities/sentence-card/sentenceCard'
-import { addWord, findWordByText, listWords, updateWord, updateWordNote } from '../../entities/word/word'
+import {
+  addWord,
+  findWordByText,
+  listWordLanguages,
+  listWords,
+  updateWord,
+  updateWordNote
+} from '../../entities/word/word'
+import { collectLanguages } from '../../dumb/collectLanguages'
 import { createWordCard } from '../../entities/word-card/wordCard'
 import { useEntityRowsForm, type EntityCandidate, type EntityFormRow } from './useEntityRowsForm'
 import SimilarEntitySelect from '../../dumb/SimilarEntitySelect.vue'
@@ -25,20 +35,29 @@ const sentence = ref<SentenceRow | null>(null)
 const editingText = ref(false)
 const editingTranslation = ref(false)
 const editingNote = ref(false)
+const editingLanguage = ref(false)
 const draftText = ref('')
 const draftTranslation = ref('')
 const draftNote = ref('')
+const draftLanguage = ref('')
 const confirmingDelete = ref(false)
 const saving = ref(false)
 
 const wordCandidates = ref<EntityCandidate[]>([])
+const languageSuggestions = ref<string[]>([])
 const { rows, removeRow, updatePrimary, selectExisting, checkBlurMatch, candidatesFor, mergeParsed, nonEmptyRows } =
   useEntityRowsForm(wordCandidates)
 
 onMounted(async () => {
-  const [row, words] = await Promise.all([getSentence(props.sentenceId), listWords()])
+  const [row, words, sentenceLanguages, wordLanguages] = await Promise.all([
+    getSentence(props.sentenceId),
+    listWords(),
+    listSentenceLanguages(),
+    listWordLanguages()
+  ])
   sentence.value = row ?? null
   wordCandidates.value = words.map((word) => ({ id: word.id, text: word.text, translation: word.translation, note: word.note }))
+  languageSuggestions.value = collectLanguages(sentenceLanguages, wordLanguages)
 
   if (row && row.wordIds.length > 0) {
     const wordById = new Map(words.map((word) => [word.id, word]))
@@ -89,10 +108,25 @@ async function saveEditNote(): Promise<void> {
   editingNote.value = false
 }
 
+function startEditLanguage(): void {
+  draftLanguage.value = sentence.value?.language ?? ''
+  editingLanguage.value = true
+}
+
+async function saveEditLanguage(): Promise<void> {
+  if (!sentence.value) return
+  const language = draftLanguage.value.trim()
+  await updateSentenceLanguage(props.sentenceId, language)
+  sentence.value.language = language
+  editingLanguage.value = false
+}
+
 async function copyPrompt(): Promise<void> {
   if (!sentence.value) return
   try {
-    await navigator.clipboard.writeText(buildVocabPrompt(sentence.value.text, sentence.value.translation))
+    await navigator.clipboard.writeText(
+      buildVocabPrompt(sentence.value.text, sentence.value.translation, sentence.value.language)
+    )
   } catch {
     // clipboard unavailable - nothing sensible to fall back to
   }
@@ -126,7 +160,7 @@ async function resolveWordIds(): Promise<string[]> {
       ids.push(existingId)
       continue
     }
-    const id = await addWord(text, translation, note)
+    const id = await addWord(text, translation, note, sentence.value?.language ?? '')
     await createWordCard(id)
     ids.push(id)
   }
@@ -251,6 +285,47 @@ async function confirmDelete(): Promise<void> {
           class="btn btn-ghost btn-sm btn-circle"
           aria-label="Edit note"
           @click="startEditNote"
+        >
+          <Pencil class="h-4 w-4" />
+        </button>
+      </template>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <template v-if="editingLanguage">
+        <input
+          v-model="draftLanguage"
+          type="text"
+          list="add-sentence-vocab-language-options"
+          placeholder="Language"
+          class="input input-sm flex-1"
+          @keyup.enter="saveEditLanguage"
+        >
+        <datalist id="add-sentence-vocab-language-options">
+          <option
+            v-for="lang in languageSuggestions"
+            :key="lang"
+            :value="lang"
+          />
+        </datalist>
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm btn-circle"
+          aria-label="Save language"
+          @click="saveEditLanguage"
+        >
+          <Check class="h-4 w-4" />
+        </button>
+      </template>
+      <template v-else>
+        <p class="flex-1 text-sm italic opacity-60">
+          {{ sentence.language || 'No language' }}
+        </p>
+        <button
+          type="button"
+          class="btn btn-ghost btn-sm btn-circle"
+          aria-label="Edit language"
+          @click="startEditLanguage"
         >
           <Pencil class="h-4 w-4" />
         </button>

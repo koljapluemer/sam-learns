@@ -1,12 +1,13 @@
 import { appDb, type WordRow } from '../../db/appDb'
 
-export async function addWord(text: string, translation: string, note = ''): Promise<string> {
+export async function addWord(text: string, translation: string, note = '', language = ''): Promise<string> {
   const id = crypto.randomUUID()
   const row: WordRow = {
     id,
     text,
     translation,
     note,
+    language,
     examplesOptOut: false,
     createdAt: new Date().toISOString()
   }
@@ -20,6 +21,10 @@ export async function updateWord(id: string, text: string, translation: string):
 
 export async function updateWordNote(id: string, note: string): Promise<void> {
   await appDb.words.update(id, { note })
+}
+
+export async function updateWordLanguage(id: string, language: string): Promise<void> {
+  await appDb.words.update(id, { language })
 }
 
 export async function setExamplesOptOut(id: string): Promise<void> {
@@ -49,6 +54,11 @@ export async function findWordByText(text: string): Promise<WordRow | undefined>
 
 export async function listWords(): Promise<WordRow[]> {
   return appDb.words.toArray()
+}
+
+export async function listWordLanguages(): Promise<string[]> {
+  const all = await appDb.words.toArray()
+  return all.map((row) => row.language)
 }
 
 export async function getWordsByIds(ids: string[]): Promise<Map<string, WordRow>> {

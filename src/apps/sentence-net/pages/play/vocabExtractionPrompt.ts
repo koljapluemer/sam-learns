@@ -1,9 +1,10 @@
 export type VocabPasteRow = { word: string; translation: string; note: string }
 
-export function buildVocabPrompt(sentence: string, translation: string): string {
+export function buildVocabPrompt(sentence: string, translation: string, language = ''): string {
   return [
     `Sentence: ${sentence}`,
     `Translation: ${translation}`,
+    ...(language.trim() ? [`Language: ${language.trim()}`] : []),
     '',
     'Extract each vocabulary word from the sentence above, with its translation.',
     "Keep \"word\" and \"translation\" to the bare word/phrase - don't add parenthetical",

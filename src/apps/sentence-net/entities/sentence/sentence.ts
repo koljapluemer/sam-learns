@@ -6,13 +6,14 @@ function toPlainIds(ids: string[]): string[] {
   return JSON.parse(JSON.stringify(ids)) as string[]
 }
 
-export async function addSentence(text: string, translation: string, note = ''): Promise<string> {
+export async function addSentence(text: string, translation: string, note = '', language = ''): Promise<string> {
   const id = crypto.randomUUID()
   const row: SentenceRow = {
     id,
     text,
     translation,
     note,
+    language,
     wordIds: [],
     vocabDone: false,
     createdAt: new Date().toISOString()
@@ -27,6 +28,10 @@ export async function updateSentenceText(id: string, text: string, translation: 
 
 export async function updateSentenceNote(id: string, note: string): Promise<void> {
   await appDb.sentences.update(id, { note })
+}
+
+export async function updateSentenceLanguage(id: string, language: string): Promise<void> {
+  await appDb.sentences.update(id, { language })
 }
 
 export async function setSentenceWords(id: string, wordIds: string[]): Promise<void> {
@@ -66,6 +71,11 @@ export async function findSentenceByText(text: string): Promise<SentenceRow | un
 
 export async function listSentences(): Promise<SentenceRow[]> {
   return appDb.sentences.toArray()
+}
+
+export async function listSentenceLanguages(): Promise<string[]> {
+  const all = await appDb.sentences.toArray()
+  return all.map((row) => row.language)
 }
 
 export async function getSentencesEligibleForVocab(): Promise<SentenceRow[]> {
