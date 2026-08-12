@@ -770,5 +770,46 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'quotes',
+    name: 'Quotes',
+    description: 'Memorize quotes with progressively deeper cloze flashcards.',
+    stats: { trialLabel: 'flashcards graded' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/quotes/pages/info/PageInfo.vue'),
+        meta: {
+          title: 'Quotes',
+          description: 'Memorize quotes with progressively deeper cloze flashcards.'
+        }
+      },
+      {
+        path: 'practice',
+        component: () => import('./apps/quotes/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Practice | Quotes',
+          description: 'Practice quotes with cloze flashcards.',
+          hasBottomDock: true
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/quotes/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Quotes',
+          description: 'Cross-app daily usage stats.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/quotes/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Quotes',
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]
