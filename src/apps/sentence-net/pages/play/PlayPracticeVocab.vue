@@ -6,6 +6,7 @@ import { deleteWord, getWord } from '../../entities/word/word'
 import { deleteWordCard, getWordCard, rateWordCard } from '../../entities/word-card/wordCard'
 import { getSentencesContainingWord } from '../../entities/sentence/sentence'
 import { pickRandomSample } from '../../dumb/random'
+import { addToHotPool } from '../../dumb/hotPool'
 import type { SentenceRow, WordRow } from '../../db/appDb'
 import type { JumpTarget, TouchedEntities } from './useQueueSelection'
 
@@ -18,6 +19,7 @@ const emit = defineEmits<{
 const word = ref<WordRow | null>(null)
 const card = ref<Card | null>(null)
 const exampleSentences = ref<SentenceRow[]>([])
+const allExampleSentenceIds = ref<string[]>([])
 const revealed = ref(false)
 const confirmingDelete = ref(false)
 
@@ -30,6 +32,7 @@ onMounted(async () => {
   word.value = wordRow ?? null
   card.value = wordCard ?? null
   exampleSentences.value = pickRandomSample(sentences, 3)
+  allExampleSentenceIds.value = sentences.map((sentence) => sentence.id)
 })
 
 function reveal(): void {
@@ -39,6 +42,7 @@ function reveal(): void {
 async function rate(rating: Grade): Promise<void> {
   if (!card.value) return
   await rateWordCard(props.wordId, card.value, rating)
+  if (rating !== Rating.Easy) addToHotPool('sentence', allExampleSentenceIds.value)
   emit('done', { wordIds: [props.wordId], sentenceIds: [] })
 }
 

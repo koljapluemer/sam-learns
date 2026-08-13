@@ -5,6 +5,7 @@ import { Rating, type Card, type Grade } from 'ts-fsrs'
 import { deleteSentence, getSentence } from '../../entities/sentence/sentence'
 import { deleteSentenceCard, getSentenceCard, rateSentenceCard } from '../../entities/sentence-card/sentenceCard'
 import { getWordsByIds } from '../../entities/word/word'
+import { addToHotPool } from '../../dumb/hotPool'
 import type { SentenceRow, WordRow } from '../../db/appDb'
 import type { JumpTarget, TouchedEntities } from './useQueueSelection'
 
@@ -38,6 +39,7 @@ function reveal(): void {
 async function rate(rating: Grade): Promise<void> {
   if (!card.value) return
   await rateSentenceCard(props.sentenceId, card.value, rating)
+  if (rating !== Rating.Easy && sentence.value) addToHotPool('word', sentence.value.wordIds)
   emit('done', { sentenceIds: [props.sentenceId], wordIds: [] })
 }
 
