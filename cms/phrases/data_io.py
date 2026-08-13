@@ -11,8 +11,9 @@ Per language (public/data/phrases/<iso3>/):
   (e.g. "Excuse me") -> {"expressions": {target-language phrase: {"note":
   optional str}}}
 - audio/: mp3s for target-language phrases, named by audio.audio_filename
-  (see that module) - shared across every situation in the language, since
-  the same phrase may appear under multiple goals/situations.
+  (see that module) - a plain slug of the phrase text, shared across every
+  situation in the language, since the same phrase may appear under
+  multiple goals/situations.
 """
 
 import json

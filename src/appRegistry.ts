@@ -852,5 +852,46 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'phrases',
+    name: 'Phrases',
+    description: 'Memorize core phrases for everyday situations, by target language, with audio.',
+    stats: { trialLabel: 'phrases practiced' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/phrases/pages/info/PageInfo.vue'),
+        meta: {
+          title: 'Phrases',
+          description: 'Memorize core phrases for everyday situations, by target language.'
+        }
+      },
+      {
+        path: 'practice',
+        component: () => import('./apps/phrases/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Practice | Phrases',
+          description: 'Practice target-language phrases by situation with FSRS spaced repetition.',
+          hasBottomDock: true
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/phrases/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Phrases',
+          description: 'Time spent and phrases practiced.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/phrases/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Phrases',
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]

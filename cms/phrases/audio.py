@@ -4,14 +4,13 @@ Shared between the CMS app (single-phrase, on-demand generation for
 whatever's missing) and scripts/generate_audio.py (batch-fills every
 missing phrase across all languages). Audio files live in each language's
 audio/ folder (see data_io.audio_dir), named after a slug of the phrase
-text plus a content hash for uniqueness (audio_filename below), so the
-same phrase always resolves to the same file regardless of which
-situation/goal it appears under.
+text (audio_filename below), so the same phrase always resolves to the
+same file regardless of which situation/goal it appears under. Collisions
+aren't a concern for this app's phrase volume, so no uniqueness suffix.
 
 Requires ELEVENLABS_API_KEY in a .env file at the repo root.
 """
 
-import hashlib
 import os
 import random
 import re
@@ -38,8 +37,7 @@ def iso3_to_iso1(iso3: str) -> str | None:
 
 def audio_filename(phrase: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", phrase.lower()).strip("-") or "phrase"
-    digest = hashlib.md5(phrase.encode("utf-8")).hexdigest()[:8]
-    return f"{slug}-{digest}.mp3"
+    return f"{slug}.mp3"
 
 
 def audio_path(iso3: str, phrase: str) -> Path:

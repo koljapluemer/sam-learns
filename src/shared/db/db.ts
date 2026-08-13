@@ -52,6 +52,8 @@ db.version(1).stores({
   justFlashcards_flashcards: 'id, createdAt',
   justFlashcards_cards: 'flashcardId',
 
+  phrases_schedules: 'id',
+
   hebrewscript_practiceEvents: 'id, timestamp',
 
   tprboard_learningItems: 'key, languageCode',

@@ -6,8 +6,8 @@ Run via: uv run python phrases/scripts/generate_audio.py
 Each phrase file nests target-language phrases as keys of an "expressions"
 object, at any depth. For every phrase found, writes an mp3 to a sibling
 audio/ folder (public/data/phrases/<iso3>/audio/), named after a slug of
-the phrase text plus a content hash for uniqueness. Phrases whose audio
-file already exists are skipped, so reruns only fill in new phrases.
+the phrase text. Phrases whose audio file already exists are skipped, so
+reruns only fill in new phrases.
 
 Batch counterpart to the CMS app's per-phrase "Generate audio" button -
 see ../audio.py for the filename convention and generation details, which

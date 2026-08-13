@@ -10,10 +10,10 @@ frontend-facing files in place. Per language:
 - `<slug>.json` - that situation's content: a dict of communication goal
   (e.g. `"Excuse me"`) -> `{"expressions": {target-language phrase:
   {"note": optional str}}}`.
-- `audio/` - mp3s for target-language phrases, named by a slug of the
-  phrase plus a content hash (`audio.audio_filename`). Shared across every
-  situation in the language, since the same phrase can appear under
-  multiple goals/situations.
+- `audio/` - mp3s for target-language phrases, named by a plain slug of
+  the phrase text (`audio.audio_filename`). Shared across every situation
+  in the language, since the same phrase can appear under multiple
+  goals/situations.
 
 See `data_io.py` for the load/save/CRUD helpers and `audio.py` for the
 ElevenLabs TTS generation, both used by `app.py`.
