@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 
 const router = useRouter()
 
@@ -23,5 +24,8 @@ function start(): void {
     >
       Start
     </button>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>

@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { getLanguageCatalog, type LanguageCatalogEntry } from '../../entities/language-catalog/languageCatalog'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 
 const router = useRouter()
 const languages = ref<LanguageCatalogEntry[]>([])
@@ -71,5 +72,8 @@ onMounted(async () => {
     >
       Start listening
     </button>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>

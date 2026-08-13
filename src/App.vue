@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { BarChart3, Home, Info, Play, Settings, X } from 'lucide-vue-next'
-import { apps, type AppRouteDefinition } from '@/appRegistry'
+import { BarChart3, Heart, Home, Info, Play, Settings, X } from 'lucide-vue-next'
+import { type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import { useCurrentApp } from '@/shared/shell/useCurrentApp'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 import UserInteractionDialog from '@/shared/account/UserInteractionDialog.vue'
 
 const route = useRoute()
 
-const isFooterExpanded = useLocalSetting('footer-expanded', true)
+const isInfoBoxDismissed = useLocalSetting('app-info-dismissed', false)
 
-const appSlug = computed(() => (typeof route.meta.appSlug === 'string' ? route.meta.appSlug : ''))
-const app = computed(() => apps.find((candidate) => candidate.slug === appSlug.value))
+const app = useCurrentApp()
 const hasBottomDock = computed(() => route.meta.hasBottomDock === true)
 
 const appName = computed(() => (shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : ''))
@@ -112,6 +113,19 @@ const tabs = computed<NavTab[]>(() => {
           />
           <span class="hidden sm:inline">{{ tab.label }}</span>
         </router-link>
+        <a
+          href="https://ko-fi.com/S6S81CWUVD"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-sm gap-2"
+          aria-label="Support my work on ko-fi"
+        >
+          <Heart
+            :size="18"
+            aria-hidden="true"
+          />
+          <span class="hidden sm:inline">Support</span>
+        </a>
       </nav>
     </div>
 
@@ -122,93 +136,26 @@ const tabs = computed<NavTab[]>(() => {
     <UserInteractionDialog />
 
     <footer
+      v-if="!isInfoBoxDismissed"
       class="pointer-events-none fixed inset-x-0 z-50 flex items-center justify-start p-3 w-full"
       :class="hasBottomDock ? 'bottom-20 sm:bottom-24' : 'bottom-0'"
     >
       <div
-        v-if="isFooterExpanded"
-        class="pointer-events-auto relative rounded-box border border-base-300 bg-base-100/90 p-2 pr-8 shadow-sm backdrop-blur text-xs gap-2 flex flex-col"
+        class="pointer-events-auto relative flex max-w-sm flex-col gap-2 rounded-box border border-base-300 bg-base-100/90 p-3 shadow-sm backdrop-blur"
       >
-        <p>
-          Made with ♥ by <a
-            href="https://koljasam.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-          >Kolja
-            Sam</a>.
-        </p>
-        <p>
-          If you want to support me building more apps like this in the future,
-          <a
-            href="https://ko-fi.com/S6S81CWUVD"
-            target="_blank"
-            rel="noopener"
-            class="link"
-          >
-            support my work on ko-fi
-          </a>.
-        </p>
-
-        <p>
-          I'm using the privacy-friendly <a
-            href="https://www.goatcounter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-          >Goatcounter</a> to track page views and I store some pseudonymous learning data. No
-          personal data is collected, and cookies are used solely for tracking your learning progress on your
-          device. This app is
-          <a
-            href="https://github.com/koljapluemer/sam-learns-things"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-          >open source</a>.
-        </p>
-        <p
-          v-if="app?.credits"
-          v-html="app.credits"
-        />
-        <p>
-          <button
-            type="button"
-            class="btn btn-xs"
-            aria-label="Hide footer"
-            @click="isFooterExpanded = false"
-          >
-            <span class="">Hide</span>
-            <X
-              :size="14"
-              aria-hidden="true"
-            />
-          </button>
-        </p>
-      </div>
-
-      <div
-        v-else
-        class="pointer-events-auto flex items-center justify-end gap-1 rounded-box border border-base-300 bg-base-100/90 p-1 shadow-sm backdrop-blur"
-      >
+        <AppInfoText />
         <button
-          aria-label="Show footer"
           type="button"
-          class="btn btn-sm"
-          @click="isFooterExpanded = true"
+          class="btn btn-xs self-start"
+          aria-label="Dismiss info"
+          @click="isInfoBoxDismissed = true"
         >
-          <Info
-            :size="18"
+          Got it
+          <X
+            :size="14"
             aria-hidden="true"
           />
         </button>
-        <a
-          class="btn btn-sm"
-          href="https://ko-fi.com/S6S81CWUVD"
-          target="_blank"
-          rel="noopener"
-        >
-          Support My Work (ko-fi)
-        </a>
       </div>
     </footer>
   </div>

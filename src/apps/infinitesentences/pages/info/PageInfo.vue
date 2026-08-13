@@ -3,6 +3,7 @@
 import { BookOpen, Brain, MessageSquareText } from 'lucide-vue-next'
 import { RouterLink } from 'vue-router'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 </script>
 
 <template>
@@ -60,5 +61,8 @@ import PageShell from '@/shared/shell/PageShell.vue'
         </div>
       </div>
     </section>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>

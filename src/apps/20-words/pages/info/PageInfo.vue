@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 </script>
 
 <template>
@@ -16,5 +17,8 @@ import PageShell from '@/shared/shell/PageShell.vue'
     >
       Get started
     </RouterLink>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>

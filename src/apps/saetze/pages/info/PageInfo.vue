@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { Lesson } from '../../app/types'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 
 const lessons = ref<Lesson[]>([])
 const loading = ref(true)
@@ -61,5 +62,8 @@ onMounted(async () => {
         </p>
       </div>
     </div>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>

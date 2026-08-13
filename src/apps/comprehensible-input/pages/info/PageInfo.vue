@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Video } from '../../app/types'
 import PageShell from '@/shared/shell/PageShell.vue'
+import AppInfoText from '@/shared/shell/AppInfoText.vue'
 
 const STORAGE_KEY = 'comprehensible-input.language-code'
 
@@ -82,5 +83,8 @@ onMounted(async () => {
     >
       Start watching
     </button>
+
+    <hr class="border-base-300">
+    <AppInfoText />
   </PageShell>
 </template>
