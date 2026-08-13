@@ -772,6 +772,47 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
+    slug: 'just-flashcards',
+    name: 'Just Flashcards',
+    description: 'Make simple Markdown flashcards and practice them with FSRS spaced repetition.',
+    stats: { trialLabel: 'flashcards graded' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/just-flashcards/pages/info/PageInfo.vue'),
+        meta: {
+          title: 'Just Flashcards',
+          description: 'Make simple Markdown flashcards and practice them with spaced repetition.'
+        }
+      },
+      {
+        path: 'practice',
+        component: () => import('./apps/just-flashcards/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Practice | Just Flashcards',
+          description: 'Practice your flashcards with FSRS spaced repetition.',
+          hasBottomDock: true
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/just-flashcards/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Just Flashcards',
+          description: 'Time spent and flashcards graded.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/just-flashcards/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Just Flashcards',
+          description: 'App settings.'
+        }
+      }
+    ]
+  },
+  {
     slug: 'quotes',
     name: 'Quotes',
     description: 'Memorize quotes with progressively deeper cloze flashcards.',

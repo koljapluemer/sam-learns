@@ -49,6 +49,9 @@ db.version(1).stores({
   sentenceNet_sentenceCards: 'sentenceId',
   sentenceNet_wordCards: 'wordId',
 
+  justFlashcards_flashcards: 'id, createdAt',
+  justFlashcards_cards: 'flashcardId',
+
   hebrewscript_practiceEvents: 'id, timestamp',
 
   tprboard_learningItems: 'key, languageCode',
