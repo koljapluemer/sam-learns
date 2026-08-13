@@ -35,7 +35,7 @@ export interface StoredClip {
 export type PracticeRoundSelectionMode = 'strategyA' | 'strategyB'
 
 export interface PracticeEvent {
-  id?: number
+  id?: string
   eventType: 'roundStarted' | 'answer' | 'audioListened' | 'clipHidden'
   clip: StoredClip
   timestamp: string

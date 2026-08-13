@@ -1,16 +1,7 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { PracticeEvent } from '../app/types'
 
-class HebrewscriptDb extends Dexie {
-  practiceEvents!: EntityTable<PracticeEvent, 'id'>
-
-  constructor() {
-    super('hebrewscriptDb')
-
-    this.version(1).stores({
-      practiceEvents: '++id, timestamp'
-    })
-  }
+export const appDb = {
+  practiceEvents: db.table('hebrewscript_practiceEvents') as EntityTable<PracticeEvent, 'id'>
 }
-
-export const appDb = new HebrewscriptDb()

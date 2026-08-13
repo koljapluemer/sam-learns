@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 
 export type ActivityEventRow = {
   id: string
@@ -17,22 +18,7 @@ export type ActivityTimeEntryRow = {
   ms: number
 }
 
-class ActivityDb extends Dexie {
-  activityEvents!: EntityTable<ActivityEventRow, 'id'>
-  activityTimeEntries!: EntityTable<ActivityTimeEntryRow, 'id'>
-
-  constructor() {
-    super('samlearnsActivityDb')
-
-    this.version(1).stores({
-      activityEvents: 'id, appSlug, timestamp'
-    })
-
-    this.version(2).stores({
-      activityEvents: 'id, appSlug, timestamp',
-      activityTimeEntries: 'id, appSlug, dayKey'
-    })
-  }
+export const activityDb = {
+  activityEvents: db.table('activity_activityEvents') as EntityTable<ActivityEventRow, 'id'>,
+  activityTimeEntries: db.table('activity_activityTimeEntries') as EntityTable<ActivityTimeEntryRow, 'id'>
 }
-
-export const activityDb = new ActivityDb()

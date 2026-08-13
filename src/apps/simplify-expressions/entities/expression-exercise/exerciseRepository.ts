@@ -1,4 +1,5 @@
 import { appDb } from '@/apps/simplify-expressions/db/appDb'
+import { db } from '@/shared/db/db'
 import type { ExerciseAttempt, TopicProgress } from './exerciseTypes'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
@@ -36,7 +37,7 @@ export async function saveAttemptAndProgress(attempt: ExerciseAttempt, progress:
     return
   }
 
-  await appDb.transaction('rw', appDb.exerciseAttempts, appDb.topicProgress, async () => {
+  await db.transaction('rw', appDb.exerciseAttempts, appDb.topicProgress, async () => {
     await appDb.exerciseAttempts.add(attempt)
     await appDb.topicProgress.put(progress)
   })

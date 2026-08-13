@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { Card } from 'ts-fsrs'
 
 export type ScenarioProgressRow = Card & { scenarioId: string }
@@ -10,18 +11,10 @@ export type LearningEventRow = {
   rating: number
 }
 
-class EntityRelationIntuitionDb extends Dexie {
-  scenarioProgress!: EntityTable<ScenarioProgressRow, 'scenarioId'>
-  learningEvents!: EntityTable<LearningEventRow, 'id'>
-
-  constructor() {
-    super('entityRelationIntuitionDb')
-
-    this.version(1).stores({
-      scenarioProgress: 'scenarioId',
-      learningEvents: 'id, timestamp, scenarioId'
-    })
-  }
+export const appDb = {
+  scenarioProgress: db.table('entityRelationIntuition_scenarioProgress') as EntityTable<
+    ScenarioProgressRow,
+    'scenarioId'
+  >,
+  learningEvents: db.table('entityRelationIntuition_learningEvents') as EntityTable<LearningEventRow, 'id'>
 }
-
-export const appDb = new EntityRelationIntuitionDb()

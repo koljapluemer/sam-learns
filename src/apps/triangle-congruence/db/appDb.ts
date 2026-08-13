@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { TriangleTheorem } from '@/apps/triangle-congruence/entities/triangle/triangleTypes'
 
 export type TopicProgressRow = {
@@ -25,23 +26,11 @@ export type LearningEventRow = {
   answerGiven: string
 }
 
-class TriangleCongruenceDb extends Dexie {
-  topicProgress!: EntityTable<TopicProgressRow, 'topicId'>
-  clozeGapProgress!: EntityTable<ClozeGapProgressRow, 'gapKey'>
-  learningEvents!: EntityTable<LearningEventRow, 'id'>
-
-  constructor() {
-    super('triangleCongruenceDb')
-
-    this.version(1).stores({
-      topicProgress: 'topicId',
-      clozeGapProgress: 'gapKey, topicId',
-      learningEvents: 'id, timestamp, topicId'
-    })
-  }
+export const appDb = {
+  topicProgress: db.table('triangleCongruence_topicProgress') as EntityTable<TopicProgressRow, 'topicId'>,
+  clozeGapProgress: db.table('triangleCongruence_clozeGapProgress') as EntityTable<ClozeGapProgressRow, 'gapKey'>,
+  learningEvents: db.table('triangleCongruence_learningEvents') as EntityTable<LearningEventRow, 'id'>
 }
-
-export const appDb = new TriangleCongruenceDb()
 
 export function makeGapKey(topicId: TriangleTheorem, gapIndex: number): string {
   return `${topicId}:${gapIndex}`

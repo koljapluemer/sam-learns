@@ -1,27 +1,11 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { DailyWatchTimeRow, SurveyResponse, WatchRecord } from '../app/types'
 
-type SessionRow = SurveyResponse & { id: number }
+export type SessionRow = SurveyResponse & { id: string }
 
-class ComprehensibleInputDb extends Dexie {
-  watchTime!: EntityTable<WatchRecord, 'videoId'>
-  sessions!: EntityTable<SessionRow, 'id'>
-  dailyWatchTime!: EntityTable<DailyWatchTimeRow, 'id'>
-
-  constructor() {
-    super('comprehensibleInputDb')
-
-    this.version(1).stores({
-      watchTime: 'videoId',
-      sessions: '++id'
-    })
-
-    this.version(2).stores({
-      watchTime: 'videoId',
-      sessions: '++id',
-      dailyWatchTime: 'id, dayKey, languageName'
-    })
-  }
+export const appDb = {
+  watchTime: db.table('comprehensibleInput_watchTime') as EntityTable<WatchRecord, 'videoId'>,
+  sessions: db.table('comprehensibleInput_sessions') as EntityTable<SessionRow, 'id'>,
+  dailyWatchTime: db.table('comprehensibleInput_dailyWatchTime') as EntityTable<DailyWatchTimeRow, 'id'>
 }
-
-export const appDb = new ComprehensibleInputDb()

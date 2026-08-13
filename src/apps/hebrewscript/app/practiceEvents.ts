@@ -46,12 +46,13 @@ function clonePracticeEvent(event: PracticeEvent): PracticeEvent {
   }
 }
 
-export const appendPracticeEvent = (event: PracticeEvent) => appDb.practiceEvents.add(clonePracticeEvent(event))
+export const appendPracticeEvent = (event: PracticeEvent) =>
+  appDb.practiceEvents.add({ ...clonePracticeEvent(event), id: crypto.randomUUID() })
 
 function compareEvents(left: PracticeEvent, right: PracticeEvent): number {
   const timestampComparison = left.timestamp.localeCompare(right.timestamp)
   if (timestampComparison !== 0) return timestampComparison
-  return (left.id ?? 0) - (right.id ?? 0)
+  return (left.id ?? '').localeCompare(right.id ?? '')
 }
 
 export async function listPracticeEvents(): Promise<PracticeEvent[]> {
@@ -160,7 +161,7 @@ export async function importPracticeExportSnapshot(snapshot: unknown): Promise<{
       skippedCount += 1
       continue
     }
-    await appDb.practiceEvents.add(row)
+    await appDb.practiceEvents.add({ ...row, id: crypto.randomUUID() })
     seenTimestamps.add(row.timestamp)
     importedCount += 1
   }

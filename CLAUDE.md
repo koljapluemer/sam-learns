@@ -5,13 +5,13 @@ This app is part of a collection repo of learning apps. Please check out convent
 - tailwind + Daisy UI. Actually use daisy components. Avoid manual CSS when possible.
 - lucide icons (via the vue package)
 - vue router
-- dexie as SINGLE source of truth for data (Dexie Cloud ready)
+- dexie as SINGLE source of truth for data, synced via Dexie Cloud (one shared database, `src/shared/db/db.ts`)
 
 ## Architecture
 
 Each applet is a sort of mini vue app, with a layered architecture w/ the following folders:
 
-- `db`: Holding dexie infrastructure and DB types. Necessary evil. Should be as small as possible
+- `db`: A thin shim onto the single shared Dexie Cloud database (`src/shared/db/db.ts`) - maps this app's local table names onto its own prefixed tables there (`db.table<Row, 'pk'>('<appSlug>_<tableName>')`). Holds DB row types. Necessary evil. Should be as small as possible. See `add-a-new-app.md` for the exact pattern.
 - `dumb`: collection of simple, reusable stuff. no business logic. may not import from ANY other high-level folder. may cross-import within the folder. put assets here (if needed)
 - `entities`: models/entities. One folder per user-space entity such as "flashcard". May import from `db`, but nothing else.
 - `features`: ways of interacting with entities. one folder per feature, following an entity-action (e.g. flashcard-manage) pattern. may NOT import one another. may ONLY import from `dumb` or `entities`, NEVER from other features.

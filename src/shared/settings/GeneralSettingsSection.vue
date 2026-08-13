@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ThemeToggle from '@/shared/theme/ThemeToggle.vue'
+import AccountSection from '@/shared/account/AccountSection.vue'
 </script>
 
 <template>
@@ -11,5 +12,6 @@ import ThemeToggle from '@/shared/theme/ThemeToggle.vue'
       <span class="text-sm font-medium">Theme</span>
       <ThemeToggle />
     </div>
+    <AccountSection />
   </section>
 </template>

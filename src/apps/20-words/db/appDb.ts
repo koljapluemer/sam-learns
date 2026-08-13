@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { Card } from 'ts-fsrs'
 
 export type ExampleRow = { sentence: string; translation: string }
@@ -24,20 +25,8 @@ export type WordCardRow = Card & { wordId: string }
 
 export type ReviewEventRow = { id: string; wordId: string; timestamp: string; dayKey: string }
 
-class TwentyWordsDb extends Dexie {
-  words!: EntityTable<WordRow, 'id'>
-  wordCards!: EntityTable<WordCardRow, 'wordId'>
-  reviewEvents!: EntityTable<ReviewEventRow, 'id'>
-
-  constructor() {
-    super('twentyWordsDb')
-
-    this.version(1).stores({
-      words: 'id, dayKey',
-      wordCards: 'wordId',
-      reviewEvents: 'id, dayKey'
-    })
-  }
+export const appDb = {
+  words: db.table('twentyWords_words') as EntityTable<WordRow, 'id'>,
+  wordCards: db.table('twentyWords_wordCards') as EntityTable<WordCardRow, 'wordId'>,
+  reviewEvents: db.table('twentyWords_reviewEvents') as EntityTable<ReviewEventRow, 'id'>
 }
-
-export const appDb = new TwentyWordsDb()

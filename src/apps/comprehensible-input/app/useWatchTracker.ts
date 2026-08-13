@@ -122,7 +122,7 @@ export async function addSurveyResponse(response: {
   rewatch: 'no' | 'yes' | 'certainly'
   segments: WatchSegment[]
 }): Promise<void> {
-  await appDb.sessions.add(response)
+  await appDb.sessions.add({ id: crypto.randomUUID(), ...response })
 }
 
 export async function getAllWatchRecords() {

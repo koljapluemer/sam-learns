@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { Card } from 'ts-fsrs'
 
 export type SentenceRow = {
@@ -25,22 +26,9 @@ export type WordRow = {
 export type SentenceCardRow = Card & { sentenceId: string }
 export type WordCardRow = Card & { wordId: string }
 
-class SentenceNetDb extends Dexie {
-  sentences!: EntityTable<SentenceRow, 'id'>
-  words!: EntityTable<WordRow, 'id'>
-  sentenceCards!: EntityTable<SentenceCardRow, 'sentenceId'>
-  wordCards!: EntityTable<WordCardRow, 'wordId'>
-
-  constructor() {
-    super('sentenceNetDb')
-
-    this.version(1).stores({
-      sentences: 'id, text, *wordIds',
-      words: 'id, text',
-      sentenceCards: 'sentenceId',
-      wordCards: 'wordId'
-    })
-  }
+export const appDb = {
+  sentences: db.table('sentenceNet_sentences') as EntityTable<SentenceRow, 'id'>,
+  words: db.table('sentenceNet_words') as EntityTable<WordRow, 'id'>,
+  sentenceCards: db.table('sentenceNet_sentenceCards') as EntityTable<SentenceCardRow, 'sentenceId'>,
+  wordCards: db.table('sentenceNet_wordCards') as EntityTable<WordCardRow, 'wordId'>
 }
-
-export const appDb = new SentenceNetDb()

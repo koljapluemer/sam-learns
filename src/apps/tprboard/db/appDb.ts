@@ -3,28 +3,16 @@
 // instead of hand-written IDBDatabase/IDBTransaction plumbing. No
 // mergeRemoteState/queueEvent/queueState - there's no server, Dexie is the
 // only source of truth (see docs/linguanodon-import.md).
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { LearningEvent, LearningItem, LanguageProgress, SentenceLearningItem } from '../app/types'
 
-class TprboardDb extends Dexie {
-  learningItems!: EntityTable<LearningItem, 'key'>
-  sentenceLearningItems!: EntityTable<SentenceLearningItem, 'key'>
-  languageProgress!: EntityTable<LanguageProgress, 'languageCode'>
-  learningEvents!: EntityTable<LearningEvent, 'id'>
-
-  constructor() {
-    super('tprboardDb')
-
-    this.version(1).stores({
-      learningItems: 'key, languageCode',
-      sentenceLearningItems: 'key, languageCode',
-      languageProgress: 'languageCode',
-      learningEvents: '++id'
-    })
-  }
+export const appDb = {
+  learningItems: db.table('tprboard_learningItems') as EntityTable<LearningItem, 'key'>,
+  sentenceLearningItems: db.table('tprboard_sentenceLearningItems') as EntityTable<SentenceLearningItem, 'key'>,
+  languageProgress: db.table('tprboard_languageProgress') as EntityTable<LanguageProgress, 'languageCode'>,
+  learningEvents: db.table('tprboard_learningEvents') as EntityTable<LearningEvent, 'id'>
 }
-
-export const appDb = new TprboardDb()
 
 export function buildLearningItemKey(languageCode: string, objectName: string): string {
   return `${languageCode}:${objectName}`

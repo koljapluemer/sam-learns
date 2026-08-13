@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 
 export type TrialRow = {
   id: string
@@ -10,16 +11,6 @@ export type TrialRow = {
   missedByPercent: number
 }
 
-class AppDb extends Dexie {
-  trials!: EntityTable<TrialRow, 'id'>
-
-  constructor() {
-    super('currencyConversionPracticeDb')
-
-    this.version(1).stores({
-      trials: 'id, date'
-    })
-  }
+export const appDb = {
+  trials: db.table('currencyConversionPractice_trials') as EntityTable<TrialRow, 'id'>
 }
-
-export const appDb = new AppDb()

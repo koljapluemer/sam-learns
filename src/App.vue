@@ -6,6 +6,7 @@ import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import UserInteractionDialog from '@/shared/account/UserInteractionDialog.vue'
 
 const route = useRoute()
 
@@ -117,6 +118,8 @@ const tabs = computed<NavTab[]>(() => {
     <main :class="mainClass">
       <RouterView />
     </main>
+
+    <UserInteractionDialog />
 
     <footer
       class="pointer-events-none fixed inset-x-0 z-50 flex items-center justify-start p-3 w-full"

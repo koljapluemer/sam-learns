@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 import type { Card } from 'ts-fsrs'
 
 export type ExerciseType =
@@ -29,31 +30,12 @@ export type LearningEventRow = {
 
 export type PracticeTimeRow = { key: 'total'; totalMs: number }
 
-class WorldMapDb extends Dexie {
-  countryProgress!: EntityTable<CountryProgressRow, 'country'>
-  exerciseProgress!: EntityTable<ExerciseProgressRow, 'exerciseKey'>
-  learningEvents!: EntityTable<LearningEventRow, 'id'>
-  practiceTime!: EntityTable<PracticeTimeRow, 'key'>
-
-  constructor() {
-    super('worldMapDb')
-
-    this.version(1).stores({
-      countryProgress: 'country',
-      exerciseProgress: 'exerciseKey, country',
-      learningEvents: 'id, timestamp, country'
-    })
-
-    this.version(2).stores({
-      countryProgress: 'country',
-      exerciseProgress: 'exerciseKey, country',
-      learningEvents: 'id, timestamp, country',
-      practiceTime: 'key'
-    })
-  }
+export const appDb = {
+  countryProgress: db.table('worldMap_countryProgress') as EntityTable<CountryProgressRow, 'country'>,
+  exerciseProgress: db.table('worldMap_exerciseProgress') as EntityTable<ExerciseProgressRow, 'exerciseKey'>,
+  learningEvents: db.table('worldMap_learningEvents') as EntityTable<LearningEventRow, 'id'>,
+  practiceTime: db.table('worldMap_practiceTime') as EntityTable<PracticeTimeRow, 'key'>
 }
-
-export const appDb = new WorldMapDb()
 
 export function makeExerciseKey(type: ExerciseType, country: string, panIndex?: number, groupId?: string): string {
   switch (type) {

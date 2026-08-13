@@ -116,7 +116,7 @@ export type LearningEvent = {
   completedAt: number
   difficulty: number
   hadWrongAttempt: boolean
-  id?: number
+  id: string
   languageCode: string
   selectionMode: RoundSelectionMode
   sourceName: string

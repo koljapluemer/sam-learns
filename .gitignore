@@ -1,4 +1,6 @@
 .env
+dexie-cloud.json
+dexie-cloud.key
 
 # Logs
 logs

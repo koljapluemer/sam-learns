@@ -22,7 +22,7 @@ const router = createRouter({
         component: () => import('./shared/stats/GlobalStatsSection.vue'),
         meta: {
           title: 'Daily Usage',
-          description: 'Cross-app daily usage stats, stored locally on this device.'
+          description: 'Cross-app daily usage stats, synced to your account when signed in.'
         }
       },
       {

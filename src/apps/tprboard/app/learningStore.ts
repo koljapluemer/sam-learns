@@ -3,6 +3,7 @@
 // this repo); trials are logged via the shared cross-app activity log instead.
 import { defaultModel, updateRecall } from './ebisu'
 import { appDb, buildLearningItemKey, buildSentenceLearningItemKey } from '../db/appDb'
+import { db } from '@/shared/db/db'
 import { logActivity } from '@/shared/activity/useLearningEvent'
 import type { EbisuModel, LanguageProgress, LearningItem, RoundOutcome, RoundSelectionMode, SentenceLearningItem, TaskCandidate } from './types'
 
@@ -131,11 +132,12 @@ export async function recordCompletedRound({
     lastOutcome: outcome
   }
 
-  await appDb.transaction(
+  await db.transaction(
     'readwrite',
     [appDb.learningEvents, appDb.learningItems, appDb.languageProgress, appDb.sentenceLearningItems],
     async () => {
       await appDb.learningEvents.add({
+        id: crypto.randomUUID(),
         attemptCount,
         boardObjectNames: [...boardObjectNames],
         completedAt,

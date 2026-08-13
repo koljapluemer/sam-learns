@@ -1,4 +1,5 @@
-import Dexie, { type EntityTable } from 'dexie'
+import { db } from '@/shared/db/db'
+import type { EntityTable } from 'dexie'
 
 // One row per completed line, used to compute WPM/accuracy per day on the
 // stats page. `ms` is how long this specific line took (from the previous
@@ -13,16 +14,6 @@ export type LineAttemptRow = {
   ms: number
 }
 
-class AppDb extends Dexie {
-  lineAttempts!: EntityTable<LineAttemptRow, 'id'>
-
-  constructor() {
-    super('typingpracticeDb')
-
-    this.version(1).stores({
-      lineAttempts: 'id, timestamp'
-    })
-  }
+export const appDb = {
+  lineAttempts: db.table('typingpractice_lineAttempts') as EntityTable<LineAttemptRow, 'id'>
 }
-
-export const appDb = new AppDb()

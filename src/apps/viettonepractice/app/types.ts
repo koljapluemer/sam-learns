@@ -54,7 +54,7 @@ export interface PracticeEvent {
   distractorCharacter?: string
   correctTone?: string | null
   distractorTone?: string | null
-  id?: number
+  id?: string
 }
 
 export interface PracticeExportSnapshot {

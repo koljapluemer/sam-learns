@@ -1,4 +1,5 @@
 import { appDb, makeGapKey, type ClozeGapProgressRow, type LearningEventRow, type TopicProgressRow } from '@/apps/triangle-congruence/db/appDb'
+import { db } from '@/shared/db/db'
 import type { TriangleTheorem } from '../triangle/triangleTypes'
 // shared cross-cutting infra, see docs/adding-an-app.md
 import { logActivity } from '@/shared/activity/useLearningEvent'
@@ -43,7 +44,7 @@ export async function saveTopicProgressAndEvent(topicRow: TopicProgressRow, even
     return
   }
 
-  await appDb.transaction('rw', appDb.topicProgress, appDb.learningEvents, async () => {
+  await db.transaction('rw', appDb.topicProgress, appDb.learningEvents, async () => {
     await appDb.topicProgress.put(topicRow)
     await appDb.learningEvents.add(event)
   })
@@ -63,7 +64,7 @@ export async function saveClozeGapProgressAndEvent(
     return
   }
 
-  await appDb.transaction('rw', appDb.clozeGapProgress, appDb.topicProgress, appDb.learningEvents, async () => {
+  await db.transaction('rw', appDb.clozeGapProgress, appDb.topicProgress, appDb.learningEvents, async () => {
     await appDb.clozeGapProgress.put(gapRow)
     await appDb.topicProgress.put(topicRow)
     await appDb.learningEvents.add(event)

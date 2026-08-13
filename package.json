@@ -19,6 +19,7 @@
     "chartjs-chart-error-bars": "^4.4.5",
     "d3": "^7.9.0",
     "dexie": "^4.4.4",
+    "dexie-cloud-addon": "^4.4.13",
     "echarts": "^6.1.0",
     "firebase": "^12.16.0",
     "katex": "^0.17.0",
