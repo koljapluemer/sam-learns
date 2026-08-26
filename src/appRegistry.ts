@@ -856,7 +856,7 @@ export const apps: AppDefinition[] = [
   {
     slug: 'phrases',
     name: 'Phrases',
-    description: 'Memorize core phrases for everyday situations, by target language, with audio.',
+    description: 'Memorize core phrases across your target languages, with audio and spoken recall practice.',
     stats: { trialLabel: 'phrases practiced' },
     routes: [
       {
@@ -864,7 +864,7 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/phrases/pages/info/PageInfo.vue'),
         meta: {
           title: 'Phrases',
-          description: 'Memorize core phrases for everyday situations, by target language.'
+          description: 'Memorize core phrases across your target languages, with audio.'
         }
       },
       {
@@ -872,8 +872,7 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/phrases/pages/practice/PagePractice.vue'),
         meta: {
           title: 'Practice | Phrases',
-          description: 'Practice target-language phrases by situation with FSRS spaced repetition.',
-          hasBottomDock: true
+          description: 'Practice target-language phrases with FSRS spaced repetition.'
         }
       },
       {

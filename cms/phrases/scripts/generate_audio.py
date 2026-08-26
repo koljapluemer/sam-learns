@@ -1,13 +1,13 @@
 """Generate ElevenLabs TTS audio for every target-language phrase in
-public/data/phrases/<iso3>/*.json.
+public/data/phrases/<iso3>.json.
 
 Run via: uv run python phrases/scripts/generate_audio.py
 
 Each phrase file nests target-language phrases as keys of an "expressions"
-object, at any depth. For every phrase found, writes an mp3 to a sibling
-audio/ folder (public/data/phrases/<iso3>/audio/), named after a slug of
-the phrase text. Phrases whose audio file already exists are skipped, so
-reruns only fill in new phrases.
+object, at any depth. For every phrase found, writes an mp3 to that
+language's audio/ folder (public/data/phrases/<iso3>/audio/), named after
+a slug of the phrase text. Phrases whose audio file already exists are
+skipped, so reruns only fill in new phrases.
 
 Batch counterpart to the CMS app's per-phrase "Generate audio" button -
 see ../audio.py for the filename convention and generation details, which
@@ -38,38 +38,39 @@ def find_phrases(node: object) -> set[str]:
     return phrases
 
 
-def process_language(lang_dir: Path) -> None:
-    phrases: set[str] = set()
-    for json_file in lang_dir.glob("*.json"):
-        phrases.update(find_phrases(json.loads(json_file.read_text())))
+def process_language(json_path: Path) -> None:
+    iso3 = json_path.stem
+    phrases = find_phrases(json.loads(json_path.read_text()))
     if not phrases:
         return
 
-    pending = [p for p in phrases if not audio_path(lang_dir.name, p).exists()]
+    pending = [p for p in phrases if not audio_path(iso3, p).exists()]
     skipped = len(phrases) - len(pending)
     if not pending:
-        print(f"{lang_dir.name}: {skipped} phrase(s) already have audio, nothing to do")
+        print(f"{iso3}: {skipped} phrase(s) already have audio, nothing to do")
         return
 
-    voices = fetch_voices(iso3_to_iso1(lang_dir.name))
+    voices = fetch_voices(iso3_to_iso1(iso3))
     if not voices:
-        print(f"{lang_dir.name}: no ElevenLabs voices available, skipping")
+        print(f"{iso3}: no ElevenLabs voices available, skipping")
         return
 
     for phrase in pending:
         voice = random.choice(voices)
         audio = generate_audio_bytes(phrase, voice["voice_id"])
-        path = audio_path(lang_dir.name, phrase)
+        path = audio_path(iso3, phrase)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(audio)
-        print(f"{lang_dir.name}: generated '{phrase}' with voice '{voice['name']}'")
+        print(f"{iso3}: generated '{phrase}' with voice '{voice['name']}'")
 
-    print(f"{lang_dir.name}: generated {len(pending)}, skipped {skipped} already-present")
+    print(f"{iso3}: generated {len(pending)}, skipped {skipped} already-present")
 
 
 def main() -> None:
-    for lang_dir in sorted(p for p in phrases_dir().iterdir() if p.is_dir()):
-        process_language(lang_dir)
+    for json_path in sorted(phrases_dir().glob("*.json")):
+        if json_path.stem == "languages":
+            continue
+        process_language(json_path)
 
 
 if __name__ == "__main__":

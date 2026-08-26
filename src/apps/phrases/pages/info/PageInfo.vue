@@ -9,8 +9,8 @@ const router = useRouter()
 <template>
   <PageShell title="Phrases">
     <p class="opacity-70">
-      Memorize core phrases for everyday situations, by target language. Pick a language and situation, then
-      practice with FSRS spaced repetition - reveal the text or listen to the audio, then rate yourself.
+      Memorize core phrases across your target languages. Learn a phrase, then practice recalling and speaking it
+      with FSRS spaced repetition.
     </p>
     <button
       type="button"

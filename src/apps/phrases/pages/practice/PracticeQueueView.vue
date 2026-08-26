@@ -1,27 +1,41 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { ThumbsDown, ThumbsUp } from 'lucide-vue-next'
-import ExpressionButtons from '../../dumb/ExpressionButtons.vue'
-import { getExpressionAudioUrl, getLanguages } from '../../entities/phrase-catalog/phraseCatalog'
-import { usePracticeQueue } from './usePracticeQueue'
+import AudioPlayButton from '../../dumb/AudioPlayButton.vue'
+import AudioRecorder from '../../dumb/AudioRecorder.vue'
+import RadialCountdown from '../../dumb/RadialCountdown.vue'
+import { getExpressionAudioUrl } from '../../entities/phrase-catalog/phraseCatalog'
+import { usePracticeQueue, type PracticeItem } from './usePracticeQueue'
 
-const props = defineProps<{ languageCode: string; situationSlug: string }>()
+type Stage = 'intro' | 'countdown' | 'recall'
 
-const languageName = ref('')
-const feedback = ref<'correct' | 'wrong' | null>(null)
-const queue = usePracticeQueue(props.languageCode, props.situationSlug)
+const queue = usePracticeQueue()
 
-onMounted(async () => {
-  const languages = await getLanguages()
-  languageName.value = languages.find((language) => language.code === props.languageCode)?.name ?? props.languageCode
-})
+const stage = ref<Stage>('recall')
+const recorded = ref(false)
+const checked = ref(false)
+const feedback = ref<'up' | 'down' | null>(null)
 
-async function handleRate(kind: 'correct' | 'wrong'): Promise<void> {
+watch(
+  () => queue.item.value,
+  (next) => {
+    recorded.value = false
+    checked.value = false
+    feedback.value = null
+    stage.value = next && !next.schedule ? 'intro' : 'recall'
+  },
+  { immediate: true }
+)
+
+function contextLabel(item: PracticeItem): string {
+  return item.expression.note ? `${item.goalKey} · ${item.expression.note}` : item.goalKey
+}
+
+async function handleRate(kind: 'up' | 'down'): Promise<void> {
   if (feedback.value) return
   feedback.value = kind
   await new Promise((resolve) => setTimeout(resolve, 250))
-  await queue.rate(kind === 'correct' ? queue.Rating.Good : queue.Rating.Again)
-  feedback.value = null
+  await queue.rate(kind === 'up' ? queue.Rating.Good : queue.Rating.Again)
 }
 </script>
 
@@ -35,79 +49,112 @@ async function handleRate(kind: 'correct' | 'wrong'): Promise<void> {
     </div>
 
     <p
-      v-else-if="!queue.candidate.value"
+      v-else-if="!queue.item.value"
       class="py-8 text-center opacity-70"
     >
       All caught up. Nothing due right now.
     </p>
 
-    <Transition
-      v-else
-      name="phrase-swap"
-      mode="out-in"
-    >
-      <div
-        :key="queue.candidate.value.id"
-        class="card w-full shadow-xl"
-      >
-        <div class="card-body items-center gap-4 text-center">
-          <span class="badge badge-primary badge-outline">
-            Try to express this in {{ languageName }}
-          </span>
+    <RadialCountdown
+      v-else-if="stage === 'countdown'"
+      :duration-ms="3000"
+      @complete="stage = 'recall'"
+    />
 
-          <p class="text-2xl font-semibold">
-            {{ queue.candidate.value.goal.key }}
+    <div
+      v-else-if="stage === 'intro'"
+      class="card w-full shadow-xl"
+    >
+      <div class="card-body items-center gap-3 text-center">
+        <p class="text-xs font-medium tracking-wide uppercase opacity-60">
+          {{ queue.item.value.languageName }}
+        </p>
+        <p class="text-lg opacity-80">
+          {{ contextLabel(queue.item.value) }}
+        </p>
+        <p class="text-3xl font-semibold">
+          {{ queue.item.value.expression.text }}
+        </p>
+        <AudioPlayButton :audio-url="getExpressionAudioUrl(queue.item.value.languageCode, queue.item.value.expression.text)" />
+        <p class="pt-2 text-sm opacity-60">
+          Repeat out loud until you memorized it
+        </p>
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          @click="stage = 'countdown'"
+        >
+          Got it
+        </button>
+      </div>
+    </div>
+
+    <div
+      v-else
+      class="card w-full shadow-xl"
+    >
+      <div class="card-body items-center gap-3 text-center">
+        <p class="text-xs font-medium tracking-wide uppercase opacity-60">
+          {{ queue.item.value.languageName }}
+        </p>
+
+        <template v-if="!checked">
+          <p class="text-sm font-medium opacity-70">
+            Express this
+          </p>
+          <p class="text-3xl font-semibold">
+            {{ contextLabel(queue.item.value) }}
           </p>
 
-          <div class="flex w-full flex-col gap-3">
-            <ExpressionButtons
-              v-for="expression in queue.candidate.value.goal.expressions"
-              :key="expression.text"
-              :text="expression.text"
-              :note="expression.note"
-              :audio-url="getExpressionAudioUrl(languageCode, expression.text)"
-            />
-          </div>
+          <AudioRecorder
+            :key="queue.item.value.id"
+            v-model:recorded="recorded"
+            class="pt-2"
+          />
+
+          <button
+            v-if="recorded"
+            type="button"
+            class="btn btn-primary btn-block"
+            @click="checked = true"
+          >
+            Check
+          </button>
+        </template>
+
+        <template v-else>
+          <p class="text-sm opacity-60">
+            {{ contextLabel(queue.item.value) }}
+          </p>
+          <p class="text-3xl font-semibold">
+            {{ queue.item.value.expression.text }}
+          </p>
+          <AudioPlayButton :audio-url="getExpressionAudioUrl(queue.item.value.languageCode, queue.item.value.expression.text)" />
 
           <div class="flex justify-center gap-6 pt-2">
             <button
               type="button"
               class="btn btn-circle btn-lg"
-              :class="feedback === 'wrong' ? 'btn-error' : 'btn-outline'"
+              :class="feedback === 'down' ? 'btn-error' : 'btn-outline'"
               :disabled="feedback !== null"
-              aria-label="Wrong"
-              @click="handleRate('wrong')"
+              aria-label="Didn't know it"
+              @click="handleRate('down')"
             >
               <ThumbsDown />
             </button>
             <button
               type="button"
               class="btn btn-circle btn-lg"
-              :class="feedback === 'correct' ? 'btn-success' : 'btn-outline'"
+              :class="feedback === 'up' ? 'btn-success' : 'btn-outline'"
               :disabled="feedback !== null"
-              aria-label="Correct"
-              @click="handleRate('correct')"
+              aria-label="Knew it"
+              @click="handleRate('up')"
             >
               <ThumbsUp />
             </button>
           </div>
-        </div>
+        </template>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.phrase-swap-enter-active,
-.phrase-swap-leave-active {
-  transition: all 0.2s ease-out;
-}
-.phrase-swap-enter-from {
-  opacity: 0;
-  transform: translateY(8px);
-}
-.phrase-swap-leave-to {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-</style>
