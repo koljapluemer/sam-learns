@@ -893,5 +893,45 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'top-vocab',
+    name: 'Top Vocab',
+    description: "Practice a language's top vocab and sentences with FSRS spaced repetition.",
+    stats: { trialLabel: 'cards reviewed' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/top-vocab/pages/info/PageInfo.vue'),
+        meta: {
+          title: 'Top Vocab',
+          description: "Practice a language's top vocab and sentences with FSRS spaced repetition."
+        }
+      },
+      {
+        path: 'practice',
+        component: () => import('./apps/top-vocab/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Practice | Top Vocab',
+          description: 'Practice vocab and sentence flashcards with FSRS spaced repetition.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/top-vocab/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Top Vocab',
+          description: 'Time spent and cards reviewed.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/top-vocab/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Top Vocab',
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]
