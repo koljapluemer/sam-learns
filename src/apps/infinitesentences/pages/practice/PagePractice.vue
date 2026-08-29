@@ -49,61 +49,63 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="text-center text-sm opacity-70 py-1">
-    Learning: {{ nativeLabel }} <span aria-hidden="true">&rarr;</span> {{ targetLabel }}
-  </div>
+  <main class="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-3 px-4 pb-8">
+    <p class="text-center text-sm opacity-70">
+      Learning: {{ nativeLabel }} <span aria-hidden="true">&rarr;</span> {{ targetLabel }}
+    </p>
 
-  <div class="w-full h-0.5">
+    <div class="h-1 w-full overflow-hidden rounded-full bg-base-200">
+      <div
+        class="h-full transition-all duration-300"
+        :class="session.goalReached.value ? 'bg-success' : 'bg-primary'"
+        :style="{ width: session.progressPercent.value + '%' }"
+      />
+    </div>
+
     <div
-      :class="session.goalReached.value ? 'bg-success' : 'bg-primary'"
-      class="h-full transition-all duration-300"
-      :style="{ width: session.progressPercent.value + '%' }"
-    />
-  </div>
-
-  <div
-    v-if="session.isLoading.value"
-    class="flex justify-center py-6"
-  >
-    <span class="loading loading-spinner loading-lg" />
-  </div>
-
-  <div
-    v-else-if="session.errorMessage.value"
-    class="alert alert-warning m-4"
-  >
-    <span>{{ session.errorMessage.value }}</span>
-  </div>
-
-  <div
-    v-else
-    class="w-full flex justify-around flex-1 relative p-4"
-  >
-    <MemorizeTask
-      v-if="session.currentTask.value?.kind === 'memorize'"
-      :task="(session.currentTask.value.data as MemorizeTaskData)"
-      @task-done="handleTaskDone"
-    />
-    <UnderstandTask
-      v-else-if="session.currentTask.value?.kind === 'understand'"
-      :task="(session.currentTask.value.data as UnderstandTaskData)"
-      @task-done="handleTaskDone"
-    />
-    <RecallTask
-      v-else-if="session.currentTask.value?.kind === 'recall'"
-      :task="(session.currentTask.value.data as RecallTaskData)"
-      @task-done="handleTaskDone"
-    />
-    <ChallengeTask
-      v-else-if="session.currentTask.value?.kind === 'challenge'"
-      :task="(session.currentTask.value.data as ChallengeTaskData)"
-      @task-done="handleTaskDone"
-    />
-    <div
-      v-else
-      class="flex justify-center py-6"
+      v-if="session.isLoading.value"
+      class="flex flex-1 items-center justify-center py-6"
     >
       <span class="loading loading-spinner loading-lg" />
     </div>
-  </div>
+
+    <div
+      v-else-if="session.errorMessage.value"
+      class="alert alert-warning"
+    >
+      <span>{{ session.errorMessage.value }}</span>
+    </div>
+
+    <div
+      v-else
+      class="flex flex-1 justify-center"
+    >
+      <MemorizeTask
+        v-if="session.currentTask.value?.kind === 'memorize'"
+        :task="(session.currentTask.value.data as MemorizeTaskData)"
+        @task-done="handleTaskDone"
+      />
+      <UnderstandTask
+        v-else-if="session.currentTask.value?.kind === 'understand'"
+        :task="(session.currentTask.value.data as UnderstandTaskData)"
+        @task-done="handleTaskDone"
+      />
+      <RecallTask
+        v-else-if="session.currentTask.value?.kind === 'recall'"
+        :task="(session.currentTask.value.data as RecallTaskData)"
+        @task-done="handleTaskDone"
+      />
+      <ChallengeTask
+        v-else-if="session.currentTask.value?.kind === 'challenge'"
+        :task="(session.currentTask.value.data as ChallengeTaskData)"
+        @task-done="handleTaskDone"
+      />
+      <div
+        v-else
+        class="flex flex-1 items-center justify-center py-6"
+      >
+        <span class="loading loading-spinner loading-lg" />
+      </div>
+    </div>
+  </main>
 </template>
