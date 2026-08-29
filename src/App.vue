@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { BarChart3, Heart, Home, Info, Play, Settings, X } from 'lucide-vue-next'
-import { type AppRouteDefinition } from '@/appRegistry'
+import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
 import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
@@ -14,10 +14,20 @@ const route = useRoute()
 
 const isInfoBoxDismissed = useLocalSetting('app-info-dismissed', false)
 
-const app = useCurrentApp()
+const currentApp = useCurrentApp()
+// The global /info route has no `appSlug` meta, so it carries its origin app in
+// `?app=<slug>`. Resolve it here so the shell keeps that app's nav tabs - and a
+// way back into the app - while on /info.
+const app = computed(() => {
+  if (currentApp.value) return currentApp.value
+  const fromInfo = route.name === 'info' && typeof route.query.app === 'string' ? route.query.app : ''
+  return fromInfo ? apps.find((candidate) => candidate.slug === fromInfo) : undefined
+})
 const hasBottomDock = computed(() => route.meta.hasBottomDock === true)
 
-const appName = computed(() => (shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : ''))
+const appName = computed(() =>
+  shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : (app.value?.name ?? '')
+)
 
 const mainClass = computed(() =>
   route.meta.layout === 'full-bleed'
@@ -48,6 +58,8 @@ const tabs = computed<NavTab[]>(() => {
   )
   const rest = staticRoutes.filter((r) => r.path !== '' && r.path !== 'stats' && r.path !== 'settings')
   const [primaryRoute, ...remainingRest] = rest
+  // The tab that leads the nav - always gets the Play icon, whatever its path.
+  const mainRoute = hasSeparatePrimaryRoute ? primaryRoute : homeRoute
 
   const ordered = (
     hasSeparatePrimaryRoute
@@ -61,12 +73,10 @@ const tabs = computed<NavTab[]>(() => {
       r.label ??
       (r.path === '' ? (hasSeparatePrimaryRoute ? 'Info' : 'Play') : r.path.charAt(0).toUpperCase() + r.path.slice(1)),
     icon:
-      r.path === 'play'
+      r === mainRoute || r.path === 'play'
         ? Play
         : r.path === ''
-          ? hasSeparatePrimaryRoute
-            ? Info
-            : Play
+          ? Info
           : r.path === 'stats'
             ? BarChart3
             : r.path === 'settings'
@@ -112,6 +122,18 @@ const tabs = computed<NavTab[]>(() => {
             aria-hidden="true"
           />
           <span class="hidden sm:inline">{{ tab.label }}</span>
+        </router-link>
+        <router-link
+          :to="{ name: 'info', query: app ? { app: app.slug } : {} }"
+          class="btn btn-sm gap-2"
+          :class="{ 'btn-active': route.name === 'info' }"
+          aria-label="Info and credits"
+        >
+          <Info
+            :size="18"
+            aria-hidden="true"
+          />
+          <span class="hidden sm:inline">Info</span>
         </router-link>
         <a
           href="https://ko-fi.com/S6S81CWUVD"

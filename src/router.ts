@@ -33,6 +33,15 @@ const router = createRouter({
           title: 'Settings',
           description: 'Theme and general settings.'
         }
+      },
+      {
+        path: '/info',
+        name: 'info',
+        component: () => import('./shared/shell/AppInfoPage.vue'),
+        meta: {
+          title: 'Info',
+          description: 'Credits and privacy info for Sam Learns Things.'
+        }
       }
     ] as RouteRecordRaw[]
   ).concat(
