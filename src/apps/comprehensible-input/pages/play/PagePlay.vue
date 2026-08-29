@@ -8,6 +8,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { addSurveyResponse, createWatchTracker } from '../../app/useWatchTracker'
 import { createPlayer } from '../../app/youtube'
 import { logActivity } from '@/shared/activity/useLearningEvent'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
 import type { Video } from '../../app/types'
 
 const STORAGE_KEY = 'comprehensible-input.language-code'
@@ -54,11 +55,15 @@ async function loadVideo(video: Video) {
   tracker.setPlayer(player)
 }
 
-function chooseLanguage(code: string) {
+function selectLanguage(code: string) {
   localStorage.setItem(STORAGE_KEY, code)
   chosenLanguageCode.value = code
+}
+
+function startWatching() {
   showLanguagePicker.value = false
-  const video = pickRandomVideo(code)
+  if (!chosenLanguageCode.value) return
+  const video = pickRandomVideo(chosenLanguageCode.value)
   if (video) void loadVideo(video)
 }
 
@@ -94,7 +99,8 @@ onMounted(async () => {
 
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored && languages.value.some((l) => l.code === stored)) {
-    chooseLanguage(stored)
+    selectLanguage(stored)
+    startWatching()
   } else {
     showLanguagePicker.value = true
   }
@@ -225,35 +231,31 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <dialog
-      class="modal"
-      :class="{ 'modal-open': showLanguagePicker }"
+    <PracticeSetupModal
+      :open="showLanguagePicker"
+      :ready="!!chosenLanguageCode"
+      title="Which language do you want to learn?"
+      start-label="Start watching"
+      @close="startWatching"
     >
-      <div class="modal-box">
-        <h3 class="text-lg font-semibold">
-          Which language do you want to learn?
-        </h3>
-        <p class="mt-1 text-sm opacity-70">
-          Pick once — this is remembered on this device.
+      <div class="flex flex-col gap-2">
+        <button
+          v-for="language in languages"
+          :key="language.code"
+          type="button"
+          class="btn justify-start"
+          :class="chosenLanguageCode === language.code ? 'btn-primary' : 'btn-outline'"
+          @click="selectLanguage(language.code)"
+        >
+          {{ language.name }}
+        </button>
+        <p
+          v-if="languages.length === 0"
+          class="text-center text-sm opacity-70"
+        >
+          No languages with videos yet.
         </p>
-        <div class="mt-4 flex flex-col gap-2">
-          <button
-            v-for="language in languages"
-            :key="language.code"
-            type="button"
-            class="btn btn-primary"
-            @click="chooseLanguage(language.code)"
-          >
-            {{ language.name }}
-          </button>
-          <p
-            v-if="languages.length === 0"
-            class="text-center text-sm opacity-70"
-          >
-            No languages with videos yet.
-          </p>
-        </div>
       </div>
-    </dialog>
+    </PracticeSetupModal>
   </div>
 </template>

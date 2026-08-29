@@ -1,58 +1,60 @@
 <script setup lang="ts">
-import { usePlayState } from './usePlayState'
-import SelectView from './SelectView.vue'
-import VocabPracticeView from './VocabPracticeView.vue'
-import { useActiveTime } from '@/shared/activity/useActiveTime'
+// Gate: the main route needs a listening language before the player can run.
+// Missing/invalid -> the standard setup modal; otherwise the play loop.
+import { onMounted, ref } from 'vue'
+import { getLanguageCatalog, type LanguageCatalogEntry } from '../../entities/language-catalog/languageCatalog'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import PlayLoop from './PlayLoop.vue'
 
-const play = usePlayState()
-useActiveTime('the-little-prince')
+const languageCode = useLocalSetting('the-little-prince.language-code', '')
+const languages = ref<LanguageCatalogEntry[]>([])
+const setupOpen = ref(false)
+const started = ref(false)
+
+onMounted(async () => {
+  languages.value = await getLanguageCatalog()
+  if (languages.value.some((language) => language.code === languageCode.value)) {
+    started.value = true
+  } else {
+    languageCode.value = ''
+    setupOpen.value = true
+  }
+})
+
+function start(): void {
+  setupOpen.value = false
+  started.value = true
+}
 </script>
 
 <template>
-  <div class="relative flex h-screen w-full items-center justify-center bg-base-300">
-    <div
-      v-if="play.loadError.value"
-      class="alert alert-error glass max-w-xl"
-    >
-      <span>{{ play.loadError.value }}</span>
-    </div>
+  <PlayLoop v-if="started" />
 
-    <div
-      v-if="play.mode.value === 'loading' && !play.loadError.value"
-      class="absolute inset-0 flex items-center justify-center"
-    >
-      <span class="loading loading-spinner loading-lg" />
+  <PracticeSetupModal
+    :open="setupOpen"
+    :ready="!!languageCode"
+    title="Choose a language"
+    start-label="Start listening"
+    @close="start"
+  >
+    <div class="flex flex-col gap-2">
+      <button
+        v-for="language in languages"
+        :key="language.code"
+        type="button"
+        class="btn justify-start"
+        :class="languageCode === language.code ? 'btn-primary' : 'btn-outline'"
+        @click="languageCode = language.code"
+      >
+        {{ language.languageLongform }}
+      </button>
+      <p
+        v-if="languages.length === 0"
+        class="text-sm opacity-70"
+      >
+        No languages available yet.
+      </p>
     </div>
-
-    <div class="aspect-video w-full max-h-full">
-      <div
-        :id="play.playerElementId"
-        class="h-full w-full"
-      />
-    </div>
-
-    <div
-      v-if="play.mode.value === 'select'"
-      class="absolute inset-0"
-    >
-      <SelectView
-        :has-next-segment="play.hasNextSegment.value"
-        @replay="play.replay"
-        @practice-and-replay="play.practiceCurrentAndReplay"
-        @next="play.playNext"
-        @practice-and-next="play.practiceNextAndPlay"
-      />
-    </div>
-
-    <div
-      v-if="play.mode.value === 'vocab-practice' && play.currentSegment.value"
-      class="absolute inset-0"
-    >
-      <VocabPracticeView
-        :youtube-id="play.youtubeId.value"
-        :segment="play.currentSegment.value"
-        @finished="play.onVocabFinished"
-      />
-    </div>
-  </div>
+  </PracticeSetupModal>
 </template>

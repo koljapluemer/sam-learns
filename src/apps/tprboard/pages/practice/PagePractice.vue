@@ -19,6 +19,7 @@ import { loadLearningSnapshot, recordCompletedRound } from '../../app/learningSt
 import { createStatsTracker, type PlayerStats } from '../../app/stats'
 import { createRelationshipIndex, planRound } from '../../app/tasks'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
 import type { LanguageOption, LocaleTaskMap, PlacedObject, RelationshipIndex, RoundPlan, RoundSelectionMode, TaskCandidate } from '../../app/types'
 
 const MODELS_BASE_URL = '/data/tprboard/models/'
@@ -26,7 +27,7 @@ const AUDIO_BASE_URL = '/data/tprboard/audio/'
 const ROUND_SUCCESS_DELAY_MS = 600
 
 const sceneRootEl = ref<HTMLDivElement | null>(null)
-const languageModalEl = ref<HTMLDialogElement | null>(null)
+const setupOpen = ref(false)
 
 const selectedLanguageCode = useLocalSetting<string | null>('tprboard-language-code', null)
 const languageOptions = ref<LanguageOption[]>([])
@@ -108,24 +109,6 @@ const currentLanguageText = computed(() => {
   const selected = languageOptions.value.find((option) => option.code === selectedLanguageCode.value)
   return selected ? `Current: ${selected.name}` : 'Choose a language to start playing.'
 })
-
-function openLanguageModal(): void {
-  if (languageModalEl.value && !languageModalEl.value.open) {
-    languageModalEl.value.showModal()
-  }
-}
-
-function handleModalCancel(event: Event): void {
-  if (!hasSelectedLanguage.value) {
-    event.preventDefault()
-  }
-}
-
-function handleModalClose(): void {
-  if (!hasSelectedLanguage.value) {
-    openLanguageModal()
-  }
-}
 
 function buildTaskAudioUrl(task: TaskCandidate, languageCode: string): string {
   return `${AUDIO_BASE_URL}${languageCode}/${task.key}-${task.textIndex + 1}.mp3`
@@ -347,8 +330,6 @@ async function selectLanguage(languageCode: string): Promise<void> {
   if (!isTransitioningRound) {
     await startNewRound()
   }
-
-  languageModalEl.value?.close()
 }
 
 onMounted(async () => {
@@ -376,7 +357,7 @@ onMounted(async () => {
 
   if (!selectedLanguageCode.value) {
     await showLanguageSelectionState()
-    openLanguageModal()
+    setupOpen.value = true
     return
   }
 
@@ -453,83 +434,29 @@ onUnmounted(() => {
       class="min-h-0 flex-1"
     />
 
-    <dialog
-      ref="languageModalEl"
-      class="modal"
-      @cancel="handleModalCancel"
-      @close="handleModalClose"
+    <PracticeSetupModal
+      :open="setupOpen"
+      :ready="hasSelectedLanguage"
+      title="Which language do you want to practice?"
+      @close="setupOpen = false"
     >
-      <div class="modal-box max-h-[calc(100vh-4rem)] max-w-2xl overflow-y-auto">
-        <div class="mb-4">
-          <h2 class="text-lg font-semibold">
-            Which language do you want to practice?
-          </h2>
-          <p class="text-sm text-base-content/70">
-            {{ currentLanguageText }}
-          </p>
-        </div>
-        <section class="mb-5 rounded-box bg-base-200/70 p-4">
-          <div class="grid gap-4 md:grid-cols-[minmax(0,1fr)_11rem] md:items-center">
-            <div>
-              <h3 class="text-base font-semibold">
-                How to play
-              </h3>
-              <p class="mt-2 text-sm leading-6 text-base-content/75">
-                Listen to the spoken instruction, then drag the objects on the board to act it out.
-              </p>
-              <p class="mt-2 text-sm leading-6 text-base-content/75">
-                Finish the action correctly to get the next task. You can replay the audio any time with the speaker button.
-              </p>
-            </div>
-            <img
-              src="/data/tprboard/img/explain.webp"
-              alt="Example board showing draggable objects during a task"
-              class="h-36 w-full rounded-xl object-cover shadow-sm md:h-32"
-            >
-          </div>
-        </section>
-        <div class="mb-3">
-          <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-base-content/55">
-            Choose language
-          </h3>
-        </div>
-        <div class="flex flex-col gap-2">
-          <button
-            v-for="option in languageOptions"
-            :key="option.code"
-            type="button"
-            class="btn min-h-16 w-full justify-between px-4"
-            :class="selectedLanguageCode === option.code ? 'btn-primary' : 'btn-outline'"
-            :aria-pressed="selectedLanguageCode === option.code"
-            @click="selectLanguage(option.code)"
-          >
-            <span class="text-left text-base font-medium">{{ option.name }}</span>
-            <span class="rounded-full bg-base-200 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-base-content/60">{{ option.code }}</span>
-          </button>
-        </div>
-        <div
-          class="modal-action"
-          :class="{ hidden: !hasSelectedLanguage }"
+      <p class="text-sm text-base-content/70">
+        {{ currentLanguageText }}
+      </p>
+      <div class="flex flex-col gap-2">
+        <button
+          v-for="option in languageOptions"
+          :key="option.code"
+          type="button"
+          class="btn min-h-16 w-full justify-between px-4"
+          :class="selectedLanguageCode === option.code ? 'btn-primary' : 'btn-outline'"
+          :aria-pressed="selectedLanguageCode === option.code"
+          @click="selectLanguage(option.code)"
         >
-          <form method="dialog">
-            <button
-              type="submit"
-              class="btn"
-            >
-              Close
-            </button>
-          </form>
-        </div>
-      </div>
-      <form
-        method="dialog"
-        class="modal-backdrop"
-        :class="{ 'pointer-events-none': !hasSelectedLanguage }"
-      >
-        <button type="submit">
-          close
+          <span class="text-left text-base font-medium">{{ option.name }}</span>
+          <span class="rounded-full bg-base-200 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-base-content/60">{{ option.code }}</span>
         </button>
-      </form>
-    </dialog>
+      </div>
+    </PracticeSetupModal>
   </div>
 </template>

@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { BarChart3, Heart, Home, Info, Play, Settings, X } from 'lucide-vue-next'
 import { apps, type AppRouteDefinition } from '@/appRegistry'
 import { DEFAULT_SHELL_STATE, shellState } from '@/shared/shell/shellState'
-import { routeNameForPath, isDynamicRoutePath } from '@/shared/shell/appRoutePath'
+import { routeNameForPath } from '@/shared/shell/appRoutePath'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 import { useCurrentApp } from '@/shared/shell/useCurrentApp'
 import AppInfoText from '@/shared/shell/AppInfoText.vue'
@@ -37,6 +37,9 @@ const mainClass = computed(() =>
 
 type NavTab = { routeName: string; label: string; icon?: typeof Home }
 
+// Every app has the same three routes: '' (the practice/play page the user
+// lands on, labeled "Practice"), then 'stats' and 'settings'. Order them the
+// same way regardless of how they're declared in the registry.
 const tabs = computed<NavTab[]>(() => {
   if (!app.value) {
     return [
@@ -46,42 +49,15 @@ const tabs = computed<NavTab[]>(() => {
   }
 
   const slug = app.value.slug
-  const staticRoutes = app.value.routes.filter((r) => !isDynamicRoutePath(r.path))
-  const byPath = (path: string) => staticRoutes.find((r) => r.path === path)
-  const homeRoute = byPath('')
-  // Apps with a dedicated practice/play route (static or dynamic) treat '' as
-  // a secondary info/tutorial page and push it to the very back, so it never
-  // collides with the global nav's own 'Home' link. Apps whose '' route *is*
-  // the whole app (no separate practice route to lead with) keep it up front.
-  const hasSeparatePrimaryRoute = app.value.routes.some(
-    (r) => r.path !== '' && r.path !== 'stats' && r.path !== 'settings'
+  const byPath = (path: string) => app.value?.routes.find((r) => r.path === path)
+  const ordered = [byPath(''), byPath('stats'), byPath('settings')].filter(
+    (r): r is AppRouteDefinition => r !== undefined
   )
-  const rest = staticRoutes.filter((r) => r.path !== '' && r.path !== 'stats' && r.path !== 'settings')
-  const [primaryRoute, ...remainingRest] = rest
-  // The tab that leads the nav - always gets the Play icon, whatever its path.
-  const mainRoute = hasSeparatePrimaryRoute ? primaryRoute : homeRoute
-
-  const ordered = (
-    hasSeparatePrimaryRoute
-      ? [primaryRoute, byPath('stats'), byPath('settings'), ...remainingRest, homeRoute]
-      : [homeRoute, byPath('stats'), byPath('settings')]
-  ).filter((r): r is AppRouteDefinition => r !== undefined)
 
   return ordered.map((r) => ({
     routeName: routeNameForPath(slug, r.path),
-    label:
-      r.label ??
-      (r.path === '' ? (hasSeparatePrimaryRoute ? 'Info' : 'Play') : r.path.charAt(0).toUpperCase() + r.path.slice(1)),
-    icon:
-      r === mainRoute || r.path === 'play'
-        ? Play
-        : r.path === ''
-          ? Info
-          : r.path === 'stats'
-            ? BarChart3
-            : r.path === 'settings'
-              ? Settings
-              : undefined
+    label: r.label ?? (r.path === 'stats' ? 'Stats' : r.path === 'settings' ? 'Settings' : 'Practice'),
+    icon: r.path === 'stats' ? BarChart3 : r.path === 'settings' ? Settings : Play
   }))
 })
 </script>

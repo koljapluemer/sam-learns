@@ -3,11 +3,27 @@
 
 ## Nav tab pattern
 
-Every app gets `stats` and `settings` pages, plus its own primary practice/play route(s). If an app has a dedicated practice/play route, give its `''` route an info/tutorial page named `pages/info/PageInfo.vue` - the top nav automatically pushes it to the back of the tab bar, labeled "Info", so it never collides with the global nav's own "Home" link. If the app has no separate practice route (the whole app lives at `''`), skip the info page - the top nav keeps `''` up front, labeled "Play", instead. Don't hand-roll nav ordering/labels; `App.vue`'s tabs computed derives this from the registry entry.
+Every app has exactly three routes: `''`, `stats`, and `settings`. `''` is the
+practice/play screen the user lands on straight from the overview - the top nav
+labels it "Practice" with a play icon. There are no info/landing/tutorial
+pages. Don't hand-roll nav ordering/labels; `App.vue`'s tabs computed derives
+them from the registry entry.
+
+If practice genuinely can't start until the user sets something (usually the
+target language), don't add a route for it - gate the `''` page behind
+`@/shared/shell/PracticeSetupModal.vue`. Render the modal when the required
+setting is missing, put every such setting in its default slot, pass
+`:ready` = "all required settings are filled in", and start practice on
+`@close`. Persist the setting with `useLocalSetting` so returning users skip
+the modal. See `top-vocab`/`the-little-prince`/`infinitesentences` for the
+pattern (thin gate component that renders the real practice component only
+once ready).
 
 ## Page shell
 
-Info and Stats pages should wrap their content in `<PageShell title="...">` (from `@/shared/shell/PageShell.vue`) instead of a bespoke wrapper div - it owns the width, padding and title heading so pages don't diverge on `max-w`/spacing.
+Stats pages should wrap their content in `<PageShell title="...">` (from
+`@/shared/shell/PageShell.vue`) instead of a bespoke wrapper div - it owns the
+width, padding and title heading so pages don't diverge on `max-w`/spacing.
 
 ## Stats
 

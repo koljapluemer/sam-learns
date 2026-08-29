@@ -1,10 +1,12 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-// A single child page within an app. `path: ''` is the app's home/index page
-// - conventionally followed by 'stats', 'settings', then any custom paths
-// (e.g. 'practice', 'videos') the app needs. Every app has exactly one of
-// each of 'home'/'stats'/'settings'; App.vue's top nav bar pulls those three
-// to the front regardless of declaration order here, then appends the rest.
+// A single child page within an app. `path: ''` is the app's main page - the
+// practice/play screen the user lands on from the overview, labeled "Practice"
+// in the top nav. It's followed by 'stats' and 'settings'; every app has
+// exactly those three routes. App.vue's top nav bar pulls them to the front in
+// that order regardless of declaration order here. Apps that need a setting
+// (usually the target language) before practice can begin gate the main page
+// behind `@/shared/shell/PracticeSetupModal.vue` rather than a landing route.
 export type AppRouteDefinition = {
   path: string
   component: NonNullable<RouteRecordRaw['component']>
@@ -43,17 +45,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/arabicnumbers/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Arabic Numbers Practice',
-          description: 'Learn to read the Arabic numbers from 0 to 100.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/arabicnumbers/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Arabic Numbers',
+          title: 'Arabic Numbers Practice',
           description: 'Practice reading Arabic numbers with spaced repetition.'
         }
       },
@@ -83,17 +77,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/saetze/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Sätze',
-          description: 'German cloze-sentence drills for confusable word families.'
-        }
-      },
-      {
-        path: 'practice/:lessonKey',
         component: () => import('./apps/saetze/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Sätze',
+          title: 'Sätze',
           description: 'Fill in the blank in German cloze sentences.'
         }
       },
@@ -124,17 +110,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/egyptiansentences/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Basic Egyptian Sentences',
-          description: 'Timed cloze-word quiz for Egyptian Arabic sentences.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/egyptiansentences/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Egyptian Sentences',
+          title: 'Basic Egyptian Sentences',
           description: 'Timed cloze-word quiz for Egyptian Arabic sentences.'
         }
       },
@@ -164,14 +142,6 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/comprehensible-input/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Comprehensible Input',
-          description: 'An endless stream of easy foreign-language videos.'
-        }
-      },
-      {
-        path: 'play',
         component: () => import('./apps/comprehensible-input/pages/play/PagePlay.vue'),
         meta: {
           title: 'Comprehensible Input',
@@ -205,17 +175,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/viettonepractice/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Vietnamese Tone Practice',
-          description: "Listen to a short audio clip and identify which of Vietnamese's six tones you heard."
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/viettonepractice/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Vietnamese Tone Practice',
+          title: 'Vietnamese Tone Practice',
           description: 'Practice distinguishing Vietnamese tones by ear.'
         }
       },
@@ -245,17 +207,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/hebrewscript/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Script Practice',
-          description: 'Listen to a clip and pick the Hebrew script that matches what you heard.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/hebrewscript/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Script Practice',
+          title: 'Script Practice',
           description: 'Practice recognizing Hebrew letters by ear.'
         }
       },
@@ -285,35 +239,10 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/infinitesentences/pages/info/PageInfo.vue'),
+        component: () => import('./apps/infinitesentences/pages/practice/PagePractice.vue'),
         meta: {
           title: 'Infinite Sentences',
           description: 'Learn a language word by word and sentence by sentence.'
-        }
-      },
-      {
-        path: 'select-native-language',
-        component: () => import('./apps/infinitesentences/pages/select-native-language/PageSelectNativeLanguage.vue'),
-        label: 'Change Languages',
-        meta: {
-          title: 'Select Native Language | Infinite Sentences',
-          description: 'Choose your native language.'
-        }
-      },
-      {
-        path: 'select-target-language/:nativeIso',
-        component: () => import('./apps/infinitesentences/pages/select-target-language/PageSelectTargetLanguage.vue'),
-        meta: {
-          title: 'Select Target Language | Infinite Sentences',
-          description: 'Choose a language to learn.'
-        }
-      },
-      {
-        path: 'practice/:nativeIso/:targetIso',
-        component: () => import('./apps/infinitesentences/pages/practice/PagePractice.vue'),
-        meta: {
-          title: 'Practice | Infinite Sentences',
-          description: 'Practice vocab and sentences for your chosen language pair.'
         }
       },
       {
@@ -342,17 +271,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/tprboard/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'TPR Board',
-          description: 'Listen to a spoken instruction, then drag objects on a 3D board to act it out.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/tprboard/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | TPR Board',
+          title: 'TPR Board',
           description: 'Drag objects on a 3D board to act out spoken instructions.'
         }
       },
@@ -544,17 +465,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/typingpractice/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Vietnamese Typing Practice',
-          description: 'Practice Vietnamese TELEX/VNI keyboard input.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/typingpractice/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Vietnamese Typing',
+          title: 'Vietnamese Typing Practice',
           description: 'Type Vietnamese words against a fixed word list, with optional TELEX/VNI keystroke display.'
         }
       },
@@ -584,17 +497,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/20-words/pages/info/PageInfo.vue'),
-        meta: {
-          title: '20 Words',
-          description: 'Add 20 vocab words a day and practice them in a dedicated flow.'
-        }
-      },
-      {
-        path: 'main',
         component: () => import('./apps/20-words/pages/main/PageMain.vue'),
         meta: {
-          title: 'Main | 20 Words',
+          title: '20 Words',
           description: 'Add, memorize, and practice today\'s vocab.',
           hasBottomDock: true
         }
@@ -625,14 +530,6 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/the-little-prince/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'The Little Prince',
-          description: 'Choose a language to start listening to "The Little Prince".'
-        }
-      },
-      {
-        path: 'play',
         component: () => import('./apps/the-little-prince/pages/play/PagePlay.vue'),
         meta: {
           title: 'The Little Prince',
@@ -698,14 +595,6 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/sentence-net/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Sentence Net',
-          description: 'Acquire target-language vocab in context.'
-        }
-      },
-      {
-        path: 'play',
         component: () => import('./apps/sentence-net/pages/play/PagePlay.vue'),
         meta: {
           title: 'Sentence Net',
@@ -739,17 +628,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/just-flashcards/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Just Flashcards',
-          description: 'Make simple Markdown flashcards and practice them with spaced repetition.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/just-flashcards/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Just Flashcards',
+          title: 'Just Flashcards',
           description: 'Practice your flashcards with FSRS spaced repetition.',
           hasBottomDock: true
         }
@@ -780,17 +661,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/quotes/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Quotes',
-          description: 'Memorize quotes with progressively deeper cloze flashcards.'
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/quotes/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Quotes',
+          title: 'Quotes',
           description: 'Practice quotes with cloze flashcards.',
           hasBottomDock: true
         }
@@ -821,17 +694,9 @@ export const apps: AppDefinition[] = [
     routes: [
       {
         path: '',
-        component: () => import('./apps/top-vocab/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Top Vocab',
-          description: "Practice a language's top vocab and sentences with FSRS spaced repetition."
-        }
-      },
-      {
-        path: 'practice',
         component: () => import('./apps/top-vocab/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Practice | Top Vocab',
+          title: 'Top Vocab',
           description: 'Practice vocab and sentence flashcards with FSRS spaced repetition.'
         }
       },

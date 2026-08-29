@@ -1,111 +1,135 @@
 <script setup lang="ts">
-// Port of linguanodon's infinitesentences app/practiceApp.js.
+// Gate for the main route: the practice loop needs a native + target language
+// pair. Missing -> the standard setup modal (both picks in one go); set ->
+// the practice loop.
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { usePracticeSession } from '../../app/usePracticeSession'
 import { createLanguagePreferencesStore } from '../../app/store'
-import { loadLanguages } from '../../app/api'
-import { logActivity } from '@/shared/activity/useLearningEvent'
-import { useActiveTime } from '@/shared/activity/useActiveTime'
-import MemorizeTask from '../../app/tasks/MemorizeTask.vue'
-import RecallTask from '../../app/tasks/RecallTask.vue'
-import UnderstandTask from '../../app/tasks/UnderstandTask.vue'
-import ChallengeTask from '../../app/tasks/ChallengeTask.vue'
-import type { ChallengeTaskData, MemorizeTaskData, RecallTaskData, UnderstandTaskData } from '../../app/types'
+import { loadLanguages, loadPairs } from '../../app/api'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import PracticeLoop from './PracticeLoop.vue'
+import type { Language, LanguagePair } from '../../app/types'
 
-const route = useRoute()
-const nativeIso = computed(() => (typeof route.params.nativeIso === 'string' ? route.params.nativeIso : ''))
-const targetIso = computed(() => (typeof route.params.targetIso === 'string' ? route.params.targetIso : ''))
+const store = createLanguagePreferencesStore()
+// Settings' "Change languages" link lands here with ?setup=1 to force the
+// modal open even when a pair is already set.
+const forceSetup = useRoute().query.setup === '1'
 
-const session = usePracticeSession(nativeIso.value, targetIso.value)
-useActiveTime('infinitesentences')
+const nativeIso = ref(store.nativeIso ?? '')
+const targetIso = ref(store.targetIso ?? '')
+const started = ref(store.hasLanguagesSet && !forceSetup)
+const setupOpen = ref(!store.hasLanguagesSet || forceSetup)
 
-const nativeLabel = ref(nativeIso.value)
-const targetLabel = ref(targetIso.value)
+const languages = ref<Language[]>([])
+const pairs = ref<LanguagePair[]>([])
 
-function handleTaskDone(rememberedCorrectly?: boolean): void {
-  // Only recall/challenge tasks are actual reviews (memorize/understand are
-  // just vocab intro exposure), matching linguanodon's store.js which only
-  // called queueEvent from recordGlossReview/markSentenceLearned.
-  const kind = session.currentTask.value?.kind
-  if (kind === 'recall' || kind === 'challenge') void logActivity('infinitesentences')
-  session.handleTaskDone(rememberedCorrectly)
-}
+const nativeOptions = computed(() =>
+  languages.value.filter((language) => language.isNative).sort((a, b) => a.displayName.localeCompare(b.displayName))
+)
+const targetOptions = computed(() => {
+  const codes = new Set(pairs.value.filter((pair) => pair.native === nativeIso.value).map((pair) => pair.target))
+  return languages.value
+    .filter((language) => codes.has(language.code))
+    .sort((a, b) => a.displayName.localeCompare(b.displayName))
+})
+
+const ready = computed(() => Boolean(nativeIso.value && targetIso.value))
 
 onMounted(async () => {
-  createLanguagePreferencesStore().setLanguages(nativeIso.value, targetIso.value)
-  void session.loadPractice()
-
   try {
-    const languages = await loadLanguages()
-    const native = languages.find((language) => language.code === nativeIso.value)
-    const target = languages.find((language) => language.code === targetIso.value)
-    if (native) nativeLabel.value = native.symbols[0] || native.displayName
-    if (target) targetLabel.value = target.symbols[0] || target.displayName
+    const [langs, prs] = await Promise.all([loadLanguages(), loadPairs()])
+    languages.value = langs
+    pairs.value = prs
   } catch (error) {
-    console.warn('Failed to load language display info:', error)
+    console.warn('Failed to load languages:', error)
   }
 })
+
+function onNativeChange(): void {
+  if (!targetOptions.value.some((language) => language.code === targetIso.value)) targetIso.value = ''
+}
+
+function start(): void {
+  if (!ready.value) return
+  store.setLanguages(nativeIso.value, targetIso.value)
+  setupOpen.value = false
+  started.value = true
+}
 </script>
 
 <template>
-  <main class="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-3 px-4 pb-8">
-    <p class="text-center text-sm opacity-70">
-      Learning: {{ nativeLabel }} <span aria-hidden="true">&rarr;</span> {{ targetLabel }}
-    </p>
+  <PracticeLoop
+    v-if="started"
+    :key="`${nativeIso}-${targetIso}`"
+    :native-iso="nativeIso"
+    :target-iso="targetIso"
+  />
 
-    <div class="h-1 w-full overflow-hidden rounded-full bg-base-200">
-      <div
-        class="h-full transition-all duration-300"
-        :class="session.goalReached.value ? 'bg-success' : 'bg-primary'"
-        :style="{ width: session.progressPercent.value + '%' }"
-      />
-    </div>
-
-    <div
-      v-if="session.isLoading.value"
-      class="flex flex-1 items-center justify-center py-6"
-    >
-      <span class="loading loading-spinner loading-lg" />
-    </div>
-
-    <div
-      v-else-if="session.errorMessage.value"
-      class="alert alert-warning"
-    >
-      <span>{{ session.errorMessage.value }}</span>
-    </div>
-
-    <div
-      v-else
-      class="flex flex-1 justify-center"
-    >
-      <MemorizeTask
-        v-if="session.currentTask.value?.kind === 'memorize'"
-        :task="(session.currentTask.value.data as MemorizeTaskData)"
-        @task-done="handleTaskDone"
-      />
-      <UnderstandTask
-        v-else-if="session.currentTask.value?.kind === 'understand'"
-        :task="(session.currentTask.value.data as UnderstandTaskData)"
-        @task-done="handleTaskDone"
-      />
-      <RecallTask
-        v-else-if="session.currentTask.value?.kind === 'recall'"
-        :task="(session.currentTask.value.data as RecallTaskData)"
-        @task-done="handleTaskDone"
-      />
-      <ChallengeTask
-        v-else-if="session.currentTask.value?.kind === 'challenge'"
-        :task="(session.currentTask.value.data as ChallengeTaskData)"
-        @task-done="handleTaskDone"
-      />
-      <div
-        v-else
-        class="flex flex-1 items-center justify-center py-6"
+  <PracticeSetupModal
+    :open="setupOpen"
+    :ready="ready"
+    title="Choose your languages"
+    start-label="Start learning"
+    @close="start"
+  >
+    <div class="flex flex-col gap-1">
+      <label
+        for="native-lang"
+        class="text-sm font-medium opacity-80"
+      >I speak</label>
+      <select
+        id="native-lang"
+        v-model="nativeIso"
+        class="select select-bordered w-full"
+        @change="onNativeChange"
       >
-        <span class="loading loading-spinner loading-lg" />
-      </div>
+        <option
+          value=""
+          disabled
+        >
+          Choose a language
+        </option>
+        <option
+          v-for="lang in nativeOptions"
+          :key="lang.code"
+          :value="lang.code"
+        >
+          {{ lang.displayName }}
+        </option>
+      </select>
     </div>
-  </main>
+
+    <div class="flex flex-col gap-1">
+      <label
+        for="target-lang"
+        class="text-sm font-medium opacity-80"
+      >I want to learn</label>
+      <select
+        id="target-lang"
+        v-model="targetIso"
+        class="select select-bordered w-full"
+        :disabled="!nativeIso"
+      >
+        <option
+          value=""
+          disabled
+        >
+          Choose a language
+        </option>
+        <option
+          v-for="lang in targetOptions"
+          :key="lang.code"
+          :value="lang.code"
+        >
+          {{ lang.displayName }}
+        </option>
+      </select>
+      <p
+        v-if="nativeIso && targetOptions.length === 0"
+        class="text-sm opacity-70"
+      >
+        No languages available for this pair yet.
+      </p>
+    </div>
+  </PracticeSetupModal>
 </template>

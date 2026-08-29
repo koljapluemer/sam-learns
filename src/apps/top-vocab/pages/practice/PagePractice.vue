@@ -1,34 +1,47 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import { getLanguages, type VocabLanguage } from '../../entities/vocab/vocab'
 import PracticeCardView from './PracticeCardView.vue'
 
-const router = useRouter()
 const languageCode = useLocalSetting('top-vocab.language', '')
+const languages = ref<VocabLanguage[]>([])
+const setupOpen = ref(false)
 
 useActiveTime('top-vocab')
+
+onMounted(async () => {
+  languages.value = await getLanguages()
+  if (!languageCode.value) setupOpen.value = true
+})
 </script>
 
 <template>
   <PracticeCardView
-    v-if="languageCode"
+    v-if="languageCode && !setupOpen"
     :key="languageCode"
     :language-code="languageCode"
   />
-  <div
-    v-else
-    class="flex flex-col items-center gap-4 px-4 py-16 text-center"
+
+  <PracticeSetupModal
+    :open="setupOpen"
+    :ready="!!languageCode"
+    title="Choose a language"
+    @close="setupOpen = false"
   >
-    <p class="opacity-70">
-      Pick a language in settings to start.
-    </p>
-    <button
-      type="button"
-      class="btn btn-primary"
-      @click="router.push({ name: 'top-vocab-settings' })"
-    >
-      Go to settings
-    </button>
-  </div>
+    <div class="flex flex-col gap-2">
+      <button
+        v-for="language in languages"
+        :key="language.code"
+        type="button"
+        class="btn justify-start"
+        :class="languageCode === language.code ? 'btn-primary' : 'btn-outline'"
+        @click="languageCode = language.code"
+      >
+        {{ language.name }}
+      </button>
+    </div>
+  </PracticeSetupModal>
 </template>

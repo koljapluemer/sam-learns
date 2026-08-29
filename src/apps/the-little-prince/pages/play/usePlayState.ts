@@ -4,7 +4,6 @@
 // vocab-practice session before resuming autoplay. The player is created
 // once and only ever seeked between segments, never destroyed/recreated.
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { createPlayer, type YTPlayer } from '../../dumb/youtube'
 import { parseTimeCode } from '../../dumb/timeCode'
 import { getLanguageCatalog } from '../../entities/language-catalog/languageCatalog'
@@ -18,7 +17,6 @@ const POLL_INTERVAL_MS = 250
 const PLAYER_ELEMENT_ID = 'the-little-prince-yt-player'
 
 export function usePlayState() {
-  const router = useRouter()
   const languageCode = useLocalSetting('the-little-prince.language-code', '')
 
   const mode = ref<PlayMode>('loading')
@@ -69,7 +67,9 @@ export function usePlayState() {
       const catalog = await getLanguageCatalog()
       const entry = catalog.find((candidate) => candidate.code === languageCode.value)
       if (!entry) {
-        void router.replace({ name: 'the-little-prince' })
+        // The gate (PagePlay.vue) only mounts this loop once a valid language
+        // is set, so this is just a safety net.
+        loadError.value = 'Pick a listening language to start.'
         return
       }
 

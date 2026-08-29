@@ -1,8 +1,9 @@
 // Practice-session logic - ported from linguanodon's saetze app/session.js
 // (random exercise, shuffle answers, disable wrong answers, reveal + auto-
-// advance on correct). No persisted per-exercise state in the original
-// either - it's pure in-session random picking, not spaced repetition, so
-// there's no Dexie db for this app.
+// advance on correct). The lesson key is a reactive setting picked in the
+// page's setup modal; the session reloads when it changes. No persisted
+// per-exercise state - it's pure in-session random picking, not spaced
+// repetition, so there's no Dexie db for this app.
 
 import { onUnmounted, ref, watch, type Ref } from 'vue'
 import { logActivity } from '@/shared/activity/useLearningEvent'

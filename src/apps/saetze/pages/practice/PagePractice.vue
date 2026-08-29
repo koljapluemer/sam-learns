@@ -1,17 +1,33 @@
 <script setup lang="ts">
-// Ported from linguanodon's saetze app/practiceApp.js - the lesson is
-// selected via a `:lessonKey` dynamic path segment (see PageInfo.vue's link),
-// mirroring linguanodon's own per-lesson practice URL.
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+// Ported from linguanodon's saetze app/practiceApp.js. The lesson to drill is
+// picked once in the standard setup modal and remembered locally; the session
+// reloads whenever it changes.
+import { onMounted, ref } from 'vue'
 import { usePracticeSession } from '../../app/usePracticeSession'
 import { tokenizeCredit } from '../../app/credit'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import type { Lesson } from '../../app/types'
 
-const route = useRoute()
-const lessonKey = computed(() => (typeof route.params.lessonKey === 'string' ? route.params.lessonKey : ''))
+const lessonKey = useLocalSetting('saetze.lesson-key', '')
 const session = usePracticeSession(lessonKey)
 useActiveTime('saetze')
+
+const lessons = ref<Lesson[]>([])
+const lessonsError = ref('')
+const setupOpen = ref(false)
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/data/saetze/lessons.json')
+    if (!response.ok) throw new Error(`Failed to load lessons (${response.status})`)
+    lessons.value = (await response.json()) as Lesson[]
+  } catch (error) {
+    lessonsError.value = error instanceof Error ? error.message : 'Could not load lessons.'
+  }
+  if (!lessonKey.value) setupOpen.value = true
+})
 
 function sentenceParts() {
   const currentExercise = session.exercise.value
@@ -112,5 +128,40 @@ function sentenceParts() {
         </button>
       </div>
     </div>
+
+    <PracticeSetupModal
+      :open="setupOpen"
+      :ready="!!lessonKey"
+      title="Pick a lesson"
+      @close="setupOpen = false"
+    >
+      <div
+        v-if="lessonsError"
+        class="alert alert-error"
+      >
+        <span>{{ lessonsError }}</span>
+      </div>
+      <div
+        v-else
+        class="flex flex-col gap-2"
+      >
+        <button
+          v-for="lesson in lessons"
+          :key="lesson.key"
+          type="button"
+          class="btn justify-start"
+          :class="lessonKey === lesson.key ? 'btn-primary' : 'btn-outline'"
+          @click="lessonKey = lesson.key"
+        >
+          {{ lesson.name }}
+        </button>
+        <p
+          v-if="lessons.length === 0"
+          class="text-sm opacity-70"
+        >
+          No lessons imported yet.
+        </p>
+      </div>
+    </PracticeSetupModal>
   </main>
 </template>

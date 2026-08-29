@@ -32,17 +32,8 @@ onMounted(async () => {
   }
 })
 
-function changeNativeLanguage(): void {
-  languageStore.clearLanguages()
-  void router.push({ name: 'infinitesentences-select-native-language' })
-}
-
-function changeTargetLanguage(): void {
-  if (!languageStore.nativeIso) return
-  void router.push({
-    name: 'infinitesentences-select-target-language',
-    params: { nativeIso: languageStore.nativeIso }
-  })
+function changeLanguages(): void {
+  void router.push({ name: 'infinitesentences', query: { setup: '1' } })
 }
 </script>
 
@@ -64,35 +55,23 @@ function changeTargetLanguage(): void {
       >
     </fieldset>
 
-    <div
-      v-if="hasLanguagesSet"
-      class="mt-6"
-    >
+    <div class="mt-6">
       <h2 class="text-xl font-semibold mb-3">
         Languages
       </h2>
-      <div class="flex flex-col gap-2">
-        <div class="flex items-center justify-between">
-          <span class="opacity-70">Native language</span>
-          <button
-            class="link"
-            type="button"
-            @click="changeNativeLanguage"
-          >
-            {{ nativeLabel }}
-          </button>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="opacity-70">Target language</span>
-          <button
-            class="link"
-            type="button"
-            @click="changeTargetLanguage"
-          >
-            {{ targetLabel }}
-          </button>
-        </div>
-      </div>
+      <p
+        v-if="hasLanguagesSet"
+        class="mb-3 opacity-70"
+      >
+        {{ nativeLabel }} <span aria-hidden="true">&rarr;</span> {{ targetLabel }}
+      </p>
+      <button
+        class="btn btn-outline btn-sm"
+        type="button"
+        @click="changeLanguages"
+      >
+        Change languages
+      </button>
     </div>
   </div>
   <GeneralSettingsSection />
