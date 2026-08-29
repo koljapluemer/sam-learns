@@ -429,13 +429,14 @@ export const apps: AppDefinition[] = [
     name: 'World Map',
     description: 'Find countries in their neighborhood on the world map.',
     stats: { trialLabel: 'exercises answered' },
+    credits: "I got the underlying map from the excellent <a class='link' href='https://www.naturalearthdata.com/downloads/' target='_blank'>Natural Earth website</a>. Note that there can never be a political world map that is 'uncontroversial' or 'correct'. Still, I had to choose one for this app to exist. If you are unhappy with country borders or names, please complain to the relevant political representatives (not me).",
     routes: [
       {
         path: '',
         component: () => import('./apps/world-map/app/App.vue'),
         meta: {
           title: 'World Map',
-          description: 'Practice locating countries on the world map.',
+          description: 'Practice locating countries on thhttps://www.naturalearthdata.com/downloads/e world map.',
           layout: 'full-bleed'
         }
       },
