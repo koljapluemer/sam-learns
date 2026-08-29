@@ -52,8 +52,6 @@ db.version(1).stores({
   justFlashcards_flashcards: 'id, createdAt',
   justFlashcards_cards: 'flashcardId',
 
-  phrases_schedules: 'id',
-
   topVocab_vocabCards: 'id',
   topVocab_sentenceCards: 'id',
 

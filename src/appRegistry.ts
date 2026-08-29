@@ -278,46 +278,6 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'prepositions3d',
-    name: 'Prepositions 3D',
-    description: 'A 3D scene where you act out spatial prepositions with objects to learn them in context.',
-    stats: { trialLabel: 'cups placed correctly' },
-    routes: [
-      {
-        path: '',
-        component: () => import('./apps/prepositions3d/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Prepositions 3D',
-          description: 'A 3D scene where you act out spatial prepositions with objects.'
-        }
-      },
-      {
-        path: 'practice',
-        component: () => import('./apps/prepositions3d/pages/practice/PagePractice.vue'),
-        meta: {
-          title: 'Practice | Prepositions 3D',
-          description: 'Drag the mug to the place that matches the spoken preposition.'
-        }
-      },
-      {
-        path: 'stats',
-        component: () => import('./apps/prepositions3d/pages/stats/PageStats.vue'),
-        meta: {
-          title: 'Stats | Prepositions 3D',
-          description: 'Cross-app daily usage stats.'
-        }
-      },
-      {
-        path: 'settings',
-        component: () => import('./apps/prepositions3d/pages/settings/PageSettings.vue'),
-        meta: {
-          title: 'Settings | Prepositions 3D',
-          description: 'App settings.'
-        }
-      }
-    ]
-  },
-  {
     slug: 'infinitesentences',
     name: 'Infinite Sentences',
     description: 'Learn a language word by word and sentence by sentence.',
@@ -848,46 +808,6 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/quotes/pages/settings/PageSettings.vue'),
         meta: {
           title: 'Settings | Quotes',
-          description: 'App settings.'
-        }
-      }
-    ]
-  },
-  {
-    slug: 'phrases',
-    name: 'Phrases',
-    description: 'Memorize core phrases across your target languages, with audio and spoken recall practice.',
-    stats: { trialLabel: 'phrases practiced' },
-    routes: [
-      {
-        path: '',
-        component: () => import('./apps/phrases/pages/info/PageInfo.vue'),
-        meta: {
-          title: 'Phrases',
-          description: 'Memorize core phrases across your target languages, with audio.'
-        }
-      },
-      {
-        path: 'practice',
-        component: () => import('./apps/phrases/pages/practice/PagePractice.vue'),
-        meta: {
-          title: 'Practice | Phrases',
-          description: 'Practice target-language phrases with FSRS spaced repetition.'
-        }
-      },
-      {
-        path: 'stats',
-        component: () => import('./apps/phrases/pages/stats/PageStats.vue'),
-        meta: {
-          title: 'Stats | Phrases',
-          description: 'Time spent and phrases practiced.'
-        }
-      },
-      {
-        path: 'settings',
-        component: () => import('./apps/phrases/pages/settings/PageSettings.vue'),
-        meta: {
-          title: 'Settings | Phrases',
           description: 'App settings.'
         }
       }
