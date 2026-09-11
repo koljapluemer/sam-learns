@@ -44,11 +44,6 @@ db.version(1).stores({
 
   theLittlePrince_vocabCards: 'key',
 
-  sentenceNet_sentences: 'id, text, *wordIds',
-  sentenceNet_words: 'id, text',
-  sentenceNet_sentenceCards: 'sentenceId',
-  sentenceNet_wordCards: 'wordId',
-
   justFlashcards_flashcards: 'id, createdAt',
   justFlashcards_cards: 'flashcardId',
 
