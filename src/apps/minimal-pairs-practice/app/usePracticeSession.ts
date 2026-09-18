@@ -325,7 +325,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
 
     await appendPracticeEvent(audioListenedEvent)
     practiceEvents.value.push(audioListenedEvent)
-    void logActiveTimeMs('viettonepractice', listenedDurationMs)
+    void logActiveTimeMs('minimal-pairs-practice', listenedDurationMs)
   }
 
   const handleAudioPause = () => {
@@ -418,7 +418,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
 
       await appendPracticeEvent(answerEvent)
       practiceEvents.value.push(answerEvent)
-      void logActivity('viettonepractice')
+      void logActivity('minimal-pairs-practice')
     }
 
     if (option.isCorrect) {

@@ -59,6 +59,8 @@ db.version(1).stores({
 
   typingpractice_lineAttempts: 'id, timestamp',
 
+  // Backs the app now named/slugged 'minimal-pairs-practice' - kept under
+  // its old slug to avoid a live Dexie Cloud schema migration.
   viettonepractice_practiceEvents: 'id, timestamp',
 
   activity_activityEvents: 'id, appSlug, timestamp',

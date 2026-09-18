@@ -168,32 +168,32 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'viettonepractice',
-    name: 'Vietnamese Tone Practice',
+    slug: 'minimal-pairs-practice',
+    name: 'Minimal Pairs Practice',
     description: "Listen to a short audio clip and identify which of Vietnamese's six tones you heard.",
     stats: { trialLabel: 'exercises answered' },
     routes: [
       {
         path: '',
-        component: () => import('./apps/viettonepractice/pages/practice/PagePractice.vue'),
+        component: () => import('./apps/minimal-pairs-practice/pages/practice/PagePractice.vue'),
         meta: {
-          title: 'Vietnamese Tone Practice',
+          title: 'Minimal Pairs Practice',
           description: 'Practice distinguishing Vietnamese tones by ear.'
         }
       },
       {
         path: 'stats',
-        component: () => import('./apps/viettonepractice/pages/stats/PageStats.vue'),
+        component: () => import('./apps/minimal-pairs-practice/pages/stats/PageStats.vue'),
         meta: {
-          title: 'Stats | Vietnamese Tone Practice',
-          description: 'Accuracy and listening-time stats for Vietnamese tone practice.'
+          title: 'Stats | Minimal Pairs Practice',
+          description: 'Accuracy and listening-time stats for minimal pairs practice.'
         }
       },
       {
         path: 'settings',
-        component: () => import('./apps/viettonepractice/pages/settings/PageSettings.vue'),
+        component: () => import('./apps/minimal-pairs-practice/pages/settings/PageSettings.vue'),
         meta: {
-          title: 'Settings | Vietnamese Tone Practice',
+          title: 'Settings | Minimal Pairs Practice',
           description: 'App settings.'
         }
       }

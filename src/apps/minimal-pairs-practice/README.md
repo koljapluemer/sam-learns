@@ -1,15 +1,20 @@
-# Vietnamese Tone Practice
+# Minimal Pairs Practice
 
 Listen to a short audio clip and identify which of Vietnamese's six tones you
 heard, training your ear for tone distinctions.
+
+Named for the practice format (distinguishing minimal pairs by ear) rather
+than the language, since this app was renamed from `viettonepractice` -
+slug, routes, and UI copy all changed, but the content is still Vietnamese-
+specific. See `cms/tonepractice/` for exploration of a Mandarin counterpart.
 
 Imported from [linguanodon](https://github.com/koljapluemer/linguanodon)'s
 `viettonepractice` Django app - see `docs/linguanodon-import.md` at the repo
 root for how that import works and how to replicate it for other apps.
 
-Content (`public/data/viettonepractice/clips.json` + the 1000 audio clips
-under `public/data/viettonepractice/audio/`) is a one-time export from
-linguanodon's sqlite3 database via
+Content (`public/data/minimal-pairs-practice/clips.json` + the 1000 audio
+clips under `public/data/minimal-pairs-practice/audio/`) is a one-time
+export from linguanodon's sqlite3 database via
 `cms/viettonepractice/import_from_linguanodon.py`. Rerun that script by hand
 if the upstream content changes - there's no ongoing sync.
 

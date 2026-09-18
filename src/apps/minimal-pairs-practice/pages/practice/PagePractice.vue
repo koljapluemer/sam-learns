@@ -24,8 +24,8 @@ const {
   round,
   splitLabel
 } = usePracticeSession({
-  audioBaseUrl: '/data/viettonepractice/audio/',
-  apiClipsUrl: '/data/viettonepractice/clips.json'
+  audioBaseUrl: '/data/minimal-pairs-practice/audio/',
+  apiClipsUrl: '/data/minimal-pairs-practice/clips.json'
 })
 </script>
 
