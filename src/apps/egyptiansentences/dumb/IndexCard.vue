@@ -36,12 +36,11 @@ function textClass(row: IndexCardRow): string {
             v-if="row.type === 'divider'"
             class="w-full border-b border-white/20"
           />
-          <!-- eslint-disable-next-line vue/no-v-html -->
           <p
             v-else
+            v-dompurify-html="row.text"
             :class="textClass(row)"
             :dir="row.rtl ? 'rtl' : undefined"
-            v-html="row.text"
           />
         </template>
       </div>

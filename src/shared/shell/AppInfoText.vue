@@ -55,7 +55,7 @@ const app = computed(() =>
     </p>
     <p
       v-if="app?.credits"
-      v-html="app.credits"
+      v-dompurify-html="app.credits"
     />
   </div>
 </template>

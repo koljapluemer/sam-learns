@@ -60,10 +60,9 @@ function onInput(event: Event) {
 
     <div class="card bg-base-100 shadow-xl w-full max-w-3xl">
       <div class="card-body">
-        <!-- eslint-disable-next-line vue/no-v-html -->
         <div
+          v-dompurify-html="session.lineHtml.value"
           class="flex flex-col gap-6 select-none"
-          v-html="session.lineHtml.value"
         />
       </div>
     </div>

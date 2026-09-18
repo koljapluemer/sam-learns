@@ -6,7 +6,7 @@ let initialized = false
 
 function ensureInitialized() {
   if (initialized) return
-  mermaid.initialize({ startOnLoad: false, theme: 'default' })
+  mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'strict' })
   initialized = true
 }
 
@@ -45,7 +45,7 @@ watch(() => props.code, render)
   </div>
   <div
     v-else
+    v-dompurify-html="svgHtml"
     class="w-full overflow-x-auto"
-    v-html="svgHtml"
   />
 </template>
