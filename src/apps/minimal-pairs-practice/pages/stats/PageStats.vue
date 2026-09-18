@@ -7,30 +7,29 @@
 // createPairHistoryModal), called from onMounted, same shape as the
 // original; the surrounding page chrome is real Vue template/reactivity.
 import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
+import PageShell from '@/shared/shell/PageShell.vue'
+import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import { getLanguage } from '../../entities/tone-clip/languages/registry'
 import {
   importPracticeExportSnapshot,
   listPracticeEvents,
   readPracticeExportSnapshot
-} from '../../app/practiceEvents'
-import { getAccuracyTrialSeries, getPairAccuracyTrialSeries, getPracticeStatsSnapshot } from '../../app/stats'
-import { createAccuracyTrendChart, createDailyAccuracyChart, createDailyVolumeChart } from '../../app/charts'
-import { getChartMinWidth } from '../../app/dailyChart'
-import { renderMatrix } from '../../app/matrixRenderer'
-import { createPairHistoryModal } from '../../app/pairHistoryModal'
-import GlobalStatsSection from '@/shared/stats/GlobalStatsSection.vue'
-import PageShell from '@/shared/shell/PageShell.vue'
-import type { PracticeEvent } from '../../app/types'
+} from '../../entities/practice-event/practiceEvents'
+import type { PracticeEvent } from '../../entities/practice-event/types'
+import { createAccuracyTrendChart, createDailyAccuracyChart, createDailyVolumeChart } from '../../features/practice-stats/charts'
+import { getChartMinWidth } from '../../features/practice-stats/dailyChart'
+import { createPairHistoryModal } from '../../features/practice-stats/pairHistoryModal'
+import { renderMatrix } from '../../features/practice-stats/matrixRenderer'
+import { getAccuracyTrialSeries, getPairAccuracyTrialSeries, getPracticeStatsSnapshot } from '../../features/practice-stats/stats'
 
-const TONE_LABELS: Record<string, string> = {
-  ngang: 'ngang | -',
-  huyen: 'huyền | `',
-  sac: 'sắc | /',
-  hoi: 'hỏi | ?',
-  nga: 'ngã | ~',
-  nang: 'nặng | .'
-}
+const languageCode = useLocalSetting('minimal-pairs-practice.language', '')
+// Falls back to Vietnamese: pre-multi-language history has no language
+// setting yet, and Vietnamese is the only language that existed then.
+const activeLanguageCode = computed(() => languageCode.value || 'vie')
+const languagePack = computed(() => getLanguage(activeLanguageCode.value))
 
-const formatToneKey = (key: string): string => TONE_LABELS[key] ?? key
+const formatToneKey = (key: string): string => languagePack.value?.toneLabels[key] ?? key
 
 function formatDuration(durationMs: number): string {
   const totalSeconds = Math.max(0, Math.round(durationMs / 1000))
@@ -72,7 +71,9 @@ const importInput = useTemplateRef<HTMLInputElement>('importInput')
 // synchronously right after mutating a ref (the previous approach) races the
 // DOM update and silently renders nothing, since the template refs are still
 // null at that point.
-const snapshot = computed(() => (events.value.length ? getPracticeStatsSnapshot(events.value) : null))
+const snapshot = computed(() =>
+  events.value.length && languagePack.value ? getPracticeStatsSnapshot(events.value, languagePack.value.toneKeys) : null
+)
 
 function updateAccuracyTrendSummary() {
   if (!trendChart) return
@@ -91,13 +92,17 @@ async function loadStats() {
   loading.value = true
   loadFailed.value = false
   try {
-    events.value = await listPracticeEvents()
+    events.value = await listPracticeEvents(activeLanguageCode.value)
   } catch {
     loadFailed.value = true
   } finally {
     loading.value = false
   }
 }
+
+watch(languageCode, () => {
+  void loadStats()
+})
 
 watch(
   snapshot,
@@ -143,12 +148,12 @@ watch(
 )
 
 async function handleExport() {
-  const payload = await readPracticeExportSnapshot()
+  const payload = await readPracticeExportSnapshot(activeLanguageCode.value)
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const anchor = document.createElement('a')
   anchor.href = url
-  anchor.download = `minimal-pairs-practice-progress-${new Date().toISOString().slice(0, 10)}.json`
+  anchor.download = `minimal-pairs-practice-${activeLanguageCode.value}-progress-${new Date().toISOString().slice(0, 10)}.json`
   anchor.click()
   URL.revokeObjectURL(url)
 }

@@ -170,7 +170,7 @@ export const apps: AppDefinition[] = [
   {
     slug: 'minimal-pairs-practice',
     name: 'Minimal Pairs Practice',
-    description: "Listen to a short audio clip and identify which of Vietnamese's six tones you heard.",
+    description: 'Listen to a short audio clip and identify which of two near-identical tone spellings you heard, in Vietnamese or Mandarin.',
     stats: { trialLabel: 'exercises answered' },
     routes: [
       {
@@ -178,7 +178,7 @@ export const apps: AppDefinition[] = [
         component: () => import('./apps/minimal-pairs-practice/pages/practice/PagePractice.vue'),
         meta: {
           title: 'Minimal Pairs Practice',
-          description: 'Practice distinguishing Vietnamese tones by ear.'
+          description: 'Practice distinguishing tones by ear, in Vietnamese or Mandarin.'
         }
       },
       {

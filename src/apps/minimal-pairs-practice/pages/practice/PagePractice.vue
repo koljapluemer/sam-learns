@@ -1,144 +1,50 @@
 <script setup lang="ts">
-// Ported from linguanodon's viettonepractice app/player.js + app/choices.js,
-// combined into one SFC (the source split them across two global Vue
-// components registered on a bare `createApp` root).
-import { usePracticeSession } from '../../app/usePracticeSession'
+import { onMounted, ref } from 'vue'
+import { useLocalSetting } from '@/shared/settings/useLocalSetting'
+import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import { listLanguageOptions } from '../../entities/tone-clip/languages/registry'
+import PracticeRoundView from './PracticeRoundView.vue'
 
-const {
-  answerOptions,
-  audioRef,
-  autoplayHint,
-  changedCharacterIndex,
-  disabledButtonIndex,
-  handleAnswer,
-  handleAudioEnded,
-  handleAudioFocus,
-  handleAudioPause,
-  handleAudioPlay,
-  handleAudioSeek,
-  handleAudioTimeUpdate,
-  hideCurrentClip,
-  loadError,
-  phase,
-  replayAudio,
-  round,
-  splitLabel
-} = usePracticeSession({
-  audioBaseUrl: '/data/minimal-pairs-practice/audio/',
-  apiClipsUrl: '/data/minimal-pairs-practice/clips.json'
+const languageCode = useLocalSetting('minimal-pairs-practice.language', '')
+const hanziVisibility = useLocalSetting<'always' | 'after-answer' | 'never'>('minimal-pairs-practice.hanzi-visibility', 'always')
+const setupOpen = ref(false)
+const languageOptions = listLanguageOptions()
+
+onMounted(() => {
+  if (!languageCode.value) setupOpen.value = true
 })
+
+function selectLanguage(code: string) {
+  languageCode.value = code
+  setupOpen.value = false
+}
 </script>
 
 <template>
-  <section class="mx-auto flex w-full max-w-4xl flex-1 items-center justify-center p-4">
-    <div class="card w-full max-w-3xl border border-base-300 bg-base-100">
-      <div class="card-body gap-6 p-6 sm:p-8">
-        <div
-          v-if="loadError"
-          class="alert alert-error"
-        >
-          <span>{{ loadError }}</span>
-        </div>
+  <PracticeRoundView
+    v-if="languageCode && !setupOpen"
+    :key="languageCode"
+    :language-code="languageCode"
+    :hanzi-visibility="hanziVisibility"
+  />
 
-        <div
-          v-else-if="phase === 'loading'"
-          class="flex min-h-64 items-center justify-center rounded-box border border-base-300 bg-base-200"
-        >
-          <span class="loading loading-spinner loading-lg" />
-        </div>
-
-        <div
-          v-else-if="round"
-          class="space-y-4"
-        >
-          <div class="card border border-base-300 bg-base-200">
-            <div class="card-body gap-4 p-4">
-              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div class="space-y-1">
-                  <p class="font-medium">
-                    Audio
-                  </p>
-                  <p class="text-sm text-base-content/70">
-                    Listen first, then pick one of the two spellings.
-                  </p>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <button
-                    class="btn btn-sm btn-outline"
-                    @click="replayAudio"
-                  >
-                    Replay
-                  </button>
-                  <button
-                    class="btn btn-sm btn-outline btn-error"
-                    @click="hideCurrentClip"
-                  >
-                    Hide clip
-                  </button>
-                </div>
-              </div>
-
-              <audio
-                ref="audioRef"
-                :key="round.clip.filename"
-                class="w-full"
-                :src="round.clip.audioSrc"
-                preload="auto"
-                controls
-                autoplay
-                tabindex="-1"
-                @ended="handleAudioEnded"
-                @pause="handleAudioPause"
-                @play="handleAudioPlay"
-                @seeking="handleAudioSeek"
-                @timeupdate="handleAudioTimeUpdate"
-                @focus="handleAudioFocus"
-              />
-
-              <div
-                v-if="autoplayHint"
-                class="alert alert-warning"
-              >
-                <span>{{ autoplayHint }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <button
-              v-for="(option, index) in answerOptions"
-              :key="round.clip.filename + '-' + index + '-' + option.label"
-              class="btn btn-2xl btn-outline h-auto flex-row items-center justify-between gap-3"
-              :disabled="disabledButtonIndex === index"
-              @click="handleAnswer(option, index)"
-            >
-              <kbd
-                v-if="index === 0"
-                class="kbd kbd-sm"
-              >←</kbd>
-              <span class="text-2xl whitespace-pre-wrap">
-                <span
-                  v-for="(character, characterIndex) in splitLabel(option.label)"
-                  :key="option.label + '-' + characterIndex"
-                  :class="{ 'text-marker': characterIndex === changedCharacterIndex }"
-                >{{ character }}</span>
-              </span>
-              <kbd
-                v-if="index !== 0"
-                class="kbd kbd-sm"
-              >→</kbd>
-            </button>
-          </div>
-        </div>
-      </div>
+  <PracticeSetupModal
+    :open="setupOpen"
+    :ready="!!languageCode"
+    title="Choose a language"
+    @close="setupOpen = false"
+  >
+    <div class="flex flex-col gap-2">
+      <button
+        v-for="language in languageOptions"
+        :key="language.code"
+        type="button"
+        class="btn justify-start"
+        :class="languageCode === language.code ? 'btn-primary' : 'btn-outline'"
+        @click="selectLanguage(language.code)"
+      >
+        {{ language.name }}
+      </button>
     </div>
-  </section>
+  </PracticeSetupModal>
 </template>
-
-<style scoped>
-/* Ported from linguanodon's viettonepractice/static/viettonepractice/css/style.css */
-.text-marker {
-  border-radius: 0.18em;
-  box-shadow: inset 0 -0.5em 0 rgba(251, 191, 36, 0.55);
-}
-</style>
