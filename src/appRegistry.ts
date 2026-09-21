@@ -557,38 +557,6 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'entity-relation-intuition',
-    name: 'ER Diagram Intuition',
-    description: 'Practice sketching simple entity-relationship diagrams for everyday business cases.',
-    stats: { trialLabel: 'exercises done' },
-    routes: [
-      {
-        path: '',
-        component: () => import('./apps/entity-relation-intuition/app/App.vue'),
-        meta: {
-          title: 'ER Diagram Intuition',
-          description: 'Build intuition for basic ER modeling by comparing your sketch to example solutions.'
-        }
-      },
-      {
-        path: 'stats',
-        component: () => import('./apps/entity-relation-intuition/pages/stats/PageStats.vue'),
-        meta: {
-          title: 'Stats | ER Diagram Intuition',
-          description: 'Cross-app daily usage stats.'
-        }
-      },
-      {
-        path: 'settings',
-        component: () => import('./apps/entity-relation-intuition/pages/settings/PageSettings.vue'),
-        meta: {
-          title: 'Settings | ER Diagram Intuition',
-          description: 'Language and app settings.'
-        }
-      }
-    ]
-  },
-  {
     slug: 'just-flashcards',
     name: 'Just Flashcards',
     description: 'Make simple Markdown flashcards and practice them with FSRS spaced repetition.',

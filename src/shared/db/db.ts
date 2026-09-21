@@ -16,9 +16,6 @@ db.version(1).stores({
 
   currencyConversionPractice_trials: 'id, date',
 
-  entityRelationIntuition_scenarioProgress: 'scenarioId',
-  entityRelationIntuition_learningEvents: 'id, timestamp, scenarioId',
-
   simplifyExpressions_exerciseAttempts: 'id, timestamp, topic, difficultyBand',
   simplifyExpressions_topicProgress: 'topic, dueAt, lastSeenAt',
 
