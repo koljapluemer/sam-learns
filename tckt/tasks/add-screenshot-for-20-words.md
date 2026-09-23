@@ -1,1 +1,0 @@
-add screenshot for 20 words

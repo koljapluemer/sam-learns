@@ -1,1 +1,0 @@
-# SVG stats seems to break when it starts to "scroll" 

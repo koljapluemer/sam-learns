@@ -1,1 +1,0 @@
-20 words: whole layout column is unnecessarily small
