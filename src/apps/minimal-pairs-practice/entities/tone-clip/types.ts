@@ -14,6 +14,8 @@ export interface Clip {
 
 export interface DistractorCandidate {
   label: string
+  // The transcript word whose tone was swapped to build this distractor.
+  word: string
   changedIndex: number
   correctCharacter: string
   distractorCharacter: string

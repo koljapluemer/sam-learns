@@ -154,6 +154,7 @@ function listDistractorCandidatesInternal(transcript: string): DistractorCandida
 
       candidates.push({
         label,
+        word: sourceToken,
         changedIndex,
         correctCharacter: character,
         distractorCharacter: alternative,

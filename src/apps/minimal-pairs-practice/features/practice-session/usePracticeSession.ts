@@ -76,9 +76,9 @@ export function usePracticeSession(languagePack: LanguagePack) {
   const loadError = ref('')
   const hiddenClipFilenames = ref<Set<string>>(new Set())
   let clipCatalog: PracticeCatalogEntry[] = []
-  // Words already shown as a wrong-answer distractor this session - excluded
-  // from being picked as a distractor again so the same word isn't repeated.
-  const usedDistractorLabels = new Set<string>()
+  // Words already tested (tone-swapped) this session - not tested again.
+  const usedWords = new Set<string>()
+  const toWordKey = (candidate: DistractorCandidate) => candidate.word.toLowerCase()
 
   const answerOptions = computed(() => round.value?.options ?? [])
   const changedCharacterIndex = computed(() => round.value?.candidate.changedIndex ?? -1)
@@ -210,7 +210,7 @@ export function usePracticeSession(languagePack: LanguagePack) {
     if (!selectedDirectionKey) return null
 
     const candidates = directionalExercises.get(selectedDirectionKey) ?? []
-    const unusedCandidates = candidates.filter((exercise) => !usedDistractorLabels.has(exercise.candidate.label))
+    const unusedCandidates = candidates.filter((exercise) => !usedWords.has(toWordKey(exercise.candidate)))
 
     return pickRandom(unusedCandidates.length ? unusedCandidates : candidates)
   }
@@ -235,7 +235,7 @@ export function usePracticeSession(languagePack: LanguagePack) {
       const selectedExercise = selectedPairKey ? chooseExerciseForPair(selectedPairKey, allPairExercises, directionalHistory) : null
 
       if (selectedExercise) {
-        usedDistractorLabels.add(selectedExercise.candidate.label)
+        usedWords.add(toWordKey(selectedExercise.candidate))
         return createRound(selectedExercise, selectionMode)
       }
     }
