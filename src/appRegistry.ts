@@ -653,5 +653,38 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'dont-translate',
+    name: "Don't Translate",
+    description: 'Learn words from pictures instead of translations.',
+    credits: 'Emoji labels from the <a href="https://huggingface.co/datasets/omarkamali/emoji-map" class="link" rel="noreferrer noopener">omarkamali/emoji-map dataset</a> (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="link" rel="noreferrer noopener">CC BY-NC-SA 4.0</a>; original <a href="https://opensource.org/license/unicode-license-v3" class="link" rel="noreferrer noopener">Unicode License</a> may also apply). Images extracted from the <a href="https://www.kaggle.com/datasets/subinium/emojiimage-dataset" class="link" rel="noreferrer noopener">subinium/emojiimage-dataset</a> (CC BY-NC-SA 4.0), using Noto Emoji pictures under the <a href="https://fonts.google.com/noto/specimen/Noto+Emoji/license" class="link" rel="noreferrer noopener">SIL Open Font License 1.1</a>. Vietnamese auto-translated with argostranslate.',
+    stats: { trialLabel: 'cards reviewed' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/dont-translate/pages/practice/PagePractice.vue'),
+        meta: {
+          title: "Don't Translate",
+          description: 'Practice image-word flashcards with FSRS spaced repetition.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/dont-translate/pages/stats/PageStats.vue'),
+        meta: {
+          title: "Stats | Don't Translate",
+          description: 'Time spent and cards reviewed.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/dont-translate/pages/settings/PageSettings.vue'),
+        meta: {
+          title: "Settings | Don't Translate",
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]

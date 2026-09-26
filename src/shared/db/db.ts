@@ -47,6 +47,8 @@ db.version(1).stores({
   topVocab_vocabCards: 'id',
   topVocab_sentenceCards: 'id',
 
+  dontTranslate_cards: 'id',
+
   hebrewscript_practiceEvents: 'id, timestamp',
 
   tprboard_learningItems: 'key, languageCode',
