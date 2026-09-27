@@ -43,8 +43,7 @@ async function loadVideo(video: Video) {
   tracker = createWatchTracker({
     videoId: video.videoId,
     languageId: video.languageId,
-    languageName: video.languageName,
-    videoTitle: video.title
+    languageName: video.languageName
   })
 
   // Wait a tick for the (freshly re-keyed) #player element to exist.
@@ -74,7 +73,6 @@ async function submitSurvey() {
     videoId: currentVideo.value.videoId,
     languageId: currentVideo.value.languageId,
     languageName: currentVideo.value.languageName,
-    videoTitle: currentVideo.value.title,
     timestamp: Date.now(),
     comprehension: comprehension.value,
     listening: listening.value,

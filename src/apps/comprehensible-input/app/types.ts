@@ -6,7 +6,6 @@
 export type Video = {
   videoId: number
   youtubeId: string
-  title: string
   languageId: number
   languageName: string
   languageCode: string
@@ -18,7 +17,6 @@ export type WatchMeta = {
   videoId: number
   languageId: number
   languageName: string
-  videoTitle: string
 }
 
 export type WatchSegment = {

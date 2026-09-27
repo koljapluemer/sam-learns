@@ -51,7 +51,6 @@ async function recordWatchProgress(
     videoId,
     languageId: meta.languageId,
     languageName: meta.languageName,
-    videoTitle: meta.videoTitle,
     seconds: (existing?.seconds ?? 0) + (progress.secondsDelta ?? 0),
     segments: progress.segment ? mergeSegment(existing?.segments ?? [], progress.segment) : (existing?.segments ?? [])
   }
@@ -115,7 +114,6 @@ export async function addSurveyResponse(response: {
   videoId: number
   languageId: number
   languageName: string
-  videoTitle: string
   timestamp: number
   comprehension: number
   listening: number
