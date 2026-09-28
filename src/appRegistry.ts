@@ -686,5 +686,37 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'al-kutshina',
+    name: 'Al Kutshina',
+    description: 'Hear an instruction, then drag one picture onto another to do it.',
+    stats: { trialLabel: 'exercises answered' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/al-kutshina/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Al Kutshina',
+          description: 'Drag pictures onto each other to follow spoken instructions.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/al-kutshina/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Al Kutshina',
+          description: 'Time spent and exercises answered.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/al-kutshina/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Al Kutshina',
+          description: 'Choose which language to practice.'
+        }
+      }
+    ]
   }
 ]
