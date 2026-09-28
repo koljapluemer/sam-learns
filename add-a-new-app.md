@@ -1,17 +1,10 @@
 - register in app-registry
 - use @agents.md, do not write a bespoke one
 
-## Screenshot and favicon
+## Screenshot
 
-- Logo and screenshot: `src/apps/<slug>/meta/logo.webp` and
-  `src/apps/<slug>/meta/screenshot.webp`. `Home.vue` globs
-  `./apps/*/meta/*.webp` and looks them up by slug, so the filenames and
-  location must match exactly.
-- Favicon: `public/favicons/<slug>.ico`, generated from `logo.webp` - don't
-  create it by hand. Run `uv run python favicons/generate_favicons.py` from
-  `cms/` any time a `logo.webp` is added or changed; it regenerates every
-  app's favicon plus `base.ico`. `router.ts` falls back to
-  `public/favicons/base.ico` when no file matches the app's slug.
+- Add `src/apps/<slug>/meta/screenshot.webp` for the dashboard. `Home.vue`
+  looks it up by slug, so the filename and location must match exactly.
 
 ## Nav tab pattern
 

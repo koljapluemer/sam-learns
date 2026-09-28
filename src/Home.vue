@@ -5,10 +5,10 @@ defineOptions({
 
 import { apps } from './appRegistry'
 
-const metaImages = import.meta.glob<string>('./apps/*/meta/*.webp', { eager: true, import: 'default' })
+const screenshots = import.meta.glob<string>('./apps/*/meta/screenshot.webp', { eager: true, import: 'default' })
 
-function metaImage(slug: string, name: 'logo' | 'screenshot') {
-  return metaImages[`./apps/${slug}/meta/${name}.webp`]
+function screenshot(slug: string) {
+  return screenshots[`./apps/${slug}/meta/screenshot.webp`]
 }
 </script>
 
@@ -30,14 +30,9 @@ function metaImage(slug: string, name: 'logo' | 'screenshot') {
         class="card border border-base-300 bg-base-100 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
         :to="{ name: app.slug }"
       >
-        <img
-          :src="metaImage(app.slug, 'logo')"
-          :alt="`${app.name} logo`"
-          class="absolute -top-4 -left-4 z-5 h-16 w-16 object-contain p-1"
-        >
         <figure>
           <img
-            :src="metaImage(app.slug, 'screenshot')"
+            :src="screenshot(app.slug)"
             :alt="`${app.name} screenshot`"
             class="h-40 w-full object-cover"
           >
