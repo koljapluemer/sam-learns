@@ -43,14 +43,22 @@ onMounted(async () => {
       No exercises available.
     </p>
 
-    <ExerciseRound
+    <Transition
       v-else
-      :key="exercise.id"
-      :exercise="exercise"
-      :items-by-img="itemsByImg"
-      :text="sentences[exercise.questKey] ?? ''"
-      :audio-url="audioUrl(languageCode, exercise.questKey)"
-      @done="next"
-    />
+      mode="out-in"
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-to-class="opacity-0"
+    >
+      <ExerciseRound
+        :key="exercise.id"
+        :exercise="exercise"
+        :items-by-img="itemsByImg"
+        :text="sentences[exercise.questKey] ?? ''"
+        :audio-url="audioUrl(languageCode, exercise.questKey)"
+        @done="next"
+      />
+    </Transition>
   </div>
 </template>

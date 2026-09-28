@@ -4,12 +4,20 @@ import { parseQuest, type Quest } from '../../entities/sentence/sentence'
 import { pickRandom, takeRandom } from '../../dumb/random'
 import { pickDistractors } from './pickDistractors'
 
-export type Exercise = { id: string; questKey: string; quest: Quest; fields: Field[] }
+// `solution` holds the field ids of the quest's sender and receiver.
+export type Exercise = { id: string; questKey: string; quest: Quest; fields: Field[]; solution: string[] }
 
 const MAX_ATTEMPTS = 20
+// Fixed board size (sender, receiver, up to three distractors, rest empty),
+// so the board's layout never changes between rounds.
+const BOARD_SIZE = 6
 
 function toField(item: Item): Field {
   return { id: crypto.randomUUID(), img: item.img }
+}
+
+function emptyField(): Field {
+  return { id: crypto.randomUUID(), img: '' }
 }
 
 function buildExercise(items: Item[], questKey: string): Exercise | undefined {
@@ -21,8 +29,17 @@ function buildExercise(items: Item[], questKey: string): Exercise | undefined {
   )
   if (!sender || !receiver) return undefined
 
-  const cards = [sender, receiver, ...pickDistractors(items, quest, [sender, receiver])]
-  return { id: crypto.randomUUID(), questKey, quest, fields: takeRandom(cards, cards.length).map(toField) }
+  const senderField = toField(sender)
+  const receiverField = toField(receiver)
+  const cards = [senderField, receiverField, ...pickDistractors(items, quest, [sender, receiver]).map(toField)]
+  const fields = [...cards, ...Array.from({ length: BOARD_SIZE - cards.length }, emptyField)]
+  return {
+    id: crypto.randomUUID(),
+    questKey,
+    quest,
+    fields: takeRandom(fields, fields.length),
+    solution: [senderField.id, receiverField.id]
+  }
 }
 
 // Starts from a sentence rather than from random items, so every exercise has

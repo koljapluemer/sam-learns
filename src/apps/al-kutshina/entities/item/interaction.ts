@@ -1,6 +1,6 @@
 import { canReceive, Reaction, type Item } from './item'
 
-// One card on the board. `img` is '' once the card is gone.
+// One slot on the board. `img` is '' for an empty slot (or once the card is gone).
 export type Field = { id: string; img: string; overlayImg?: string }
 
 export function actionsBetween(sender: Item, receiver: Item): string[] {

@@ -14,21 +14,21 @@ const props = defineProps<{
 
 const emit = defineEmits<{ done: [] }>()
 
-const { fields, state, drop } = useExerciseRound(props.exercise, props.itemsByImg, () => emit('done'))
+const { fields, state, statuses, drop } = useExerciseRound(props.exercise, props.itemsByImg, () => emit('done'))
 </script>
 
 <template>
-  <div
-    class="flex flex-col gap-6 rounded-box p-4 transition-colors"
-    :class="{ 'bg-success/20': state === 'correct', 'bg-error/20': state === 'wrong' }"
-  >
-    <ExerciseBoard
-      :fields="fields"
-      @drop="drop"
-    />
+  <div class="flex flex-col gap-6">
     <QuestPrompt
       :text="text"
       :audio-url="audioUrl"
+      :solved="state === 'correct'"
+    />
+    <ExerciseBoard
+      :fields="fields"
+      :statuses="statuses"
+      :locked="state !== 'waiting'"
+      @drop="drop"
     />
   </div>
 </template>

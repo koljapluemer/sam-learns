@@ -6,13 +6,19 @@ import { ref } from 'vue'
 // wherever the pointer goes; on release, the element under the pointer (other
 // than the dragged one) is the drop target. Elements need `touch-action: none`
 // so touch drags don't scroll the page.
+// `overId` is the drop target currently under the pointer. `lastDraggedId`
+// stays set after release, so that element can stay on top while it animates
+// back into place.
 export function usePointerDrag(onDrop: (sourceId: string, targetId: string) => void) {
   const draggingId = ref<string | null>(null)
+  const lastDraggedId = ref<string | null>(null)
+  const overId = ref<string>()
   const offset = ref({ x: 0, y: 0 })
   let start = { x: 0, y: 0 }
 
   function reset() {
     draggingId.value = null
+    overId.value = undefined
     offset.value = { x: 0, y: 0 }
   }
 
@@ -29,11 +35,13 @@ export function usePointerDrag(onDrop: (sourceId: string, targetId: string) => v
         if (!event.isPrimary || event.button !== 0) return
         ;(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId)
         draggingId.value = id
+        lastDraggedId.value = id
         start = { x: event.clientX, y: event.clientY }
       },
       onPointermove(event: PointerEvent) {
         if (draggingId.value !== id) return
         offset.value = { x: event.clientX - start.x, y: event.clientY - start.y }
+        overId.value = dropTargetAt(event.clientX, event.clientY, id)
       },
       onPointerup(event: PointerEvent) {
         if (draggingId.value !== id) return
@@ -45,5 +53,5 @@ export function usePointerDrag(onDrop: (sourceId: string, targetId: string) => v
     }
   }
 
-  return { draggingId, offset, bind }
+  return { draggingId, lastDraggedId, overId, offset, bind }
 }
