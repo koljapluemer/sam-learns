@@ -28,7 +28,7 @@ db.version(1).stores({
   worldMap_learningEvents: 'id, timestamp, country',
   worldMap_practiceTime: 'key',
 
-  arabicnumbers_numberState: 'val',
+  arabicnumbers_numberLevels: 'key',
   arabicnumbers_exercises: 'key',
 
   comprehensibleInput_watchTime: 'videoId',

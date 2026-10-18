@@ -236,7 +236,7 @@ export function usePracticeSession() {
     })
     parentNumber.sr.dueAt = nowSeconds() + parentNumber.sr.interval
 
-    const plainNumberState = { val: parentNumber.val, level: parentNumber.level, sr: parentNumber.sr }
+    const plainNumberState = { key: String(parentNumber.val), val: parentNumber.val, level: parentNumber.level, sr: parentNumber.sr }
     const plainExercise = toPlain({ key: currentExercise.key, stats: currentExercise.stats, sr: currentExercise.sr })
 
     void appDb.numberState.put(plainNumberState)
