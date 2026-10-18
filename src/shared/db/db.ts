@@ -49,6 +49,8 @@ db.version(1).stores({
 
   dontTranslate_cards: 'id',
 
+  ancientGreekAlphabet_cards: 'id',
+
   hebrewscript_practiceEvents: 'id, timestamp',
 
   tprboard_learningItems: 'key, languageCode',

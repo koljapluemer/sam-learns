@@ -718,5 +718,38 @@ export const apps: AppDefinition[] = [
         }
       }
     ]
+  },
+  {
+    slug: 'ancient-greek-alphabet',
+    name: 'Ancient Greek Alphabet',
+    description: 'Read Ancient Greek words aloud, then check the pronunciation.',
+    credits: 'Pronunciation generated with <a href="https://github.com/espeak-ng/espeak-ng" class="link" rel="noreferrer noopener">espeak-ng</a>.',
+    stats: { trialLabel: 'cards reviewed' },
+    routes: [
+      {
+        path: '',
+        component: () => import('./apps/ancient-greek-alphabet/pages/practice/PagePractice.vue'),
+        meta: {
+          title: 'Ancient Greek Alphabet',
+          description: 'Pronounce Ancient Greek words with FSRS spaced repetition.'
+        }
+      },
+      {
+        path: 'stats',
+        component: () => import('./apps/ancient-greek-alphabet/pages/stats/PageStats.vue'),
+        meta: {
+          title: 'Stats | Ancient Greek Alphabet',
+          description: 'Time spent and cards reviewed.'
+        }
+      },
+      {
+        path: 'settings',
+        component: () => import('./apps/ancient-greek-alphabet/pages/settings/PageSettings.vue'),
+        meta: {
+          title: 'Settings | Ancient Greek Alphabet',
+          description: 'App settings.'
+        }
+      }
+    ]
   }
 ]
