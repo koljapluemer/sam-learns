@@ -17,6 +17,7 @@ function formatMagnitude(magnitude: number): string {
 
 const minMagnitude = useLocalSetting('currency-conversion-practice-min-magnitude', 1)
 const maxMagnitude = useLocalSetting('currency-conversion-practice-max-magnitude', 1000)
+const isBidirectional = useLocalSetting('currency-conversion-practice-bidirectional', false)
 
 const dividend = ref(0)
 const divisor = ref(1.2)
@@ -25,6 +26,11 @@ const results = ref<TrialRow[]>([])
 
 const homeCurrency = ref('EUR')
 const foreignCurrency = ref('USD')
+
+const isReversed = ref(false)
+const fromCurrency = computed(() => (isReversed.value ? homeCurrency.value : foreignCurrency.value))
+const toCurrency = computed(() => (isReversed.value ? foreignCurrency.value : homeCurrency.value))
+const effectiveDivisor = computed(() => (isReversed.value ? 1 / divisor.value : divisor.value))
 
 const isRevealed = ref(false)
 const guessInput = ref<HTMLInputElement | null>(null)
@@ -48,6 +54,7 @@ generateRandomExercise()
 
 function generateRandomExercise() {
   dividend.value = randomExerciseValue()
+  isReversed.value = isBidirectional.value && Math.random() < 0.5
   guess.value = null
   isRevealed.value = false
   nextTick(() => guessInput.value?.focus())
@@ -70,11 +77,11 @@ function randomExerciseValue(): number {
 function evaluateScore() {
   if (guess.value == null) return
 
-  const correct = dividend.value / divisor.value
+  const correct = dividend.value / effectiveDivisor.value
   const trial: Omit<TrialRow, 'id'> = {
     date: new Date().toISOString(),
     dividend: dividend.value,
-    divisor: divisor.value,
+    divisor: effectiveDivisor.value,
     guess: guess.value,
     correct,
     missedByPercent: ((guess.value - correct) / correct) * 100
@@ -88,7 +95,7 @@ function evaluateScore() {
 
 const currentError = computed(() => {
   if (guess.value == null || !isRevealed.value) return null
-  const correct = dividend.value / divisor.value
+  const correct = dividend.value / effectiveDivisor.value
   return ((guess.value - correct) / correct) * 100
 })
 
@@ -105,13 +112,13 @@ const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map
         Currency conversion practice
       </h1>
       <p class="max-w-2xl text-sm text-base-content/70">
-        Estimate the home-currency value before revealing the answer, then track how far off you were.
+        Estimate the converted value before revealing the answer, then track how far off you were.
       </p>
     </header>
 
     <details class="collapse collapse-arrow rounded-box border border-base-300 bg-base-100 shadow-sm">
       <summary class="collapse-title text-sm font-medium py-3 min-h-0">
-        {{ foreignCurrency }} → {{ homeCurrency }} @ {{ divisor }}
+        {{ foreignCurrency }} {{ isBidirectional ? '↔' : '→' }} {{ homeCurrency }} @ {{ divisor }}
       </summary>
       <div class="collapse-content flex flex-col gap-2 pb-4">
         <div class="flex gap-2">
@@ -167,13 +174,21 @@ const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map
             </select>
           </label>
         </div>
+        <label class="flex items-center gap-2 text-sm">
+          <input
+            v-model="isBidirectional"
+            type="checkbox"
+            class="toggle toggle-sm"
+          >
+          Both directions
+        </label>
       </div>
     </details>
 
     <div class="card border border-base-300 bg-base-100 shadow-sm">
       <div class="card-body gap-4 p-6">
         <h2 class="text-2xl font-bold md:text-3xl">
-          {{ dividend }} {{ foreignCurrency }} = ?
+          {{ dividend }} {{ fromCurrency }} = ?
         </h2>
 
         <div
@@ -181,8 +196,8 @@ const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map
           class="text-lg opacity-80"
         >
           You guessed <span class="font-semibold">{{ guess }}</span>.
-          It&apos;s <span class="font-semibold text-primary">{{ (dividend / divisor).toFixed(2) }}</span>
-          {{ homeCurrency }}.
+          It&apos;s <span class="font-semibold text-primary">{{ (dividend / effectiveDivisor).toFixed(2) }}</span>
+          {{ toCurrency }}.
           <span
             class="mt-1 block text-sm"
             :class="currentError !== null && Math.abs(currentError) < 1 ? 'text-success' : ''"
@@ -203,7 +218,7 @@ const recentValues = computed(() => results.value.slice(-RECENT_TRIAL_COUNT).map
             v-model="guess"
             type="number"
             class="input input-bordered flex-1 text-xl"
-            :placeholder="homeCurrency"
+            :placeholder="toCurrency"
             @keyup.enter="guess != null && (isRevealed = true)"
           >
           <button
