@@ -53,10 +53,13 @@ export function computeMarkerRadius(width: number, height: number): number {
 // country's actual on-screen pixel size, since the zoom transform is a pure scale+translate applied
 // on top of the same projection. Used to decide whether a country's own shape is big enough on
 // screen to make out, or whether a marker circle is needed instead.
+// Countries straddling the antimeridian (e.g. Fiji) get a box spanning the whole map; a width over
+// half the world (Mercator world width is 2π·scale) can't be real, so only the height counts then.
 export function computeCountryMaxDimension(projection: GeoProjection, feature: Feature): number {
   const bounds = geoPath(projection).bounds(feature)
   const width = bounds[1][0] - bounds[0][0]
   const height = bounds[1][1] - bounds[0][1]
+  if (width > Math.PI * projection.scale()) return height
   return Math.max(width, height)
 }
 
