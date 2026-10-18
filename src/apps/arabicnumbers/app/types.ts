@@ -49,6 +49,8 @@ export interface Exercise {
 }
 
 export interface StoredNumberState {
+  // Dexie Cloud only syncs tables with string primary keys
+  key: string
   val: number
   level: number
   sr: SRState

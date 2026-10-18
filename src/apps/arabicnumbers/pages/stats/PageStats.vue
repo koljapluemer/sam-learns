@@ -54,7 +54,7 @@ onMounted(async () => {
           class="w-4 h-4 flex items-center justify-center shadow-xs relative border border-gray-400 rounded"
         >
           <div
-            class="absolute inset-0 bottom-0 rounded"
+            class="absolute inset-x-0 bottom-0 rounded"
             :style="{ height: level * 10 + '%', backgroundColor: calculateColor(level) }"
           />
         </div>
