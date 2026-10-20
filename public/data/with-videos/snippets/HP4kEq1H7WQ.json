@@ -1,0 +1,708 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 9.884,
+    "text": "đây là Bob đây là Bob",
+    "vocab": [
+      {
+        "term": "đây là",
+        "translation": "this is",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 9.884,
+    "end": 36.555,
+    "text": "đây không phải là Diệp đây là Bob Bob là người Mỹ Bob là người Mỹ Bob không phải là người Việt Nam",
+    "vocab": [
+      {
+        "term": "đây",
+        "translation": "this person / here",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 36.555,
+    "end": 53.889,
+    "text": "Bob là người Mỹ Bob không phải là người Việt Nam Bob cũng không phải là người Canada",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "cũng",
+        "translation": "also",
+        "core": false
+      },
+      {
+        "term": "người Canada",
+        "translation": "Canadian",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 53.889,
+    "end": 63.306,
+    "text": "Bob cũng không phải là người Ác hen ti na",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "cũng không phải là",
+        "translation": "is not either",
+        "core": true
+      },
+      {
+        "term": "người Ác hen ti na",
+        "translation": "Argentinian",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 63.306,
+    "end": 90.484,
+    "text": "Bob cũng không phải là người Anh không phải không phải không phải Bob là người Mỹ Bob là người Mỹ Bob có phải là người Ác hen ti na không?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "cũng",
+        "translation": "also",
+        "core": false
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "not; is not",
+        "core": true
+      },
+      {
+        "term": "người Anh",
+        "translation": "British person",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is; is it true that",
+        "core": true
+      },
+      {
+        "term": "người Ác hen ti na",
+        "translation": "Argentinian",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "question particle used for yes/no questions",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 90.484,
+    "end": 105.904,
+    "text": "không, không phải không phải Bob không phải là người Ác hen ti na Bob là người Mỹ",
+    "vocab": [
+      {
+        "term": "không",
+        "translation": "no",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "not; that's not right",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": false
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người Ác hen ti na",
+        "translation": "an Argentinian person",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "an American",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0006",
+    "start": 105.904,
+    "end": 127.58,
+    "text": "Bob có phải là người Việt Nam không? không, không phải Bob không phải là người Việt Nam Bob là người nước nào?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is it the case that; is",
+        "core": false
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no; not; question particle",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "is not; no",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "người nước nào",
+        "translation": "person from which country; what nationality",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0007",
+    "start": 127.58,
+    "end": 136.682,
+    "text": "Bob là người nước nào? Bob là người Mỹ",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "người nước nào",
+        "translation": "from which country; what nationality",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0008",
+    "start": 136.682,
+    "end": 146.546,
+    "text": "Bob là người Mỹ Bob không phải là người Canada",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người Canada",
+        "translation": "Canadian",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0009",
+    "start": 146.546,
+    "end": 174.471,
+    "text": "Bob cũng không phải là người Việt Nam Bob cũng không phải là người Ác hen ti na đây là Diệp đây là Diệp Diệp là người Việt Nam, đúng không? đúng không?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "cũng",
+        "translation": "also",
+        "core": false
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "người Ác hen ti na",
+        "translation": "Argentine person",
+        "core": true
+      },
+      {
+        "term": "đây là",
+        "translation": "this is",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "đúng không?",
+        "translation": "right?",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0010",
+    "start": 174.471,
+    "end": 201.104,
+    "text": "đúng, đúng rồi đúng rồi Diệp là người Việt Nam Bob không phải là người Việt Nam Diệp có phải là người Mỹ không? không, không phải. Diệp không phải là người Mỹ",
+    "vocab": [
+      {
+        "term": "đúng",
+        "translation": "correct; yes",
+        "core": false
+      },
+      {
+        "term": "đúng rồi",
+        "translation": "that's right",
+        "core": false
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is; to be",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is; are (in a yes/no question)",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American person",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no; not",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "no; is not",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0011",
+    "start": 201.104,
+    "end": 224.34,
+    "text": "Ai? Ai? Ai là người Mỹ? Ai là người Mỹ? Ai là người Mỹ? Bob Bob là người Mỹ Diệp không phải là người Mỹ",
+    "vocab": [
+      {
+        "term": "Ai",
+        "translation": "who",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0012",
+    "start": 224.34,
+    "end": 244.891,
+    "text": "Ai, Ai là người Việt Nam? Ai là người Việt Nam? Diệp là người Việt Nam Bob không phải là người Việt Nam",
+    "vocab": [
+      {
+        "term": "Ai",
+        "translation": "who",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0013",
+    "start": 244.891,
+    "end": 272.5,
+    "text": "Diệp có phải là người Ác hen ti na không? không không phải Diệp không phải là người Ác hen ti na Diệp là người nước nào? Diệp là người Việt Nam Diệp là người Việt Nam",
+    "vocab": [
+      {
+        "term": "Diệp",
+        "translation": "Diệp (a person’s name)",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is; is it true that",
+        "core": false
+      },
+      {
+        "term": "người Ác hen ti na",
+        "translation": "Argentinian person",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no; not",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người nước nào",
+        "translation": "from which country; what nationality",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "to be; is",
+        "core": false
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0014",
+    "start": 272.5,
+    "end": 283.417,
+    "text": "Bob có phải là người Mỹ không? Bob có phải là người Mỹ không?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is; is it true that",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American person",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "question particle (forming a yes/no question)",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0015",
+    "start": 283.417,
+    "end": 311.555,
+    "text": "ừ đúng rồi đúng rồi Bob là người Mỹ đúng rồi đúng rồi Bob là người Mỹ Diệp có phải là người Mỹ không? không không phải Diệp không phải là người Mỹ Diệp là người Việt Nam",
+    "vocab": [
+      {
+        "term": "ừ",
+        "translation": "yes; uh-huh",
+        "core": false
+      },
+      {
+        "term": "đúng rồi",
+        "translation": "that's right",
+        "core": false
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "to be; is",
+        "core": false
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "có phải là người Mỹ không",
+        "translation": "is [she] American?",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0016",
+    "start": 311.555,
+    "end": 330.576,
+    "text": "Bob là người Mỹ bạn là người nước nào? bạn là người nước nào? comment và nói cho mình biết nhá bạn là người nước nào?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": false
+      },
+      {
+        "term": "là",
+        "translation": "is / are",
+        "core": false
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "bạn",
+        "translation": "you",
+        "core": true
+      },
+      {
+        "term": "người nước nào",
+        "translation": "from which country",
+        "core": true
+      },
+      {
+        "term": "comment",
+        "translation": "leave a comment",
+        "core": true
+      },
+      {
+        "term": "và",
+        "translation": "and",
+        "core": false
+      },
+      {
+        "term": "nói cho mình biết",
+        "translation": "tell me / let me know",
+        "core": true
+      },
+      {
+        "term": "nhá",
+        "translation": "okay? / please",
+        "core": false
+      }
+    ]
+  }
+]

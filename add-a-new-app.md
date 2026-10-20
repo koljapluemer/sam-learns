@@ -20,7 +20,7 @@ target language), don't add a route for it - gate the `''` page behind
 setting is missing, put every such setting in its default slot, pass
 `:ready` = "all required settings are filled in", and start practice on
 `@close`. Persist the setting with `useLocalSetting` so returning users skip
-the modal. See `top-vocab`/`the-little-prince`/`infinitesentences` for the
+the modal. See `top-vocab`/`with-videos`/`infinitesentences` for the
 pattern (thin gate component that renders the real practice component only
 once ready).
 

@@ -1,0 +1,733 @@
+[
+  {
+    "id": "0000",
+    "start": 0.579,
+    "end": 24.747,
+    "text": "Bob đây là Bob Bob là người Mỹ Bob là người Mỹ đây là Diệp Diệp là người Việt Nam Diệp không phải là người Mỹ",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "đây là",
+        "translation": "this is",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "người Việt Nam",
+        "translation": "Vietnamese person",
+        "core": true
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 24.747,
+    "end": 39.65,
+    "text": "Diệp làm gì? Diệp làm gì? Diệp là giáo viên Diệp dạy tiếng Việt",
+    "vocab": [
+      {
+        "term": "Diệp",
+        "translation": "Diệp (a person's name)",
+        "core": true
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what; what does ... do",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is",
+        "core": false
+      },
+      {
+        "term": "giáo viên",
+        "translation": "teacher",
+        "core": true
+      },
+      {
+        "term": "dạy",
+        "translation": "teach",
+        "core": true
+      },
+      {
+        "term": "tiếng Việt",
+        "translation": "Vietnamese language",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 39.65,
+    "end": 66.928,
+    "text": "Diệp làm gì? Diệp là giáo viên Diệp dạy tiếng Việt Bob, Bob làm gì? Bob làm gì? Bob làm gì? Bob không có việc làm",
+    "vocab": [
+      {
+        "term": "Diệp",
+        "translation": "Diệp (a person's name)",
+        "core": false
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what; what does ... do?",
+        "core": true
+      },
+      {
+        "term": "là giáo viên",
+        "translation": "is a teacher",
+        "core": true
+      },
+      {
+        "term": "dạy tiếng Việt",
+        "translation": "teach Vietnamese",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob (a person's name)",
+        "core": false
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "be unemployed; not have a job",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 66.928,
+    "end": 91.2,
+    "text": "Bob không có việc làm Bob thất nghiệp Bob thất nghiệp Bob không có việc làm Diệp có việc làm Bob, Bob không có việc làm",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "to not have a job; be unemployed",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "có việc làm",
+        "translation": "to have a job; be employed",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 91.2,
+    "end": 115.567,
+    "text": "Bob thất nghiệp, Diệp không thất nghiệp Diệp không thất nghiệp Diệp có việc làm Bob không có việc làm Diệp có việc làm không? có Diệp có",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "not; question particle",
+        "core": true
+      },
+      {
+        "term": "có việc làm",
+        "translation": "to have a job; employed",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "to not have a job",
+        "core": true
+      },
+      {
+        "term": "có",
+        "translation": "yes; to have",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 115.567,
+    "end": 128.428,
+    "text": "Bob có việc làm không? không Bob không không Bob không Bob không có việc làm",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có việc làm",
+        "translation": "to have a job",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no; not; question particle",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "to not have a job; to be unemployed",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0006",
+    "start": 128.428,
+    "end": 150.626,
+    "text": "Diệp làm gì? Diệp làm gì? Diệp là giáo viên Diệp là giáo viên Bob làm gì? Bob không làm gì. Bob không có việc làm",
+    "vocab": [
+      {
+        "term": "Diệp",
+        "translation": "Diệp (a person's name)",
+        "core": false
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what; what does ... do?",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is; to be",
+        "core": false
+      },
+      {
+        "term": "giáo viên",
+        "translation": "teacher",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob (a person's name)",
+        "core": false
+      },
+      {
+        "term": "không làm gì",
+        "translation": "doesn't do anything",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "is unemployed; doesn't have a job",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0007",
+    "start": 150.626,
+    "end": 162.658,
+    "text": "Bob không làm gì. Bob thất nghiệp Bob có phải là giáo viên không?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "không làm gì",
+        "translation": "doesn't do anything",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is; is it true that",
+        "core": true
+      },
+      {
+        "term": "giáo viên",
+        "translation": "teacher",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "question particle: or not?",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0008",
+    "start": 162.658,
+    "end": 192.298,
+    "text": "không không phải Bob không phải là giáo viên Bob không phải là giáo viên Bob thất nghiệp Bob không có việc làm Diệp có việc làm, Diệp không thất nghiệp Bob làm gì?",
+    "vocab": [
+      {
+        "term": "không",
+        "translation": "no; not",
+        "core": false
+      },
+      {
+        "term": "không phải là",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "giáo viên",
+        "translation": "teacher",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "does not have a job",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp",
+        "core": true
+      },
+      {
+        "term": "có việc làm",
+        "translation": "has a job",
+        "core": true
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what; what does … do?",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0009",
+    "start": 192.298,
+    "end": 214.522,
+    "text": "Bob làm gì? Bob không làm gì. Bob thất nghiệp Bob có phải là người Mỹ không? ừ đúng rồi Bob là người Mỹ",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what / what does (he) do",
+        "core": true
+      },
+      {
+        "term": "không làm gì",
+        "translation": "doesn't do anything",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "có phải là",
+        "translation": "is ... / is it true that ...",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "question particle / not",
+        "core": false
+      },
+      {
+        "term": "ừ",
+        "translation": "yes / uh-huh",
+        "core": false
+      },
+      {
+        "term": "đúng rồi",
+        "translation": "that's right",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "to be / is",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0010",
+    "start": 214.522,
+    "end": 234.159,
+    "text": "Bob có điện thoại, Bob có điện thoại Bob có điện thoại Bob",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có điện thoại",
+        "translation": "has a phone",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0011",
+    "start": 234.159,
+    "end": 239.162,
+    "text": "Bob có tiền",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có tiền",
+        "translation": "has money; is wealthy",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0012",
+    "start": 239.162,
+    "end": 268.626,
+    "text": "Bob có tiền Bob có ba trăm đô ( 300 dollars) Bob có ba trăm đô, 300 đô la ô kê rất tốt rất tốt Bob bây giờ bây giờ Bob bây giờ Bob có chín trăm sáu mươi lăm đô (965 dollars) rất tốt rất tốt rất tốt rất tốt",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có",
+        "translation": "has",
+        "core": true
+      },
+      {
+        "term": "tiền",
+        "translation": "money",
+        "core": true
+      },
+      {
+        "term": "ba trăm đô",
+        "translation": "three hundred dollars",
+        "core": true
+      },
+      {
+        "term": "300 đô la",
+        "translation": "300 dollars",
+        "core": true
+      },
+      {
+        "term": "ô kê",
+        "translation": "okay",
+        "core": false
+      },
+      {
+        "term": "rất tốt",
+        "translation": "very good",
+        "core": false
+      },
+      {
+        "term": "bây giờ",
+        "translation": "now",
+        "core": true
+      },
+      {
+        "term": "chín trăm sáu mươi lăm đô",
+        "translation": "nine hundred sixty-five dollars",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0013",
+    "start": 268.626,
+    "end": 296.335,
+    "text": "ô kê Bob có phải là người Mỹ không? Ừ, đúng rồi Bob là người Mỹ Bob có phải là giáo viên không? không không phải Bob không phải là giáo viên Bob không có việc làm, Bob thất nghiệp",
+    "vocab": [
+      {
+        "term": "ô kê",
+        "translation": "okay",
+        "core": false
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": false
+      },
+      {
+        "term": "có phải là",
+        "translation": "is ...?; is it true that ...?",
+        "core": true
+      },
+      {
+        "term": "người Mỹ",
+        "translation": "American",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "no; not; question particle",
+        "core": true
+      },
+      {
+        "term": "Ừ",
+        "translation": "yes; yeah",
+        "core": false
+      },
+      {
+        "term": "đúng rồi",
+        "translation": "that's right",
+        "core": true
+      },
+      {
+        "term": "là",
+        "translation": "is; to be",
+        "core": false
+      },
+      {
+        "term": "giáo viên",
+        "translation": "teacher",
+        "core": true
+      },
+      {
+        "term": "không phải",
+        "translation": "is not",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "does not have a job",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0014",
+    "start": 296.335,
+    "end": 325.027,
+    "text": "Ai Ai Ai là giáo viên? Diệp Diệp là giáo viên Diệp có việc làm Diệp không thất nghiệp Bob thất nghiệp Bob không có việc làm Bob có muốn đi làm không?",
+    "vocab": [
+      {
+        "term": "Ai",
+        "translation": "who",
+        "core": true
+      },
+      {
+        "term": "là giáo viên",
+        "translation": "is a teacher",
+        "core": true
+      },
+      {
+        "term": "Diệp",
+        "translation": "Diệp (a name)",
+        "core": true
+      },
+      {
+        "term": "có việc làm",
+        "translation": "has a job",
+        "core": true
+      },
+      {
+        "term": "không thất nghiệp",
+        "translation": "is not unemployed",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob (a name)",
+        "core": true
+      },
+      {
+        "term": "thất nghiệp",
+        "translation": "unemployed",
+        "core": true
+      },
+      {
+        "term": "không có việc làm",
+        "translation": "does not have a job",
+        "core": true
+      },
+      {
+        "term": "có muốn đi làm không",
+        "translation": "does … want to go to work?",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0015",
+    "start": 325.027,
+    "end": 354.298,
+    "text": "Bob có muốn đi làm không? các bạn nghĩ Bob có muốn đi làm không ? có, Bob có muốn đi làm Bob muốn làm gì? Bob muốn làm gì? Bob có muốn làm giáo viên không?",
+    "vocab": [
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "có muốn",
+        "translation": "want to",
+        "core": true
+      },
+      {
+        "term": "đi làm",
+        "translation": "go to work",
+        "core": true
+      },
+      {
+        "term": "không",
+        "translation": "not; question marker",
+        "core": true
+      },
+      {
+        "term": "các bạn",
+        "translation": "you all",
+        "core": false
+      },
+      {
+        "term": "nghĩ",
+        "translation": "think",
+        "core": false
+      },
+      {
+        "term": "có",
+        "translation": "yes",
+        "core": true
+      },
+      {
+        "term": "muốn",
+        "translation": "want",
+        "core": true
+      },
+      {
+        "term": "làm gì",
+        "translation": "do what",
+        "core": true
+      },
+      {
+        "term": "làm giáo viên",
+        "translation": "work as a teacher",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0016",
+    "start": 354.298,
+    "end": 372.584,
+    "text": "các bạn nghĩ Bob thích làm gì? comment nói cho mình biết các bạn nghĩ Bob thích làm gì? comment và nói cho mình biết",
+    "vocab": [
+      {
+        "term": "các bạn",
+        "translation": "you all",
+        "core": true
+      },
+      {
+        "term": "nghĩ",
+        "translation": "think",
+        "core": true
+      },
+      {
+        "term": "Bob",
+        "translation": "Bob",
+        "core": true
+      },
+      {
+        "term": "thích",
+        "translation": "like",
+        "core": true
+      },
+      {
+        "term": "làm gì",
+        "translation": "doing what; to do what",
+        "core": true
+      },
+      {
+        "term": "comment",
+        "translation": "comment",
+        "core": true
+      },
+      {
+        "term": "nói cho mình biết",
+        "translation": "tell me; let me know",
+        "core": true
+      },
+      {
+        "term": "và",
+        "translation": "and",
+        "core": false
+      }
+    ]
+  }
+]

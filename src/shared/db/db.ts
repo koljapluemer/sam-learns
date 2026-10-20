@@ -31,6 +31,8 @@ db.version(1).stores({
   arabicnumbers_numberLevels: 'key',
   arabicnumbers_exercises: 'key',
 
+  // Legacy: the removed comprehensible-input app's data, kept declared to
+  // avoid a live Dexie Cloud schema migration.
   comprehensibleInput_watchTime: 'videoId',
   comprehensibleInput_sessions: 'id',
   comprehensibleInput_dailyWatchTime: 'id, dayKey, languageName',
@@ -39,6 +41,8 @@ db.version(1).stores({
   twentyWords_wordCards: 'wordId',
   twentyWords_reviewEvents: 'id, dayKey',
 
+  // Backs 'with-videos' (which replaced the-little-prince) - kept under its
+  // old name so vocab progress carries over without a schema migration.
   theLittlePrince_vocabCards: 'key',
 
   justFlashcards_flashcards: 'id, createdAt',

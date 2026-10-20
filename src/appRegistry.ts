@@ -135,39 +135,6 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'comprehensible-input',
-    name: 'Comprehensible Input',
-    description: 'An endless stream of easy foreign-language videos, with light comprehension surveys.',
-    stats: { trialLabel: 'videos submitted (submit & next video)' },
-    routes: [
-      {
-        path: '',
-        component: () => import('./apps/comprehensible-input/pages/play/PagePlay.vue'),
-        meta: {
-          title: 'Comprehensible Input',
-          description: 'An endless stream of easy foreign-language videos.',
-          layout: 'full-bleed'
-        }
-      },
-      {
-        path: 'stats',
-        component: () => import('./apps/comprehensible-input/pages/stats/PageStats.vue'),
-        meta: {
-          title: 'Stats | Comprehensible Input',
-          description: 'Watch-time totals by language.'
-        }
-      },
-      {
-        path: 'settings',
-        component: () => import('./apps/comprehensible-input/pages/settings/PageSettings.vue'),
-        meta: {
-          title: 'Settings | Comprehensible Input',
-          description: 'Choose your video language.'
-        }
-      }
-    ]
-  },
-  {
     slug: 'minimal-pairs-practice',
     name: 'Minimal Pairs Practice',
     description: 'Listen to a short audio clip and identify which of two near-identical tone spellings you heard, in Vietnamese or Mandarin.',
@@ -524,34 +491,34 @@ export const apps: AppDefinition[] = [
     ]
   },
   {
-    slug: 'the-little-prince',
-    name: 'The Little Prince',
-    description: 'Listen to segments of "The Little Prince" audiobooks, practice the segment\'s vocab, then rewatch.',
-    stats: { trialLabel: 'segments watched' },
+    slug: 'with-videos',
+    name: 'With Videos',
+    description: 'Watch a video snippet, practice its vocab, then watch the next one.',
+    stats: { trialLabel: 'snippets watched' },
     routes: [
       {
         path: '',
-        component: () => import('./apps/the-little-prince/pages/play/PagePlay.vue'),
+        component: () => import('./apps/with-videos/pages/play/PagePlay.vue'),
         meta: {
-          title: 'The Little Prince',
-          description: 'Listen to a segment, practice its vocab, then rewatch.',
+          title: 'With Videos',
+          description: 'Watch a snippet, practice its vocab, then watch the next one.',
           layout: 'full-bleed'
         }
       },
       {
         path: 'stats',
-        component: () => import('./apps/the-little-prince/pages/stats/PageStats.vue'),
+        component: () => import('./apps/with-videos/pages/stats/PageStats.vue'),
         meta: {
-          title: 'Stats | The Little Prince',
-          description: 'Segments watched and time spent.'
+          title: 'Stats | With Videos',
+          description: 'Snippets watched and time spent.'
         }
       },
       {
         path: 'settings',
-        component: () => import('./apps/the-little-prince/pages/settings/PageSettings.vue'),
+        component: () => import('./apps/with-videos/pages/settings/PageSettings.vue'),
         meta: {
-          title: 'Settings | The Little Prince',
-          description: 'Choose your listening language.'
+          title: 'Settings | With Videos',
+          description: 'Choose your video language.'
         }
       }
     ]
