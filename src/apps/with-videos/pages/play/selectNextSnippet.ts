@@ -1,21 +1,35 @@
-// Auto-chooses what to watch next: the following snippet of the current
-// video, or - once a video is done - a random video of the language,
-// preferring ones never started.
+// Picks a random video, then its first unwatched snippet - or, once all are
+// watched, a random one. Snippets without subtitles are skipped, as are
+// videos left with none.
 import type { Video } from '../../entities/video/video'
-import { pickRandom } from '../../dumb/random'
+import { getSnippets, hasSubtitles, type Snippet } from '../../entities/snippet/snippet'
+import { getWatchedSnippetIds } from '../../entities/snippet-view/snippetView'
+import { pickRandom, shuffleArray } from '../../dumb/random'
 
-export type Position = {
+export type Selection = {
   youtubeId: string
-  index: number
+  snippet: Snippet
 }
 
-export function pickNewVideo(videos: Video[], startedIds: string[], excludeId?: string): string {
-  const others = videos.filter((video) => video.youtubeId !== excludeId)
-  const unstarted = others.filter((video) => !startedIds.includes(video.youtubeId))
-  return (pickRandom(unstarted) ?? pickRandom(others) ?? videos[0]).youtubeId
+const usableSnippetsByVideo = new Map<string, Snippet[]>()
+
+async function getUsableSnippets(youtubeId: string): Promise<Snippet[]> {
+  let snippets = usableSnippetsByVideo.get(youtubeId)
+  if (!snippets) {
+    snippets = (await getSnippets(youtubeId)).filter(hasSubtitles)
+    usableSnippetsByVideo.set(youtubeId, snippets)
+  }
+  return snippets
 }
 
-export function nextPosition(current: Position, snippetCount: number, videos: Video[], startedIds: string[]): Position {
-  if (current.index + 1 < snippetCount) return { ...current, index: current.index + 1 }
-  return { youtubeId: pickNewVideo(videos, startedIds, current.youtubeId), index: 0 }
+export async function selectNextSnippet(videos: Video[]): Promise<Selection | null> {
+  for (const { youtubeId } of shuffleArray(videos)) {
+    const snippets = await getUsableSnippets(youtubeId)
+    if (snippets.length === 0) continue
+
+    const watched = await getWatchedSnippetIds(youtubeId)
+    const snippet = snippets.find((item) => !watched.has(item.id)) ?? pickRandom(snippets)!
+    return { youtubeId, snippet }
+  }
+  return null
 }

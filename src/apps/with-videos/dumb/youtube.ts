@@ -8,7 +8,7 @@ export interface YTPlayer {
   pauseVideo(): void
   getCurrentTime(): number
   seekTo(seconds: number, allowSeekAhead: boolean): void
-  loadVideoById(videoId: string, startSeconds: number): void
+  cueVideoById(videoId: string, startSeconds: number): void
   destroy(): void
 }
 

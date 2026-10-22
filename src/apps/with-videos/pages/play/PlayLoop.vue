@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { usePlayState } from './usePlayState'
-import ExerciseView from './ExerciseView.vue'
+import ExerciseBoard from './ExerciseBoard.vue'
+import ReflectionForm from './ReflectionForm.vue'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
 
 const play = usePlayState()
@@ -31,17 +32,20 @@ useActiveTime('with-videos')
     </div>
 
     <div
-      v-if="play.mode.value === 'exercises' && play.currentExercise.value"
-      class="absolute inset-0"
+      v-if="play.mode.value === 'exercises' || play.mode.value === 'reflection'"
+      class="absolute inset-0 flex justify-center overflow-y-auto bg-base-300/80 backdrop-blur-sm p-4"
     >
-      <ExerciseView
-        :key="play.currentExercise.value.key"
-        :entry="play.currentExercise.value"
-        :number="play.exerciseNumber.value"
-        :total="play.exerciseTotal.value"
-        @rate="play.rate"
-        @replay="play.replay"
-      />
+      <div class="my-auto flex w-full justify-center">
+        <ExerciseBoard
+          v-if="play.mode.value === 'exercises'"
+          :entries="play.exercises.value"
+          @done="play.playSnippet"
+        />
+        <ReflectionForm
+          v-else
+          @done="play.submitReflection"
+        />
+      </div>
     </div>
   </div>
 </template>

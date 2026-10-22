@@ -44,6 +44,7 @@ db.version(1).stores({
   // Backs 'with-videos' (which replaced the-little-prince) - kept under its
   // old name so vocab progress carries over without a schema migration.
   theLittlePrince_vocabCards: 'key',
+  withVideos_snippetViews: 'id, youtubeId',
 
   justFlashcards_flashcards: 'id, createdAt',
   justFlashcards_cards: 'flashcardId',

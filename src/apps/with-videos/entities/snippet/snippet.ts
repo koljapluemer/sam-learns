@@ -18,3 +18,8 @@ export async function getSnippets(youtubeId: string): Promise<Snippet[]> {
   if (!response.ok) throw new Error(`Failed to load snippets (${response.status})`)
   return (await response.json()) as Snippet[]
 }
+
+// Snippets without subtitle text (and thus no vocab) can't be practised.
+export function hasSubtitles(snippet: Snippet): boolean {
+  return snippet.text.trim() !== '' && snippet.vocab.length > 0
+}
