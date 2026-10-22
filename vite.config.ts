@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vite.dev/config/
@@ -14,7 +15,33 @@ export default defineConfig({
         }
       }
     }),
-    tailwindcss()
+    tailwindcss(),
+    VitePWA({
+      // Custom src/sw.ts: per-app runtime caches instead of precaching
+      // everything (public/data is hundreds of MB).
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      registerType: 'autoUpdate',
+      injectRegister: false,
+      injectManifest: {
+        globPatterns: ['index.html', 'favicon.ico', 'icons/apple-touch-icon.png']
+      },
+      manifest: {
+        name: 'Sam Learns Things',
+        short_name: 'samlearns',
+        description: 'A meta-app for learning apps and interfaces.',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
+        icons: [
+          { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+        ]
+      }
+    })
   ],
   resolve: {
     alias: {

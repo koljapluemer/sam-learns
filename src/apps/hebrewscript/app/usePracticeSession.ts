@@ -5,6 +5,8 @@
 
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { logActiveTimeMs, logActivity } from '@/shared/activity/useLearningEvent'
+import { cachedUrlsReady, isUrlAvailable, NOTHING_CACHED_MESSAGE } from '@/shared/offline/cachedUrls'
+import { isOnline } from '@/shared/offline/useOnline'
 import { toClips, buildPracticeCatalog } from './catalog'
 import { appendPracticeEvent, listPracticeEvents, toPracticeEventAnalytics, toStoredClip } from './practiceEvents'
 import {
@@ -86,14 +88,18 @@ export function usePracticeSession(config: PracticeSessionConfig) {
     return target.isContentEditable || INTERACTIVE_TAG_NAMES.has(target.tagName)
   }
 
+  // Offline, only clips whose audio is cached are playable.
+  const isPlayable = (entry: PracticeCatalogEntry) =>
+    !hiddenClipFilenames.value.has(entry.clip.filename) && isUrlAvailable(entry.clip.audioSrc)
+
   const sampleCatalogEntries = () =>
-    shuffle(clipCatalog.filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename))).slice(
+    shuffle(clipCatalog.filter(isPlayable)).slice(
       0,
       Math.min(BATCH_SIZE, clips.value.length)
     )
 
   const syncAvailableClips = () => {
-    clips.value = clipCatalog.filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename)).map((entry) => entry.clip)
+    clips.value = clipCatalog.filter(isPlayable).map((entry) => entry.clip)
   }
 
   const syncHiddenClipsFromEvents = () => {
@@ -209,7 +215,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
   const generateNextRound = (): PracticeRound | null => {
     const pairHistory = getBidirectionalDecayedPairHistory(practiceEvents.value)
     const directionalHistory = getDirectionalDecayedPairHistory(practiceEvents.value)
-    const visibleCatalogEntries = clipCatalog.filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename))
+    const visibleCatalogEntries = clipCatalog.filter(isPlayable)
     const allPairExercises = groupExercisesByPair(getExercises(visibleCatalogEntries))
 
     for (let attempt = 0; attempt < MAX_ROUND_GENERATION_ATTEMPTS; attempt += 1) {
@@ -336,8 +342,10 @@ export function usePracticeSession(config: PracticeSessionConfig) {
 
   const setNextRound = async () => {
     if (!clips.value.length) {
-      loadError.value = clipCatalog.length
-        ? 'No practice clips left. Hidden clips stay excluded.'
+      loadError.value = !isOnline.value
+        ? NOTHING_CACHED_MESSAGE
+        : clipCatalog.length
+          ? 'No practice clips left. Hidden clips stay excluded.'
         : 'No clips matched the current transcript filter.'
       round.value = null
       phase.value = 'loading'
@@ -442,6 +450,7 @@ export function usePracticeSession(config: PracticeSessionConfig) {
     const parsedClips = toClips(rawClips, config.audioBaseUrl)
     clipCatalog = buildPracticeCatalog(parsedClips)
     practiceEvents.value = await listPracticeEvents()
+    await cachedUrlsReady()
     syncHiddenClipsFromEvents()
   }
 

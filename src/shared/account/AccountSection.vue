@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { db, loginHints } from '@/shared/db/db'
 import type { UserLogin } from 'dexie-cloud-addon'
+import { isOnline } from '@/shared/offline/useOnline'
 
 const currentUser = ref<UserLogin>(db.cloud.currentUser.value)
 
@@ -49,6 +50,7 @@ function logout() {
       v-else
       type="button"
       class="btn btn-sm"
+      :disabled="!isOnline"
       @click="login"
     >
       Sign in

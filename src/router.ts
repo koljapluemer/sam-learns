@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import Home from './Home.vue'
 import { apps } from './appRegistry'
 import { routeNameForPath } from './shared/shell/appRoutePath'
+import { trackOfflineApps } from './shared/offline/offlineApps'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -55,6 +56,8 @@ const router = createRouter({
     )
   )
 })
+
+trackOfflineApps(router)
 
 router.afterEach((to) => {
   const baseTitle = 'Sam Learns Things'

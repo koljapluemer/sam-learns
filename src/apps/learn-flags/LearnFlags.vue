@@ -1,7 +1,17 @@
 <template>
   <div class="learn-flags">
-    <div class="flag-container">
+    <p
+      v-if="nothingCached"
+      class="opacity-70"
+    >
+      {{ NOTHING_CACHED_MESSAGE }}
+    </p>
+    <div
+      v-else
+      class="flag-container"
+    >
       <img
+        v-if="currentCountry"
         :src="currentFlagPath"
         :alt="currentCountry"
         class="flag-image"
@@ -28,6 +38,9 @@
 import { ref, onMounted, computed } from 'vue'
 import { logActivity } from '@/shared/activity/useLearningEvent'
 import { useActiveTime } from '@/shared/activity/useActiveTime'
+import { cachedUrlsReady, isUrlAvailable, NOTHING_CACHED_MESSAGE } from '@/shared/offline/cachedUrls'
+
+const flagPath = (code) => `/data/learn-flags/flags/${code.toLowerCase()}.svg`
 
 export default {
   name: 'LearnFlags',
@@ -40,6 +53,7 @@ export default {
     const showCorrect = ref(false)
     const showIncorrect = ref(false)
     const lastClicked = ref('')
+    const nothingCached = ref(false)
 
     const loadCountries = async () => {
       try {
@@ -85,7 +99,10 @@ export default {
     const generateOptions = () => {
       if (!countries.value.length) return
       
-      const correctCountry = getRandomCountry()
+      // Offline, only countries whose flag is cached get asked.
+      const askable = countries.value.filter((country) => isUrlAvailable(flagPath(country.code)))
+      const correctCountry = askable[Math.floor(Math.random() * askable.length)]
+      nothingCached.value = !correctCountry
       if (!correctCountry) return
       
       currentCountry.value = correctCountry.code
@@ -121,7 +138,7 @@ export default {
     }
 
     onMounted(() => {
-      loadCountries().then(() => {
+      Promise.all([loadCountries(), cachedUrlsReady()]).then(() => {
         generateOptions()
       })
     })
@@ -132,8 +149,10 @@ export default {
       showCorrect,
       showIncorrect,
       lastClicked,
+      nothingCached,
+      NOTHING_CACHED_MESSAGE,
       checkAnswer,
-      currentFlagPath: computed(() => `/data/learn-flags/flags/${currentCountry.value.toLowerCase()}.svg`)
+      currentFlagPath: computed(() => flagPath(currentCountry.value))
     }
   }
 }

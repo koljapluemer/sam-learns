@@ -71,3 +71,20 @@ everything. Your app's own `db/appDb.ts` stays as a thin shim onto it:
    which doesn't exist - `appDb` is a plain object, not a Dexie instance).
 5. Data is private to the signed-in user by default - no realm/access-control
    config needed for the normal "each user only sees their own data" case.
+
+## Offline
+
+The app is a PWA (`src/sw.ts`). Nothing is downloaded up front: visiting an
+app online caches its code, and each file under `/data/…` is cached (into
+that app's own cache) the first time it is loaded. Offline, the app then runs
+on whatever it has cached.
+
+- Load content by URL from `public/data/<folder>/` (`fetch`, `new Audio`,
+  `<img>`, …) - that's what gets cached.
+- If the app loads one asset per exercise (audio clip, image, model), filter
+  the picker's pool with `isUrlAvailable(url)` from
+  `@/shared/offline/cachedUrls` (always true online), and `await
+  cachedUrlsReady()` before the first pick. Show `NOTHING_CACHED_MESSAGE`
+  when the filtered pool is empty.
+- If the app can't work offline at all, set `requiresNetwork: true` in its
+  registry entry.

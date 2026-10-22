@@ -1,6 +1,7 @@
 import { onMounted, ref } from 'vue'
 import type { Grade } from 'ts-fsrs'
 import { logActivity } from '@/shared/activity/useLearningEvent'
+import { cachedUrlsReady, isUrlAvailable } from '@/shared/offline/cachedUrls'
 import { getCards, rateCard } from '../../entities/card/card'
 import { getWords, type Word } from '../../entities/word/word'
 import { pickNextCard, type PracticePick } from './nextCard'
@@ -13,7 +14,9 @@ export function usePracticeSession() {
 
   async function advance(): Promise<void> {
     const cards = await getCards()
-    current.value = pickNextCard({ words, cards, lastTerm, now: new Date() })
+    // Offline, only words whose image and audio are cached.
+    const available = words.filter((word) => isUrlAvailable(word.image) && isUrlAvailable(word.audio))
+    current.value = pickNextCard({ words: available, cards, lastTerm, now: new Date() })
   }
 
   async function rate(rating: Grade): Promise<void> {
@@ -27,6 +30,7 @@ export function usePracticeSession() {
 
   onMounted(async () => {
     words = await getWords()
+    await cachedUrlsReady()
     await advance()
     loading.value = false
   })

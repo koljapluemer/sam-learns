@@ -3,12 +3,18 @@ defineOptions({
   name: 'HomePage'
 })
 
-import { apps } from './appRegistry'
+import { apps, type AppDefinition } from './appRegistry'
+import { isOnline } from './shared/offline/useOnline'
+import { isAppAvailableOffline } from './shared/offline/offlineApps'
 
 const screenshots = import.meta.glob<string>('./apps/*/meta/screenshot.webp', { eager: true, import: 'default' })
 
 function screenshot(slug: string) {
   return screenshots[`./apps/${slug}/meta/screenshot.webp`]
+}
+
+function unavailable(app: AppDefinition) {
+  return !isOnline.value && !isAppAvailableOffline(app)
 }
 </script>
 
@@ -28,6 +34,9 @@ function screenshot(slug: string) {
         v-for="app in apps"
         :key="app.slug"
         class="card border border-base-300 bg-base-100 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+        :class="{ 'pointer-events-none opacity-50': unavailable(app) }"
+        :aria-disabled="unavailable(app)"
+        :tabindex="unavailable(app) ? -1 : undefined"
         :to="{ name: app.slug }"
       >
         <figure>
@@ -45,7 +54,14 @@ function screenshot(slug: string) {
             {{ app.description }}
           </p>
           <div class="card-actions justify-end">
-            <span class="btn btn-sm btn-primary">Open</span>
+            <span
+              v-if="unavailable(app)"
+              class="badge badge-ghost"
+            >{{ app.requiresNetwork ? 'Online only' : 'Not downloaded' }}</span>
+            <span
+              v-else
+              class="btn btn-sm btn-primary"
+            >Open</span>
           </div>
         </div>
       </router-link>

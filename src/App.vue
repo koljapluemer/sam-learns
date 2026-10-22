@@ -9,6 +9,10 @@ import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 import { useCurrentApp } from '@/shared/shell/useCurrentApp'
 import AppInfoText from '@/shared/shell/AppInfoText.vue'
 import UserInteractionDialog from '@/shared/account/UserInteractionDialog.vue'
+import OfflineBadge from '@/shared/offline/OfflineBadge.vue'
+import OfflineNotice from '@/shared/offline/OfflineNotice.vue'
+import { isOnline } from '@/shared/offline/useOnline'
+import { appForRoute, failedOfflineRoute } from '@/shared/offline/offlineApps'
 
 const route = useRoute()
 
@@ -28,6 +32,17 @@ const hasBottomDock = computed(() => route.meta.hasBottomDock === true)
 const appName = computed(() =>
   shellState.title !== DEFAULT_SHELL_STATE.title ? shellState.title : (app.value?.name ?? '')
 )
+
+const offlineMessage = computed(() => {
+  if (isOnline.value) return ''
+  const target = failedOfflineRoute.value ?? route
+  const targetApp = appForRoute(target)
+  if (targetApp?.requiresNetwork && target.name === routeNameForPath(targetApp.slug, '')) {
+    return 'Needs an internet connection.'
+  }
+  if (failedOfflineRoute.value) return 'Not available offline yet. Open it once while online.'
+  return ''
+})
 
 const mainClass = computed(() =>
   route.meta.layout === 'full-bleed'
@@ -79,6 +94,7 @@ const tabs = computed<NavTab[]>(() => {
           />
           <span class="hidden sm:inline">Sam Learns<template v-if="appName"> | {{ appName }}</template></span>
         </router-link>
+        <OfflineBadge />
       </div>
 
       <nav
@@ -128,7 +144,12 @@ const tabs = computed<NavTab[]>(() => {
     </div>
 
     <main :class="mainClass">
-      <RouterView />
+      <OfflineNotice
+        v-if="offlineMessage"
+        :message="offlineMessage"
+        class="mx-auto mt-20"
+      />
+      <RouterView v-else />
     </main>
 
     <UserInteractionDialog />

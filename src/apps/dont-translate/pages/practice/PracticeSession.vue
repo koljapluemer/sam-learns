@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isOnline } from '@/shared/offline/useOnline'
 import MemorizeFlow from './MemorizeFlow.vue'
 import RevealFlow from './RevealFlow.vue'
 import { usePracticeSession } from './usePracticeSession'
@@ -21,7 +22,7 @@ const { loading, current, completeMemorize, rate } = usePracticeSession(props.la
       v-else-if="!current"
       class="py-8 text-center opacity-70"
     >
-      All caught up. Nothing due right now.
+      {{ isOnline ? 'All caught up. Nothing due right now.' : 'Nothing due among the cards available offline.' }}
     </p>
 
     <MemorizeFlow

@@ -11,7 +11,7 @@
 // dropped - no server sync in this repo (see docs/linguanodon-import.md).
 // recordCompletedRound (learningStore.ts) calls logActivity('tprboard')
 // itself, so no extra activity-log call is needed here.
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Flame, Volume2 } from 'lucide-vue-next'
 import { BoardScene } from '../../app/boardScene'
 import { loadLanguageOptions, loadLocaleTaskMap, loadObjectPool } from '../../app/data'
@@ -20,6 +20,8 @@ import { createStatsTracker, type PlayerStats } from '../../app/stats'
 import { createRelationshipIndex, planRound } from '../../app/tasks'
 import { useLocalSetting } from '@/shared/settings/useLocalSetting'
 import PracticeSetupModal from '@/shared/shell/PracticeSetupModal.vue'
+import { cachedUrlsReady, isUrlAvailable, NOTHING_CACHED_MESSAGE } from '@/shared/offline/cachedUrls'
+import { isOnline } from '@/shared/offline/useOnline'
 import type { LanguageOption, LocaleTaskMap, PlacedObject, RelationshipIndex, RoundPlan, RoundSelectionMode, TaskCandidate } from '../../app/types'
 
 const MODELS_BASE_URL = '/data/tprboard/models/'
@@ -136,6 +138,8 @@ async function checkTaskAudioExists(url: string): Promise<boolean> {
 }
 
 function resolveTaskAudioAvailability(url: string): Promise<boolean> {
+  if (!isOnline.value) return Promise.resolve(isUrlAvailable(url))
+
   const cached = audioAvailabilityByUrl.get(url)
 
   if (cached) return cached
@@ -202,6 +206,8 @@ function logRoundPlan(roundPlan: RoundPlan, languageCode: string): void {
 }
 
 function getRoundStartErrorMessage(error: unknown): string {
+  if (!isOnline.value) return NOTHING_CACHED_MESSAGE
+
   if (error instanceof Error && error.message === 'No locale-playable relationships were found.') {
     return 'No valid tasks are available for this language yet.'
   }
@@ -322,10 +328,21 @@ async function handleTaskCompleted(): Promise<void> {
   }
 }
 
+// Offline, only objects whose model is cached go on the board.
+async function rebuildRelationshipIndex(): Promise<void> {
+  await cachedUrlsReady()
+  const objects = objectPool.value.filter((object) => isUrlAvailable(`${MODELS_BASE_URL}${object.record.model}`))
+  relationshipIndex.value = createRelationshipIndex(objects, localeTaskMap)
+}
+
+watch(isOnline, () => {
+  if (selectedLanguageCode.value) void rebuildRelationshipIndex()
+})
+
 async function selectLanguage(languageCode: string): Promise<void> {
   localeTaskMap = await loadLocaleTaskMap(languageCode)
   selectedLanguageCode.value = languageCode
-  relationshipIndex.value = createRelationshipIndex(objectPool.value, localeTaskMap)
+  await rebuildRelationshipIndex()
 
   if (!isTransitioningRound) {
     await startNewRound()
@@ -362,7 +379,7 @@ onMounted(async () => {
   }
 
   localeTaskMap = await loadLocaleTaskMap(selectedLanguageCode.value)
-  relationshipIndex.value = createRelationshipIndex(objectPool.value, localeTaskMap)
+  await rebuildRelationshipIndex()
   await startNewRound()
 })
 

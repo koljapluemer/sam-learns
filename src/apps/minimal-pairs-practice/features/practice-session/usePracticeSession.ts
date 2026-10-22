@@ -7,6 +7,8 @@
 // registered in entities/tone-clip/languages/registry.ts.
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { logActiveTimeMs, logActivity } from '@/shared/activity/useLearningEvent'
+import { cachedUrlsReady, isUrlAvailable, NOTHING_CACHED_MESSAGE } from '@/shared/offline/cachedUrls'
+import { isOnline } from '@/shared/offline/useOnline'
 import { buildPracticeCatalog, toClips } from '../../entities/tone-clip/catalog'
 import type { LanguagePack } from '../../entities/tone-clip/languages/types'
 import type { AnswerOption, Clip, DistractorCandidate, PracticeCatalogEntry } from '../../entities/tone-clip/types'
@@ -90,16 +92,18 @@ export function usePracticeSession(languagePack: LanguagePack) {
     return target.isContentEditable || INTERACTIVE_TAG_NAMES.has(target.tagName)
   }
 
+  // Offline, only clips whose audio is cached are playable.
+  const isPlayable = (entry: PracticeCatalogEntry) =>
+    !hiddenClipFilenames.value.has(entry.clip.filename) && isUrlAvailable(entry.clip.audioSrc)
+
   const sampleCatalogEntries = () =>
-    shuffle(clipCatalog.filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename))).slice(
+    shuffle(clipCatalog.filter(isPlayable)).slice(
       0,
       Math.min(BATCH_SIZE, clips.value.length)
     )
 
   const syncAvailableClips = () => {
-    clips.value = clipCatalog
-      .filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename))
-      .map((entry) => entry.clip)
+    clips.value = clipCatalog.filter(isPlayable).map((entry) => entry.clip)
   }
 
   const syncHiddenClipsFromEvents = () => {
@@ -218,7 +222,7 @@ export function usePracticeSession(languagePack: LanguagePack) {
   const generateNextRound = (): Round | null => {
     const pairHistory = getBidirectionalDecayedPairHistory(practiceEvents.value)
     const directionalHistory = getDirectionalDecayedPairHistory(practiceEvents.value)
-    const visibleCatalogEntries = clipCatalog.filter((entry) => !hiddenClipFilenames.value.has(entry.clip.filename))
+    const visibleCatalogEntries = clipCatalog.filter(isPlayable)
     const allPairExercises = groupExercisesByPair(getExercises(visibleCatalogEntries))
 
     for (let attempt = 0; attempt < MAX_ROUND_GENERATION_ATTEMPTS; attempt += 1) {
@@ -357,8 +361,10 @@ export function usePracticeSession(languagePack: LanguagePack) {
 
   const setNextRound = async () => {
     if (!clips.value.length) {
-      loadError.value = clipCatalog.length
-        ? 'No practice clips left. Hidden clips stay excluded.'
+      loadError.value = !isOnline.value
+        ? NOTHING_CACHED_MESSAGE
+        : clipCatalog.length
+          ? 'No practice clips left. Hidden clips stay excluded.'
         : 'No clips matched the current transcript filter.'
       round.value = null
       phase.value = 'loading'
@@ -465,6 +471,7 @@ export function usePracticeSession(languagePack: LanguagePack) {
     const parsedClips = toClips(rawClips, languagePack.audioBaseUrl)
     clipCatalog = buildPracticeCatalog(parsedClips, languagePack.generateDistractors)
     practiceEvents.value = await listPracticeEvents(languagePack.code)
+    await cachedUrlsReady()
     syncHiddenClipsFromEvents()
   }
 

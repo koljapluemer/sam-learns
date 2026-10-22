@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { getItems, type Item } from '../../entities/item/item'
+import { getItems, imageUrl, type Item } from '../../entities/item/item'
 import { audioUrl, getSentences } from '../../entities/sentence/sentence'
+import { cachedUrlsReady, isUrlAvailable, NOTHING_CACHED_MESSAGE } from '@/shared/offline/cachedUrls'
+import { isOnline } from '@/shared/offline/useOnline'
 import ExerciseRound from './ExerciseRound.vue'
 import { generateExercise, type Exercise } from './generateExercise'
 
@@ -13,8 +15,11 @@ const itemsByImg = ref(new Map<string, Item>())
 const sentences = ref<Record<string, string>>({})
 const exercise = ref<Exercise>()
 
+// Offline, only items/sentences whose image/recording is cached.
 function next() {
-  exercise.value = generateExercise(items.value, Object.keys(sentences.value))
+  const availableItems = items.value.filter((item) => isUrlAvailable(imageUrl(item.img)))
+  const questKeys = Object.keys(sentences.value).filter((key) => isUrlAvailable(audioUrl(props.languageCode, key)))
+  exercise.value = generateExercise(availableItems, questKeys)
 }
 
 onMounted(async () => {
@@ -22,6 +27,7 @@ onMounted(async () => {
   items.value = loadedItems
   itemsByImg.value = new Map(loadedItems.map((item) => [item.img, item]))
   sentences.value = loadedSentences
+  await cachedUrlsReady()
   loading.value = false
   next()
 })
@@ -40,7 +46,7 @@ onMounted(async () => {
       v-else-if="!exercise"
       class="py-8 text-center opacity-70"
     >
-      No exercises available.
+      {{ isOnline ? 'No exercises available.' : NOTHING_CACHED_MESSAGE }}
     </p>
 
     <Transition

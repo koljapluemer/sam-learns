@@ -33,6 +33,8 @@ export type AppDefinition = {
   // Human-readable description of what counts as one "trial" for this app -
   // shown in the global stats trials-per-day chart legend, see @agents.md.
   stats: { trialLabel: string }
+  // Set when the app can't work offline at all (e.g. streams YouTube videos).
+  requiresNetwork?: boolean
   routes: AppRouteDefinition[]
 }
 
@@ -495,6 +497,7 @@ export const apps: AppDefinition[] = [
     name: 'With Videos',
     description: 'Watch a video snippet, practice its vocab, then watch the next one.',
     stats: { trialLabel: 'snippets watched' },
+    requiresNetwork: true,
     routes: [
       {
         path: '',
