@@ -14,6 +14,7 @@ import traceback
 import pycountry
 from dotenv import load_dotenv
 
+from asr import ASR_LANGUAGES
 from pipeline import process_video
 
 
@@ -29,8 +30,8 @@ def main() -> None:
 
     load_dotenv()
     language = pycountry.languages.get(alpha_3=args.lang)
-    if language is None or not hasattr(language, "alpha_2"):
-        raise SystemExit(f"Unknown language (or no ISO 639-1 code): {args.lang}")
+    if language is None or not (hasattr(language, "alpha_2") or args.lang in ASR_LANGUAGES):
+        raise SystemExit(f"Unknown language (or no ISO 639-1 code and no local ASR): {args.lang}")
 
     failed = []
     for idx, youtube_id in enumerate(args.youtube_ids, start=1):

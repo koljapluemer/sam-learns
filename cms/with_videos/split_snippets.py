@@ -115,15 +115,15 @@ def attach_text(segments: list[tuple[float, float]], pieces: list[tuple[float, s
     return snippets
 
 
-def split_snippets(youtube_id: str, subtitle_lang: str) -> list[dict]:
+def split_snippets(youtube_id: str, subtitle_lang: str | None) -> list[dict]:
     directory = video_dir(youtube_id)
     audio = directory / "audio.m4a"
     data = load_or_detect_silences(directory, audio)
     segments = split(data["duration"], [tuple(s) for s in data["silences"]])
 
-    subs = subtitle_path(directory, subtitle_lang)
-    pieces = load_subtitle_words(subs) if subs.exists() else []
-    if not pieces:
+    subs = subtitle_path(directory, subtitle_lang) if subtitle_lang else None
+    pieces = load_subtitle_words(subs) if subs and subs.exists() else []
+    if subs and not pieces:
         print(f"WARNING: no subtitle text for {youtube_id}, snippets have empty text", file=sys.stderr)
 
     snippets = attach_text(segments, pieces)

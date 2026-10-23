@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parents[1]))
 
+from asr import collapse_repeats
 from config import LanguageProfile
 from download import RateLimited, pick_subtitle_track, yt_dlp
 from extract_vocab import build_request_body, clean_vocab
@@ -80,6 +81,15 @@ class VocabularyTests(unittest.TestCase):
         body = build_request_body([{"id": "1", "current": "ciao"}], "Italian")
         self.assertTrue(body["text"]["format"]["strict"])
         self.assertEqual(body["text"]["format"]["type"], "json_schema")
+
+
+class AsrTests(unittest.TestCase):
+    def test_collapses_decoder_loops(self):
+        looped = "e non " + "mon konn ni " * 20 + "mon ko"
+        self.assertEqual(collapse_repeats(looped), "e non mon konn ni mon ko")
+
+    def test_keeps_short_natural_repetition(self):
+        self.assertEqual(collapse_repeats("oui oui oui korek"), "oui oui oui korek")
 
 
 class UtilityTests(unittest.TestCase):

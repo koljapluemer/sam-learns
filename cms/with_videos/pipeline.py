@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from asr import ASR_LANGUAGES, transcribe_snippets
 from common import video_dir
 from download import download
 from extract_vocab import extract_vocab
@@ -10,10 +11,15 @@ from split_snippets import split_snippets
 
 
 def process_video(youtube_id: str, language, on_progress=lambda _message: None) -> None:
+    asr_lang = ASR_LANGUAGES.get(language.alpha_3)
+    subtitle_lang = None if asr_lang else language.alpha_2
     on_progress("Downloading audio and subtitles")
-    title = download(youtube_id, language.alpha_2)
+    title = download(youtube_id, subtitle_lang)
     on_progress("Splitting into snippets")
-    snippets = split_snippets(youtube_id, language.alpha_2)
+    snippets = split_snippets(youtube_id, subtitle_lang)
+    if asr_lang:
+        on_progress("Transcribing snippets")
+        snippets = transcribe_snippets(youtube_id, snippets, asr_lang)
     on_progress("Extracting vocabulary")
     snippets = extract_vocab(youtube_id, snippets, language.name)
     on_progress("Publishing")
@@ -22,7 +28,7 @@ def process_video(youtube_id: str, language, on_progress=lambda _message: None) 
 
 STAGE_FILES = {
     "subtitles": ("info.json", "audio.*.json3", "snippets.json", "vocab.json", "vocab-cache.json"),
-    "audio": ("audio.m4a", "silences.json", "snippets.json", "vocab.json", "vocab-cache.json"),
+    "audio": ("audio.m4a", "asr.json", "silences.json", "snippets.json", "vocab.json", "vocab-cache.json"),
     "snippets": ("silences.json", "snippets.json", "vocab.json", "vocab-cache.json"),
     "vocabulary": ("vocab.json", "vocab-cache.json"),
 }

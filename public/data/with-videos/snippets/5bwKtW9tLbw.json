@@ -1,0 +1,127 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "e pa charbour kapour maman la c'est son anniverseur ou jeu la me non do so anniverseur aujourd'hui pa bann bann non ni e pour le te dir mwa samon gagne par plutar to ni sekou zave pa bon bouton hein rogo ce que tu va fair non mon konn non ni mon konn ni mon ko",
+    "vocab": [
+      {
+        "term": "so anniverseur",
+        "translation": "his/her birthday",
+        "core": true
+      },
+      {
+        "term": "aujourd'hui",
+        "translation": "today",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 60.0,
+    "text": "e surpris soyouz adversaire familie value bundle just pour momie sigor you you are the best bob konn twa kouma fonds mo karn son trouver azio maritop me maman sa va la mo bien get fer mo extra kontan mo gagn mo familie value bundle avek mo deux grandes chicken million mill et linceuse mademak nagat sa zot pour partager avek soz happy mill tout sa la oui mais mo peut dir sa parce qu'il zame moto",
+    "vocab": [
+      {
+        "term": "konn twa",
+        "translation": "know you",
+        "core": false
+      },
+      {
+        "term": "mo extra kontan",
+        "translation": "I’m extremely happy",
+        "core": true
+      },
+      {
+        "term": "mo gagn",
+        "translation": "I got",
+        "core": true
+      },
+      {
+        "term": "avek",
+        "translation": "with",
+        "core": false
+      },
+      {
+        "term": "zot pour partager",
+        "translation": "they will share",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 60.0,
+    "end": 90.0,
+    "text": "toutari autan ek papi si tous ce qu'il y fer jame bon la dernie fois naste enn bouke fler pou twa hin to enn pet enn kab e nous fann to transis ledan to si to va aret rige la non to kone au fet mon pret so masin perse sizan mersi mon amour de mon kœur de mon amour e va to van pro lasos bigma ki sa e mersi mon amour de mon kœur de mon amour",
+    "vocab": [
+      {
+        "term": "enn bouke fler pou twa",
+        "translation": "a bouquet of flowers for you",
+        "core": true
+      },
+      {
+        "term": "to kone",
+        "translation": "you know",
+        "core": false
+      },
+      {
+        "term": "so masin",
+        "translation": "his/her car",
+        "core": false
+      },
+      {
+        "term": "mersi mon amour",
+        "translation": "thank you, my love",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 90.0,
+    "end": 118.033,
+    "text": "non to kone dan lavi nous contente nous de ce qui nous ena defois lavi ni pou kouma dir mennou paula paula tangi tangi nous kouma de robran nous viv kouma ni vinn ni mange extra bon mange c'est bon c'est le bon c'est",
+    "vocab": [
+      {
+        "term": "to kone",
+        "translation": "you know",
+        "core": false
+      },
+      {
+        "term": "dan lavi",
+        "translation": "in life",
+        "core": true
+      },
+      {
+        "term": "nous ena",
+        "translation": "we have",
+        "core": true
+      },
+      {
+        "term": "defois",
+        "translation": "sometimes",
+        "core": false
+      },
+      {
+        "term": "extra bon",
+        "translation": "really good",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 118.033,
+    "end": 123.033,
+    "text": "zour pa zour enn pa zour",
+    "vocab": [
+      {
+        "term": "zour pa zour",
+        "translation": "day by day",
+        "core": true
+      }
+    ]
+  }
+]

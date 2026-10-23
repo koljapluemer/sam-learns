@@ -81,8 +81,8 @@ def download_subtitles(
             time.sleep(wait)
 
 
-def download(youtube_id: str, subtitle_lang: str) -> str:
-    """Returns the video title."""
+def download(youtube_id: str, subtitle_lang: str | None) -> str:
+    """Returns the video title. Without subtitle_lang only the audio is fetched (transcribed locally instead)."""
     directory = video_dir(youtube_id)
     url = f"https://www.youtube.com/watch?v={youtube_id}"
     info = load_info(directory, url)
@@ -90,6 +90,8 @@ def download(youtube_id: str, subtitle_lang: str) -> str:
     if not (directory / "audio.m4a").exists():
         yt_dlp(["-f", "ba[ext=m4a]/ba", "-x", "--audio-format", "m4a", "-o", str(directory / "audio.%(ext)s"), url])
 
+    if subtitle_lang is None:
+        return info["title"]
     subs = subtitle_path(directory, subtitle_lang)
     if not subs.exists():
         track = pick_subtitle_track(info, subtitle_lang)

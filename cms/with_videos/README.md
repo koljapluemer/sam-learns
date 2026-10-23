@@ -47,6 +47,17 @@ speaking pauses (ffmpeg), extracts per-snippet vocab via OpenAI, then writes
 `snippets/<id>.json` and upserts `videos.json`. Intermediate files are cached
 in `with_videos/data/<id>/`, so re-runs resume.
 
+Languages in `ASR_LANGUAGES` (`asr.py`, currently Mauritian Creole, `mfe`)
+skip YouTube subtitles and transcribe each snippet locally with Meta's
+Omnilingual ASR (`omni_asr.py`, LLM 1B model, needs a CUDA GPU with ~6 GB):
+
+```
+uv run with_videos/add_videos.py --lang mfe <youtube_id> [<youtube_id> ...]
+```
+
+`omni_asr.py` is a uv script with its own pinned environment (fairseq2 needs
+Python <= 3.12 and a matching torch build); the first run downloads several GB.
+
 Compare local screening models against accumulated human decisions with:
 
 ```bash

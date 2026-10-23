@@ -1,0 +1,421 @@
+[
+  {
+    "id": "0000",
+    "start": 2.611,
+    "end": 17.287,
+    "text": "zordi vous prakon zot enn histwar kot de kamarad inn al rod enn travay ti ena de post vakan de bon kamarad inn al rod sa travay la me seki mo fer zot kone enn la ti bien malin me lot la ti vreman kouyon",
+    "vocab": [
+      {
+        "term": "zordi",
+        "translation": "today",
+        "core": false
+      },
+      {
+        "term": "prakon zot enn histwar",
+        "translation": "tell you a story",
+        "core": true
+      },
+      {
+        "term": "al rod enn travay",
+        "translation": "go look for a job",
+        "core": true
+      },
+      {
+        "term": "de post vakan",
+        "translation": "two vacant positions",
+        "core": true
+      },
+      {
+        "term": "malin",
+        "translation": "clever",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 17.287,
+    "end": 33.738,
+    "text": "aster et tous les deux ena lepertann pour interview parton la kriye premie la e lasans premie malin la ki'nn rantre malin la rantre parton la dir li koumsa me jame dan fer mo garson eski ou kone kisonn la ki prezid dan l'amerique aktuellement",
+    "vocab": [
+      {
+        "term": "aster",
+        "translation": "now",
+        "core": false
+      },
+      {
+        "term": "kriye premie la",
+        "translation": "called the first one",
+        "core": true
+      },
+      {
+        "term": "koumsa",
+        "translation": "like this",
+        "core": false
+      },
+      {
+        "term": "eski ou kone",
+        "translation": "do you know",
+        "core": true
+      },
+      {
+        "term": "kisonn la ki prezid",
+        "translation": "who is president",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 33.738,
+    "end": 55.983,
+    "text": "san reflet si dir oui monsieur se barak obama dir bien bon dir deuxième question est-ce qui ou kone ki lane maurice signe l'indépendance li ti un peu malin donn so panti explication tout par deryer dir ou kone michel zot ti lager beaucoup beaucoup lager beaucoup lager beaucoup lager beaucoup malane zonn lager mais finalement c'est 1968 ki maurice l'indépendance",
+    "vocab": [
+      {
+        "term": "san reflet",
+        "translation": "without thinking",
+        "core": true
+      },
+      {
+        "term": "ki lane",
+        "translation": "what year",
+        "core": true
+      },
+      {
+        "term": "donn so panti explication",
+        "translation": "gave his little explanation",
+        "core": false
+      },
+      {
+        "term": "zot ti lager",
+        "translation": "they fought",
+        "core": true
+      },
+      {
+        "term": "par deryer",
+        "translation": "afterwards",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 55.983,
+    "end": 72.249,
+    "text": "artonla dir bien bon pozi trwaziem kestion dir diamann ni zafer monsieur eski ou krwar ki ena lavi lor planet mars ta reflesi dir ou kone par kont tou dimoun pans sa me diska ler personn pou ankor prouve",
+    "vocab": [
+      {
+        "term": "eski ou krwar",
+        "translation": "do you believe",
+        "core": true
+      },
+      {
+        "term": "ena lavi lor planet mars",
+        "translation": "there is life on Mars",
+        "core": true
+      },
+      {
+        "term": "tou dimoun pans sa",
+        "translation": "everyone thinks that",
+        "core": true
+      },
+      {
+        "term": "diska ler",
+        "translation": "up to now",
+        "core": true
+      },
+      {
+        "term": "personn pou ankor prouve",
+        "translation": "no one has proved it yet",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 72.249,
+    "end": 95.804,
+    "text": "batron lame ti enn tiray korek di ale sorti apel un kangida swivan etin lot la sorti zwenn so kamarad sa koula deo lor vites si les so kamarad nou si vo drigin etin depos vakan nexpignan so kamarad la dir premier repons deuxième repons troisième repons ja li poz so trois questions tonne kran sa trois reponsann nou fini gagn travay la nou korek lot la kontan etin fini gagn tous les trois reponses etin li rentre pour asize batron lame gvinarle dire bonjour",
+    "vocab": [
+      {
+        "term": "apel un kangida swivan",
+        "translation": "call the next candidate",
+        "core": true
+      },
+      {
+        "term": "sorti zwenn so kamarad",
+        "translation": "went out to meet his friend",
+        "core": true
+      },
+      {
+        "term": "nou fini gagn travay la",
+        "translation": "we've got the job",
+        "core": true
+      },
+      {
+        "term": "lot la kontan",
+        "translation": "the other one was happy",
+        "core": false
+      },
+      {
+        "term": "li rentre pour asize",
+        "translation": "he went in to sit down",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 95.804,
+    "end": 109.105,
+    "text": "bonjour parton la dir monsieur kouma vous apelez silvous ple dir mwa barak obama parton la gat lig inchok e dir outika dir mwa ki lazo ena ki dat unn ne",
+    "vocab": [
+      {
+        "term": "kouma vous apelez",
+        "translation": "what is your name",
+        "core": true
+      },
+      {
+        "term": "dir mwa",
+        "translation": "tell me",
+        "core": true
+      },
+      {
+        "term": "ki lazo ena",
+        "translation": "how old are you",
+        "core": true
+      },
+      {
+        "term": "ki dat unn ne",
+        "translation": "what date were you born",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0006",
+    "start": 109.105,
+    "end": 116.641,
+    "text": "izie patron beokou banane donn lager beokou banane zonn lager me seulement finalement 1968",
+    "vocab": [
+      {
+        "term": "beokou banane",
+        "translation": "many bananas",
+        "core": true
+      },
+      {
+        "term": "donn lager",
+        "translation": "fought",
+        "core": true
+      },
+      {
+        "term": "banane zonn",
+        "translation": "yellow bananas",
+        "core": false
+      },
+      {
+        "term": "me seulement",
+        "translation": "but; however",
+        "core": false
+      },
+      {
+        "term": "finalement 1968",
+        "translation": "ultimately, 1968",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0007",
+    "start": 116.641,
+    "end": 135.521,
+    "text": "pa tro la get litie ou la ou pa fou par azar ou e dir parton boukou dimoun pans sa me diskaler personn nou enkor prouve ki letra drwa repons anfan lan de fwa son d'avril enn lor laplaz omonn koumsa enn pana enn gagn sondaz ki ena enn rekin dan leparaz",
+    "vocab": [
+      {
+        "term": "ou pa fou par azar",
+        "translation": "aren't you crazy, by any chance",
+        "core": true
+      },
+      {
+        "term": "boukou dimoun pans sa",
+        "translation": "many people think that",
+        "core": true
+      },
+      {
+        "term": "diskaler personn nou enkor prouve",
+        "translation": "so far, no one has proved it yet",
+        "core": true
+      },
+      {
+        "term": "lor laplaz",
+        "translation": "on the beach",
+        "core": true
+      },
+      {
+        "term": "ena enn rekin dan leparaz",
+        "translation": "there is a shark nearby",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0008",
+    "start": 135.521,
+    "end": 148.324,
+    "text": "se toujours moun inn so ti inn ti moun ki se naz enn so ti nar delo ta so ti nar delo koumsa enn misie ki li pe fer por vous enn prenn plak inn ekrir lor toujours moun ki pe bengne por isi inn gagn ti goun-goun niya",
+    "vocab": [
+      {
+        "term": "delo",
+        "translation": "water",
+        "core": false
+      },
+      {
+        "term": "plak inn ekrir lor",
+        "translation": "a sign with writing on it",
+        "core": true
+      },
+      {
+        "term": "moun ki pe bengne",
+        "translation": "people who are bathing",
+        "core": true
+      },
+      {
+        "term": "inn gagn ti goun-goun niya",
+        "translation": "have caught chikungunya",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0009",
+    "start": 148.324,
+    "end": 169.372,
+    "text": "bann la pe get sa zeme to fou ki sa ki se la ki gagn ti goungounia ki pe menir isi il dir non zot pa kone zot mo'nn ekrir sa letan sa rekin la mo vwazire pou paspor la pou lir sa li pa pou rod manz bann dimoun la parski li si li pou al gagn ti goungounia bann la dir e to pe vinn badine isi nou ena enn kamarad penn naze non fon ale afin demars ta signal li ki vwazire enn arekin dan lebaraz",
+    "vocab": [
+      {
+        "term": "bann la pe get sa",
+        "translation": "they are looking at that",
+        "core": false
+      },
+      {
+        "term": "zot pa kone",
+        "translation": "you don't know",
+        "core": false
+      },
+      {
+        "term": "pa pou rod manz bann dimoun la",
+        "translation": "won't try to eat those people",
+        "core": true
+      },
+      {
+        "term": "to pe vinn badine isi",
+        "translation": "you're coming here to fool around",
+        "core": true
+      },
+      {
+        "term": "enn kamarad penn naze",
+        "translation": "a friend is swimming",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0010",
+    "start": 169.372,
+    "end": 182.297,
+    "text": "mane kapir voyo dilo pis la naze naze apre 45 minutes li retourne dir bann la ena mauves nouvelles bann dir ki ne arive il dir reken inouans ou kamarad la so delarme bann la dir kete",
+    "vocab": [
+      {
+        "term": "naze naze",
+        "translation": "swam and swam",
+        "core": true
+      },
+      {
+        "term": "apre 45 minutes",
+        "translation": "after 45 minutes",
+        "core": true
+      },
+      {
+        "term": "bann la ena mauves nouvelles",
+        "translation": "they have bad news",
+        "core": true
+      },
+      {
+        "term": "ki ne arive",
+        "translation": "what happened?",
+        "core": true
+      },
+      {
+        "term": "ou kamarad",
+        "translation": "your friend",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0011",
+    "start": 182.297,
+    "end": 211.837,
+    "text": "ne dir zot manti foison d'avril manaja ou il dir rekem anvans enn de lame li rekem anvans enn de lame rekem nonzi net inn anval li net sana setan misie ki na kot inn al denn maryaz inn spe lakampagne inn al denn maryaz bosonz sa koula tenn vinn laba il zonn so kamarad dir e sa problem la telekon mont bliye raze dir e lot la zeme pa kastate tenn anti kwafer dan bosonz isi apre de dado li taye li raze tou",
+    "vocab": [
+      {
+        "term": "inn anval li net",
+        "translation": "swallowed him whole",
+        "core": true
+      },
+      {
+        "term": "inn al denn maryaz",
+        "translation": "went to a wedding",
+        "core": true
+      },
+      {
+        "term": "sa koula",
+        "translation": "this time",
+        "core": false
+      },
+      {
+        "term": "bliye raze",
+        "translation": "forgot to shave",
+        "core": true
+      },
+      {
+        "term": "li taye li raze tou",
+        "translation": "he rushed off and shaved everything",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0012",
+    "start": 211.837,
+    "end": 237.151,
+    "text": "koula misie la ena ale nal kot kot dado bo sonz aset ena asize kou afer la kas kot so lame vous autres pas lor bouglas lor figir koum sa misie la get dado get kou afer edir ou lamat lor pena bleo kot ou pena savon ou kas lor lame ou pas lor mo figir kou afer la get ki dir ou san san misie ou pa rezid an lendroi par isi si ou sere dan lendroi isi ou kas direk lor ou figir",
+    "vocab": [
+      {
+        "term": "misie la",
+        "translation": "the man",
+        "core": true
+      },
+      {
+        "term": "pena savon",
+        "translation": "there is no soap",
+        "core": true
+      },
+      {
+        "term": "lor mo figir",
+        "translation": "on my face",
+        "core": true
+      },
+      {
+        "term": "ou pa rezid an lendroi par isi",
+        "translation": "you don't live around here",
+        "core": false
+      },
+      {
+        "term": "direk lor ou figir",
+        "translation": "directly on your face",
+        "core": true
+      }
+    ]
+  }
+]

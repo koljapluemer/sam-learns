@@ -1,0 +1,42 @@
+[
+  {
+    "id": "0000",
+    "start": 1.235,
+    "end": 31.235,
+    "text": "so li te stepe ki ne arive la nanye ki nanye sa grav ke sa ti fi mal leve la inn ale inn ale akaz to emma ki akaz mwa alor li pa benin li li malam ginn bwar disan dimoun isi akaz mwa non sa ti fi la enn leper dis dis de retrouver apre mwa ki kone ki bon pou twa madam rose li ne to konn li mo fer broderie avek tou zala sa ti fi fek retourne so ti deor li inn so ti etidie inn a bon manier konn ki konn tou pou konn pran nan pa sa ki konte leker ki konte leker ki konte",
+    "vocab": [
+      {
+        "term": "sa ti fi",
+        "translation": "that girl",
+        "core": true
+      },
+      {
+        "term": "inn ale",
+        "translation": "has gone away",
+        "core": true
+      },
+      {
+        "term": "akaz mwa",
+        "translation": "at my house",
+        "core": false
+      },
+      {
+        "term": "mo fer broderie",
+        "translation": "I do embroidery",
+        "core": false
+      },
+      {
+        "term": "leker ki konte",
+        "translation": "what matters is the heart",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 31.235,
+    "end": 42.655,
+    "text": "anim ti mount day aspe",
+    "vocab": []
+  }
+]

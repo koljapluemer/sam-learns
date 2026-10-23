@@ -1,0 +1,180 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "au mem zeman nou perle tel",
+    "vocab": [
+      {
+        "term": "au mem zeman",
+        "translation": "at the same time",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 60.0,
+    "text": "nou pe li nou koulann dal dan mo twalet la oui oui oui azo bondie la lolir la pou al partout dan mo lasam la mo finn fini sanzra lolir la pou res ladan la nom e korek ou pes din flesion kontour mo pa metir fresh so mo metir manza fer kole la mwa nom e lot kout savi inflesioner ou pes dekot pou fini korek me nou me li pou ale li pou al demo dra tousala la mo lasam ned partout mo pe dex tracteur mo apartout la mo lakaz mo la",
+    "vocab": [
+      {
+        "term": "dan mo twalet la",
+        "translation": "in my bathroom",
+        "core": true
+      },
+      {
+        "term": "partout dan mo lasam la",
+        "translation": "all over my room",
+        "core": true
+      },
+      {
+        "term": "mo finn fini",
+        "translation": "I've finished",
+        "core": false
+      },
+      {
+        "term": "pou res ladan",
+        "translation": "will stay in there",
+        "core": false
+      },
+      {
+        "term": "mo lakaz",
+        "translation": "my house",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 60.0,
+    "end": 90.0,
+    "text": "nom de ou kone trant an me fasi fair taximan madam zame mo gay a problem la mo dir ou sa kauz gramatin me ti a stendard pour ri ou peko me kone si tan me ti ena beaucoup couse beaucoup couse me pa ne resi gay leta manze la na tale a katrea kan me pe desande",
+    "vocab": [
+      {
+        "term": "ou kone",
+        "translation": "you know",
+        "core": false
+      },
+      {
+        "term": "trant an",
+        "translation": "thirty years",
+        "core": true
+      },
+      {
+        "term": "zame mo gay a problem",
+        "translation": "I've never had a problem",
+        "core": true
+      },
+      {
+        "term": "gramatin",
+        "translation": "in the morning",
+        "core": false
+      },
+      {
+        "term": "kan me pe desande",
+        "translation": "when I was going down",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 90.0,
+    "end": 120.0,
+    "text": "pour louis mo'nn bloke dan ser ki laswa lerla mo'nn garletan mon sa dalpouri la me sa inn inn detournement dan se pa kone ki inn fer anti medicine mo dir mo spaki anou non madam mo pa kapav avek medicine mwa fode mo madam saloni fer medicine mo lerla mo bien wi parski vous kone depi covid mo lekour ne pa parey demonn tou dimoun tou mo balkamarad dir mo sa depi covid personn pa parey",
+    "vocab": [
+      {
+        "term": "mo'nn bloke",
+        "translation": "I got stuck",
+        "core": true
+      },
+      {
+        "term": "mo pa kapav avek medicine",
+        "translation": "I can't tolerate medicine",
+        "core": true
+      },
+      {
+        "term": "lerla mo bien",
+        "translation": "then I'm well",
+        "core": true
+      },
+      {
+        "term": "depi covid",
+        "translation": "since COVID",
+        "core": true
+      },
+      {
+        "term": "personn pa parey",
+        "translation": "nobody is the same",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 120.0,
+    "end": 150.0,
+    "text": "alors oui mo pa tro kone nou pourre pour arive la kome miniteman arive la nou rentre mem la oue oue ata mo pour veke vous dime kot to vien christel ki manière to twa lem lim kot to la madam mo enn minita oue christel de mo lakle mo bizan twa let enn kou de pi mo pa fek kapav mo madam mo ena tissou avek ou tissou",
+    "vocab": [
+      {
+        "term": "mo pa tro kone",
+        "translation": "I don't really know",
+        "core": true
+      },
+      {
+        "term": "nou rentre",
+        "translation": "we're going in",
+        "core": true
+      },
+      {
+        "term": "dime",
+        "translation": "tomorrow",
+        "core": false
+      },
+      {
+        "term": "kot to la",
+        "translation": "where are you?",
+        "core": true
+      },
+      {
+        "term": "mo bizan twa",
+        "translation": "I need you",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 150.0,
+    "end": 176.597,
+    "text": "bo pena don moin tisou août round tisou août pena bo pena anwip nanye ki a ite madam out don par service amanzafer la depi covid la mo dir ou non ne pa parey pa gagn bon pa gagn nanye pa gagn bon pa gagn nanye pa gagn bon",
+    "vocab": [
+      {
+        "term": "don moin tisou",
+        "translation": "give me a tissue",
+        "core": true
+      },
+      {
+        "term": "pena",
+        "translation": "there isn't any",
+        "core": true
+      },
+      {
+        "term": "nanye",
+        "translation": "anything; nothing",
+        "core": true
+      },
+      {
+        "term": "depi covid",
+        "translation": "since COVID",
+        "core": true
+      },
+      {
+        "term": "ne pa parey",
+        "translation": "isn't the same",
+        "core": true
+      }
+    ]
+  }
+]
