@@ -14,17 +14,11 @@ import traceback
 import pycountry
 from dotenv import load_dotenv
 
-from download import download
-from extract_vocab import extract_vocab
-from publish import publish
-from split_snippets import split_snippets
+from pipeline import process_video
 
 
 def add_video(youtube_id: str, language) -> None:
-    title = download(youtube_id, language.alpha_2)
-    snippets = split_snippets(youtube_id, language.alpha_2)
-    snippets = extract_vocab(youtube_id, snippets, language.name)
-    publish(youtube_id, title, language.alpha_3, language.name, snippets)
+    process_video(youtube_id, language)
 
 
 def main() -> None:

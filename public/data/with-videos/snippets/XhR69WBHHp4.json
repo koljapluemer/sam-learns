@@ -1,0 +1,213 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 16.631,
+    "text": "Vorrei salutare tutti questi belli contadini questi belli calabriselli che abbiamo ospitato oggi la scuola di San Giovanni, Zambrone, Daffinà e Daffinacello quindi l'insegnanti e tutti questo è il merito di tutti! Vi saluto a tutti, vai!",
+    "vocab": [
+      {
+        "term": "Vorrei salutare",
+        "translation": "I’d like to greet",
+        "core": true
+      },
+      {
+        "term": "calabriselli",
+        "translation": "young Calabrians",
+        "core": false
+      },
+      {
+        "term": "abbiamo ospitato",
+        "translation": "we hosted",
+        "core": true
+      },
+      {
+        "term": "il merito di tutti",
+        "translation": "thanks to everyone’s efforts",
+        "core": true
+      },
+      {
+        "term": "Vi saluto",
+        "translation": "I bid you goodbye",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 16.631,
+    "end": 40.858,
+    "text": "Ecco qua, grazie a tutti! ragazzi! Laviamoci bene, asciugate bene! Asciughiamoci bene le mani vai altra",
+    "vocab": [
+      {
+        "term": "Ecco qua",
+        "translation": "Here we are",
+        "core": false
+      },
+      {
+        "term": "Laviamoci bene",
+        "translation": "Let’s wash ourselves well",
+        "core": true
+      },
+      {
+        "term": "asciugate bene",
+        "translation": "dry yourselves well",
+        "core": true
+      },
+      {
+        "term": "Asciughiamoci bene le mani",
+        "translation": "Let’s dry our hands well",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 40.858,
+    "end": 53.376,
+    "text": "Eugenia non ti appoggiare che dobbiamo impastare impasta dai, impasta! perchè altrimenti non mangiamo e infatti, questo ci dobbiamo mangiare",
+    "vocab": [
+      {
+        "term": "non ti appoggiare",
+        "translation": "don’t lean on it",
+        "core": true
+      },
+      {
+        "term": "dobbiamo impastare",
+        "translation": "we have to knead",
+        "core": true
+      },
+      {
+        "term": "dai",
+        "translation": "come on",
+        "core": false
+      },
+      {
+        "term": "altrimenti",
+        "translation": "otherwise",
+        "core": true
+      },
+      {
+        "term": "ci dobbiamo mangiare",
+        "translation": "we have to eat",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 53.376,
+    "end": 58.883,
+    "text": "ragazzi vediamo questa sorpresa cos'è",
+    "vocab": [
+      {
+        "term": "vediamo",
+        "translation": "let’s see",
+        "core": true
+      },
+      {
+        "term": "cos'è",
+        "translation": "what it is",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 58.883,
+    "end": 68.524,
+    "text": "WOWWW che c'è qua ragazzi! Fatemi leggere intanto voglio sapere chi l'ha fatta mia mamma",
+    "vocab": [
+      {
+        "term": "che c'è qua",
+        "translation": "what’s here?",
+        "core": true
+      },
+      {
+        "term": "Fatemi leggere",
+        "translation": "Let me read",
+        "core": true
+      },
+      {
+        "term": "intanto",
+        "translation": "first / meanwhile",
+        "core": false
+      },
+      {
+        "term": "voglio sapere",
+        "translation": "I want to know",
+        "core": true
+      },
+      {
+        "term": "chi l'ha fatta",
+        "translation": "who made it",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 68.524,
+    "end": 89.755,
+    "text": "tua mamma? come si chiama tua mamma Anna Angelica, te l'ho detto prima e figlio mio io mi scordo da un minuto all'altro Anna Angelica ti voglio dire, guarda grazie mille! sei proprio una professionista allora da dove devo iniziare qui a leggere PON insieme per la valorizzazione del territorio",
+    "vocab": [
+      {
+        "term": "te l'ho detto prima",
+        "translation": "I told you earlier",
+        "core": false
+      },
+      {
+        "term": "mi scordo",
+        "translation": "I forget",
+        "core": true
+      },
+      {
+        "term": "da un minuto all'altro",
+        "translation": "from one minute to the next",
+        "core": false
+      },
+      {
+        "term": "da dove devo iniziare",
+        "translation": "where should I start?",
+        "core": true
+      },
+      {
+        "term": "valorizzazione del territorio",
+        "translation": "promotion of the local area",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0006",
+    "start": 89.755,
+    "end": 116.539,
+    "text": "ventotto maggio 2022 un applauso alla signora, alla mamma di Antonio applauso questo vale per tutti ehh ragazzi grazie grazie grazie a tutti adesso rientriamo a casa che le mamme aspettano certo il vostro discorso personale cosa gli dite? che vi siete trovate bene vi è piaciuto? si o no? Siii si, vai!",
+    "vocab": [
+      {
+        "term": "un applauso",
+        "translation": "a round of applause",
+        "core": true
+      },
+      {
+        "term": "questo vale per tutti",
+        "translation": "this applies to everyone",
+        "core": false
+      },
+      {
+        "term": "rientriamo a casa",
+        "translation": "let’s head back home",
+        "core": true
+      },
+      {
+        "term": "cosa gli dite",
+        "translation": "what will you tell them?",
+        "core": true
+      },
+      {
+        "term": "vi siete trovate bene",
+        "translation": "did you have a good experience?",
+        "core": true
+      }
+    ]
+  }
+]

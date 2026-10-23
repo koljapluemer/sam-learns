@@ -1,0 +1,185 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "Ciao sono Michele e faccio il capotreno Oggi vi porto con me in una nostra giornata tipo andiamo! Ciao Emi Oh ciao Michi com'è il materiale andiamo dal macchinista andiamo come prima cosa appena prendiamo servizio controlliamo i documenti treno controlliamo i sigilli dei martelletti delle porte se ci sono dei problemi poi dopo iniziamo le operazioni del pronti a partire",
+    "vocab": [
+      {
+        "term": "faccio il capotreno",
+        "translation": "I work as a train conductor",
+        "core": true
+      },
+      {
+        "term": "giornata tipo",
+        "translation": "typical day",
+        "core": true
+      },
+      {
+        "term": "prendiamo servizio",
+        "translation": "we start our shift",
+        "core": true
+      },
+      {
+        "term": "martelletti delle porte",
+        "translation": "emergency door hammers",
+        "core": false
+      },
+      {
+        "term": "pronti a partire",
+        "translation": "ready to depart",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 60.0,
+    "text": "Emy siamo pronti a partire [Musica] adesso iniziamo le operazioni controlleria insieme ad Emiliano Andiamo [Musica] andiamo Non siamo dei Semplici controllori come luogo comune vuole ma il nostro lavoro è fatto anche di rapporti umani di empatia e di tante altre sfumature che che si vedono a bordo treno perché come è successo anche nel viaggio che abbiamo fatto con Emiliano a venire qui a Bozzolo abbiamo visto che sul nostro tablet non era presente nessuna prenotazione di",
+    "vocab": [
+      {
+        "term": "operazioni controlleria",
+        "translation": "ticket inspection duties",
+        "core": true
+      },
+      {
+        "term": "luogo comune",
+        "translation": "stereotype",
+        "core": true
+      },
+      {
+        "term": "rapporti umani",
+        "translation": "human relationships",
+        "core": true
+      },
+      {
+        "term": "sfumature",
+        "translation": "nuances",
+        "core": false
+      },
+      {
+        "term": "a bordo treno",
+        "translation": "on board the train",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 60.0,
+    "end": 84.379,
+    "text": "persone con disabilità poi facendo le operazioni di controlleria ci siamo resi conto che c'era una persona in carrozzina per noi l'attenzione è stata semplicemente chiedere alla capostazione di Piadena di poterci far arrivare sul binario 1 in modo da dare la maggior comodità al viaggiatore è stata una cosa molto semplice per noi molto gratificante per noi ma molto utile anche per per il viaggiatore Grazie Ciao caro grazie a [Musica] te Io comunque sono 6 anni già",
+    "vocab": [
+      {
+        "term": "persone con disabilità",
+        "translation": "people with disabilities",
+        "core": true
+      },
+      {
+        "term": "ci siamo resi conto",
+        "translation": "we realized",
+        "core": true
+      },
+      {
+        "term": "persona in carrozzina",
+        "translation": "wheelchair user",
+        "core": true
+      },
+      {
+        "term": "capostazione",
+        "translation": "station manager",
+        "core": false
+      },
+      {
+        "term": "in modo da",
+        "translation": "so as to",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 84.379,
+    "end": 114.379,
+    "text": "che sono capotreno tu eh sono 17 anni quasi 20 anni che faccio questo lavoro fai conto che io su questi treni ho ci ho conosciuto mia moglie devo tutto al treno ci ho dato la vita e m'ha dato la vita Ciao Antonio controlleria fatta Anto ma per te fare bene il tuo lavoro Cosa",
+    "vocab": [
+      {
+        "term": "fai conto che",
+        "translation": "just consider that",
+        "core": false
+      },
+      {
+        "term": "ci ho conosciuto mia moglie",
+        "translation": "I met my wife there",
+        "core": true
+      },
+      {
+        "term": "devo tutto al treno",
+        "translation": "I owe everything to the railway",
+        "core": true
+      },
+      {
+        "term": "ci ho dato la vita",
+        "translation": "I gave my life to it",
+        "core": true
+      },
+      {
+        "term": "m'ha dato la vita",
+        "translation": "it gave me my life",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 114.379,
+    "end": 144.379,
+    "text": "significa Ah per me il treno è una piccola comunità viaggiante quindi esserci come punto di riferimento per le persone è molto importante per esempio aiutare i viaggiatori c co dovessero smarrire degli oggetti in generale rendere anche il loro viaggio più sicuro e confortevole durante il tempo libero Comunque mi devo dedicare anche alla famiglia quindi alla mia bimba ho una collezione di fumetti di Topolino che sto portando avanti da da anni che mia figlia non può assolutamente toccare cosa stai leggendo",
+    "vocab": [
+      {
+        "term": "comunità viaggiante",
+        "translation": "traveling community",
+        "core": true
+      },
+      {
+        "term": "punto di riferimento",
+        "translation": "source of support",
+        "core": true
+      },
+      {
+        "term": "dovessero smarrire",
+        "translation": "should they lose",
+        "core": false
+      },
+      {
+        "term": "mi devo dedicare",
+        "translation": "I have to devote time",
+        "core": false
+      },
+      {
+        "term": "sto portando avanti",
+        "translation": "I've been maintaining",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 144.379,
+    "end": 154.771,
+    "text": "i Topolino la nostra giornata è finita Grazie Antonio Vi aspettiamo a bordo Ciao h",
+    "vocab": [
+      {
+        "term": "la nostra giornata è finita",
+        "translation": "our day is over",
+        "core": true
+      },
+      {
+        "term": "Vi aspettiamo a bordo",
+        "translation": "we look forward to welcoming you aboard",
+        "core": true
+      }
+    ]
+  }
+]

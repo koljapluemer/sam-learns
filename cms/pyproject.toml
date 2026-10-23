@@ -11,5 +11,5 @@ dependencies = [
     "requests>=2.34.2",
     "huggingface-hub>=1.32.0",
     "pypinyin>=0.55.0",
-    "yt-dlp[default]>=2026.8.19",
+    "yt-dlp[curl-cffi,default]>=2026.8.19",
 ]

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 18.863,
+    "text": "Ciao a tutti mamma e papà sono Stefania Fumagalli osteopata specializzata in osteopatia pediatrica e gravidanza e oggi vi parlerò del Tummy Time il Tummy Time è il mantenimento della posizione supina del vostro bimbo su un supporto di sostegno come può essere in questo caso il cuscino d'allattamento o anche sul tappetone",
+    "vocab": [
+      {
+        "term": "osteopata",
+        "translation": "osteopath",
+        "core": false
+      },
+      {
+        "term": "gravidanza",
+        "translation": "pregnancy",
+        "core": false
+      },
+      {
+        "term": "posizione supina",
+        "translation": "supine position",
+        "core": true
+      },
+      {
+        "term": "supporto di sostegno",
+        "translation": "support",
+        "core": true
+      },
+      {
+        "term": "cuscino d'allattamento",
+        "translation": "nursing pillow",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 18.863,
+    "end": 35.781,
+    "text": "adesso andremo a vedere come posizionare correttamente il vostro bambino su un cuscino allora dovrete posizionarlo con i gomiti ben appoggiati sul cuscino in modo tale che si riesca a sorreggere correttamente",
+    "vocab": [
+      {
+        "term": "gomiti ben appoggiati",
+        "translation": "elbows resting firmly",
+        "core": true
+      },
+      {
+        "term": "in modo tale che",
+        "translation": "so that",
+        "core": false
+      },
+      {
+        "term": "sorreggere",
+        "translation": "support himself",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 35.781,
+    "end": 62.123,
+    "text": "la schiena scende leggermente lungo la curva del cuscino e i piedini sono lasciati liberi questa posizione ci serve per favorire l'estensione del capo e quindi rinforzare tutta la muscolatura paravertebrale e della schiena possiamo aggiungere dei piccoli movimenti con un giochino in rotazione da un lato e dall'altro in modo tale che il bimbo seguirà con lo sguardo il giochino",
+    "vocab": [
+      {
+        "term": "piedini",
+        "translation": "little feet",
+        "core": false
+      },
+      {
+        "term": "estensione del capo",
+        "translation": "lifting of the head",
+        "core": true
+      },
+      {
+        "term": "rinforzare",
+        "translation": "strengthen",
+        "core": true
+      },
+      {
+        "term": "da un lato e dall'altro",
+        "translation": "from side to side",
+        "core": false
+      },
+      {
+        "term": "seguirà con lo sguardo",
+        "translation": "will follow with his eyes",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 62.123,
+    "end": 70.047,
+    "text": "questo ci serve per stimolare meglio la vista e anche se usiamo il sonaglino l'udito",
+    "vocab": [
+      {
+        "term": "la vista",
+        "translation": "sight",
+        "core": true
+      },
+      {
+        "term": "sonaglino",
+        "translation": "rattle",
+        "core": true
+      },
+      {
+        "term": "l'udito",
+        "translation": "hearing",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 70.047,
+    "end": 94.007,
+    "text": "questa posizione è molto molto utile anche nella prevenzione delle plagiocefalie quindi mi raccomando fatela più spesso potete durante l'arco della giornata almeno 30 min al giorno non consecutivi ovviamente ma diciamo come linea guida tutte le volte che il vostro bimbo è sveglio e non deve mangiare o essere cambiato lo possiamo mettere in questa posizione",
+    "vocab": [
+      {
+        "term": "prevenzione delle plagiocefalie",
+        "translation": "prevention of flat-head syndrome",
+        "core": true
+      },
+      {
+        "term": "mi raccomando",
+        "translation": "please make sure",
+        "core": false
+      },
+      {
+        "term": "durante l'arco della giornata",
+        "translation": "throughout the day",
+        "core": true
+      },
+      {
+        "term": "non consecutivi",
+        "translation": "not consecutively",
+        "core": true
+      },
+      {
+        "term": "linea guida",
+        "translation": "guideline",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0005",
+    "start": 94.007,
+    "end": 123.905,
+    "text": "potete iniziare con il Tummy Time già dal giorno 1 potete farlo sul vostro petto sul tappetone col cuscino potete sperimentare come volete sicuramente all'inizio vi sarà molto utile il cuscino perché per il bimbo sarà molto più difficile tenere la testa sollevata e quindi vi sarà di grande aiuto il sostegno del cuscino più sarà grande più potete togliere questo supporto e sfruttarlo in altro modo Spero che questo video vi sia stato utile se volete altri consigli seguite la pagina di Koala Babycare!",
+    "vocab": [
+      {
+        "term": "già dal giorno 1",
+        "translation": "from day one",
+        "core": true
+      },
+      {
+        "term": "sul vostro petto",
+        "translation": "on your chest",
+        "core": true
+      },
+      {
+        "term": "tenere la testa sollevata",
+        "translation": "keep the head raised",
+        "core": true
+      },
+      {
+        "term": "di grande aiuto",
+        "translation": "a great help",
+        "core": false
+      },
+      {
+        "term": "Spero che questo video vi sia stato utile",
+        "translation": "I hope you found this video useful",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0006",
+    "start": 123.905,
+    "end": 129.103,
+    "text": "",
+    "vocab": []
+  }
+]

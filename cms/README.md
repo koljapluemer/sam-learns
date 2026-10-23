@@ -18,6 +18,12 @@ Run an app's CMS, e.g. world-map:
 uv run streamlit run world_map/app.py
 ```
 
+The `with-videos` discovery and review CMS runs similarly:
+
+```
+uv run streamlit run with_videos/app.py
+```
+
 Most per-app CMS tools preview content by embedding the actual frontend
 app (for pixel-accurate mobile/desktop previews), so run the frontend dev
 server alongside:

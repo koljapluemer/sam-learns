@@ -1,0 +1,152 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "Hai mai visto nascere una nuvola? Oggi la creiamo insieme in un barattolo: un esperimento facile e spettacolare per capire cosa succede nel cielo. I materiali necessari sono un barattolo, un piattino, del ghiaccio, acqua molto calda e lacca spray. Una volta preparato tutto il necessario, versiamo circa due- tre dita di acqua nel barattolo; copriamo l'apertura con il piattino su",
+    "vocab": [
+      {
+        "term": "Hai mai visto nascere",
+        "translation": "Have you ever seen being formed",
+        "core": true
+      },
+      {
+        "term": "barattolo",
+        "translation": "jar",
+        "core": true
+      },
+      {
+        "term": "lacca spray",
+        "translation": "hairspray",
+        "core": true
+      },
+      {
+        "term": "Una volta preparato",
+        "translation": "once ... has been prepared",
+        "core": false
+      },
+      {
+        "term": "due- tre dita di acqua",
+        "translation": "two or three finger-widths of water",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 60.0,
+    "text": "cui avremo precedentemente poggiato il ghiaccio, e infine spruzziamo un po' di lacca dentro il barattolo. Richiudiamo subito e... guardate cosa succede! L'acqua calda produce vapore che sale verso l'alto, l'aria fredda, presente a causa del piattino ricoperto di ghiaccio, condensa il vapore in goccioline, che formano una nuvola. Si è formata una nuvola vera dentro il barattolo! Proprio come avviene nel cielo quando il vapore acqueo incontra l'aria fredda. Quando poi le",
+    "vocab": [
+      {
+        "term": "poggiato il ghiaccio",
+        "translation": "placed the ice",
+        "core": false
+      },
+      {
+        "term": "spruzziamo",
+        "translation": "we spray",
+        "core": true
+      },
+      {
+        "term": "a causa del",
+        "translation": "because of the",
+        "core": false
+      },
+      {
+        "term": "goccioline",
+        "translation": "tiny droplets",
+        "core": true
+      },
+      {
+        "term": "vapore acqueo",
+        "translation": "water vapor",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 60.0,
+    "end": 70.351,
+    "text": "goccioline di condensa diventano grosse e pesanti cadono giù sotto forma di pioggia. Vi lascio",
+    "vocab": [
+      {
+        "term": "goccioline di condensa",
+        "translation": "condensation droplets",
+        "core": true
+      },
+      {
+        "term": "cadono giù",
+        "translation": "fall down",
+        "core": true
+      },
+      {
+        "term": "sotto forma di pioggia",
+        "translation": "in the form of rain",
+        "core": true
+      },
+      {
+        "term": "Vi lascio",
+        "translation": "I'll let you",
+        "core": false
+      }
+    ]
+  },
+  {
+    "id": "0003",
+    "start": 70.351,
+    "end": 100.351,
+    "text": "osservare con i vostri occhi. Nel frattempo... perché la lacca ci ha aiutato nell'esperimento? Perché le particelle dello spray aiutano il vapore a trasformarsi in una nuvola, in quanto fungono da superficie condensante per l'acqua: più la nuvola sale verso la parte alta del barattolo, più si raffredda e si condensa. Guardate in questa zona: si sono già formate gocce di... pioggia! Ti è piaciuto l'esperimento? Provalo anche tu con l'aiuto di un adulto e se vuoi altri",
+    "vocab": [
+      {
+        "term": "con i vostri occhi",
+        "translation": "with your own eyes",
+        "core": false
+      },
+      {
+        "term": "Nel frattempo",
+        "translation": "meanwhile",
+        "core": false
+      },
+      {
+        "term": "trasformarsi in",
+        "translation": "turn into",
+        "core": true
+      },
+      {
+        "term": "in quanto fungono da",
+        "translation": "since they act as",
+        "core": true
+      },
+      {
+        "term": "più si raffredda e si condensa",
+        "translation": "the more it cools and condenses",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0004",
+    "start": 100.351,
+    "end": 105.75,
+    "text": "esperimenti come questo iscriviti al canale e attiva la campanella. Ciao, alla prossima!",
+    "vocab": [
+      {
+        "term": "iscriviti al canale",
+        "translation": "subscribe to the channel",
+        "core": true
+      },
+      {
+        "term": "attiva la campanella",
+        "translation": "turn on notifications",
+        "core": true
+      },
+      {
+        "term": "alla prossima",
+        "translation": "see you next time",
+        "core": false
+      }
+    ]
+  }
+]

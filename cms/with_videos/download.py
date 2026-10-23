@@ -12,12 +12,18 @@ from pathlib import Path
 from common import read_json, subtitle_path, video_dir, write_json
 
 
+class RateLimited(subprocess.CalledProcessError):
+    """YouTube answered 429; further requests only extend the block."""
+
+
 def yt_dlp(args: list[str], capture: bool = False) -> str:
     # node instead of the default deno; needed for YouTube signature solving
-    proc = subprocess.run(
-        [sys.executable, "-m", "yt_dlp", "--js-runtimes", "node", *args],
-        check=True, capture_output=capture, text=True,
-    )
+    command = [sys.executable, "-m", "yt_dlp", "--js-runtimes", "node", *args]
+    proc = subprocess.run(command, stdout=subprocess.PIPE if capture else None, stderr=subprocess.PIPE, text=True)
+    sys.stderr.write(proc.stderr)
+    if proc.returncode:
+        error = RateLimited if "HTTP Error 429" in proc.stderr else subprocess.CalledProcessError
+        raise error(proc.returncode, command, proc.stdout, proc.stderr)
     return proc.stdout
 
 
@@ -31,22 +37,33 @@ def load_info(directory: Path, url: str) -> dict:
     return info
 
 
-def pick_subtitle_track(info: dict, lang: str) -> tuple[str, bool] | None:
+def _matching_track(keys, lang: str, original_only: bool = False) -> str | None:
+    exact = [f"{lang}-orig"] if original_only else [lang]
+    for key in exact:
+        if key in keys:
+            return key
+    regional = sorted(key for key in keys if key.startswith(f"{lang}-") and (not original_only or key.endswith("-orig")))
+    return regional[0] if regional else None
+
+
+def pick_subtitle_track(info: dict, lang: str, allow_translated: bool = True) -> tuple[str, bool] | None:
     """Returns (track key, is_auto). Manual subs first, then the original ASR track (<lang>-orig);
     plain auto <lang> may be a machine translation, which YouTube rate-limits heavily (429)."""
     manual = info.get("subtitles") or {}
     auto = info.get("automatic_captions") or {}
-    if lang in manual:
-        return lang, False
-    if f"{lang}-orig" in auto:
-        return f"{lang}-orig", True
-    if lang in auto:
-        return lang, True
+    if key := _matching_track(manual, lang):
+        return key, False
+    if key := _matching_track(auto, lang, original_only=True):
+        return key, True
+    if allow_translated and (key := _matching_track(auto, lang)):
+        return key, True
     return None
 
 
-def download_subtitles(directory: Path, url: str, key: str, is_auto: bool) -> None:
-    for attempt, wait in enumerate([30, 90, 180, None], start=1):
+def download_subtitles(
+    directory: Path, url: str, key: str, is_auto: bool, retry_waits: tuple[int | None, ...] = (30, 90, 180, None)
+) -> None:
+    for attempt, wait in enumerate(retry_waits, start=1):
         try:
             yt_dlp([
                 "--skip-download",
@@ -86,3 +103,25 @@ def download(youtube_id: str, subtitle_lang: str) -> str:
                 downloaded.replace(subs)
 
     return info["title"]
+
+
+def download_transcript(youtube_id: str, subtitle_lang: str) -> Path | None:
+    """Fetch only metadata and the best original subtitle track for discovery.
+    Returns None when the video has no original-language track (likely the wrong language)."""
+    directory = video_dir(youtube_id)
+    url = f"https://www.youtube.com/watch?v={youtube_id}"
+    info = load_info(directory, url)
+    target = subtitle_path(directory, subtitle_lang)
+    if target.exists():
+        return target
+    track = pick_subtitle_track(info, subtitle_lang, allow_translated=False)
+    if track is None:
+        return None
+    key, is_auto = track
+    download_subtitles(directory, url, key, is_auto, (None,))
+    downloaded = subtitle_path(directory, key)
+    if not downloaded.exists():
+        return None
+    if downloaded != target:
+        downloaded.replace(target)
+    return target

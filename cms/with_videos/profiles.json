@@ -1,0 +1,49 @@
+{
+  "profiles": [
+    {
+      "languageCode": "spa",
+      "youtubeLanguage": "es",
+      "languageName": "Spanish",
+      "regionCodes": ["ES", "MX", "AR"],
+      "queries": [
+        "receta rápida", "un día en mi vida", "curiosidades animales",
+        "lugares bonitos", "cómo se hace", "historia breve"
+      ],
+      "excludeTerms": ["política", "noticias", "reacción", "compilación infantil"],
+      "minDurationSeconds": 20,
+      "maxDurationSeconds": 180,
+      "queueSize": 30,
+      "enabled": true
+    },
+    {
+      "languageCode": "fra",
+      "youtubeLanguage": "fr",
+      "languageName": "French",
+      "regionCodes": ["FR", "CA", "BE"],
+      "queries": [
+        "recette rapide", "une journée dans ma vie", "animaux insolites",
+        "beaux endroits", "comment c'est fait", "petite histoire"
+      ],
+      "excludeTerms": ["politique", "actualités", "réaction", "compilation enfants"],
+      "minDurationSeconds": 20,
+      "maxDurationSeconds": 180,
+      "queueSize": 30,
+      "enabled": true
+    },
+    {
+      "languageCode": "ita",
+      "youtubeLanguage": "it",
+      "languageName": "Italian",
+      "regionCodes": ["IT", "CH"],
+      "queries": [
+        "ricetta veloce", "una giornata nella mia vita", "curiosità animali",
+        "posti bellissimi", "come si fa", "storia breve"
+      ],
+      "excludeTerms": ["politica", "notizie", "reazione", "compilation bambini"],
+      "minDurationSeconds": 20,
+      "maxDurationSeconds": 180,
+      "queueSize": 30,
+      "enabled": true
+    }
+  ]
+}

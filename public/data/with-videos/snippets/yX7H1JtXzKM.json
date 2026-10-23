@@ -1,0 +1,35 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 18.997,
+    "text": "I ratti ridono, ma solo a ultrasuoni, quando giocano vengono solleticati,emettono suoni simili a risatine, ma a una frequenza troppo alta per l'orecchio umano. I coccodrilli non possono tirare fuori la lingua, è letteralmente incollata al fondo della bocca. Serve a evitare che venga morsa quando afferrano le prede.",
+    "vocab": [
+      {
+        "term": "a ultrasuoni",
+        "translation": "at ultrasonic frequencies",
+        "core": true
+      },
+      {
+        "term": "vengono solleticati",
+        "translation": "are tickled",
+        "core": true
+      },
+      {
+        "term": "tirare fuori la lingua",
+        "translation": "stick out the tongue",
+        "core": true
+      },
+      {
+        "term": "incollata al fondo della bocca",
+        "translation": "stuck to the bottom of the mouth",
+        "core": true
+      },
+      {
+        "term": "afferrano le prede",
+        "translation": "seize their prey",
+        "core": false
+      }
+    ]
+  }
+]

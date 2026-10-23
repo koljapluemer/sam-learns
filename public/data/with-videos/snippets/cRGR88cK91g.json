@@ -1,0 +1,63 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "I bisonti sono gli animali terrestri più grandi del Nordamerica con maschi che possono pesare fino a 900 chili Possono correre fino a 55km orari rendendoli incredibilmente veloci nonostante le loro dimensioni imponenti I bisonti amano rotolarsi nella polvere per proteggersi dagli insetti fastidiosi e per mantenere il loro mantello sano e pulito Sono animali sociali che vivono in branchi comunicando tra loro",
+    "vocab": [
+      {
+        "term": "fino a",
+        "translation": "up to",
+        "core": false
+      },
+      {
+        "term": "nonostante",
+        "translation": "despite",
+        "core": false
+      },
+      {
+        "term": "rotolarsi nella polvere",
+        "translation": "roll in the dust",
+        "core": true
+      },
+      {
+        "term": "mantello",
+        "translation": "coat",
+        "core": false
+      },
+      {
+        "term": "vivono in branchi",
+        "translation": "live in herds",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 47.276,
+    "text": "attraverso suoni e movimenti del corpo Sono stati a rischio di estinzione ma grazie agli sforzi di conservazione la loro popolazione sta lentamente aumentando",
+    "vocab": [
+      {
+        "term": "attraverso",
+        "translation": "through; by means of",
+        "core": false
+      },
+      {
+        "term": "a rischio di estinzione",
+        "translation": "at risk of extinction",
+        "core": true
+      },
+      {
+        "term": "grazie agli sforzi di conservazione",
+        "translation": "thanks to conservation efforts",
+        "core": true
+      },
+      {
+        "term": "sta lentamente aumentando",
+        "translation": "is slowly increasing",
+        "core": true
+      }
+    ]
+  }
+]

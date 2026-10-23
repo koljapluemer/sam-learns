@@ -1,0 +1,68 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 20.127,
+    "text": "Oggi vedere la tomba di due bambini così piccoli fa impressione, ma alla fine dell'ento era molto più comune di quanto pensiamo. In quegli anni quasi un bambino su tre non arrivava all'età adulta. Malattie infezioni erano difficile da curare. Bastava poco perché una situazione",
+    "vocab": [
+      {
+        "term": "fa impressione",
+        "translation": "is unsettling / makes an impression",
+        "core": true
+      },
+      {
+        "term": "molto più comune di quanto pensiamo",
+        "translation": "much more common than we think",
+        "core": true
+      },
+      {
+        "term": "un bambino su tre",
+        "translation": "one child in three",
+        "core": true
+      },
+      {
+        "term": "non arrivava all'età adulta",
+        "translation": "did not reach adulthood",
+        "core": true
+      },
+      {
+        "term": "difficile da curare",
+        "translation": "difficult to treat",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 20.127,
+    "end": 48.948,
+    "text": "peggiorasse rapidamente. Eppure, nonostante tutto questo, molte famiglie cercavano comunque di mantenere viva la memoria dei propri figli. Anche qui queste tombe sembrano ancora curate, come se qualcuno continuasse a ricordarle a distanza di così tanto tempo. Guardandole oggi viene naturale chiedersi cosa sia successo, ma la verità è che in quel periodo storie come queste erano purtroppo molto più diffuse di quanto immaginiamo. M.",
+    "vocab": [
+      {
+        "term": "peggiorasse rapidamente",
+        "translation": "would rapidly worsen",
+        "core": true
+      },
+      {
+        "term": "Eppure, nonostante tutto questo",
+        "translation": "Yet, despite all this",
+        "core": false
+      },
+      {
+        "term": "mantenere viva la memoria",
+        "translation": "keep the memory alive",
+        "core": true
+      },
+      {
+        "term": "a distanza di così tanto tempo",
+        "translation": "after such a long time",
+        "core": false
+      },
+      {
+        "term": "viene naturale chiedersi",
+        "translation": "it is natural to wonder",
+        "core": true
+      }
+    ]
+  }
+]

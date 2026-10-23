@@ -1,0 +1,67 @@
+{
+  "channels": [
+    {
+      "channelId": "UCby98j8XsERQGbtM3tVzuAQ",
+      "channelName": "Andrea Lorenzon",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UCqpPpstVqRduV6PaBglaiaw",
+      "channelName": "Daya's Language Corner",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UC_3nT_AKPSBj8q2iL63fljg",
+      "channelName": "JimmyCastoro",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UCnLhgoR8vXRddRR-IdssBZg",
+      "channelName": "maestra Marina83",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UCOqDAimF4GJwSpcR5w0KjNg",
+      "channelName": "STORICI SUBITO: la STORIA non è mai stata così SEMPLICE",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UC7RWkvTEXuYqfJp59rsh9Hg",
+      "channelName": "Sweeteasyhome",
+      "state": "blocked",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    },
+    {
+      "channelId": "UC_Rv-PRmoUPCwkLXYtbsQtQ",
+      "channelName": "What's Gnu?",
+      "state": "trusted",
+      "languageCodes": [
+        "ita"
+      ],
+      "note": ""
+    }
+  ]
+}

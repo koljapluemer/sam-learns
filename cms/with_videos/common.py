@@ -5,6 +5,9 @@ ROOT = Path(__file__).parent
 WORK_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT.parents[1] / "public/data/with-videos"
 VIDEOS_PATH = OUTPUT_DIR / "videos.json"
+PROFILES_PATH = ROOT / "profiles.json"
+CHANNEL_POLICY_PATH = ROOT / "channel-policy.json"
+STATE_DB_PATH = WORK_DIR / "cms.sqlite3"
 
 
 def video_dir(youtube_id: str) -> Path:

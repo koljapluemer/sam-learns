@@ -1,0 +1,68 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 30.0,
+    "text": "Ecco in sintesi Mantova per voi che non avete tempo da perdere intanto si trova in Lombardia lo dico perché siccome è in mezzo alla Pianura Padana vicino a Veneto ed Emilia Romagna ci si confonde sempre. Lombardia. Lì attaccato è nato Virgilio, la spalla comica di Dante, bello il Medioevo con ancora la gabbia dove chiudevano le persone ma Mantova se la tira un sacco per il Rinascimento Infatti sotto i Gonzaga hanno lavorato Andrea Mantegna, camera degli sposi, in tutti i libri di storia, Leon Battista Alberti, qui c'è il sangue di Gesù non le solite ossicina, e Giulio Romano che forse avrete sentito di meno però è quello che vi farà dire Wow che affreschi giganti e questa è proprio la Sala Dei Giganti volete vedere Isabella d'Este e moglie di",
+    "vocab": [
+      {
+        "term": "in sintesi",
+        "translation": "in brief",
+        "core": true
+      },
+      {
+        "term": "non avete tempo da perdere",
+        "translation": "you have no time to waste",
+        "core": false
+      },
+      {
+        "term": "ci si confonde sempre",
+        "translation": "people always get it mixed up",
+        "core": true
+      },
+      {
+        "term": "la spalla comica",
+        "translation": "the comic sidekick",
+        "core": false
+      },
+      {
+        "term": "se la tira un sacco",
+        "translation": "really likes to show off",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 30.0,
+    "end": 49.575,
+    "text": "Francesco II Gonzaga Eccola, vi sembra familiare? questo è giusto un assaggino E a proposito qui si mangiano tortelli di zucca, insalata di cappone, Agnoli, torta sbrisolona, tortelli di zucca, torta delle rose ma soprattutto tortelli di zucca creati da quel f... genio di Bartolomeo Stefani se volete saperne di più Guardate Alberto Angela scherzo Guardate il mio documentario su YouTube",
+    "vocab": [
+      {
+        "term": "Eccola",
+        "translation": "there she is",
+        "core": true
+      },
+      {
+        "term": "giusto un assaggino",
+        "translation": "just a little preview",
+        "core": true
+      },
+      {
+        "term": "a proposito",
+        "translation": "speaking of which",
+        "core": false
+      },
+      {
+        "term": "tortelli di zucca",
+        "translation": "pumpkin-filled pasta",
+        "core": true
+      },
+      {
+        "term": "scherzo",
+        "translation": "just kidding",
+        "core": true
+      }
+    ]
+  }
+]

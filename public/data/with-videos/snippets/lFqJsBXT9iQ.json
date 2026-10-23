@@ -1,0 +1,96 @@
+[
+  {
+    "id": "0000",
+    "start": 0.0,
+    "end": 12.203,
+    "text": "Quattro candele bruciavano in silenzio. La prima disse: “La gente non mi vuole più…”",
+    "vocab": [
+      {
+        "term": "candele",
+        "translation": "candles",
+        "core": true
+      },
+      {
+        "term": "bruciavano",
+        "translation": "were burning",
+        "core": true
+      },
+      {
+        "term": "in silenzio",
+        "translation": "silently",
+        "core": false
+      },
+      {
+        "term": "La gente",
+        "translation": "people",
+        "core": true
+      },
+      {
+        "term": "non mi vuole più",
+        "translation": "doesn't want me anymore",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0001",
+    "start": 12.203,
+    "end": 21.577,
+    "text": "Era la candela della Pace… e si spense. La seconda sussurrò: “Non servo più a nessuno…”",
+    "vocab": [
+      {
+        "term": "Pace",
+        "translation": "Peace",
+        "core": true
+      },
+      {
+        "term": "si spense",
+        "translation": "went out",
+        "core": true
+      },
+      {
+        "term": "sussurrò",
+        "translation": "whispered",
+        "core": false
+      },
+      {
+        "term": "Non servo più a nessuno",
+        "translation": "I'm no longer of use to anyone",
+        "core": true
+      }
+    ]
+  },
+  {
+    "id": "0002",
+    "start": 21.577,
+    "end": 47.701,
+    "text": "Era la candela della Fede… e si spense. La terza pianse: “Il mondo è troppo duro…” Era la candela dell’Amore… e anche lei si spense. Un bambino entrò e disse: “Ma… perché siete spente?” E la quarta candela rispose: “Non temere. Finché ci sono io… possiamo riaccendere tutte le altre.”",
+    "vocab": [
+      {
+        "term": "Fede",
+        "translation": "Faith",
+        "core": true
+      },
+      {
+        "term": "troppo duro",
+        "translation": "too harsh",
+        "core": true
+      },
+      {
+        "term": "Amore",
+        "translation": "Love",
+        "core": true
+      },
+      {
+        "term": "Non temere",
+        "translation": "Don't be afraid",
+        "core": true
+      },
+      {
+        "term": "riaccendere",
+        "translation": "relight",
+        "core": true
+      }
+    ]
+  }
+]
